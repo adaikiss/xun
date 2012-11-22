@@ -1,0 +1,90 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Charge",
+        "idProperty": "id"
+    },
+    "id": "ExtBox1-ext-gen5224",
+    "designerId": "68d95399-83c0-4ca2-ba51-63ba8e64d87d",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field2",
+                "name": "amount",
+                "mapping": "amount",
+                "type": "float"
+            },
+            "designerId": "ecc169db-923e-4422-a34e-d2914dc2e4f5"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field3",
+                "name": "date",
+                "dateFormat": "Y-m-d H:i:s",
+                "mapping": "date",
+                "type": "date"
+            },
+            "designerId": "f4046184-d9d0-42ae-8572-97492d0daf0e"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field4",
+                "name": "remark",
+                "mapping": "remark"
+            },
+            "designerId": "32494f3f-9dda-4197-b4af-ea9bb26852c7"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field5",
+                "name": "id",
+                "mapping": "id",
+                "type": "int"
+            },
+            "designerId": "df57bafb-7941-4d4b-b193-46dd58378d27"
+        },
+        {
+            "type": "hasmanyassociation",
+            "reference": {
+                "name": "hasMany",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyHasManyAssociation",
+                "model": "Category",
+                "name": "categories"
+            },
+            "designerId": "c819f552-d647-4dfa-a9fc-6ef247c42b7d"
+        }
+    ]
+}

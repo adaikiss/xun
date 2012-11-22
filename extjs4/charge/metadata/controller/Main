@@ -1,0 +1,54 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Main",
+        "views": [
+            "MyViewport"
+        ]
+    },
+    "id": "ExtBox1-ext-gen10125",
+    "designerId": "f3852eee-5ab3-4dba-8af4-15698d3b1b22",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "showMainView",
+                "fn": "showMainView",
+                "implHandler": [
+                    "navPanel = Ext.create('MyApp.view.NavPanel', {flex: 1});\r",
+                    "west_container = this.getViewport().down('container[region=west]'); \r",
+                    "west_container.add(navPanel);\r",
+                    "mainTabPanel = Ext.create('MyApp.view.MainTabPanel', {flex: 1,region : 'center'});\r",
+                    "//center_container = this.getViewport().down('container[region=center]');\r",
+                    "//center_container.add(mainTabPanel);\r",
+                    "this.getViewport().add(mainTabPanel);"
+                ]
+            },
+            "designerId": "025cb0b1-e113-473f-8612-faaa75233577"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "viewport",
+                "ref": "viewport",
+                "selector": "viewport"
+            },
+            "designerId": "c1451b30-2a51-4151-96b2-f617df954dad"
+        }
+    ]
+}

@@ -1,0 +1,119 @@
+{
+    "type": "gridpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ChargeGridPanel",
+        "designer|userAlias": "chargeGridPanel",
+        "height": 250,
+        "width": 400,
+        "title": "My Grid Panel",
+        "store": "Charge"
+    },
+    "id": "ExtBox1-ext-gen18365",
+    "designerId": "0ea9a89f-b5b7-4db1-85bf-2732111cdfec",
+    "cn": [
+        {
+            "type": "numbercolumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyNumberColumn",
+                "designer|displayName": "编号",
+                "dataIndex": "id",
+                "text": "编号",
+                "format": "0"
+            },
+            "designerId": "d36f3510-42e9-4cb1-8257-bf3d94e6db78"
+        },
+        {
+            "type": "gridcolumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyColumn",
+                "designer|displayName": "备注",
+                "dataIndex": "remark",
+                "text": "备注"
+            },
+            "designerId": "e76245cb-0b47-4936-a706-056c7191e38c"
+        },
+        {
+            "type": "datecolumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyDateColumn",
+                "designer|displayName": "日期",
+                "dataIndex": "date",
+                "text": "日期",
+                "format": "Y-m-d H:i:s"
+            },
+            "designerId": "05c568e9-009e-4d6e-9d06-7532dcaad10d"
+        },
+        {
+            "type": "numbercolumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyNumberColumn1",
+                "designer|displayName": "金额",
+                "dataIndex": "amount",
+                "text": "金额"
+            },
+            "designerId": "08595708-8e10-48e1-b5be-31bfa54e83ec"
+        },
+        {
+            "type": "gridview",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyGridView"
+            },
+            "designerId": "6986468d-0e95-4b93-bb2c-0382795c3827"
+        },
+        {
+            "type": "pagingtoolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "designer|userClassName": "MyPagingToolbar",
+                "width": 400,
+                "afterPageText": "共 {0}页",
+                "beforePageText": "当前",
+                "displayInfo": true,
+                "displayMsg": "{0} - {1} 共 {2}条",
+                "emptyMsg": "暂无数据",
+                "firstText": "首页",
+                "lastText": "尾页",
+                "nextText": "下一页",
+                "prevText": "上一页",
+                "refreshText": "刷新",
+                "store": "Charge"
+            },
+            "designerId": "a4aeebff-653f-4155-af16-8baab71f739b"
+        }
+    ]
+}

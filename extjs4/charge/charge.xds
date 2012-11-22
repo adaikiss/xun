@@ -1,0 +1,149 @@
+{
+    "name": "charge",
+    "settings": {
+        "urlPrefix": "http://localhost/",
+        "spacesToIndent": 4,
+        "exportPath": "F:/workspace/xun/examples/charge/src/main/webapp",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 640,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "7e47e76f-b9b8-48ab-bd33-f9370b062399": {
+            "paths": [
+                "metadata/view/LoginForm",
+                "app/view/override/LoginForm.js",
+                "app/view/LoginForm.js"
+            ],
+            "className": "LoginForm"
+        },
+        "dc4d0b65-a790-4060-98e6-b553c5f7eaf8": {
+            "paths": [
+                "metadata/view/MyViewport",
+                "app/view/override/MyViewport.js",
+                "app/view/MyViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyViewport"
+        },
+        "d760c976-efe3-4228-9c30-6c3a065c61d0": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "0e057c29-cd1e-43e6-bf6b-00f821ce6654": {
+            "paths": [
+                "metadata/controller/Login",
+                "app/controller/override/Login.js",
+                "app/controller/Login.js"
+            ],
+            "className": "Login"
+        },
+        "97c2c993-907f-4f1e-abfd-5af038557c43": {
+            "paths": [
+                "metadata/model/User",
+                "app/model/override/User.js",
+                "app/model/User.js"
+            ],
+            "className": "User"
+        },
+        "f3852eee-5ab3-4dba-8af4-15698d3b1b22": {
+            "paths": [
+                "metadata/controller/Main",
+                "app/controller/override/Main.js",
+                "app/controller/Main.js"
+            ],
+            "className": "Main"
+        },
+        "b7092211-fa6f-4510-82b3-59a5849c517a": {
+            "paths": [
+                "metadata/view/NavPanel",
+                "app/view/override/NavPanel.js",
+                "app/view/NavPanel.js"
+            ],
+            "className": "NavPanel"
+        },
+        "51db88e8-eea8-47c3-a00e-98ac8f7be75f": {
+            "paths": [
+                "metadata/controller/Nav",
+                "app/controller/override/Nav.js",
+                "app/controller/Nav.js"
+            ],
+            "className": "Nav"
+        },
+        "68d95399-83c0-4ca2-ba51-63ba8e64d87d": {
+            "paths": [
+                "metadata/model/Charge",
+                "app/model/override/Charge.js",
+                "app/model/Charge.js"
+            ],
+            "className": "Charge"
+        },
+        "376299ad-cd0e-47e9-8034-e672433b1f38": {
+            "paths": [
+                "metadata/model/Category",
+                "app/model/override/Category.js",
+                "app/model/Category.js"
+            ],
+            "className": "Category"
+        },
+        "9fd17058-66b6-4121-898c-861dcbff68d0": {
+            "paths": [
+                "metadata/store/Charge",
+                "app/store/override/Charge.js",
+                "app/store/Charge.js"
+            ],
+            "className": "Charge"
+        },
+        "05de6932-396a-4558-8551-9c7500ad471f": {
+            "paths": [
+                "metadata/view/MainTabPanel",
+                "app/view/override/MainTabPanel.js",
+                "app/view/MainTabPanel.js"
+            ],
+            "className": "MainTabPanel"
+        },
+        "0ea9a89f-b5b7-4db1-85bf-2732111cdfec": {
+            "paths": [
+                "metadata/view/ChargeGridPanel",
+                "app/view/override/ChargeGridPanel.js",
+                "app/view/ChargeGridPanel.js"
+            ],
+            "className": "ChargeGridPanel"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "7e47e76f-b9b8-48ab-bd33-f9370b062399",
+            "dc4d0b65-a790-4060-98e6-b553c5f7eaf8",
+            "b7092211-fa6f-4510-82b3-59a5849c517a",
+            "05de6932-396a-4558-8551-9c7500ad471f",
+            "0ea9a89f-b5b7-4db1-85bf-2732111cdfec"
+        ],
+        "store": [
+            "9fd17058-66b6-4121-898c-861dcbff68d0"
+        ],
+        "controller": [
+            "0e057c29-cd1e-43e6-bf6b-00f821ce6654",
+            "f3852eee-5ab3-4dba-8af4-15698d3b1b22",
+            "51db88e8-eea8-47c3-a00e-98ac8f7be75f"
+        ],
+        "model": [
+            "97c2c993-907f-4f1e-abfd-5af038557c43",
+            "68d95399-83c0-4ca2-ba51-63ba8e64d87d",
+            "376299ad-cd0e-47e9-8034-e672433b1f38"
+        ],
+        "resource": [
+            "d760c976-efe3-4228-9c30-6c3a065c61d0"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

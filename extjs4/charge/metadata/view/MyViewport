@@ -1,0 +1,69 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|padding": 5,
+        "designer|userClassName": "MyViewport",
+        "designer|initialView": true,
+        "layout": "border"
+    },
+    "id": "ExtBox1-ext-gen2129",
+    "designerId": "dc4d0b65-a790-4060-98e6-b553c5f7eaf8",
+    "cn": [
+        {
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "north",
+                "designer|userClassName": "MyContainer",
+                "designer|displayName": "northContainer",
+                "border": 1,
+                "frame": false,
+                "height": 69,
+                "style": [
+                    "{borderColor:'#000000', borderStyle:'solid', borderWidth:'1px'}"
+                ]
+            },
+            "designerId": "c5080c17-1baa-45f0-9a5d-60aae4c538b3"
+        },
+        {
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "west",
+                "designer|userClassName": "MyContainer3",
+                "designer|displayName": "westContainer",
+                "width": 150,
+                "layout": null
+            },
+            "designerId": "66f51fec-6970-409b-b88d-c37421cdd505"
+        },
+        {
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "south",
+                "designer|userClassName": "MyContainer2",
+                "designer|displayName": "southContainer",
+                "height": 57
+            },
+            "designerId": "ade6d481-017b-43f4-a049-cf95a3c94fad"
+        }
+    ]
+}

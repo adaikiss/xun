@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	targetNamespace="http://www.bpmnwithactiviti.org">
+	<process id="bookorder" name="Order book">
+		<startEvent id="startevent1" name="Start" />
+		<sequenceFlow id="sequenceflow1" name="Validate order" sourceRef="startevent1"
+			targetRef="endevent1" />
+		<scriptTask id="scripttask1" name="Validate order" scriptFormat="groovy">
+			<script>out:println "validating order for isbn " + isbn;</script>
+		</scriptTask>
+		<sequenceFlow id="sequenceflow2" name="Sending to sales" targetRef="usertask1" sourceRef="scripttask1"></sequenceFlow>
+		<userTask id="usertask1" name="Work on order">
+			<documentation>book order user task</documentation>
+			<potentialOwner>
+				<resourceAssignmentExpression>
+					<formalExpression>sales</formalExpression>
+				</resourceAssignmentExpression>
+			</potentialOwner>
+		</userTask>
+		<sequenceFlow id="sequenceflow3" name="Ending process" targetRef="endevent1" sourceRef="usertask1"></sequenceFlow>
+		<endEvent id="endevent1" name="End" />
+	</process>
+</definitions>

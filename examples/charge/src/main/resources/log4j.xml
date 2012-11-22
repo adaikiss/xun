@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration>
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %-40.40c -%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="Trace" class="org.apache.log4j.FileAppender">
+		<param name="File" value="target/logs/app.log" />
+		<param name="append" value="false"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %-40.40c -%m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<level value="ALL" />
+		<appender-ref ref="Console" />
+		<appender-ref ref="Trace" />
+	</root>
+</log4j:configuration>

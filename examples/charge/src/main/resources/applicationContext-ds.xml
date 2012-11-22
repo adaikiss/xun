@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+	default-lazy-init="true">
+
+	<beans profile="dbcp">
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+			destroy-method="close" lazy-init="false">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+
+			<!-- Connection Pooling Info -->
+			<property name="maxIdle" value="${dbcp.maxIdle}" />
+			<property name="maxActive" value="${dbcp.maxActive}" />
+			<property name="defaultAutoCommit" value="false" />
+			<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+			<property name="minEvictableIdleTimeMillis" value="3600000" />
+		</bean>
+	</beans>
+
+	<beans profile="proxool">
+		<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+			<!-- Connection Info -->
+			<property name="driver" value="${jdbc.driver}" />
+			<property name="driverUrl" value="${jdbc.url}" />
+			<property name="user" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+			<property name="alias" value="${proxool.alias}"/>
+		</bean>
+	</beans>
+
+	<beans profile="h2">
+		<bean id="dataSource"
+			class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</bean>
+
+		<!-- h2 database server run on spring startup -->
+		<bean id="org.h2.tools.Server" class="org.h2.tools.Server"
+			factory-method="createTcpServer" init-method="start" destroy-method="stop" lazy-init="false">
+			<constructor-arg value="-tcp,-tcpAllowOthers,-tcpPort,8043" />
+		</bean>
+	</beans>
+
+	<beans profile="test">
+		<jdbc:embedded-database id="dataSource" type="H2" />
+		<jdbc:initialize-database ignore-failures="ALL">
+			<jdbc:script location="classpath:sql/h2/data.sql" encoding="UTF-8" />
+		</jdbc:initialize-database>
+	</beans>
+</beans>

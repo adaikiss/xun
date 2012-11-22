@@ -1,0 +1,113 @@
+{
+    "type": "store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Charge",
+        "autoLoad": true,
+        "storeId": "MyStore",
+        "model": "Charge"
+    },
+    "id": "ExtBox1-ext-gen8209",
+    "designerId": "9fd17058-66b6-4121-898c-861dcbff68d0",
+    "cn": [
+        {
+            "type": "ajaxproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyAjaxProxy",
+                "api": [
+                    "{\r",
+                    "    read: 'charge/list.json',\r",
+                    "    create:  'charge/save',\r",
+                    "    update:  'charge/{id}',\r",
+                    "    destroy: 'charge/{id}'\r",
+                    "}"
+                ],
+                "url": "charge/list.json"
+            },
+            "designerId": "94e201fb-c2cc-4571-982c-c057a729876b"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field10",
+                "name": "id",
+                "mapping": "id",
+                "type": "int"
+            },
+            "designerId": "fa3fdd23-968d-4a79-ac1d-ecb73d61d0ef"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field11",
+                "name": "amount",
+                "mapping": "amount",
+                "type": "float"
+            },
+            "designerId": "b0cf2368-80ed-4377-9417-cd320125cfd5"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field12",
+                "name": "date",
+                "mapping": "date",
+                "type": "date"
+            },
+            "designerId": "e6921016-5ffc-48fc-a074-6cc604073c9f"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field13",
+                "name": "remark",
+                "mapping": "remark"
+            },
+            "designerId": "43c4a459-8f63-4222-b558-44843208e3ff"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field14",
+                "name": "userId",
+                "mapping": "userId",
+                "type": "int"
+            },
+            "designerId": "def845a6-4fd5-430a-98e9-3b00def983fe"
+        }
+    ]
+}

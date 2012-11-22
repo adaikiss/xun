@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+  	<mapping path="/" decorator="/decorators/default.action"/>
+  	<mapping path="/css" exclude="true"/>
+  	<mapping path="/js" exclude="true"/>
+  	<mapping path="/app.html" exclude="true"/>
+  	<mapping path="/designer.html" exclude="true"/>
+</sitemesh>

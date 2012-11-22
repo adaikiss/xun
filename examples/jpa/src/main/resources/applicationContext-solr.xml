@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd"
+	default-lazy-init="true">
+	<description>solr</description>
+
+	<beans profile="server">
+		<bean id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+			<constructor-arg value="${solr.serverUrl}" />
+			<property name="connectionTimeout" value="${solr.connectionTimeout}" />
+			<property name="defaultMaxConnectionsPerHost" value="${solr.defaultMaxConnectionsPerHost}" />
+			<property name="maxTotalConnections" value="${solr.maxTotalConnections}" />
+		</bean>
+	</beans>
+	<beans profile="test">
+		<bean id="solrCoreContainer" class="org.apache.solr.core.CoreContainer"
+			destroy-method="shutdown">
+			<constructor-arg value="${solr.home}" />
+			<constructor-arg value="${solr.home}/solr.xml" />
+		</bean>
+		<bean id="solrServer"
+			class="org.apache.solr.client.solrj.embedded.EmbeddedSolrServer">
+			<constructor-arg ref="solrCoreContainer" />
+			<constructor-arg value="${solr.core.name}" />
+		</bean>
+	</beans>
+</beans>

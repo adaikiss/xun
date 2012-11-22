@@ -1,0 +1,2 @@
+spring mvc 3.2.M2 updates
+http://rstoyanchev.github.com/spring-mvc-32-update/

@@ -1,0 +1,127 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Login",
+        "views": [
+            "LoginForm"
+        ]
+    },
+    "id": "ExtBox1-ext-gen4630",
+    "designerId": "0e057c29-cd1e-43e6-bf6b-00f821ce6654",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onLoginClick",
+                "fn": "onLoginClick",
+                "implHandler": [
+                    "this.login();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "button[id=login]"
+            },
+            "designerId": "95e703bd-b01a-400d-b463-d216cfd488dd"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "init",
+                "fn": "init",
+                "designer|params": [
+                    "application"
+                ],
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "b6c0a660-b6db-44b5-92bf-d19552ac35a0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "loginForm",
+                "ref": "loginForm",
+                "selector": "loginForm"
+            },
+            "designerId": "32f54633-c86a-44da-a585-3f3f5ef78a07"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "login",
+                "fn": "login",
+                "implHandler": [
+                    "var loginForm = this.getLoginForm();\r",
+                    "var form = loginForm.getForm();\r",
+                    "var main = this.getController('MyApp.controller.Main');\r",
+                    "if (form.isValid()) {\r",
+                    "    form.submit({\r",
+                    "        success: function(form, action) {\r",
+                    "            Ext.Msg.alert('Success', action.result.msg);\r",
+                    "            loginForm.hide();\r",
+                    "            main.showMainView();\r",
+                    "        },\r",
+                    "        failure: function(form, action) {\r",
+                    "            Ext.Msg.alert('Failed', action.result.msg);\r",
+                    "        }\r",
+                    "    });\r",
+                    "}"
+                ]
+            },
+            "designerId": "e9a25451-07f8-453b-91c5-20aae4aa3b97"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onSpecialKey",
+                "fn": "onSpecialKey",
+                "designer|params": [
+                    "field",
+                    "e"
+                ],
+                "implHandler": [
+                    "if(e.getKey() == e.ENTER) { \r",
+                    "    this.login();\r",
+                    "}"
+                ],
+                "name": "specialkey",
+                "scope": "me",
+                "designer|targetType": "Ext.form.Panel",
+                "designer|controlQuery": "textfield"
+            },
+            "designerId": "2e5472ea-19a4-4349-9428-ad9038265855"
+        }
+    ]
+}

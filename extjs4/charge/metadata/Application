@@ -1,0 +1,51 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "User",
+            "Charge",
+            "Category"
+        ],
+        "stores": [
+            "Charge"
+        ],
+        "views": [
+            "LoginForm",
+            "MainTabPanel",
+            "ChargeGridPanel"
+        ],
+        "autoCreateViewport": true,
+        "name": "MyApp",
+        "controllers": [
+            "Login",
+            "Main",
+            "Nav"
+        ]
+    },
+    "id": "ExtBox1-ext-gen1776",
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "launch",
+                "fn": "launch",
+                "implHandler": [
+                    "//loginForm = Ext.create('MyApp.view.LoginForm', {}).show();\r",
+                    "this.getController('MyApp.controller.Main').showMainView();"
+                ]
+            },
+            "designerId": "6e86c9bf-5a48-45d7-b456-37a334cf4c2d"
+        }
+    ]
+}

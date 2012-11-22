@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="realm" class="org.adaikiss.xun.security.Realm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="SHA-256" />
+				<!-- true means hex encoded, false means base64 encoded -->
+				<property name="storedCredentialsHexEncoded" value="false" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="realm" />
+		<property name="cacheManager" ref="shiroCacheManager"/>
+		<property name="sessionManager" ref="shiroSessionManager"/>
+	</bean>
+
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jsp" />
+		<property name="successUrl" value="/index.jsp" />
+		<property name="unauthorizedUrl" value="/login.jsp" />
+		<!-- The 'filters' property is usually not necessary unless performing an override, which we want to do here (make authc 
+			point to a PassthruAuthenticationFilter instead of the default FormAuthenticationFilter: -->
+		<property name="filters">
+			<util:map>
+				<entry key="authc">
+					<bean class="org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter" />
+				</entry>
+			</util:map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/**.js = anon
+				/**.css = anon
+				/**.png = anon
+				/**.gif = anon
+				/**.jpg = anon
+				/**.jpeg = anon
+			</value>
+		</property>
+	</bean>
+	<bean id="shiroCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<property name="name" value="SSOCookie"/>
+		<property name="path" value="/"></property>
+	</bean>
+
+	<beans profile="spymemcached">
+		<bean id="shiroCacheManager" class="org.adaikiss.xun.security.MemcachedCacheManager">
+			<property name="client" ref="spyMemcachedClient"/>
+		</bean>
+
+		<bean id="shiroSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+			<property name="sessionDAO" ref="shiroSessionDao"></property>
+			<property name="cacheManager" ref="shiroCacheManager"></property>
+			<property name="sessionIdCookie" ref="shiroCookie"></property>
+		</bean>
+		<bean id="shiroSessionDao" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+			<property name="cacheManager" ref="shiroCacheManager"></property>
+		</bean>
+	</beans>
+
+	<beans profile="ehcache">
+		<bean name="shiroCacheManager" id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+			<property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml" />
+		</bean>
+		<bean id="shiroSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+			<property name="sessionIdCookie" ref="shiroCookie"></property>
+		</bean>
+	</beans>
+</beans>

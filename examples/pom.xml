@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.adaikiss.xun</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>examples</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>jpa</module>
+		<module>office</module>
+		<module>activiti</module>
+		<module>hibernate4</module>
+		<module>struts2</module>
+		<module>netty</module>
+		<module>hadoop</module>
+		<module>apt</module>
+		<module>activemq</module>
+		<module>springmvc</module>
+		<module>charge</module>
+		<module>shiro</module>
+	</modules>
+</project>

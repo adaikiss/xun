@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+    <constant name="struts.convention.default.parent.package" value="convention-default"></constant>
+    <constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.package.locators.basePackage" value="org.adaikiss.xun" />
+    <constant name="struts.convention.action.disableJarScanning" value="false"/>
+    <constant name="struts.freemarker.manager.classname" value="org.adaikiss.xun.freemarker.MyFreemarkerManager" />
+    <!-- 使struts中自动注入一直有效(aop导致失效) -->
+    <constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	<!-- 
+		使用Convention插件,实现约定大于配置的零配置文件风格.
+	             特殊的Result路径在Action类中使用@Result设定. 
+	-->
+</struts>

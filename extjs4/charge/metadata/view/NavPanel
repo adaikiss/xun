@@ -1,0 +1,56 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "NavPanel",
+        "designer|userAlias": "navPanel",
+        "designer|displayName": "NavPanel",
+        "height": 266,
+        "autoScroll": true,
+        "layout": "accordion",
+        "title": "My Panel"
+    },
+    "id": "ExtBox1-ext-gen18251",
+    "designerId": "b7092211-fa6f-4510-82b3-59a5849c517a",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel1",
+                "height": null,
+                "html": [
+                    "<ul>\r",
+                    "    <li id=\"charge_list\"><a>账单列表</a></li>\r",
+                    "    <li id=\"charge_list\"><a href=\"#\">账单</a></li>\r",
+                    "</ul>"
+                ],
+                "collapsed": false,
+                "title": "账单管理"
+            },
+            "designerId": "56991b1a-d079-4b56-aa18-14f6195a7e3c"
+        },
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel",
+                "collapsed": true,
+                "title": "账号管理"
+            },
+            "designerId": "d636e4e6-4458-4d38-b93a-442067a8a10f"
+        }
+    ]
+}

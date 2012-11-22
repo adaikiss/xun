@@ -1,0 +1,104 @@
+{
+    "type": "form",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LoginForm",
+        "designer|userAlias": "loginForm",
+        "draggable": true,
+        "floating": true,
+        "height": 125,
+        "width": 314,
+        "bodyPadding": 10,
+        "title": "登陆",
+        "url": "login"
+    },
+    "id": "ExtBox1-ext-gen6834",
+    "designerId": "7e47e76f-b9b8-48ab-bd33-f9370b062399",
+    "cn": [
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField",
+                "width": 382,
+                "name": "username",
+                "fieldLabel": "账 号",
+                "labelWidth": 40,
+                "allowBlank": false
+            },
+            "designerId": "0bf0df73-4add-4e2d-95a2-f9e00ce4030a"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField1",
+                "inputType": "password",
+                "name": "password",
+                "fieldLabel": "密 码",
+                "labelWidth": 40
+            },
+            "designerId": "2d812299-9633-4eff-b09c-5e9ce193c4e7"
+        },
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "designer|userClassName": "MyToolbar",
+                "ui": [
+                    "footer"
+                ]
+            },
+            "designerId": "d2dea6af-b37b-485e-99ba-7fc2c04a74bc",
+            "cn": [
+                {
+                    "type": "tbfill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyFill"
+                    },
+                    "designerId": "45d578fc-705f-4377-a582-a47f5cd43134"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "id": "login",
+                        "text": "登录"
+                    },
+                    "designerId": "7d804de9-578c-4d62-8c70-6586c455a4b0"
+                }
+            ]
+        }
+    ]
+}

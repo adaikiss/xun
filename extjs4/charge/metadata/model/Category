@@ -1,0 +1,84 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Category",
+        "idProperty": "id"
+    },
+    "id": "ExtBox1-ext-gen6781",
+    "designerId": "376299ad-cd0e-47e9-8034-e672433b1f38",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field6",
+                "name": "id",
+                "type": "int"
+            },
+            "designerId": "c09cf47c-18bb-4ea0-8b4d-4df93ec976ef"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field7",
+                "name": "name"
+            },
+            "designerId": "5bcb70f8-ca01-4c9d-b14e-7bf971d79975"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field8",
+                "name": "description"
+            },
+            "designerId": "cfc8b8b8-883c-4d58-b9a5-6cec12ad1b9e"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field9",
+                "name": "chargeType"
+            },
+            "designerId": "5e927faf-7c64-4b10-a2be-c39e467f0c75"
+        },
+        {
+            "type": "belongstoassociation",
+            "reference": {
+                "name": "belongsTo",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyBelongsToAssociation",
+                "associationKey": "parent",
+                "model": "Category",
+                "foreignKey": "parentId"
+            },
+            "designerId": "0c256049-f844-43da-9d75-2724dd432496"
+        }
+    ]
+}

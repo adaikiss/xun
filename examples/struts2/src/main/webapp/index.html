@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>struts2 convention demos</title>
+<style>
+table, table th, table td{
+	border: 1px solid #222;
+}
+#map{width:500px;height:500px;}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript" charset="UTF-8">
+var interval = 3000;
+var icon = 'http://static.566560.com/web/img/bar1.gif';
+var icon_w = 12;
+var icon_h = 11;
+var map, marker, infoWindow, myGeo;
+var zoom = 9;
+var ssts = [
+['浙江 杭州', '杭州石大路', '浙江杭州石大路货运市场新大楼二楼8-45号', '13282130073', '057188272856'],
+['上海 上海 宝山区', '享宇物流', '上海市宝山区南大路799弄188号南场', '18621199353', '02152847218'],
+['浙江 湖州', '广源物流', '浙江省安吉良朋加油站', '13757275298', '05725101010'],
+['安徽 合肥', '万达配货', '安徽宿州南外环206国道路口西300米', '13675578828', '05573650099'],
+['安徽 合肥', '鹏飞物流', '安徽宿州西外环路高速出口南100米', '13865579555', '05572762222'],
+['上海 上海', '丽霞服务站', '上海市浦东新区', '15821748033', '02150270659'],
+['湖南 邵阳 邵东县', '捷达货运', '湖南邵东宋家塘', '13677432833', '07392613690'],
+['上海 上海 宝山区', '新干线站', '上海市宝山区南大路727号', '15002135088', '02162506638'],
+['湖南 益阳 赫山区', '四顺货运', '益阳市郝山区朝阳东路口湘运物流停车场', '13973671371', '07376500258'],
+['湖南 常德 武陵区', '财福货运', '常德市汤家坪中宇停车场', '13873609191', '07367520289'],
+['湖南 怀化 鹤城区', '富州货运', '怀化市宏泰货运停车场', '18674500338', '07452220090']
+]; 
+var index = 0;
+var opts = {
+  width : 250,
+  height: 100
+};
+var max = ssts.length;
+
+function pollingShow(){
+	map.setZoom(zoom);
+	var idx = index++%max;
+	var sst = ssts[idx];
+	if(sst[5] != null){
+		panAndShow(idx);
+		window.setTimeout('pollingShow()', interval);
+	}else {
+		myGeo.getPoint(sst[0], function(point){
+			if(point != null){
+				sst[5] = point;
+				panAndShow(idx);
+			}
+			window.setTimeout('pollingShow()', interval);
+		});
+	}
+}
+function panAndShow(index){
+	var sst = ssts[index];
+	if(!marker){
+		marker = new BMap.Marker();
+		//marker.setIcon(new BMap.Icon(icon, new BMap.Size(icon_w, icon_h)));
+		infoWindow = new BMap.InfoWindow(opts);
+	} else {
+		marker.closeInfoWindow();
+		map.removeOverlay(marker);
+		marker.setPosition(sst[5]);
+	}
+	marker.setPosition(sst[5]);
+	map.addOverlay(marker);
+	infoWindow.content = '名称：' + sst[1] + '<br> 地址：' + sst[2] + '<br> 手机：' + sst[3] + '<br> 电话：' + sst[4];
+	marker.openInfoWindow(infoWindow);
+}
+$(function(){
+map = new BMap.Map("map");
+map.centerAndZoom('杭州', zoom);
+myGeo = new BMap.Geocoder();
+pollingShow();
+});
+</script>
+</head>
+<body>
+This is a struts2 convention demo!
+<div>
+	<table>
+		<tr><td colspan="2">result type</td></tr>
+		<tr>
+			<th>result type</th>
+			<th>url</th>
+		</tr>
+		<tr>
+			<td>jsp page</td>
+			<td><a href="/result-page!jsp.action" target="_blank">/result-page!jsp.action</a></td>
+		</tr>
+		<tr>
+			<td>freemarker page</td>
+			<td><a href="/result-page!freemarker.action" target="_blank">/result-page!freemarker.action</a></td>
+		</tr>
+	</table>
+		<form action="/download.action">
+			<table>
+				<tr>
+					<td>filename : <input name="filename"></td>
+					<td>content : <textarea name="content"></textarea></td>
+					<td><input type="submit" value="download"></td>
+				</tr>
+			</table>
+		</form>
+
+		<table>
+		<tr><td colspan="3">org.adaikiss.xun.Path</td></tr>
+		<tr>
+			<th>url</th>
+			<th>result</th>
+			<th>description</th>
+		</tr>
+		<tr>
+			<td><a href="/path.action" target="_blank">/path.action</a></td>
+			<td>/content/path.jsp</td>
+			<td>no action but result "success", mapping [path.jsp, path-success.jsp, path.ftl...]</td>
+		</tr>
+		<tr>
+			<td><a href="/path/path.action" target="_blank">/path/path.action</a></td>
+			<td>/content/path/path.jsp</td>
+			<td>execute default method "execute()" and result "success", mapping [path/path.jsp, path/path-success.jsp, path/path.ftl...]</td>
+		</tr>
+		<tr>
+			<td><a href="/path/path!one.action" target="_blank">/path/path!one.action</a></td>
+			<td>/content/path/path-one.jsp</td>
+			<td>execute Path#one() and result "one", mapping [path/path-one.jsp]</td>
+		</tr>
+		<tr>
+			<td><a href="/path/relative.action" target="_blank">/path/relative.action</a></td>
+			<td>/content/path/relative-one.jsp</td>
+			<td>relative path to Path#one() and result "one", mapping [path/relative-one.jsp]</td>
+		</tr>
+		<tr>
+			<td><a href="/absolute.action" target="_blank">/absolute.action</a></td>
+			<td>/content/absolute-one.jsp</td>
+			<td>absolute path to Path#one() and result "one", mapping [absolute-one.jsp]</td>
+		</tr>
+	</table>
+</div>
+<div id="map"></div>
+</body>
+</html>

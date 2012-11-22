@@ -1,0 +1,84 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "panelInfo": [
+            "{\r",
+            "    chargeGridPanel : {\r",
+            "        id : 'chargeGrid', panelClass : 'MyApp.view.ChargeGridPanel'\r",
+            "    }\r",
+            "}"
+        ],
+        "designer|userClassName": "Nav",
+        "views": [
+            "NavPanel"
+        ]
+    },
+    "configAlternates": {
+        "panelInfo": "object"
+    },
+    "id": "ExtBox1-ext-gen3000",
+    "designerId": "51db88e8-eea8-47c3-a00e-98ac8f7be75f",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "panelInfo",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onPanelRender",
+                "fn": "onPanelRender",
+                "implHandler": [
+                    "panel = abstractcomponent;\r",
+                    "panel.body.on('click', Ext.emptyFn, null, {\r",
+                    "    delegate : 'a',\r",
+                    "    preventDefault : true\r",
+                    "});\r",
+                    "panel.body.on('mousedown', function(e, target) {\r",
+                    "    e.stopEvent();\r",
+                    "    var panelInfo = this.panelInfo.chargeGridPanel;\r",
+                    "    this.getViewport().down('mainTabPanel').addOrShowTab(panelInfo.id, panelInfo.panelClass, panelInfo.panelClassParams);\r",
+                    "}, this, {\r",
+                    "    delegate : 'a'\r",
+                    "});"
+                ],
+                "name": "render",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Panel",
+                "designer|controlQuery": "navPanel"
+            },
+            "configAlternates": {
+                "panelArray": "array",
+                "panelInfo": "array"
+            },
+            "designerId": "e8454397-f8fb-4de9-85d3-5adf56967dd4"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "viewport",
+                "ref": "viewport",
+                "selector": "viewport"
+            },
+            "designerId": "01ddd5c3-ea1f-4488-9136-dbb7fd681c55"
+        }
+    ]
+}
