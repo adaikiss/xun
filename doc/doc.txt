@@ -1,0 +1,299 @@
+create an android maven project
+https://github.com/akquinet/android-archetypes/wiki
+mvn archetype:generate \
+  -DarchetypeArtifactId=android-quickstart \
+  -DarchetypeGroupId=de.akquinet.android.archetypes \
+  -DarchetypeVersion=1.0.5 \
+  -DgroupId=your.company \
+  -DartifactId=my-android-application
+
+mvn archetype:generate \
+  -DarchetypeArtifactId=android-with-test \
+  -DarchetypeGroupId=de.akquinet.android.archetypes \
+  -DarchetypeVersion=1.0.5 \
+  -DgroupId=com.foo.bar \
+  -DartifactId=my-android-project \
+  -Dpackage=com.foo.bar.android
+
+mvn archetype:generate \
+  -DarchetypeArtifactId=android-release \
+  -DarchetypeGroupId=de.akquinet.android.archetypes \
+  -DarchetypeVersion=1.0.5 \
+  -DgroupId=com.foo.bar \
+  -DartifactId=my-android-project \
+  -Dpackage=com.foo.bar.android
+
+
+
+
+一.创建父项目
+1.使用
+mvn -DgroupId=org.adaikiss.kay -DartifactId=kay archetype:generate
+创建父项目骨架,并做以下修改:
+(1)删除kay目录下的src文件夹;
+(2)编辑pom.xml将packaging由jar改为pom;
+(3)编辑pom.xml添加以下内容
+<repositories>
+	<repository>
+		<id>flex-mojos-repository</id>
+		<url>http://repository.sonatype.org/content/groups/flexgroup</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+		<id>epseelon-repository</id>
+		<url>http://m2repo.epseelon.org/</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+  </repositories>
+  <pluginRepositories>
+	<pluginRepository>
+		<id>flex-mojos-repository</id>
+		<url>http://repository.sonatype.org/content/groups/flexgroup</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</pluginRepository>
+	<pluginRepository>
+		<id>epseelon-repository</id>
+		<url>http://m2repo.epseelon.org/</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</pluginRepository>
+  </pluginRepositories>
+  <build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<sourceExcludes>
+						<sourceExclude>**/.svn/</sourceExclude>
+					</sourceExcludes>
+					<downloadSources>true</downloadSources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+  </build>
+
+二.创建flex项目模块
+1.打开cmd定位到kay目录,运行如下命令
+mvn archetype:generate -DarchetypeRepository=http://repository.sonatype.com/content/groups/flexgroup -DarchetypeGroupId=org.sonatype.flexmojos -DarchetypeArtifactId=flexmojos-archetypes-application -DarchetypeVersion=4.0-SNAPSHOT -DgroupId=org.adaikiss.kay -DartifactId=flex -Dpackagename=org.adaikiss.kay
+2.修改pom.xml,删除junit依赖,并修改plugin节点为以下内容
+	<plugin>
+        <groupId>org.sonatype.flexmojos</groupId>
+        <artifactId>flexmojos-maven-plugin</artifactId>
+        <version>4.0-SNAPSHOT</version>
+        <extensions>true</extensions>
+		<configuration>
+		<!-- put your configuration options here -->
+			<debug>true</debug>
+			<allowSourcePathOverlap>true</allowSourcePathOverlap>
+		</configuration>
+    </plugin>
+3.在cmd中进入kay目录,运行mvn install -DskipTests,当出现build success后进入flex/target目录,找到flex-1.0.swf并运行,出现"hello world!"表示成功!
+
+三.创建java web项目模块
+1.打开cmd定位到kay目录,运行以下命令
+mvn archetype:generate -DgroupId=org.adaikiss.kay -DartifactId=web -Dpackagename=org.adaikiss.kay -DarchetypeArtifactId=maven-archetype-webapp
+2.修改pom.xml,添加以下内容到build节点,以指定java编译器版本
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.6</source>
+				<target>1.6</target>
+			</configuration>
+		</plugin>
+	</plugins>
+	
+再添加以下内容,以将配置文件包含进web应用
+<resources>
+	<resource>
+		<directory>src/main/resources</directory>
+	</resource>
+	<resource>
+		<directory>src/main/java</directory>
+		<excludes>
+			<exclude>**/*.java</exclude>
+		</excludes>
+		<includes>
+			<include>**/*.xml</include>
+		</includes>
+	</resource>
+</resources>
+
+四.创建用于共享配置文件的模块
+1.打开cmd定位到kay目录,运行以下命令
+mvn archetype:generate -DgroupId=org.adaikiss.kay -DartifactId=config
+2.进入config目录，删除其中src/main/java和src/test.然后创建目录src/main/resources,将blazeds.war中的WEB-INF\flex\目录里的以下5个文件复制到resources目录
+messaging-config.xml
+proxy-config.xml
+remoting-config.xml
+services-config.xml
+version.properties
+3.修改pom.xml,删除junit依赖,添加以下内容
+<packaging>pom</packaging>
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<executions>
+				<execution>
+					<id>make shared resources</id>
+					<goals>
+						<goal>single</goal>
+					</goals>
+					<phase>package</phase>
+					<configuration>
+						<descriptors>
+							<descriptor>src/main/assembly/resources.xml</descriptor>
+						</descriptors>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+4.创建src/main/assembly/resources.xml，代码如下
+<assembly>
+	<id>resources</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>src/main/resources</directory>
+			<outputDirectory></outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>
+
+五.设置各模块间的依赖
+1.将config作为web模块依赖项包含到web中，在web/pom.xml中的dependencies节点添加以下代码
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>config</artifactId>
+		<version>${project.version}</version>
+		<classifier>resources</classifier>
+		<type>zip</type>
+		<scope>provided</scope>
+	</dependency>
+
+2.在build节点添加以下内容
+		<plugin>
+			<artifactId>maven-dependency-plugin</artifactId>
+			<executions>
+				<execution>
+					<id>unpack-config</id>
+					<goals>
+						<goal>unpack-dependencies</goal>
+					</goals>
+					<phase>generate-resources</phase>
+					<configuration>
+						<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/flex</outputDirectory>
+						<includeArtifacIds>config</includeArtifacIds>
+						<includeGroupIds>${project.groupId}</includeGroupIds>
+						<includeClassifiers>resources</includeClassifiers>
+						<excludeTransitive>true</excludeTransitive>
+						<excludeTypes>jar,swf</excludeTypes>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+		
+3.将配置文件共享模块config添加为flex依赖项
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>config</artifactId>
+			<version>${project.version}</version>
+			<classifier>resources</classifier>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		
+4.配置插件使之能够将配置文件解压到resources文件夹下，在flex/pom.xml添加以下代码
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-dependency-plugin</artifactId>
+		<executions>
+			<execution>
+				<id>unpack-config</id>
+				<goals>
+					<goal>unpack-dependencies</goal>
+				</goals>
+				<phase>generate-resources</phase>
+				<configuration>
+					<outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
+					<includeArtifacIds>config</includeArtifacIds>
+					<includeGroupIds>${project.groupId}</includeGroupIds>
+					<excludeTransitive>true</excludeTransitive>
+				</configuration>
+			</execution>
+		</executions>
+	</plugin>
+5.在flex/pom.xml的build元素中添加以下代码将target/generated-resources添加到默认的resources
+	<resources>
+		<resource>
+			<directory>${basedir}/src/main/resources</directory>
+		</resource>
+		<resource>
+			<directory>${basedir}/target/generated-resources</directory>
+			<filtering>true</filtering>
+		</resource>
+	</resources>
+	
+6.在flex/pom.xml中修改flex-compiler-mojo的配置信息,在configuration节点添加以下代码代码
+<contextRoot>todolist-web</contextRoot>
+7.将Flex UI打包进Web应用,将flex作为依赖项添加到web中。添加以下配置到web/pom.xml
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>flex</artifactId>
+		<version>${project.version}</version>
+		<type>swf</type>
+	</dependency>
+	
+7.为了将依赖必须拷贝到Web压缩包中，我们还需要配置maven-dependency-plugin。在web/pom.xml中添加以下maven-dependency-plugin配置代码
+		<execution>
+			<id>copy-swf</id>
+			<phase>process-classes</phase>
+			<goals>
+				<goal>copy-dependencies</goal>
+			</goals>
+			<configuration>
+				<outputDirectory>${project.build.directory}/${project.build.finalName}/swf</outputDirectory>
+				<includeTypes>swf</includeTypes>
+			</configuration>
+		</execution>

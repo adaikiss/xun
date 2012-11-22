@@ -1,0 +1,15 @@
+http://svn.terracotta.org/svn/forge/projects/
+http://svn.sonatype.org/flexmojos/trunk/
+spring samples https://src.springframework.org/svn/spring-framework/trunk/
+SpringSource Tool http://www.springsource.com/downloads/sts?sid=1075355
+spring svn  https://src.springframework.org/svn/spring-framework/trunk/
+spring samples svn https://anonsvn.springframework.org/svn/spring-samples/
+Spring 3 MVC Login Form Example http://www.roseindia.net/tutorial/spring/spring3/web/spring-3-mvc-login-example.html
+shiro svn http://svn.apache.org/repos/asf/shiro/trunk/samples/
+paoding svn http://paoding.googlecode.com/svn/trunk/paoding-analysis
+mybatis sample http://mybatis.co.uk/
+decorate https://cl-project.googlecode.com/svn/trunk/decorat 
+maven repository https://oss.sonatype.org/content/repositories/
+http://struts.apache.org/2.x/docs/struts-2-spring-2-jpa-ajax.html
+http://svn.apache.org/repos/asf/archiva/trunk/archiva-jetty/pom.xml
+gae+shiro+guice https://github.com/cilogi/gaeshiro
