@@ -3,11 +3,11 @@
  */
 package org.adaikiss.xun.security;
 
-import org.adaikiss.xun.cache.memcached.SpyMemcachedClient;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springside.modules.cache.memcached.SpyMemcachedClient;
 
 /**
  * @author hlw

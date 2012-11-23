@@ -11,7 +11,7 @@
 	<description>memcached</description>
 
 	<beans profile="spymemcached">
-		<bean id="spyMemcachedClient" class="org.adaikiss.xun.cache.memcached.SpyMemcachedClient">
+		<bean id="spyMemcachedClient" class="org.springside.modules.cache.memcached.SpyMemcachedClient">
 			<property name="memcachedClient">
 				<bean class="net.spy.memcached.spring.MemcachedClientFactoryBean">
 					<property name="servers" value="${memcached.servers}" />
@@ -24,6 +24,12 @@
 				</bean>
 			</property>
 			<property name="updateTimeout" value="${memcached.opTimeout}"/>
+		</bean>
+	</beans>
+	<beans profile="test">
+		<!-- 演示用的JMemcached, 模拟Memcached服务器 -->
+		<bean id="memcachedSimulator" class="org.springside.modules.test.cache.memcached.MemcachedSimulator" lazy-init="false">
+			<property name="serverUrl" value="localhost:11211" />
 		</bean>
 	</beans>
 </beans>

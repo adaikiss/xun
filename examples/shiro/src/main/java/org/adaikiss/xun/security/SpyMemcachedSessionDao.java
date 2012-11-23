@@ -6,16 +6,17 @@ package org.adaikiss.xun.security;
 import java.io.Serializable;
 import java.util.Collection;
 
-import org.adaikiss.xun.cache.memcached.SpyMemcachedClient;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.UnknownSessionException;
 import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springside.modules.cache.memcached.SpyMemcachedClient;
 
 /**
  * @author hlw
  *
  */
+//not use!
 public class SpyMemcachedSessionDao extends AbstractSessionDAO {
 
 	@Autowired

@@ -43,6 +43,10 @@
 			<groupId>com.google.code.simple-spring-memcached</groupId>
 			<artifactId>spymemcached</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.thimbleware.jmemcached</groupId>
+			<artifactId>jmemcached-core</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>

@@ -49,17 +49,13 @@
 				</entry>
 			</util:map>
 		</property>
-		<property name="filterChainDefinitions">
-			<value>
-				/**.js = anon
-				/**.css = anon
-				/**.png = anon
-				/**.gif = anon
-				/**.jpg = anon
-				/**.jpeg = anon
-			</value>
-		</property>
+		<property name="filterChainDefinitions" value="#{filterChainDefinitionsLoader.loadDefinitions()}"/>
 	</bean>
+
+	<bean id="filterChainDefinitionsLoader" class="org.adaikiss.xun.security.FilterChainDefinitionsLoader">
+		<property name="location" value="/WEB-INF/security.ini"/>
+	</bean>
+
 	<bean id="shiroCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
 		<property name="name" value="SSOCookie"/>
 		<property name="path" value="/"></property>
