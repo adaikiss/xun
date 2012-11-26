@@ -32,6 +32,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Realm extends AuthorizingRealm {
 
+	private static ThreadLocal<User> credential = new ThreadLocal<User>();
+
+	public static User getUser(){
+		return credential.get();
+	}
+
 	public static String encodePassword(String password, String salt){
 		return new Sha256Hash(password, salt).toBase64();
 	}
@@ -72,8 +78,8 @@ public class Realm extends AuthorizingRealm {
 		if(null == user){
 			throw new UnknownAccountException("用户和密码对应的账号不存在!");
 		}
-		SimpleAuthenticationInfo info =  new SimpleAuthenticationInfo(user.getLoginName(), user.getPassword(), getName());
-		info.setCredentialsSalt(new SimpleByteSource(user.getLoginName()));
+		credential.set(user);
+		SimpleAuthenticationInfo info =  new SimpleAuthenticationInfo(user.getLoginName(), user.getPassword(), new SimpleByteSource(user.getLoginName()), getName());
 		return info;
 	}
 

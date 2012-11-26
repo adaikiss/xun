@@ -45,6 +45,7 @@ public class User extends IdEntity {
 	private String loginName;
 	private String password;
 	@JsonProperty
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date registered;
 	@JsonProperty
 	private UserStatus status;

@@ -4,6 +4,7 @@
 package org.adaikiss.xun.charge.controller;
 
 import org.adaikiss.xun.charge.ajax.AjaxResponse;
+import org.adaikiss.xun.charge.security.Realm;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -35,7 +36,7 @@ public class LoginController {
 		try {
 			SecurityUtils.getSubject().login(token);
 			logger.debug("{}登陆成功!", username);
-			return new AjaxResponse(true, "登录成功！");
+			return new AjaxResponse(true, "登录成功！", Realm.getUser());
 		} catch (AuthenticationException e) {
 			return new AjaxResponse(false, "用户名或密码错误!");
 		} catch (Exception e) {

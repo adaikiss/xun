@@ -6,7 +6,11 @@ package org.adaikiss.xun.charge.entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
+import org.adaikiss.xun.charge.validation.group.ValidationGroup.Save;
+import org.adaikiss.xun.charge.validation.group.ValidationGroup.Update;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @MappedSuperclass
 public abstract class IdEntity {
+	@Null(groups = Save.class)
+	@NotNull(groups = Update.class)
 	protected Long id;
 
 	@Id

@@ -4,24 +4,27 @@
 package org.adaikiss.xun.charge.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
+import org.adaikiss.xun.charge.validation.constraints.NotZero;
+import org.adaikiss.xun.charge.validation.constraints.PropertiesNotNull;
+import org.adaikiss.xun.charge.validation.group.ValidationGroup.Save;
+import org.adaikiss.xun.charge.validation.group.ValidationGroup.Update;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 
 /**
  * @author hlw
@@ -32,15 +35,21 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @JsonAutoDetect(fieldVisibility = Visibility.NONE, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE, isGetterVisibility = Visibility.NONE)
 public class Charge extends IdEntity {
+
+	@NotNull(groups = Save.class)
+	@PropertiesNotNull(propertyNames = "id", groups = Save.class)
 	private User user;
 	@JsonProperty
-	private List<Category> categories;
+	@PropertiesNotNull(propertyNames = "id", groups = {Save.class, Update.class})
+	private Category category;
 	@JsonProperty
-	private double amount;
+	@NotZero
+	private Double amount;
 	@JsonProperty
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date date;
 	@JsonProperty
+	@Length(max = 100)
 	private String remark;
 
 	@ManyToOne
@@ -53,14 +62,14 @@ public class Charge extends IdEntity {
 		this.user = user;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "t_charge_category", joinColumns = {@JoinColumn(name = "category_id")}, inverseJoinColumns = {@JoinColumn(name = "charge_id")})
-	public List<Category> getCategories() {
-		return categories;
+	@ManyToOne
+	@JoinColumn(name = "charge_id")
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public double getAmount() {
