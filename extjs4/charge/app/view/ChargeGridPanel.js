@@ -17,8 +17,7 @@ Ext.define('MyApp.view.ChargeGridPanel', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.chargeGridPanel',
 
-    height: 250,
-    width: 400,
+    id: 'chargeGrid',
     title: 'My Grid Panel',
     store: 'Charge',
 
@@ -61,14 +60,37 @@ Ext.define('MyApp.view.ChargeGridPanel', {
                     afterPageText: '共 {0}页',
                     beforePageText: '当前',
                     displayInfo: true,
-                    displayMsg: '{0} - {1} 共 {2}条',
+                    displayMsg: '{0} - {1}页,  共 {2}条',
                     emptyMsg: '暂无数据',
                     firstText: '首页',
                     lastText: '尾页',
                     nextText: '下一页',
                     prevText: '上一页',
                     refreshText: '刷新',
-                    store: 'Charge'
+                    store: 'Charge',
+                    items: [
+                        {
+                            xtype: 'tbseparator'
+                        },
+                        {
+                            xtype: 'button',
+                            id: 'chargeAddBtn',
+                            text: '新增',
+                            tooltip: '新增'
+                        },
+                        {
+                            xtype: 'button',
+                            id: 'chargeEditBtn',
+                            text: '修改',
+                            tooltip: '修改'
+                        },
+                        {
+                            xtype: 'button',
+                            id: 'chargeDeleteBtn',
+                            text: '删除',
+                            tooltip: '删除'
+                        }
+                    ]
                 }
             ]
         });

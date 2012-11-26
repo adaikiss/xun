@@ -36,7 +36,8 @@ Ext.define('MyApp.model.Charge', {
         },
         {
             name: 'remark',
-            mapping: 'remark'
+            mapping: 'remark',
+            type: 'string'
         },
         {
             name: 'id',
@@ -45,8 +46,7 @@ Ext.define('MyApp.model.Charge', {
         }
     ],
 
-    hasMany: {
-        model: 'MyApp.model.Category',
-        name: 'categories'
+    hasOne: {
+        model: 'MyApp.model.Category'
     }
 });

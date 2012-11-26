@@ -21,22 +21,27 @@ Ext.define('MyApp.model.Category', {
     fields: [
         {
             name: 'id',
+            mapping: 'id',
             type: 'int'
         },
         {
-            name: 'name'
+            name: 'name',
+            mapping: 'name',
+            type: 'string'
         },
         {
-            name: 'description'
+            name: 'description',
+            mapping: 'description',
+            type: 'string'
         },
         {
-            name: 'chargeType'
+            name: 'chargeType',
+            mapping: 'chargeType',
+            type: 'string'
         }
     ],
 
-    belongsTo: {
-        associationKey: 'parent',
-        model: 'MyApp.model.Category',
-        foreignKey: 'parentId'
+    hasOne: {
+        model: 'MyApp.model.Category'
     }
 });

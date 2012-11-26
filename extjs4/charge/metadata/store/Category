@@ -1,5 +1,5 @@
 {
-    "type": "datamodel",
+    "type": "store",
     "reference": {
         "name": "items",
         "type": "array"
@@ -7,84 +7,86 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "Category",
-        "idProperty": "id"
+        "storeId": "MyStore1",
+        "model": "Category"
     },
-    "id": "ExtBox1-ext-gen6781",
-    "designerId": "376299ad-cd0e-47e9-8034-e672433b1f38",
+    "id": "ExtBox1-ext-gen10666",
+    "designerId": "c65941ba-76ca-4c3f-9034-93a165bf6a42",
     "cn": [
         {
-            "type": "datafield",
+            "type": "ajaxproxy",
             "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "field6",
-                "name": "id",
-                "mapping": "id",
-                "type": "int"
-            },
-            "designerId": "c09cf47c-18bb-4ea0-8b4d-4df93ec976ef"
-        },
-        {
-            "type": "datafield",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "field7",
-                "name": "name",
-                "mapping": "name",
-                "type": "string"
-            },
-            "designerId": "5bcb70f8-ca01-4c9d-b14e-7bf971d79975"
-        },
-        {
-            "type": "datafield",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "field8",
-                "name": "description",
-                "mapping": "description",
-                "type": "string"
-            },
-            "designerId": "cfc8b8b8-883c-4d58-b9a5-6cec12ad1b9e"
-        },
-        {
-            "type": "datafield",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "field9",
-                "name": "chargeType",
-                "mapping": "chargeType",
-                "type": "string"
-            },
-            "designerId": "5e927faf-7c64-4b10-a2be-c39e467f0c75"
-        },
-        {
-            "type": "hasoneassociation",
-            "reference": {
-                "name": "hasOne",
+                "name": "proxy",
                 "type": "object"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyHasOneAssociation1",
-                "designer|displayName": "parent",
-                "model": "Category"
+                "designer|userClassName": "MyAjaxProxy1",
+                "designer|displayName": "CategoryAjaxProxy",
+                "api": null,
+                "url": "/category/list.json"
             },
-            "designerId": "558d68a2-fb3f-4b2e-a6f1-705a05616018"
+            "designerId": "588cb0ed-39f8-4565-9dde-764e6b18bbfa"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field15",
+                "name": "id",
+                "mapping": "id",
+                "type": "int"
+            },
+            "designerId": "d8733f4e-1186-4fce-8b71-62946cd85fa8"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field16",
+                "name": "name",
+                "mapping": "name",
+                "type": "string"
+            },
+            "designerId": "09bb8369-5eff-4822-9e46-ffa2879101bd"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field17",
+                "name": "description",
+                "mapping": "description",
+                "type": "string"
+            },
+            "designerId": "fa106d52-25fa-4367-a903-7b03d562bd33"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field18",
+                "name": "chargeType",
+                "mapping": "chargeType",
+                "type": "string"
+            },
+            "designerId": "2bf0e6c1-f8f4-4241-99ad-d20de0c1d714"
         }
     ]
 }

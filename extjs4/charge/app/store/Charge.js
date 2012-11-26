@@ -24,7 +24,6 @@ Ext.define('MyApp.store.Charge', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            autoLoad: true,
             storeId: 'MyStore',
             model: 'MyApp.model.Charge',
             proxy: {
@@ -35,7 +34,7 @@ Ext.define('MyApp.store.Charge', {
                     update: 'charge/{id}',
                     destroy: 'charge/{id}'
                 },
-                url: 'charge/list.json'
+                url: 'charge/page.json'
             },
             fields: [
                 {

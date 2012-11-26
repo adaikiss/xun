@@ -20,28 +20,35 @@ Ext.Loader.setConfig({
 Ext.application({
     models: [
         'User',
-        'Charge',
         'Category'
     ],
     stores: [
-        'Charge'
+        'Category'
     ],
     views: [
         'LoginForm',
         'MainTabPanel',
-        'ChargeGridPanel'
+        'ChargeEditForm'
     ],
     autoCreateViewport: true,
     name: 'MyApp',
     controllers: [
         'Login',
         'Main',
-        'Nav'
+        'Nav',
+        'Charge'
     ],
 
     launch: function() {
-        //loginForm = Ext.create('MyApp.view.LoginForm', {}).show();
-        this.getController('MyApp.controller.Main').showMainView();
+        Ext.QuickTips.init();
+        Ext.getBody().on("contextmenu", Ext.emptyFn, null, {preventDefault: true}); 
+        Ext.MessageBox.msgButtons.ok.text = Ext.MessageBox.buttonText.ok = '确定';
+        Ext.MessageBox.msgButtons.cancel.text = Ext.MessageBox.buttonText.cancel = '取消';
+        Ext.MessageBox.msgButtons.yes.text = Ext.MessageBox.buttonText.yes = '是';
+        Ext.MessageBox.msgButtons.no.text = Ext.MessageBox.buttonText.no = '否';
+
+        loginForm = Ext.create('MyApp.view.LoginForm', {}).show();
+        //this.getController('MyApp.controller.Main').showMainView();
     }
 
 });

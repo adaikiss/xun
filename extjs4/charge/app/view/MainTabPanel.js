@@ -35,10 +35,10 @@ Ext.define('MyApp.view.MainTabPanel', {
     },
 
     addOrShowTab: function(id, panelClass, panelClassParams) {
-        panelClassParams = panelClassParams || {closable : true};
+        panelClassParams = panelClassParams || {};
         var tab = this.getComponent(id);
         if (!tab){
-            tab = Ext.create(panelClass, Ext.apply({id : id},
+            tab = Ext.create(panelClass, Ext.apply({id : id, closable : true},
             panelClassParams)
             );
             this.add(tab);

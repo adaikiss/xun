@@ -11,6 +11,9 @@
             "LoginForm"
         ]
     },
+    "configAlternates": {
+        "credential": "object"
+    },
     "id": "ExtBox1-ext-gen4630",
     "designerId": "0e057c29-cd1e-43e6-bf6b-00f821ce6654",
     "cn": [
@@ -78,6 +81,7 @@
                 "designer|userClassName": "login",
                 "fn": "login",
                 "implHandler": [
+                    "var controller = this;\r",
                     "var loginForm = this.getLoginForm();\r",
                     "var form = loginForm.getForm();\r",
                     "var main = this.getController('MyApp.controller.Main');\r",
@@ -86,6 +90,8 @@
                     "        success: function(form, action) {\r",
                     "            Ext.Msg.alert('Success', action.result.msg);\r",
                     "            loginForm.hide();\r",
+                    "            window.credential = action.result.data;\r",
+                    "            console.debug(credential);\r",
                     "            main.showMainView();\r",
                     "        },\r",
                     "        failure: function(form, action) {\r",
@@ -119,7 +125,7 @@
                 "name": "specialkey",
                 "scope": "me",
                 "designer|targetType": "Ext.form.Panel",
-                "designer|controlQuery": "textfield"
+                "designer|controlQuery": "loginForm textfield"
             },
             "designerId": "2e5472ea-19a4-4349-9428-ad9038265855"
         }

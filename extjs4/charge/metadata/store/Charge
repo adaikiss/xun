@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "Charge",
-        "autoLoad": true,
+        "autoLoad": null,
         "storeId": "MyStore",
         "model": "Charge"
     },
@@ -23,6 +23,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyAjaxProxy",
+                "designer|displayName": "ChargeAjaxProxy",
                 "api": [
                     "{\r",
                     "    read: 'charge/list.json',\r",
@@ -31,7 +32,8 @@
                     "    destroy: 'charge/{id}'\r",
                     "}"
                 ],
-                "url": "charge/list.json"
+                "pageParam": null,
+                "url": "charge/page.json"
             },
             "designerId": "94e201fb-c2cc-4571-982c-c057a729876b"
         },

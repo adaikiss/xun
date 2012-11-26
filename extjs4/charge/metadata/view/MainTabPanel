@@ -59,10 +59,10 @@
                     "panelClassParams"
                 ],
                 "implHandler": [
-                    "panelClassParams = panelClassParams || {closable : true};\r",
+                    "panelClassParams = panelClassParams || {};\r",
                     "var tab = this.getComponent(id);\r",
                     "if (!tab){\r",
-                    "    tab = Ext.create(panelClass, Ext.apply({id : id},\r",
+                    "    tab = Ext.create(panelClass, Ext.apply({id : id, closable : true},\r",
                     "    panelClassParams)\r",
                     "    );\r",
                     "    this.add(tab);\r",

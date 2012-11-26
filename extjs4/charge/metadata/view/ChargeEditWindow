@@ -1,0 +1,155 @@
+{
+    "type": "window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ChargeEditWindow",
+        "border": 0,
+        "height": 250,
+        "width": 400,
+        "layout": "fit",
+        "closable": false,
+        "closeAction": "hide",
+        "title": "修改账单",
+        "modal": true
+    },
+    "id": "ExtBox1-ext-gen12827",
+    "designerId": "53f6c384-e05b-4871-88cb-f9d5bd36eba2",
+    "cn": [
+        {
+            "type": "form",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "ChargeEditForm",
+                "autoRender": true,
+                "draggable": true,
+                "floating": false,
+                "height": 250,
+                "id": "chargeEditForm",
+                "width": 400,
+                "bodyPadding": 10,
+                "title": null
+            },
+            "designerId": "0c94d330-de4f-4e0e-bd8f-3d699af6f34d",
+            "cn": [
+                {
+                    "type": "fieldset",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyFieldSet",
+                        "id": "chargeEditFormFieldSet",
+                        "defaults": [
+                            "{labelWidth : 50}"
+                        ],
+                        "title": ""
+                    },
+                    "designerId": "05d3bd99-bc66-48d7-b276-cf2b3435537d",
+                    "cn": [
+                        {
+                            "type": "numberfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyNumberField",
+                                "fieldLabel": "金额"
+                            },
+                            "designerId": "e31b133b-d091-478f-a1bf-e56ab8ceec8e"
+                        },
+                        {
+                            "type": "textareafield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyTextArea",
+                                "fieldLabel": "备注"
+                            },
+                            "designerId": "29c0a7b3-727b-4be7-b758-bf2b24493ca6"
+                        }
+                    ]
+                },
+                {
+                    "type": "toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "bottom",
+                        "designer|userClassName": "MyToolbar1",
+                        "ui": [
+                            "footer"
+                        ]
+                    },
+                    "designerId": "6caea549-823c-4a23-9312-a5011775090d",
+                    "cn": [
+                        {
+                            "type": "tbfill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "designer|userClassName": "MyFill1"
+                            },
+                            "designerId": "144e2bf3-97dc-46ff-a211-9ff1247ac934"
+                        },
+                        {
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "designer|userClassName": "MyButton4",
+                                "designer|displayName": "保存",
+                                "id": "chargeEditFormSaveBtn",
+                                "text": "保存"
+                            },
+                            "designerId": "050589f6-1d13-4ea8-83d3-6ac7a41b93d3"
+                        },
+                        {
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "designer|userClassName": "MyButton5",
+                                "designer|displayName": "取消",
+                                "id": "chargeEditFormCancelBtn",
+                                "text": "取消"
+                            },
+                            "designerId": "7cfebfe0-2dbf-44a7-b841-d24d05f9a2a6"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

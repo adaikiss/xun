@@ -1,0 +1,278 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "forms": null,
+        "_views": [
+            "{chargeAddWindow : null, chargeEditWindow : null}"
+        ],
+        "rest": [
+            "{\r",
+            "    add : {url : '/charge/', method : 'POST'}\r",
+            "}"
+        ],
+        "designer|userClassName": "Charge",
+        "models": [
+            "Charge"
+        ],
+        "stores": [
+            "Charge"
+        ],
+        "views": [
+            "ChargeGridPanel",
+            "CategoryComboBox",
+            "ChargeAddWindow",
+            "ChargeEditWindow"
+        ]
+    },
+    "configAlternates": {
+        "forms": "object",
+        "_views": "object",
+        "rest": "object"
+    },
+    "id": "ExtBox1-ext-gen8551",
+    "designerId": "5dbb7e70-8c0b-4a4e-9ae5-8f5b96db0c46",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "forms",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "_views",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "rest",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeGridPanelAfterRender",
+                "fn": "onChargeGridPanelAfterRender",
+                "implHandler": [
+                    "abstractcomponent.getStore().load();"
+                ],
+                "name": "afterrender",
+                "scope": "me",
+                "designer|targetType": "ChargeGridPanel",
+                "designer|controlQuery": "#chargeGrid"
+            },
+            "designerId": "1c686ffb-40c3-4d13-a9aa-b04523062933"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeAddFormRender",
+                "fn": "onChargeAddFormRender",
+                "designer|params": [
+                    "target"
+                ],
+                "implHandler": [
+                    "var form = target;\r",
+                    "var categoryCombobox = Ext.create('MyApp.view.CategoryComboBox');\r",
+                    "form.down('fieldset').insert(2, categoryCombobox);"
+                ],
+                "name": "render",
+                "scope": "me",
+                "designer|targetType": null,
+                "designer|controlQuery": "#chargeAddForm"
+            },
+            "designerId": "34788c29-f7f3-4fa2-a0c3-5450e23a8f22"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeEditFormRender",
+                "fn": "onChargeEditFormRender",
+                "designer|params": [
+                    "target"
+                ],
+                "implHandler": [
+                    "var form = target;\r",
+                    "var categoryCombobox = Ext.create('MyApp.view.CategoryComboBox');\r",
+                    "form.down('fieldset').insert(2, categoryCombobox);"
+                ],
+                "name": "render",
+                "scope": "me",
+                "designer|targetType": null,
+                "designer|controlQuery": "#chargeEditForm"
+            },
+            "designerId": "eb9f8ac0-0f70-4e78-b4cb-d2757087b738"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeAddFormSaveClick",
+                "fn": "onChargeAddFormSaveClick",
+                "implHandler": [
+                    "var grid = this.getViewport().down('chargeGridPanel');\r",
+                    "var loginController = this.getController('MyApp.controller.Login');\r",
+                    "console.debug(loginController.credential);\r",
+                    "var formPanel = button.up('form');\r",
+                    "var form = formPanel.getForm();\r",
+                    "if(form.isValid()){\r",
+                    "    form.submit({\r",
+                    "        url : this.rest.add.url,\r",
+                    "        method : this.rest.add.method,\r",
+                    "        params : {'user.id' : window.credential.id},\r",
+                    "        success : function(fm, action){\r",
+                    "            grid.getStore().add(action.result.data);\r",
+                    "            grid.getView().refresh();\r",
+                    "            Ext.MessageBox.alert('提示', '操作成功!');\r",
+                    "            form.reset();\r",
+                    "            button.up('window').hide();\r",
+                    "        }\r",
+                    "    });\r",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#chargeAddFormSaveBtn"
+            },
+            "designerId": "908152fc-280f-4b82-84ae-bfa5f974a6a3"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeAddFormCancelClick",
+                "fn": "onChargeAddFormCancelClick",
+                "implHandler": [
+                    "this._views.chargeAddWindow.down('form').getForm().reset();\r",
+                    "this._views.chargeAddWindow.hide();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#chargeAddFormCancelBtn"
+            },
+            "designerId": "1ac08554-00bf-4a79-9603-b60d01a0f8d1"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "viewport",
+                "ref": "viewport",
+                "selector": "viewport"
+            },
+            "designerId": "d22c2182-1e74-414e-9291-37b29f98d832"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeAddClick",
+                "fn": "onChargeAddClick",
+                "implHandler": [
+                    "this._views.chargeAddWindow.show();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#chargeAddBtn"
+            },
+            "designerId": "af8c4bf0-f711-4eb2-94ec-45d842a03a8a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeEditClick",
+                "fn": "onChargeEditClick",
+                "implHandler": [
+                    "this._views.chargeEditWindow.show();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#chargeEditBtn"
+            },
+            "designerId": "a676e146-5db2-427d-9ef6-91c2bc6263b7"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onChargeDeleteClick",
+                "fn": "onChargeDeleteClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#chargeDeleteBtn"
+            },
+            "designerId": "6727e381-4f50-4989-a34d-acc255dbd011"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "initView",
+                "fn": "initView",
+                "implHandler": [
+                    "this._views.chargeAddWindow = Ext.create('MyApp.view.ChargeAddWindow');\r",
+                    "this._views.chargeEditWindow = Ext.create('MyApp.view.ChargeEditWindow');"
+                ]
+            },
+            "designerId": "24316128-f05d-4787-95b4-692793615841"
+        }
+    ]
+}

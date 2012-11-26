@@ -3,7 +3,7 @@
     "settings": {
         "urlPrefix": "http://localhost/",
         "spacesToIndent": 4,
-        "exportPath": "F:/workspace/xun/examples/charge/src/main/webapp",
+        "exportPath": "C:/xun/examples/charge/src/main/webapp",
         "lineEnding": "CRLF",
         "genTimestamps": false,
         "cacheBust": false
@@ -116,6 +116,46 @@
                 "app/view/ChargeGridPanel.js"
             ],
             "className": "ChargeGridPanel"
+        },
+        "5dbb7e70-8c0b-4a4e-9ae5-8f5b96db0c46": {
+            "paths": [
+                "metadata/controller/Charge",
+                "app/controller/override/Charge.js",
+                "app/controller/Charge.js"
+            ],
+            "className": "Charge"
+        },
+        "c65941ba-76ca-4c3f-9034-93a165bf6a42": {
+            "paths": [
+                "metadata/store/Category",
+                "app/store/override/Category.js",
+                "app/store/Category.js"
+            ],
+            "className": "Category"
+        },
+        "63eb2c19-8073-41a8-99b5-41b539ac3f1e": {
+            "paths": [
+                "metadata/view/CategoryComboBox",
+                "app/view/override/CategoryComboBox.js",
+                "app/view/CategoryComboBox.js"
+            ],
+            "className": "CategoryComboBox"
+        },
+        "efe19550-2148-44e0-a0c4-213accd0c215": {
+            "paths": [
+                "metadata/view/ChargeAddWindow",
+                "app/view/override/ChargeAddWindow.js",
+                "app/view/ChargeAddWindow.js"
+            ],
+            "className": "ChargeAddWindow"
+        },
+        "53f6c384-e05b-4871-88cb-f9d5bd36eba2": {
+            "paths": [
+                "metadata/view/ChargeEditWindow",
+                "app/view/override/ChargeEditWindow.js",
+                "app/view/ChargeEditWindow.js"
+            ],
+            "className": "ChargeEditWindow"
         }
     },
     "viewOrderMap": {
@@ -124,15 +164,20 @@
             "dc4d0b65-a790-4060-98e6-b553c5f7eaf8",
             "b7092211-fa6f-4510-82b3-59a5849c517a",
             "05de6932-396a-4558-8551-9c7500ad471f",
-            "0ea9a89f-b5b7-4db1-85bf-2732111cdfec"
+            "0ea9a89f-b5b7-4db1-85bf-2732111cdfec",
+            "63eb2c19-8073-41a8-99b5-41b539ac3f1e",
+            "efe19550-2148-44e0-a0c4-213accd0c215",
+            "53f6c384-e05b-4871-88cb-f9d5bd36eba2"
         ],
         "store": [
-            "9fd17058-66b6-4121-898c-861dcbff68d0"
+            "9fd17058-66b6-4121-898c-861dcbff68d0",
+            "c65941ba-76ca-4c3f-9034-93a165bf6a42"
         ],
         "controller": [
             "0e057c29-cd1e-43e6-bf6b-00f821ce6654",
             "f3852eee-5ab3-4dba-8af4-15698d3b1b22",
-            "51db88e8-eea8-47c3-a00e-98ac8f7be75f"
+            "51db88e8-eea8-47c3-a00e-98ac8f7be75f",
+            "5dbb7e70-8c0b-4a4e-9ae5-8f5b96db0c46"
         ],
         "model": [
             "97c2c993-907f-4f1e-abfd-5af038557c43",

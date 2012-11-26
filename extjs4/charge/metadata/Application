@@ -8,23 +8,23 @@
     "userConfig": {
         "models": [
             "User",
-            "Charge",
             "Category"
         ],
         "stores": [
-            "Charge"
+            "Category"
         ],
         "views": [
             "LoginForm",
             "MainTabPanel",
-            "ChargeGridPanel"
+            "ChargeEditForm"
         ],
         "autoCreateViewport": true,
         "name": "MyApp",
         "controllers": [
             "Login",
             "Main",
-            "Nav"
+            "Nav",
+            "Charge"
         ]
     },
     "id": "ExtBox1-ext-gen1776",
@@ -41,8 +41,15 @@
                 "designer|userClassName": "launch",
                 "fn": "launch",
                 "implHandler": [
-                    "//loginForm = Ext.create('MyApp.view.LoginForm', {}).show();\r",
-                    "this.getController('MyApp.controller.Main').showMainView();"
+                    "Ext.QuickTips.init();\r",
+                    "Ext.getBody().on(\"contextmenu\", Ext.emptyFn, null, {preventDefault: true}); \r",
+                    "Ext.MessageBox.msgButtons.ok.text = Ext.MessageBox.buttonText.ok = '确定';\r",
+                    "Ext.MessageBox.msgButtons.cancel.text = Ext.MessageBox.buttonText.cancel = '取消';\r",
+                    "Ext.MessageBox.msgButtons.yes.text = Ext.MessageBox.buttonText.yes = '是';\r",
+                    "Ext.MessageBox.msgButtons.no.text = Ext.MessageBox.buttonText.no = '否';\r",
+                    "\r",
+                    "loginForm = Ext.create('MyApp.view.LoginForm', {}).show();\r",
+                    "//this.getController('MyApp.controller.Main').showMainView();"
                 ]
             },
             "designerId": "6e86c9bf-5a48-45d7-b456-37a334cf4c2d"

@@ -19,7 +19,10 @@ Ext.define('MyApp.controller.Nav', {
     panelInfo: {
         chargeGridPanel: {
             id: 'chargeGrid',
-            panelClass: 'MyApp.view.ChargeGridPanel'
+            panelClass: 'MyApp.view.ChargeGridPanel',
+            panelClassParams: {
+                title: '账单列表'
+            }
         }
     },
     views: [
@@ -33,7 +36,7 @@ Ext.define('MyApp.controller.Nav', {
         }
     ],
 
-    onPanelRender: function(abstractcomponent, options) {
+    onNavPanelAfterRender: function(abstractcomponent, options) {
         panel = abstractcomponent;
         panel.body.on('click', Ext.emptyFn, null, {
             delegate : 'a',
@@ -50,8 +53,8 @@ Ext.define('MyApp.controller.Nav', {
 
     init: function(application) {
         this.control({
-            "navPanel": {
-                render: this.onPanelRender
+            "#navPanel": {
+                afterrender: this.onNavPanelAfterRender
             }
         });
     }

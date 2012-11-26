@@ -42,13 +42,14 @@ Ext.define('MyApp.controller.Login', {
             "button[id=login]": {
                 click: this.onLoginClick
             },
-            "textfield": {
+            "loginForm textfield": {
                 specialkey: this.onSpecialKey
             }
         });
     },
 
     login: function() {
+        var controller = this;
         var loginForm = this.getLoginForm();
         var form = loginForm.getForm();
         var main = this.getController('MyApp.controller.Main');
@@ -57,6 +58,8 @@ Ext.define('MyApp.controller.Login', {
                 success: function(form, action) {
                     Ext.Msg.alert('Success', action.result.msg);
                     loginForm.hide();
+                    window.credential = action.result.data;
+                    console.debug(credential);
                     main.showMainView();
                 },
                 failure: function(form, action) {

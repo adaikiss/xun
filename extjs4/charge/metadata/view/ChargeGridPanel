@@ -8,8 +8,9 @@
     "userConfig": {
         "designer|userClassName": "ChargeGridPanel",
         "designer|userAlias": "chargeGridPanel",
-        "height": 250,
-        "width": 400,
+        "height": null,
+        "id": "chargeGrid",
+        "width": null,
         "title": "My Grid Panel",
         "store": "Charge"
     },
@@ -104,7 +105,7 @@
                 "afterPageText": "共 {0}页",
                 "beforePageText": "当前",
                 "displayInfo": true,
-                "displayMsg": "{0} - {1} 共 {2}条",
+                "displayMsg": "{0} - {1}页,  共 {2}条",
                 "emptyMsg": "暂无数据",
                 "firstText": "首页",
                 "lastText": "尾页",
@@ -113,7 +114,80 @@
                 "refreshText": "刷新",
                 "store": "Charge"
             },
-            "designerId": "a4aeebff-653f-4155-af16-8baab71f739b"
+            "designerId": "a4aeebff-653f-4155-af16-8baab71f739b",
+            "cn": [
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "0f34a24c-9a8b-49c7-b6c8-b0ea83fb172b"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton1",
+                        "designer|displayName": "新增",
+                        "id": "chargeAddBtn",
+                        "text": "新增",
+                        "tooltip": [
+                            "新增\r",
+                            ""
+                        ]
+                    },
+                    "designerId": "40556f4d-e81a-4206-a9d1-9285f3b89926"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton1",
+                        "designer|displayName": "修改",
+                        "id": "chargeEditBtn",
+                        "text": "修改",
+                        "tooltip": [
+                            "修改"
+                        ]
+                    },
+                    "designerId": "95498328-c790-42b2-ad21-5a86206b95c8"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton1",
+                        "designer|displayName": "删除",
+                        "id": "chargeDeleteBtn",
+                        "text": "删除",
+                        "tooltip": [
+                            "删除"
+                        ]
+                    },
+                    "designerId": "c32125d0-0a93-4c0e-81be-7ddef3efb647"
+                }
+            ]
         }
     ]
 }

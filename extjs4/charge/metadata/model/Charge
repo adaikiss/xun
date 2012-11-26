@@ -53,7 +53,8 @@
             "userConfig": {
                 "designer|userClassName": "field4",
                 "name": "remark",
-                "mapping": "remark"
+                "mapping": "remark",
+                "type": "string"
             },
             "designerId": "32494f3f-9dda-4197-b4af-ea9bb26852c7"
         },
@@ -73,18 +74,19 @@
             "designerId": "df57bafb-7941-4d4b-b193-46dd58378d27"
         },
         {
-            "type": "hasmanyassociation",
+            "type": "hasoneassociation",
             "reference": {
-                "name": "hasMany",
+                "name": "hasOne",
                 "type": "object"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyHasManyAssociation",
+                "designer|userClassName": "MyHasOneAssociation",
+                "designer|displayName": "category",
                 "model": "Category",
-                "name": "categories"
+                "foreignKey": null
             },
-            "designerId": "c819f552-d647-4dfa-a9fc-6ef247c42b7d"
+            "designerId": "45a21f16-6199-4c6a-9445-3820ad97f01c"
         }
     ]
 }

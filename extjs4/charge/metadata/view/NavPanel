@@ -10,6 +10,7 @@
         "designer|userAlias": "navPanel",
         "designer|displayName": "NavPanel",
         "height": 266,
+        "id": "navPanel",
         "autoScroll": true,
         "layout": "accordion",
         "title": "My Panel"

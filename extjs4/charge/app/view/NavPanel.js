@@ -18,6 +18,7 @@ Ext.define('MyApp.view.NavPanel', {
     alias: 'widget.navPanel',
 
     height: 266,
+    id: 'navPanel',
     autoScroll: true,
     layout: {
         type: 'accordion'

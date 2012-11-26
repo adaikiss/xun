@@ -21,6 +21,9 @@ Ext.define('MyApp.view.Viewport', {
         'MyApp.view.MyViewport',
         'MyApp.view.NavPanel',
         'MyApp.view.MainTabPanel',
-        'MyApp.view.ChargeGridPanel'
+        'MyApp.view.ChargeGridPanel',
+        'MyApp.view.CategoryComboBox',
+        'MyApp.view.ChargeAddWindow',
+        'MyApp.view.ChargeEditWindow'
     ]
 });

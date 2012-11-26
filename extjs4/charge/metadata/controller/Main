@@ -31,7 +31,9 @@
                     "mainTabPanel = Ext.create('MyApp.view.MainTabPanel', {flex: 1,region : 'center'});\r",
                     "//center_container = this.getViewport().down('container[region=center]');\r",
                     "//center_container.add(mainTabPanel);\r",
-                    "this.getViewport().add(mainTabPanel);"
+                    "this.getViewport().add(mainTabPanel);\r",
+                    "\r",
+                    "this.getController('MyApp.controller.Charge').initView();"
                 ]
             },
             "designerId": "025cb0b1-e113-473f-8612-faaa75233577"

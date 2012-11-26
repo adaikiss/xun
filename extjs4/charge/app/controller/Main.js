@@ -35,6 +35,8 @@ Ext.define('MyApp.controller.Main', {
         //center_container = this.getViewport().down('container[region=center]');
         //center_container.add(mainTabPanel);
         this.getViewport().add(mainTabPanel);
+
+        this.getController('MyApp.controller.Charge').initView();
     }
 
 });
