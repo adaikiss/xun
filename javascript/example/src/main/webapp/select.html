@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>select 例子</title>
+<script type="text/javascript" src="resources/jquery.min.js"></script>
+<script type="text/javascript" src="resources/jquery.util.js"></script>
+<script type="text/javascript" src="resources/jquery.select2css.js"></script>
+<script type="text/javascript">
+$(function(){
+$('#btn').click(function(){
+	$('#value').val($('select[name="likes"]').val());
+});
+});
+</script>
+</head>
+<body>
+<select name="likes" style="width:100px;height:26px;">
+	<option value="">爱好</option>
+	<option value="football">足球</option>
+	<option value="chess">象棋</option>
+	<option value="swimming">游泳</option>
+	<option value="mountaineer">登山</option>
+</select>
+<br>
+<input id="value">
+<input id="btn" type="button" value="取值">
+</body>
+</html>
