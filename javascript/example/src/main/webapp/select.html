@@ -6,13 +6,25 @@
 <link href="resources/xun.css" rel="stylesheet">
 <script type="text/javascript" src="resources/jquery.min.js"></script>
 <script type="text/javascript" src="resources/jquery.util.js"></script>
+<script type="text/javascript" src="resources/jquery.validate.js"></script>
+<script type="text/javascript" src="resources/xun.validate.js"></script>
 <script type="text/javascript" src="resources/jquery.select2css.js"></script>
 <script type="text/javascript">
 $(function(){
-$('#btn').click(function(){
-	$('#value').val($('select[name="likes"]').val());
+$('#sample').validate({
+	debug : true,
+	rules : {
+		'interests' : {
+			required : true
+		},
+		'interests2' : {
+			required : true
+		}
+	}
 });
-$('#for_interests').addClass('error');
+$('#btn').click(function(){
+	$('#value').text($('select[name="likes"]').val());
+});
 });
 </script>
 <style type="text/css">
@@ -20,6 +32,7 @@ body{background-color:#FFFFFF;}
 </style>
 </head>
 <body>
+<form id="sample" action="">
 <select name="likes" style="width:100px;height:32px;">
 	<option value="">爱好</option>
 	<option value="football">足球</option>
@@ -27,6 +40,9 @@ body{background-color:#FFFFFF;}
 	<option value="swimming">游泳</option>
 	<option value="mountaineer">登山</option>
 </select>
+<br>
+<span id="value"></span>
+<input id="btn" type="button" value="取值">
 <br>
 <select name="interests" style="width:100px;height:32px;">
 	<option value="">爱好</option>
@@ -36,7 +52,15 @@ body{background-color:#FFFFFF;}
 	<option value="mountaineer">登山</option>
 </select>
 <br>
-<input id="value">
-<input id="btn" type="button" value="取值">
+<select class="nowrapper" name="interests2" style="width:100px;height:32px;">
+	<option value="">爱好</option>
+	<option value="football">足球</option>
+	<option value="chess">象棋</option>
+	<option value="swimming">游泳</option>
+	<option value="mountaineer">登山</option>
+</select>
+<br>
+<input value="提交" type="submit">
+</form>
 </body>
 </html>

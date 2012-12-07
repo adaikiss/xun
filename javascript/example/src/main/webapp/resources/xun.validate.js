@@ -34,12 +34,10 @@ $.extend($.validator.defaults, {
 			var element = $(error.element);
 			var el = error.element;
 			if(!element.is(':visible')){
-				var fmp_id = element.attr('fmp_id');
-				//city selector
-				if(fmp_id.indexOf('fmp_city_selector') != -1){
-					var wrapper = $('div[fmp_for="' + element.attr('fmp_for') + '"]');
-					el = wrapper[0];
-				}
+				var name = element.attr('name');
+				//wrapped
+				var wrapper = $('#for_' + name);
+				el = wrapper[0];
 			}
 			if ( this.settings.highlight ) {
 				this.settings.highlight.call( this, el, this.settings.errorClass, this.settings.validClass );
@@ -64,7 +62,13 @@ $.extend($.validator.defaults, {
 		this.addWrapper( this.toShow ).show();
 	},
 	unhighlight: function(element, errorClass, validClass) {
-		if (element.type === 'radio' || $(element).attr('fmp_type') == 'city_selector') {
+		if(!$(element).is(':visible')){
+			var name = element.name;
+			//wrapped
+			var wrapper = $('#for_' + name);
+			element = wrapper[0];
+		}
+		if (element.type === 'radio') {
 			this.findByName(element.name).removeClass(errorClass).addClass(validClass);
 		} else {
 			$(element).removeClass(errorClass).addClass(validClass);

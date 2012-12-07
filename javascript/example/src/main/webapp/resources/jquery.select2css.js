@@ -76,6 +76,8 @@ URL: http://utombox.com/
 				}).click(function(event){
 					event.stopPropagation();
 					select.val(option_li.attr('fmp_value'));
+					select.trigger('blur');
+					select.trigger('change');
 					options_ul.data('selected').removeClass('option_selected');
 					options_ul.data('selected', option_li);
 					option_li.addClass('option_selected');
@@ -89,5 +91,5 @@ URL: http://utombox.com/
 })(jQuery);
 jQuery(function($){
 	$.loadResources('jquery.select2css.js', 'jquery.select2css.css');
-	$('select').select2css();
+	$('select:not(.nowrapper)').select2css();
 });
