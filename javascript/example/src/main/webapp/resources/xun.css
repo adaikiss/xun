@@ -1,0 +1,104 @@
+input{height:26px;background-color:#FFFFFF;}
+
+/**Òþ²Ø°Ù¶ÈLOGO**/
+.anchorBL{
+	visibility:hidden;
+}
+.mapInfo {
+	color: #555555;
+	line-height: 18px;
+	max-width: 250px;
+}
+.mapInfo span {
+	color: #888888;
+}
+
+.action{
+	display:none;
+}
+
+.hide {
+	display:none;
+}
+.inline-block{
+	display:inline-block;
+	*display: inline;
+	zoom: 1;
+}
+html body .error{
+	background-image: url('images/invalid_line.gif');
+	background-repeat: repeat-x;
+	background-position: bottom;
+	border-color: #C30;
+}
+.errorContainer{
+	border:1px solid red;
+	background-color:#fff;
+	padding:2px 4px;
+}
+html body label.error{
+	background-image : none;
+}
+.msg_info{
+	color:green;
+	background : #c6efce;
+	border-color : #006100;
+}
+.msg_error{
+	color:red;
+}
+
+
+
+
+
+
+
+/**avatar**/
+.avatar_editor_container{
+	background: url("images/avatarbg.gif") repeat scroll transparent;
+}
+.avatar_editor_border1, .avatar_editor_border2,.avatar_editor_border3,.avatar_editor_border4{
+	opacity: 0.5;
+}
+.avatar_editor_border1{
+	background: url("images/border-v.gif") repeat-y scroll left top transparent;
+}
+.avatar_editor_border2{
+	background: url("images/border-h.gif") repeat-x scroll left top transparent;
+}
+.avatar_editor_border3{
+	background: url("images/border-v.gif") repeat-y scroll right top transparent;
+}
+.avatar_editor_border4{
+	background: url("images/border-h.gif") repeat-x scroll left bottom transparent;
+}
+.avatar_editor_handle{
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	opacity: 0.5;
+}
+.avatar_editor_outer{
+	background-color: #000000;
+}
+
+#avatar_zoom_in{
+	background-image: url("images/avatar-dialog.png");
+	background-position: -136px 0;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+	display:inline-block;
+	*display: inline;
+	zoom: 1;
+}
+#avatar_zoom_out{
+	background-image: url("images/avatar-dialog.png");
+	background-position: -153px 0;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+	display:inline-block;
+	*display: inline;
+	zoom: 1;
+}

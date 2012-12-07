@@ -1,0 +1,15 @@
+/** 评分 **/
+.star_no{
+	background:url('images/star2.png') repeat-x scroll transparent;
+}
+.star_yes{
+	background:url('images/star1.png') repeat-x scroll transparent;
+}
+.star_score{
+	color: #FE5400;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 10px;
+	height:20px;
+	line-height:14px;
+}

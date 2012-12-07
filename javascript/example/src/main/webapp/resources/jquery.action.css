@@ -1,0 +1,17 @@
+.ajax_wait01, .ajax_wait02, .ajax_wait03{
+	text-align:center;
+}
+.ajax_wait01 img, .ajax_wait02 img{
+	width:220px;height:19px;
+}
+.ajax_wait03 img{
+	width:18px;height:18px;
+}
+.ajax_more{
+	text-align:center;
+}
+.ajax_more a{
+	color: #4288D0;
+	font-size: 14px;
+	cursor:pointer;
+}

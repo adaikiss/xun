@@ -1,0 +1,46 @@
+/*select start*/
+.select_box li{float:none;margin:0;}
+.select_box{height:26px;}
+.select_show{
+	border:1px solid #C6C6C6;
+	display:block;
+	background-image:url(images/ubox-select.gif);
+	background-attachment:scroll;
+	background-repeat:no-repeat;
+	padding:0 10px;
+}
+.select_show_hover{
+	border:1px solid #BACDE6;
+	background-image:url(images/ubox-select-hover.gif);
+}
+.select_box .select_show_open{
+	border:1px solid #BACDE6;
+	border-bottom:none;;
+	background-image:url(images/ubox-select-open.gif);
+}
+.tag_options{
+	border:1px solid #BACDE6;
+	border-top:none;
+	position:absolute;
+	display:none;
+	z-index:999;
+	list-style:none;
+	background-color:#FFFFFF;
+	padding:0 0 5px;
+	margin:0;
+	float:none;
+}
+.tag_options li{
+	background-color:#FFFFFF;
+	padding:0 10px;
+	text-decoration:none;
+	margin:0;
+}
+.tag_options .option_hover{
+	background-color:#B6CDDC;
+	color:#fff;
+}
+.select_box .tag_options .option_selected{
+	background-color:#1A499A;
+	color:#fff;
+}

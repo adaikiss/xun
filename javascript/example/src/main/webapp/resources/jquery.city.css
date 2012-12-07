@@ -1,0 +1,76 @@
+.city-selector {
+	width: 100px;
+	text-align: left;
+	cursor: pointer;
+	height:20px;
+	line-height:20px;
+	background-color:#FFFFFF;
+	border:1px solid RGB(127, 157, 185);
+	overflow:hidden;
+	color:#888888;
+	font-size:12px;
+}
+.city-selector-name{
+	width:85px;
+	height:20px;
+	overflow:hidden;
+}
+.city-selector-btn{
+	width:15px;
+	height:18px;
+	margin-bottom:2px;
+	background: url(images/inputbg.gif) no-repeat scroll 0 0 transparent;
+}
+.city-main{
+	display:none;
+	width: 260px;
+	padding: 8px;
+	margin: 0px;
+	overflow: hidden;
+	position:absolute;
+	border : 1px solid #999999;
+	background: #fdffea;
+}
+.city-main .city-tool{
+	text-align:right;
+	padding-bottom : 5px;
+}
+.city-main .city-tool span{
+	margin:0 2px;
+}
+.city-main .city-tool .btn{
+	cursor:pointer;
+	border:1px solid #fe5400;
+	background-color:#fe5400;
+	color: #ffffff;
+}
+
+.city-content {
+	width: 260px;
+	height: auto;
+	background: #fdffea;
+	overflow: hidden;
+	display: none;
+}
+
+.city-content ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.city-content ul li {
+	text-align: left;
+	width: 33%;
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+	line-height: 150%;
+	float: left;
+	cursor: pointer;
+	list-style: none;
+}
+
+.city-content ul li.over {
+	color: #DA0000;
+	font-weight: bold;
+}
