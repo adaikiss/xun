@@ -1648,5 +1648,6 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 	<modules>
 		<module>modules</module>
 		<module>examples</module>
+		<module>javascript</module>
 	</modules>
 </project>
