@@ -9,7 +9,7 @@ URL: http://utombox.com/
  */
 (function($) {
 	$.fn.select2css = function(){
-		$('body').bind('click', function(){
+		$(document).bind('click', function(){
 			$('.select_show').removeClass('select_show_open');
 			$('.tag_options').hide();
 		});
@@ -18,13 +18,23 @@ URL: http://utombox.com/
 				return;
 			}
 			var select = $(this);
-			var width = select.outerWidth();
-			var height = select.outerHeight();
+			var style = select.attr('style');
+			var regex_w = /width:\s*(\d+)px/ig;
+			var regex_h = /height:\s*(\d+)px/ig;
+			var _css_width = regex_w.exec(style);
+			var _css_height = regex_h.exec(style);
+			var css_width = _css_width!=null?_css_width[1]:null;
+			var css_height = _css_height!=null?_css_height[1]:null;
+			var width = css_width || select.outerWidth();
+			var height = css_height || select.outerHeight();
+			var name = select.attr('name');
 			var padding = 20;
 			select.css('display', 'none');
-			var select_container = $('<div class="select_box"></div>').show();
+			var select_wrapper = $('<div class="select_wrapper"></div>').width(width).height(height).attr('id', 'for_' + name).insertBefore(select);
+			var select_container = $('<div class="select_box"></div>').appendTo(select_wrapper);
 			select_container.attr('fmp_for', name).width(width).height(height);
-			select.before(select_container);
+			width -= 2;
+			height -= 2;
 			var select_show = $('<div class="select_show" style="cursor:pointer;"></div>').height(height)
 				.width(width - padding).css({'line-height': height + 'px', 'background-position' : width - 14 + 'px center'});
 			select_container.append(select_show);
