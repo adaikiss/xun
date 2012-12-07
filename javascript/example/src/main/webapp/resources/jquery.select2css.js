@@ -10,7 +10,7 @@ URL: http://utombox.com/
 (function($) {
 	$.fn.select2css = function(){
 		$(document).bind('click', function(){
-			$('.select_show').removeClass('select_show_open');
+			$('.select_box').removeClass('select_box_open');
 			$('.tag_options').hide();
 		});
 		return $(this).each(function(){
@@ -27,36 +27,35 @@ URL: http://utombox.com/
 			var css_height = _css_height!=null?_css_height[1]:null;
 			var width = css_width || select.outerWidth();
 			var height = css_height || select.outerHeight();
+			width -= 2;
+			height -= 2;
 			var name = select.attr('name');
 			var padding = 20;
 			select.css('display', 'none');
-			var select_wrapper = $('<div class="select_wrapper"></div>').width(width).height(height).attr('id', 'for_' + name).insertBefore(select);
-			var select_container = $('<div class="select_box"></div>').appendTo(select_wrapper);
-			select_container.attr('fmp_for', name).width(width).height(height);
-			width -= 2;
-			height -= 2;
+			var select_box = $('<div class="select_box"></div>').attr('id', 'for_' + name).insertBefore(select);
+			select_box.attr('fmp_for', name).width(width).height(height);
 			var select_show = $('<div class="select_show" style="cursor:pointer;"></div>').height(height)
 				.width(width - padding).css({'line-height': height + 'px', 'background-position' : width - 14 + 'px center'});
-			select_container.append(select_show);
+			select_box.append(select_show);
 			select_show.hover(function(){
-				select_show.addClass('select_show_hover');
+				select_box.addClass('select_box_hover');
 			}, function(){
-				select_show.removeClass('select_show_hover');
+				select_box.removeClass('select_box_hover');
 			}).click(function(event){
 				event.stopPropagation();
 				if(options_ul.is(':visible')){
-					select_show.removeClass('select_show_open');
+					select_box.removeClass('select_box_open');
 					options_ul.hide();
 				}else{
-					select_show.addClass('select_show_open');
-					options_ul.show();
+					select_box.addClass('select_box_open');
+					options_ul.css('left', select_box.offset().left).show();
 					//IE6 not properly show the class
 					options_ul.find('.option_selected').removeClass('option_selected').addClass('option_selected');
 				}
 			});
 			var options_ul = $('<ul class="tag_options" style="margin:0;"></ul>');
 			options_ul.width(width);
-			select_container.append(options_ul);
+			select_box.append(options_ul);
 			//rebuild options
 			select.find('option').each(function(index){
 				var option = $(this);
@@ -80,7 +79,7 @@ URL: http://utombox.com/
 					options_ul.data('selected').removeClass('option_selected');
 					options_ul.data('selected', option_li);
 					option_li.addClass('option_selected');
-					select_show.removeClass('select_show_open');
+					select_box.removeClass('select_box_open');
 					select_show.text(option_li.text());
 					options_ul.hide();
 				});

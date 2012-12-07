@@ -1,21 +1,27 @@
 /*select start*/
 .select_box li{float:none;margin:0;}
-.select_box{height:26px;}
-.select_show{
+.select_box{
 	border:1px solid #C6C6C6;
+	
+}
+.select_box_hover{
+	border:1px solid #BACDE6;
+}
+.select_box_open{
+	border:1px solid #BACDE6;
+	border-bottom:none;
+}
+.select_show{
 	display:block;
 	background-image:url(images/ubox-select.gif);
 	background-attachment:scroll;
 	background-repeat:no-repeat;
 	padding:0 10px;
 }
-.select_show_hover{
-	border:1px solid #BACDE6;
+.select_box_hover .select_show{
 	background-image:url(images/ubox-select-hover.gif);
 }
-.select_box .select_show_open{
-	border:1px solid #BACDE6;
-	border-bottom:none;;
+.select_box.select_box_open .select_show{
 	background-image:url(images/ubox-select-open.gif);
 }
 .tag_options{
