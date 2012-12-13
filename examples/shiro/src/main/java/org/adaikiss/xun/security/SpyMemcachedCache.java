@@ -65,9 +65,10 @@ public class SpyMemcachedCache<K, V> implements Cache<K, V> {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public V get(K key) throws CacheException {
 		// return unpack(client.get(KEY_PREFIX + getKey(key)));
-		return client.get(KEY_PREFIX + getKey(key));
+		return (V)client.get(KEY_PREFIX + getKey(key));
 	}
 
 	@Override
