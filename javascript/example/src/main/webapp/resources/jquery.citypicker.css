@@ -1,0 +1,76 @@
+.citypicker {
+    border: 1px solid #D5D5D5;
+    min-height: 248px;
+    width: 337px;
+}
+.citypicker ul, .citypicker li{
+	margin: 0;
+    padding: 0;
+    list-style: none outside none;
+}
+.citypicker .citytabpanel{
+	background: url("images/citybg.gif") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #D5D5D5;
+    font-size: 14px;
+    height: 29px;
+    width: 337px;
+}
+.citytabpanel li{
+	cursor:pointer;
+	border: 1px solid #E1E1E1;
+    color: #333333;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    width: 70px;
+}
+.citytabpanel li.cur{
+	cursor:default;
+	background: url("images/citytag.gif") repeat-x scroll 0 0 transparent;
+    border: 1px solid #FF7800;
+    color: #FFFFFF;
+}
+.citypicker .citycontentpanel{
+    color: #555555;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 20px 0 0 25px;
+    width: 300px;
+}
+.citycontentpanel span{
+	text-align:center;
+	cursor:pointer;
+	display: inline-block;
+	*display:inline;
+	zoom:1;
+    width: 60px;
+}
+.citycontentpanel span.cur{
+	color:RGB(255, 127, 14);
+	cursor:default;
+}
+.provincegroup{
+	overflow:hidden;
+}
+.provincegrouptag{
+	width:50px;
+	float:left;
+}
+.provincegroupcontent{
+	width:240px;
+	float:left;
+}
+.provincegroupcontent span{
+	width:48px;
+	text-align:center;
+}
+.provincegroupcontent span.placeholder{
+	cursor:default;
+}
+.float_auto_height{
+	width:80%;
+	height:1px;
+	border:0;
+	float:left;
+}
