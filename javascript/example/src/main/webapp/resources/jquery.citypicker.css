@@ -2,6 +2,8 @@
     border: 1px solid #D5D5D5;
     min-height: 248px;
     width: 337px;
+    position:absolute;
+    background-color:#FFF;
 }
 .citypicker ul, .citypicker li{
 	margin: 0;
@@ -30,6 +32,16 @@
 	background: url("images/citytag.gif") repeat-x scroll 0 0 transparent;
     border: 1px solid #FF7800;
     color: #FFFFFF;
+}
+.citytabpanel li.clearbtn{
+    float:right;
+    width:42px;
+    height:22px;
+    line-height:22px;
+    margin-top:4px;
+    color:#FFFFFF;
+    background:url("images/clearbtnbg.jpg") no-repeat scroll 0 0 transparent;
+    border:0;
 }
 .citypicker .citycontentpanel{
     color: #555555;

@@ -57,8 +57,8 @@ function County(city, code, name){
 	this.code = city.code + '_' + code;
 	this.wild = this._code == 'BX';
 	city.addCounty(this);
-	this.getName = function(join, notDropCityOnMunicipal){
-		if(!notDropCityOnMunicipal && this.city.province.type == 1){
+	this.getName = function(join, dropCityOnMunicipal){
+		if(dropCityOnMunicipal && (this.city.province.type == 1 || this.city.province.type == 2)){
 			return this.city.province.fullName + join + this.name;
 		}
 		return city.getName(join) + join + this.name;
