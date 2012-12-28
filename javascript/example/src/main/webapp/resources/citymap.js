@@ -9,6 +9,9 @@ function Province(country, code, name, options){
 	this.fullName = options.fullName;
 	this.cities = [];
 	this.addCity = function(city){
+		if(city.capital){
+			this.capital = city;
+		}
 		this.cities.push(city);
 	};
 	switch(this.type){
@@ -31,13 +34,17 @@ function Province(country, code, name, options){
 	provinceMap[code] = this;
 }
 
-function City(province, provinceName, code, name){
+function City(province, provinceName, code, name, options){
+	options = options || {};
 	this._type = 'City';
 	this.province = province;
 	this._name = this.name = name;
 	this._code = code;
 	this.code = province.code + '_' + code;
 	this.wild = this._code == 'BX';
+	if(options.capital){
+		this.capital = true;
+	}
 	province.addCity(this);
 	this.counties = [];
 	this.addCounty = function(county){
@@ -65,16 +72,7 @@ function County(city, code, name){
 	};
 	countyMap[this.code] = this;
 }
-if (typeof String.prototype.startsWith != 'function') {
-	String.prototype.startsWith = function (str){
-		return this.slice(0, str.length) == str;
-	};
-}
-if (typeof String.prototype.endsWith != 'function') {
-	String.prototype.endsWith = function (str){
-		return this.slice(-str.length) == str;
-	};
-}
+
 function findCityStartWith(name, count, wrapper){
 	var result = [];
 	for(var code in cityMap){
@@ -91,7 +89,7 @@ var provinceMap = {};
 var cityMap = {};
 var countyMap = {};
 var province = new Province('CN','BJ','北京', {type : 1});
-var c = new City(province, '北京','BJ','北京');
+var c = new City(province, '北京','BJ','北京', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'DCQ','东城区');
 new County(c, 'XCQ','西城区');
@@ -120,7 +118,7 @@ new County(c, 'BX', '不限');
 
 
 var province = new Province('CN','TJ','天津', {type : 1});
-c = new City(province, '天津','TJ','天津');
+c = new City(province, '天津','TJ','天津', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'HPQ','和平区');
 new County(c, 'HDQ','河东区');
@@ -143,7 +141,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','HEB','河北');
-c = new City(province, '河北','SJZ','石家庄');
+c = new City(province, '河北','SJZ','石家庄', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'ZAQ','长安区');
 new County(c, 'QDQ','桥东区');
@@ -352,7 +350,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','SX','山西');
-c = new City(province, '山西','TY','太原');
+c = new City(province, '山西','TY','太原', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'XDQ','小店区');
 new County(c, 'YZQ','迎泽区');
@@ -509,7 +507,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','NMG','内蒙古', {type : 3, fullName : '内蒙古自治区'});
-c = new City(province, '内蒙古','HHHT','呼和浩特');
+c = new City(province, '内蒙古','HHHT','呼和浩特', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'XCQ','新城区');
 new County(c, 'HMQ','回民区');
@@ -647,7 +645,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','LN','辽宁');
-c = new City(province, '辽宁','SY','沈阳');
+c = new City(province, '辽宁','SY','沈阳', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'HPQ','和平区');
 new County(c, 'SHQ','沈河区');
@@ -794,7 +792,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','JL','吉林');
-c = new City(province, '吉林','ZC','长春');
+c = new City(province, '吉林','ZC','长春', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'NGQ','南关区');
 new County(c, 'KCQ','宽城区');
@@ -885,7 +883,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','HLJ','黑龙江');
-c = new City(province, '黑龙江','HEB','哈尔滨');
+c = new City(province, '黑龙江','HEB','哈尔滨', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'DALQ','道里区');
 new County(c, 'NGQ','南岗区');
@@ -1058,7 +1056,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','SH','上海', {type : 1});
-c = new City(province, '上海','SH','上海');
+c = new City(province, '上海','SH','上海', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'HPQ','黄浦区');
 new County(c, 'LWQ','卢湾区');
@@ -1085,7 +1083,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','JS','江苏');
-c = new City(province, '江苏','NJ','南京');
+c = new City(province, '江苏','NJ','南京', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'XWQ','玄武区');
 new County(c, 'BXQ','白下区');
@@ -1235,7 +1233,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','ZJ','浙江');
-c = new City(province, '浙江','HZ','杭州');
+c = new City(province, '浙江','HZ','杭州', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'SCQ','上城区');
 new County(c, 'XCQ','下城区');
@@ -1364,7 +1362,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','AH','安徽');
-c = new City(province, '安徽','HF','合肥');
+c = new City(province, '安徽','HF','合肥', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'YHQ','瑶海区');
 new County(c, 'LYQ','庐阳区');
@@ -1525,7 +1523,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','FJ','福建');
-c = new City(province, '福建','FZ','福州');
+c = new City(province, '福建','FZ','福州', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'GLQ','鼓楼区');
 new County(c, 'TJQ','台江区');
@@ -1642,7 +1640,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','JX','江西');
-c = new City(province, '江西','NC','南昌');
+c = new City(province, '江西','NC','南昌', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'DHQ','东湖区');
 new County(c, 'XHQ','西湖区');
@@ -1779,7 +1777,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','SD','山东');
-c = new City(province, '山东','JNA','济南');
+c = new City(province, '山东','JNA','济南', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'LXQ','历下区');
 new County(c, 'SZQ','市中区');
@@ -1975,7 +1973,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','HEN','河南');
-c = new City(province, '河南','ZZ','郑州');
+c = new City(province, '河南','ZZ','郑州', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'ZYQ','中原区');
 new County(c, 'EQQ','二七区');
@@ -2190,7 +2188,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','HB','湖北');
-c = new City(province, '湖北','WH','武汉');
+c = new City(province, '湖北','WH','武汉', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'JAQ','江岸区');
 new County(c, 'JHQ','江汉区');
@@ -2339,7 +2337,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','HUN','湖南');
-c = new City(province, '湖南','ZS','长沙');
+c = new City(province, '湖南','ZS','长沙', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'FRQ','芙蓉区');
 new County(c, 'TXQ','天心区');
@@ -2508,7 +2506,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','GD','广东');
-c = new City(province, '广东','GZ','广州');
+c = new City(province, '广东','GZ','广州', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'DSQ','东山区');
 new County(c, 'LWQ','荔湾区');
@@ -2695,7 +2693,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','GX','广西', {type : 3, fullName : '广西壮族自治区'});
-c = new City(province, '广西','NN','南宁');
+c = new City(province, '广西','NN','南宁', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'XNQ','兴宁区');
 new County(c, 'QXQ','青秀区');
@@ -2851,7 +2849,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','HN','海南');
-c = new City(province, '海南','HK','海口');
+c = new City(province, '海南','HK','海口', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'XYQ','秀英区');
 new County(c, 'LHQ','龙华区');
@@ -2887,7 +2885,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','ZQ','重庆', {type : 1});
-c = new City(province, '重庆','ZQ','重庆');
+c = new City(province, '重庆','ZQ','重庆', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'WZQ','万州区');
 new County(c, 'FLQ','涪陵区');
@@ -2935,7 +2933,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','SC','四川');
-c = new City(province, '四川','CD','成都');
+c = new City(province, '四川','CD','成都', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'JJQ','锦江区');
 new County(c, 'QYQ','青羊区');
@@ -3182,7 +3180,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','GZ','贵州');
-c = new City(province, '贵州','GY','贵阳');
+c = new City(province, '贵州','GY','贵阳', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'NMQ','南明区');
 new County(c, 'YYQ','云岩区');
@@ -3296,7 +3294,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','YN','云南');
-c = new City(province, '云南','KM','昆明');
+c = new City(province, '云南','KM','昆明', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'WHQ','五华区');
 new County(c, 'PLQ','盘龙区');
@@ -3473,7 +3471,7 @@ new County(c, 'SMQ','思茅区');
 
 
 var province = new Province('CN','XZ','西藏', {type : 3, fullName : '西藏自治区'});
-c = new City(province, '西藏','LS','拉萨');
+c = new City(province, '西藏','LS','拉萨', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'CGQ','城关区');
 new County(c, 'LZX','林周县');
@@ -3566,7 +3564,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','SHX','陕西');
-c = new City(province, '陕西','XA','西安');
+c = new City(province, '陕西','XA','西安', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'XCQ','新城区');
 new County(c, 'BLQ','碑林区');
@@ -3708,7 +3706,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','GS','甘肃');
-c = new City(province, '甘肃','LZ','兰州');
+c = new City(province, '甘肃','LZ','兰州', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'CGQ','城关区');
 new County(c, 'QLHQ','七里河区');
@@ -3841,7 +3839,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','QH','青海');
-c = new City(province, '青海','XN','西宁');
+c = new City(province, '青海','XN','西宁', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'CDQ','城东区');
 new County(c, 'CZQ','城中区');
@@ -3906,7 +3904,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','NX','宁夏', {type : 3, fullName : '宁夏回族自治区'});
-c = new City(province, '宁夏','YC','银川');
+c = new City(province, '宁夏','YC','银川', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'XQQ','兴庆区');
 new County(c, 'XXQ','西夏区');
@@ -3947,7 +3945,7 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','XJ','新疆', {type : 3, fullName : '新疆维吾尔自治区'});
-c = new City(province, '新疆','WLMQ','乌鲁木齐');
+c = new City(province, '新疆','WLMQ','乌鲁木齐', {capital : true});
 new County(c, 'BX','不限');
 new County(c, 'TSQ','天山区');
 new County(c, 'SYBKQ','沙依巴克区');
@@ -4083,15 +4081,15 @@ new County(c, 'BX','不限');
 
 
 var province = new Province('CN','TW','台湾');
-c = new City(province, '台湾','TW','台湾');
+c = new City(province, '台湾','TW','台湾', {capital : true});
 new County(c, 'TW','台湾');
 
 
 var province = new Province('CN','XG','香港', {type : 2, fullName : '香港特别行政区'});
-c = new City(province, '香港','XG','香港');
+c = new City(province, '香港','XG','香港', {capital : true});
 new County(c, 'XG','香港');
 
 
 var province = new Province('CN','AM','澳门', {type : 2, fullName : '澳门特别行政区'});
-c = new City(province, '澳门','AM','澳门');
+c = new City(province, '澳门','AM','澳门', {capital : true});
 new County(c, 'AM','澳门');
