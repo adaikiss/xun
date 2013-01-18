@@ -258,7 +258,8 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${cglib.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>asm</groupId>
+				<!--groupId>asm</groupId-->
+				<groupId>org.ow2.asm</groupId>
 				<artifactId>asm</artifactId>
 				<version>${asm.version}</version>
 			</dependency>
@@ -1530,7 +1531,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 	</build>
 
 	<properties>
-		<spring.version>3.2.0.BUILD-SNAPSHOT</spring.version>
+		<spring.version>3.2.0.RELEASE</spring.version>
 		<spring-test-mvc.version>1.0.0.M2</spring-test-mvc.version>
 		<spring.integration.version>2.1.0.RELEASE</spring.integration.version>
 		<!-- data -->
@@ -1600,9 +1601,10 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<commons-pool.version>1.6</commons-pool.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<!-- aop -->
-		<asm.version>3.3.1</asm.version>
+		<!--asm.version>3.3.1</asm.version-->
+		<asm.version>4.1</asm.version>
 		<cglib.version>2.2.2</cglib.version>
-		<aspectj.version>1.6.12</aspectj.version>
+		<aspectj.version>1.7.1</aspectj.version>
 		<!-- test -->
 		<dbunit.version>2.4.8</dbunit.version>
 		<easymock.version>3.0</easymock.version>
