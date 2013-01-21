@@ -21,4 +21,12 @@
 			</list>
 		</property>
 	</bean>
+
+	<bean id="systemManager" class="org.adaikiss.xun.utils.SystemManager" lazy-init="false" scope="singleton">
+		<property name="configs">		
+			<array>
+				<value>classpath:system.properties</value>
+			</array>
+		</property>
+	</bean>
 </beans>

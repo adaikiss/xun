@@ -1,3 +1,4 @@
+var cityMap = {};
 var cityLevel1Array = new  Array();
 var p1 = new cityLevel1('CN','BJ','北京');
 c = new cityLevel2('北京','BJ_BJ','北京');
@@ -4016,9 +4017,10 @@ function cityLevel1(countryName, cityLevel1Id, cityLevel1Name){
     this.cityLevel1Id = cityLevel1Id;
     this.cityLevel1Name = cityLevel1Name;
     this.cityLevel2Array = new Array();
+    cityMap[cityLevel1Id] = this;
 
     this.addCityLevel2 = function(cityLevel2) {
-    	this.cityLevel2Array = this.cityLevel2Array.concat(cityLevel2);	
+    	this.cityLevel2Array = this.cityLevel2Array.concat(cityLevel2);
     };
     
     this.getCityLevel2Array = function getCityLevel2Array() {
@@ -4031,9 +4033,12 @@ function cityLevel2(cityLevel1Name, cityLevel2Id, cityLevel2Name) {
 	this.cityLevel1Name = cityLevel1Name;
 	this.cityLevel2Id = cityLevel2Id;
 	this.cityLevel2Name = cityLevel2Name;
+	cityMap[cityLevel2Id] = this;
 	this.cityLevel3Array = new Array();
 	this.addCity = function(cityId, cityName) {
-    	this.cityLevel3Array = this.cityLevel3Array.concat({'cityId':cityId,'cityName':cityName});	
+		var cityLevel3 = {'cityId':cityId,'cityName':cityName};
+		cityMap[cityId] = cityLevel3;
+    	this.cityLevel3Array = this.cityLevel3Array.concat(cityLevel3);
     };
 	this.getCityLevel3Array = function () {
 		return this.cityLevel3Array;

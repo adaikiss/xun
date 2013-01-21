@@ -1063,6 +1063,17 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${ehcache.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>javax.cache</groupId>
+				<artifactId>cache-api</artifactId>
+				<version>0.5</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.enterprise</groupId>
+				<artifactId>cdi-api</artifactId>
+				<version>1.1-PRD</version>
+			</dependency>
+
 			<!-- pojo copy -->
 			<dependency>
 				<groupId>net.sf.dozer</groupId>
@@ -1530,7 +1541,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 	</build>
 
 	<properties>
-		<spring.version>3.2.0.BUILD-SNAPSHOT</spring.version>
+		<spring.version>3.3.0.BUILD-SNAPSHOT</spring.version>
 		<spring-test-mvc.version>1.0.0.M2</spring-test-mvc.version>
 		<spring.integration.version>2.1.0.RELEASE</spring.integration.version>
 		<!-- data -->

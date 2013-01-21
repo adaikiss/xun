@@ -336,7 +336,8 @@
 				cp.input.prop('readOnly', true);
 			}
 			cp.input.bind('click', function(event){
-				event.stopPropagation();
+				//event.stopPropagation();
+				$.fn.cityPicker.triggering = cp;
 				cp.input.select();
 				show(cp);
 			});
@@ -440,7 +441,10 @@ jQuery(function($){
 			return;
 		}
 		$('.citypicker').each(function(){
-			$(this).data('citypicker').hide();
+			var cp = $(this).data('citypicker');
+			if(cp != $.fn.cityPicker.triggering || cp.input[0] != event.target){
+				cp.hide();
+			}
 		});
 	});
 });

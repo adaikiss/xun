@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="resources/jquery.min.js"></script>
+<script type="text/javascript" src="resources/jquery.util.js"></script>
+<script type="text/javascript" src="resources/jquery.tabflow.js"></script>
+<script type="text/javascript">
+$(function(){	
+$.tabflow($('.tabPanel'), $('.contentPanel'), {tabFocusHandler : function(tab, obj){
+    tab.find('img').attr('src', '${static_sst}/img/p1.png');
+}, tabBlurHandler : function(tab, obj){
+    tab.find('img').attr('src', '${static_sst}/img/p2.png');
+}});
+})
+</script>
+<style type="text/css">
+ul{margin:0;}
+</style>
+</head>
+<body>
+<div style="height:200px;"></div>
+<div class="box208">
+	<h3 class="ggtl">公告栏</h3>
+	<div class="contentPanel" style="border:1px solid red;width:200px;height:90px;;overflow:hidden;">
+		<ul class="gglist">
+			<li>1车队联盟火热开启中加盟</li>
+			<li>1560物流连锁理念和优势</li>
+			<li>1560物流志二三创刊</li>
+		</ul>
+		<ul class="gglist">
+			<li>2车队联盟火热开启中加盟</li>
+			<li>2560物流连锁理念和优势</li>
+			<li>2560物流志二三创刊</li>
+		</ul>
+		<ul class="gglist">
+			<li>3车队联盟火热开启中加盟</li>
+			<li>3560物流连锁理念和优势</li>
+			<li>3560物流志二三创刊</li>
+		</ul>
+		<ul class="gglist">
+			<li>4车队联盟火热开启中加盟</li>
+			<li>4560物流连锁理念和优势</li>
+			<li>4560物流志二三创刊</li>
+		</ul>
+	</div>
+	<div class="tabPanel">
+		<a><img src="resources/images/p2.png" /></a><a><img src="resources/images/p2.png" /></a><a><img src="resources/images/p2.png" /></a>
+	</div>
+</div>
+</body>
+</html>
