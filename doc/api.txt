@@ -4,6 +4,7 @@
 4. 通过 http://m.weather.com.cn/data5/city281601.xml 获取最后的城市码，其中281601为3中返回；
 5. 通过 api获取天气信息；http://m.weather.com.cn/data/" + cityId + ".html
 
+mywtv天气 http://plugin.mywtv.cn/weatherPub/s1.html (1-6)
 
 ip转citycode http://61.4.185.48:81/g/
 
