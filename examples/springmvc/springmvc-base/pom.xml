@@ -3,20 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.adaikiss.xun</groupId>
-		<artifactId>examples</artifactId>
+		<artifactId>springmvc</artifactId>
 		<version>1.0</version>
 	</parent>
-	<artifactId>springmvc</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>springmvc-base</artifactId>
+	<packaging>jar</packaging>
 
-	<name>springmvc</name>
+	<name>springmvc::base</name>
 	<url>http://maven.apache.org</url>
-
-	<modules>
-		<module>springmvc-base</module>
-		<module>springmvc-java</module>
-		<module>springmvc-xml</module>
-	</modules>
 
 	<dependencies>
 		<dependency>
