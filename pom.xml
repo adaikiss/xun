@@ -1482,18 +1482,40 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				</plugin>
 
 				<plugin>
-					<groupId>org.mortbay.jetty</groupId>
+					<!-- http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html -->
+					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>
 					<version>${jetty.version}</version>
 					<configuration>
+						<scanIntervalSeconds>10</scanIntervalSeconds>
+						<stopKey>foo</stopKey>
+						<stopPort>9999</stopPort>
+						<webApp>
+							<contextPath>/</contextPath>
+						</webApp>
+						<!--<jettyXml>src/main/resources/jetty.xml</jettyXml>-->
 						<reload>manual</reload>
 					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.mortbay.jetty</groupId>
-					<artifactId>maven-jetty-plugin</artifactId>
-					<version>6.1.26</version>
+					<executions>
+						<execution>
+							<id>start-jetty</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>start</goal>
+							</goals>
+							<configuration>
+								<scanIntervalSeconds>0</scanIntervalSeconds>
+								<daemon>true</daemon>
+							</configuration>
+						</execution>
+						<execution>
+							<id>stop-jetty</id>
+							<phase>post-integration-test</phase>
+							<goals>
+								<goal>stop</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 
 				<plugin>
