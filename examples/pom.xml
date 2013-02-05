@@ -21,5 +21,6 @@
 		<module>springmvc</module>
 		<module>charge</module>
 		<module>shiro</module>
+		<module>android</module>
 	</modules>
 </project>
