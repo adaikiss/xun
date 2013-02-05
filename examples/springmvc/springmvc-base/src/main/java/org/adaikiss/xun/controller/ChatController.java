@@ -35,8 +35,7 @@ public class ChatController {
 	public DeferredResult<List<String>> getMessages(
 			@RequestParam int messageIndex) {
 
-		final DeferredResult<List<String>> deferredResult = new DeferredResult<List<String>>(
-				null, Collections.emptyList());
+		final DeferredResult<List<String>> deferredResult = new DeferredResult<List<String>>(null, Collections.emptyList());
 		this.chatRequests.put(deferredResult, messageIndex);
 
 		deferredResult.onCompletion(new Runnable() {
@@ -46,7 +45,7 @@ public class ChatController {
 			}
 		});
 
-		List<String> messages = chatRepository.getMessages(messageIndex);
+		List<String> messages = this.chatRepository.getMessages(messageIndex);
 		if (!messages.isEmpty()) {
 			deferredResult.setResult(messages);
 		}

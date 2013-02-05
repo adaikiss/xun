@@ -14,6 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 @EnableScheduling
 @ComponentScan(basePackages = { "org.adaikiss.xun.repository"})
-public class AppConfig {
+public class AppConfig{
 
 }

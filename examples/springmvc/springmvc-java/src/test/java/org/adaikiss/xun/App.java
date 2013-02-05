@@ -2,7 +2,6 @@ package org.adaikiss.xun;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
-import org.springframework.web.context.ContextLoaderListener;
 
 /**
  * 
@@ -29,15 +28,26 @@ public class App {
 	 * 创建用于正常运行调试的Jetty Server, 以src/main/webapp为Web应用目录.
 	 */
 	public static Server buildNormalServer(int port, String contextPath) {
+		// final AnnotationConfigWebApplicationContext rootContext = new
+		// AnnotationConfigWebApplicationContext();
+		// rootContext.register(AppConfig.class);
+		// final AnnotationConfigWebApplicationContext dispatcherContext = new
+		// AnnotationConfigWebApplicationContext();
+		// dispatcherContext.register(WebMvcConfig.class);
+		// final ServletHolder servletHolder = new ServletHolder(
+		// new DispatcherServlet(dispatcherContext));
 		Server server = new Server(port);
 
 		WebAppContext webContext = new WebAppContext("src/main/webapp",
 				contextPath);
-		webContext
-				.setDefaultsDescriptor("src/main/webapp/WEB-INF/webdefault.xml");
-		webContext.setClassLoader(Thread.currentThread()
-				.getContextClassLoader());
-		//webContext.addEventListener(new ContextLoaderListener());
+//		webContext
+//				.setDefaultsDescriptor("src/main/webapp/WEB-INF/webdefault.xml");
+//		webContext.setClassLoader(Thread.currentThread()
+//				.getContextClassLoader());
+		webContext.setParentLoaderPriority(true);
+		// webContext.addEventListener(new ContextLoaderListener(rootContext));
+		// webContext.addServlet(servletHolder, "/*");
+		// webContext.addEventListener(new ContextLoaderListener());
 		// ServletContext servletContext = webContext.getServletContext();
 		server.setHandler(webContext);
 		server.setStopAtShutdown(true);

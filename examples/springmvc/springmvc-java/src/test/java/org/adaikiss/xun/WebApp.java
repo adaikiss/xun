@@ -36,12 +36,13 @@ public class WebApp {
 		context.addServlet(servletHolder, "/*");
 		int webPort = 80;
 
-		final Server server = new Server(Integer.valueOf(webPort));
+		final Server server = new Server(webPort);
 
 		server.setStopAtShutdown(true);
 
 		server.setHandler(context);
-
+//		XmlConfiguration configuration = new XmlConfiguration(new FileInputStream("src/main/resources/jetty.xml"));
+//		configuration.configure(server);
 		server.start();
 		//server.join();
 		System.out.println("Hit Enter in console to stop server");
