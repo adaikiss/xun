@@ -1103,6 +1103,20 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			</dependency>
 			<!-- utils end -->
 
+			<!-- android -->
+			<dependency>
+				<groupId>com.google.android</groupId>
+				<artifactId>android</artifactId>
+				<version>${android.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.android</groupId>
+				<artifactId>spring-android-rest-template</artifactId>
+				<version>${spring-android.version}</version>
+			</dependency>
+
+
 			<!-- test begin -->
 			<dependency>
 				<groupId>org.fitnesse</groupId>
@@ -1565,6 +1579,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					<artifactId>maven-processor-plugin</artifactId>
 					<version>2.0.1</version>
 				</plugin>
+
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>${android-maven-plugin.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -1645,6 +1665,10 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<asm.version>4.1</asm.version>
 		<cglib.version>2.2.2</cglib.version>
 		<aspectj.version>1.7.1</aspectj.version>
+		<!-- android -->
+		<android.version>4.1.1.4</android.version>
+		<android-maven-plugin.version>3.0.0-alpha-13</android-maven-plugin.version>
+		<spring-android.version>1.0.1.RELEASE</spring-android.version>
 		<!-- test -->
 		<dbunit.version>2.4.8</dbunit.version>
 		<easymock.version>3.0</easymock.version>
@@ -1684,6 +1708,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<codegen.version>0.4.5</codegen.version>
 		<xbean.version>3.9</xbean.version>
 
+		<android-platform>9</android-platform>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -1691,5 +1716,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<module>modules</module>
 		<module>examples</module>
 		<module>javascript</module>
+		<module>jsr</module>
+		<module>showcase</module>
 	</modules>
 </project>
