@@ -10,6 +10,11 @@
     <constant name="struts.freemarker.manager.classname" value="org.adaikiss.xun.freemarker.MyFreemarkerManager" />
     <!-- 使struts中自动注入一直有效(aop导致失效) -->
     <constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+    <!-- 允许在ognl中调用静态方法${@packagename.classname@method()} -->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+    <!-- 使用带进度条的MultiPartRequest -->
+    <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest" name="monitored" class="com.topjet.fmp.mvc.struts2.fileupload.MonitoredMultiPartRequest" scope="default" />
+	<constant name="struts.multipart.handler" value="monitored" />
 	<!-- 
 		使用Convention插件,实现约定大于配置的零配置文件风格.
 	             特殊的Result路径在Action类中使用@Result设定. 

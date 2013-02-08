@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
@@ -37,6 +38,9 @@ public class MyFreemarkerManager extends FreemarkerManager {
 		for (String key : beans.keySet()) {
 			configuration.setSharedVariable(key, beans.get(key));
 		}
+
+		//添加静态方法
+		configuration.setSharedVariable("statics", BeansWrapper.getDefaultInstance().getStaticModels());
 		return configuration;
 	}
 

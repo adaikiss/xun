@@ -1,0 +1,35 @@
+1. 通过 http://m.weather.com.cn/data5/city.xml 获取省份列表；
+2. 通过 http://m.weather.com.cn/data5/city28.xml 获取该省份的城市列表，其中28为广东省代号，1中所返回的；
+3. 通过 http://m.weather.com.cn/data5/city2816.xml 获取该城市的区列表，其中2816为东莞市代号，2中所返回的；
+4. 通过 http://m.weather.com.cn/data5/city281601.xml 获取最后的城市码，其中281601为3中返回；
+5. 通过 api获取天气信息；http://m.weather.com.cn/data/" + cityId + ".html
+
+mywtv天气 http://plugin.mywtv.cn/weatherPub/s1.html (1-6)
+
+ip转citycode http://61.4.185.48:81/g/
+
+有道 + jsFlag=true返回JS
+	IP http://www.youdao.com/smartresult-xml/search.s?type=ip&q=IP地址
+	手机归属地 http://www.youdao.com/smartresult-xml/search.s?type=mobile&q=手机号
+	身份证号码 http://www.youdao.com/smartresult-xml/search.s?type=id&q=身份证号码
+	根据 邮编、区号、城市名查询城市信息 http://www.youdao.com/smartresult-xml/search.s?type=zip&q=邮编或区号或城市名
+	天气 http://www.youdao.com/smartresult-xml/search.s?type=weather&q=城市
+	
+	
+新浪IP查询 http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js
+			http://counter.sina.com.cn/ip?ip=IP地址 (无参数查访问者IP)
+淘宝
+	IP查询 http://ip.taobao.com/service/getIpInfo.php?ip=27.19.3.65
+	手机归属地 http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=手机号
+
+腾讯天气 http://sou.qq.com/online/get_weather.php?callback=Weather&city=城市名 (无城市根据访问者IP)
+
+拍拍 手机归属地 http://virtual.paipai.com/extinfo/GetMobileProductInfo?mobile=手机号&amount=10000&callname=getPhoneNumInfoExtCallback
+
+财付通 http://life.tenpay.com/cgi-bin/mobile/MobileQueryAttribution.cgi?chgmobile=手机号 返回归属地，访问者IP等信息
+
+115 手机归属地 http://cz.115.com/?ct=index&ac=get_mobile_local&callback=jsonp1333962541001&mobile=手机号
+
+webxml 手机归属地 http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx/getMobileCodeInfo?mobileCode=手机号&userID=
+
+sohu 时间校对 http://ntp.news.sohu.com/mtime.php

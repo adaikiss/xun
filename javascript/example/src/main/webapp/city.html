@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="resources/jquery.citypicker.css" rel="stylesheet">
+<script type="text/javascript" src="resources/jquery.min.js"></script>
+<script type="text/javascript" src="resources/jquery.util.js"></script>
+<script type="text/javascript" src="resources/citymap.js"></script>
+<script type="text/javascript" src="resources/jquery.citypicker.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript">
+$(function(){
+$('#citypicker').cityPicker();
+$('#citypicker2').cityPicker({common : false});
+$('#citypicker3').cityPicker({common : false, level : 1});
+$('#citypicker4').cityPicker({common : false, level : 3});
+$('#citypicker5').cityPicker({level : 3});
+});
+</script>
+</head>
+<body>
+<input id="citypicker" name="citypicker" value="SH_SH_BX" autocomplete="off">
+<input id="citypicker2" name="citypicker2" value="XG_XG_XG">
+<input id="citypicker3" name="citypicker3" value="SH_SH_BX">
+<input id="citypicker4" name="citypicker4" value="SH_SH_BX">
+<input id="citypicker5" name="citypicker5" value="SH_SH_BX">
+<div>
+<!-- <div class="citypicker">
+	<ul class="citytabpanel"><li class="cur">常用</li><li>省份</li><li>城市</li></ul>
+	<div class="citycontentpanel" xun_type="commonPanel"></div>
+	<div class="citycontentpanel" xun_type="provincePanel">
+		<div class="provincegrouptag">A-G</div>
+		<div class="provincegroupcontent">
+			
+		</div>
+		<div class="provincegrouptag">H-K</div>
+		<div class="provincegroupcontent">
+			
+		</div>
+		<div class="provincegrouptag">L-S</div>
+		<div class="provincegroupcontent">
+			
+		</div>
+		<div class="provincegrouptag">T-Z</div>
+		<div class="provincegroupcontent">
+			
+		</div>
+		<div class="float_auto_height"></div>
+	</div>
+	<div class="citycontentpanel" xun_type="cityPanel">
+		<div class="citygroup"></div>
+	</div>
+</div> -->
+</div>
+</body>
+</html>

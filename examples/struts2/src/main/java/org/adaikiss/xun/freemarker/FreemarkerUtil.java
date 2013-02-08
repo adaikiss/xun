@@ -43,6 +43,27 @@ public class FreemarkerUtil {
 	}
 
 	/**
+	 * 将模板文件中的参数对应值转换为String类型
+	 * 
+	 * @param key
+	 *            参数名称
+	 * @param map
+	 *            参数名称和值
+	 * @return
+	 * @throws TemplateModelException
+	 */
+	public static String parseString(String key, Map<String, TemplateModel> map, String defaultVal) throws TemplateModelException {
+		TemplateModel templateModel = map.get(key);
+		if (templateModel == null)
+			return defaultVal;
+		if (templateModel instanceof TemplateScalarModel)
+			return ((TemplateScalarModel) templateModel).getAsString();
+		if (templateModel instanceof TemplateNumberModel)
+			return ((TemplateNumberModel) templateModel).getAsNumber().toString();
+		throw new TemplateModelException("The \"" + key + "\" parameter must be a string.");
+	}
+
+	/**
 	 * 将模板文件中的参数对应值转换为Integer类型
 	 * 
 	 * @param key

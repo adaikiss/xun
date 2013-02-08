@@ -36,7 +36,7 @@ $.extend($.validator.defaults, {
 			if(!element.is(':visible')){
 				var name = element.attr('name');
 				//wrapped
-				var wrapper = $('#for_' + name);
+				var wrapper = $('#for_' + name.replace('.', '\\.'));
 				el = wrapper[0];
 			}
 			if ( this.settings.highlight ) {
@@ -65,7 +65,7 @@ $.extend($.validator.defaults, {
 		if(!$(element).is(':visible')){
 			var name = element.name;
 			//wrapped
-			var wrapper = $('#for_' + name);
+			var wrapper = $('#for_' + name.replace('.', '\\.'));
 			element = wrapper[0];
 		}
 		if (element.type === 'radio') {

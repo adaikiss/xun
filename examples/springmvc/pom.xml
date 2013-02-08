@@ -7,10 +7,16 @@
 		<version>1.0</version>
 	</parent>
 	<artifactId>springmvc</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 
 	<name>springmvc</name>
 	<url>http://maven.apache.org</url>
+
+	<modules>
+		<module>springmvc-base</module>
+		<module>springmvc-java</module>
+		<module>springmvc-xml</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
@@ -142,16 +148,16 @@
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-start</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-annotations</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
-				<configuration>
-					<wtpversion>2.0</wtpversion>
-					<projectNameTemplate>xun-${project.artifactId}</projectNameTemplate>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
