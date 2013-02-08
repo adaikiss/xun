@@ -15,7 +15,7 @@
 		<module>hibernate4</module>
 		<module>struts2</module>
 		<module>netty</module>
-		<module>hadoop</module>
+		<!--module>hadoop</module-->
 		<module>apt</module>
 		<module>activemq</module>
 		<module>springmvc</module>
