@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author hlw
  *
  */
-@WebFilter(filterName = "HomeFilter", urlPatterns = {"/*"})
+@WebFilter(asyncSupported = true, filterName = "HomeFilter", urlPatterns = {"/*"})
 public class HomeFilter implements Filter{
 
 	@Override

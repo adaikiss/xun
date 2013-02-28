@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/resources/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/resources/chat.js"></script>
+</head>
+<body>
+<div id="join">
+	name:<input name="name">
+	<input id="joinBtn" type="submit" value="join">
+</div>
+<div id="content" style="display:none;">
+</div>
+<div id="post" style="display:none;">
+	<form action="/chat" method="POST">
+		<input name="content">
+		<input type="submit" value="send">
+	</form>
+	<input type="button" value="leave">
+</div>
+</body>
+</html>
