@@ -5,11 +5,20 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/resources/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="/resources/chat.js"></script>
+<style type="text/css">
+.self{
+	color:#fe00df;
+}
+.system{
+	color:red;
+}
+</style>
 </head>
 <body>
 <div id="join">
 	name:<input name="name">
-	<input id="joinBtn" type="submit" value="join">
+	<input id="joinBtn" type="button" value="join">
+	<input id="changeBtn" type="button" value="change name" style="display:none;">
 </div>
 <div id="content" style="display:none;">
 </div>

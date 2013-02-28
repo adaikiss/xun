@@ -92,6 +92,7 @@ public class ChatServlet extends HttpServlet {
 		for(Map.Entry<AsyncContext, Integer> entry : asyncContexts.entrySet()){
 			AsyncContext asyncContext = entry.getKey();
 			Integer index = entry.getValue();
+			asyncContexts.remove(asyncContext);
 			List<Message> msgs = repo.get(index);
 			write(asyncContext.getResponse(), msgs);
 			asyncContext.complete();
