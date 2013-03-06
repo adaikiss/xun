@@ -12,7 +12,7 @@
 		<repository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://localhost:8081/nexus/content/groups/public</url>
+			<url>${nexus.host}/nexus/content/groups/public</url>
 		</repository>
 		<repository>
 			<id>querydsl</id>
@@ -57,7 +57,7 @@
 		<pluginRepository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://localhost:8081/nexus/content/groups/public</url>
+			<url>${nexus.host}/nexus/content/groups/public</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -97,12 +97,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<repository>
 			<id>nexus</id>
 			<name>Team Nexus Release Repository</name>
-			<url>http://localhost:8081/nexus/content/repositories/releases</url>
+			<url>${nexus.host}/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshot</id>
 			<name>Team Nexus Snapshot Repository</name>
-			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+			<url>${nexus.host}/nexus/content/repositories/snapshots</url>
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
@@ -1587,6 +1587,27 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					<artifactId>android-maven-plugin</artifactId>
 					<version>${android-maven-plugin.version}</version>
 				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>1.0-alpha-2</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>set-system-properties</goal>
+							</goals>
+							<configuration>
+								<properties>
+									<property>
+										<name>jetty.port</name>
+										<value>80</value>
+									</property>
+								</properties>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -1619,7 +1640,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<!-- web -->
 		<struts2.version>2.3.4</struts2.version>
 		<cxf.version>2.6.0</cxf.version>
-		<jersey.version>1.12</jersey.version>
+		<jersey.version>1.17.1</jersey.version>
 		<!-- security -->
 		<shiro.version>1.2.0</shiro.version>
 		<spring-security.version>3.0.4.RELEASE</spring-security.version>
@@ -1710,6 +1731,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<codegen.version>0.4.5</codegen.version>
 		<xbean.version>3.9</xbean.version>
 
+		<nexus.host>http://localhost:8081</nexus.host>
 		<android-platform>9</android-platform>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
