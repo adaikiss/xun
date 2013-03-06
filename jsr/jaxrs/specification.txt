@@ -1,0 +1,15 @@
+JAX-RS: Java API for RESTful Web Services is a Java programming language API that provides support in creating web services according to the Representational State Transfer (REST) architectural style.
+JAX-RS provides some annotations to aid in mapping a resource class (a POJO) as a web resource. The annotations include:
+@Path specifies the relative path for a resource class or method.
+@GET, @PUT, @POST, @DELETE and @HEAD specify the HTTP request type of a resource.
+@Produces specifies the response MIME media types.
+@Consumes specifies the accepted request media types.
+In addition, it provides further annotations to method parameters to pull information out of the request. All the @*Param annotations take a key of some form which is used to look up the value required.
+@PathParam binds the parameter to a path segment.
+@QueryParam binds the parameter to the value of an HTTP query parameter.
+@MatrixParam binds the parameter to the value of an HTTP matrix parameter.
+@HeaderParam binds the parameter to an HTTP header value.
+@CookieParam binds the parameter to a cookie value.
+@FormParam binds the parameter to a form value.
+@DefaultValue specifies a default value for the above bindings when the key is not found.
+@Context returns the entire context of the object. Ex.(@Context HttpServletRequest request)

@@ -8,7 +8,17 @@
 	</parent>
 	<artifactId>jsr</artifactId>
 	<packaging>pom</packaging>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>servlet3</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<modules>
 		<module>servlet3</module>
+		<module>jaxrs</module>
 	</modules>
 </project>
