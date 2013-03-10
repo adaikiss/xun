@@ -35,7 +35,7 @@ public class GenerateSql {
 		String tpl3 = ", ";
 		String tpl4 = ");";
 		for (Row row : sheet) {
-			//Ìø¹ýµÚÒ»ÐÐ±íÍ·
+			//è·³è¿‡ç¬¬ä¸€è¡Œè¡¨å¤´
 			if(isFirst){
 				isFirst = false;
 				continue;

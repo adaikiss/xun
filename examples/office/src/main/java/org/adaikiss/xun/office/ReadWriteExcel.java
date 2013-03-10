@@ -43,7 +43,7 @@ public class ReadWriteExcel {
 		HSSFSheet sheet = book.getSheetAt(0);
 		boolean isFirst = true;
 		for (Row row : sheet) {
-			//Ã¯π˝µ⁄“ª––±ÌÕ∑
+			//Ë∑≥ËøáÁ¨¨‰∏ÄË°åË°®Â§¥
 			if(isFirst){
 				isFirst = false;
 				continue;
@@ -199,7 +199,7 @@ public class ReadWriteExcel {
 				break;
 			}
 			HSSFRow row1 = worksheet.createRow(rowNum);
-			//Ã¯π˝µ⁄“ª––±ÌÕ∑
+			//Ë∑≥ËøáÁ¨¨‰∏ÄË°åË°®Â§¥
 			if(isFirst){
 				isFirst = false;
 				for (Cell cell : row) {
@@ -208,9 +208,9 @@ public class ReadWriteExcel {
 					cellA1.setCellValue(value);
 				}
 				HSSFCell cellLng = row1.createCell(9);
-				cellLng.setCellValue("æ≠∂»");
+				cellLng.setCellValue("ÁªèÂ∫¶");
 				HSSFCell cellLat = row1.createCell(10);
-				cellLat.setCellValue("Œ≥∂»");
+				cellLat.setCellValue("Á∫¨Â∫¶");
 			}else{
 				for (Cell cell : row) {
 					int columnIndex = cell.getColumnIndex();
@@ -247,7 +247,7 @@ public class ReadWriteExcel {
 		double[] lng = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,27.837442,27.837442,39.950581,31.615587,0,31.63145,0,0,0,31.634327,39.978298,31.616456,31.624913,0,0,31.637144,0,0,0,0,0,0,33.726032,33.683389,39.828946,33.253184,33.252731,33.257177,0,0,0,0,0,30.718577,0,0,0,0,0,0,0,26.994247,26.465593,0,0,0,0,0,0,0,0,26.465593,0,0,0,0,0,0,0,0,0,0,0};
 		double[] lat = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,112.963291,112.963291,116.114814,120.491008,0,120.351012,0,0,0,120.271505,116.149692,120.336603,120.293253,0,0,120.360805,0,0,0,0,0,0,117.159076,116.986182,116.290692,116.574499,116.577807,116.550966,0,0,0,0,0,120.721091,0,0,0,0,0,0,0,112.629714,111.589176,0,0,0,0,0,0,0,0,111.589176,0,0,0,0,0,0,0,0,0,0,0};
 		System.out.println(lng.length);
-		if(lat.length != lng.length){System.out.println("lat∫Õlng≥§∂»≤ªµ»£°");return;}
+		if(lat.length != lng.length){System.out.println("latÂíålngÈïøÂ∫¶‰∏çÁ≠âÔºÅ");return;}
 		write("c:/T_USR_SST-20121011.xls", "c:/new2.xls", lng, lat);
 //		read("c:/T_USR_SST-20121011.xls");
 		//write("c:/new.xls");

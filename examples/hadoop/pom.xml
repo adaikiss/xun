@@ -6,7 +6,6 @@
 		<artifactId>examples</artifactId>
 		<version>1.0</version>
 	</parent>
-	<groupId>org.adaikiss.xun</groupId>
 	<artifactId>hadoop</artifactId>
 	<packaging>jar</packaging>
 
@@ -23,8 +22,8 @@
 			<artifactId>hadoop-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.cloudera.hadoop</groupId>
-			<artifactId>hadoop-mrunit</artifactId>
+			<groupId>org.apache.mrunit</groupId>
+			<artifactId>mrunit</artifactId>
 		</dependency>
 
 		<dependency>
