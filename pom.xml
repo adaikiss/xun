@@ -52,6 +52,11 @@
 			<name>springsource-libs-snapshot-remote</name>
 			<url>http://repo.springsource.org/libs-snapshot-remote</url>
 		</repository>
+		<repository>
+			<id>android-rome-feed-reader-repository</id>
+			<name>Android ROME Feed Reader Repository</name>
+			<url>https://android-rome-feed-reader.googlecode.com/svn/maven2/releases</url>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -1384,8 +1389,8 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.3.2</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
 					</configuration>
 				</plugin>
 
@@ -1587,6 +1592,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					<artifactId>android-maven-plugin</artifactId>
 					<version>${android-maven-plugin.version}</version>
 				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -1733,6 +1743,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 
 		<nexus.host>http://localhost:8081</nexus.host>
 		<android-platform>9</android-platform>
+		<jdk.version>1.7</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class JpaRepositorySerializer extends Serializer{
 
 	/**
-	 * 模板文件名称
+	 * 妯℃澘鏂囦欢鍚嶇О
 	 */
 	public static final String TPL_FILE = "repository.tpl";
 

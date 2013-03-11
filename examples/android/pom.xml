@@ -14,6 +14,9 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
+		<android.sdk.path>E:\devtools\Android\android-sdk</android.sdk.path>
+		<android-platform>8</android-platform>
+		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -34,13 +37,17 @@
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
-					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+					<!-- <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
 					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
 					<resourceDirectory>${project.basedir}/res</resourceDirectory>
-					<nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory>
+					<nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory> -->
+					<genDirectory>${basedir}/gen</genDirectory>
 					<sdk>
 						<platform>${android-platform}</platform>
 					</sdk>
+					<manifest>
+						<debuggable>true</debuggable>
+					</manifest>
 					<dex>
 						<jvmArguments>
 							<jvmArgument>-Xms256m</jvmArgument>
@@ -57,6 +64,46 @@
 				<extensions>true</extensions>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<projectNameTemplate>xun-${project.artifactId}</projectNameTemplate>
+					<sourceExcludes>
+						<sourceExclude>**/.svn/</sourceExclude>
+					</sourceExcludes>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
+						<projectnature>com.android.ide.eclipse.adt.AndroidNature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>com.android.ide.eclipse.adt.ResourceManagerBuilder</buildcommand>
+						<buildcommand>com.android.ide.eclipse.adt.PreCompilerBuilder</buildcommand>
+						<buildcommand>com.android.ide.eclipse.adt.ApkBuilder</buildcommand>
+					</additionalBuildcommands>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${basedir}/gen</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

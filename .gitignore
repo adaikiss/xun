@@ -3,3 +3,5 @@
 .settings
 target
 *.log
+bin
+/examples/android/gen
