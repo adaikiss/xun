@@ -1,0 +1,13 @@
+Channels and Buffers
+	In the standard IO API you work with byte streams and character streams. In NIO you work with channels and buffers. Data is always read from a channel into a buffer, or written from a buffer to a channel.
+Asynchronous IO/None Blocking IO
+	Java NIO enables you to do asynchronous IO. For instance, a thread can ask a channel to read data into a buffer. While the channel reads data into the buffer, the thread can do something else. Once data is read into the buffer, the thread can then continue processing it. The same is true for writing data to channels.
+Selectors
+	Java NIO contains the concept of "selectors". A selector is an object that can monitor multiple channels for events (like: connection opened, data arrived etc.). Thus, a single thread can monitor multiple channels for data.
+
+1. A new filesystem interface that supports bulk access to file attributes, change notification, escape to filesystem-specific APIs, and a service-provider interface for pluggable filesystem implementations;
+2. An API for asynchronous (as opposed to polled, non-blocking) I/O operations on both sockets and files; and
+
+3.The completion of the socket-channel functionality defined in JSR-51, including the addition of support for binding, option configuration, and multicast datagrams.
+
+sample http://tutorials.jenkov.com/java-nio/index.html

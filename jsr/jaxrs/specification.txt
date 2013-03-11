@@ -13,3 +13,5 @@ In addition, it provides further annotations to method parameters to pull inform
 @FormParam binds the parameter to a form value.
 @DefaultValue specifies a default value for the above bindings when the key is not found.
 @Context returns the entire context of the object. Ex.(@Context HttpServletRequest request)
+
+sample http://jersey.java.net/nonav/documentation/latest/jax-rs.html

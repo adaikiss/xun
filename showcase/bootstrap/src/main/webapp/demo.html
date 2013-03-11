@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<p id="tooltip_example">你妹就是你妹不是我妹，你妹就是你妈生的比你小的雌性旁系血亲，你妹比你小，所以叫你妹，如果你没有妹别人又对你叫你妹就不是你妹，别人不知道你妹又要对你说你妹那他说的你妹肯定是你妈生的，可是实际上你妈可能没有生你妹，于是这里就前后矛盾了，所以综合考虑别人对你说你妹其实只是一句口头上的问候，可是别人问候为什么不问候你妈你爸你奶奶而偏要问候你妹呢，我个人认为这就是个性的彰显，特色的所在，所以现在你如果听到有人对你说你妹，你可以回他一句你妹个头，但是考虑到这样不够个性，如果你喜欢特色的话你可以回答你妹的你妹。。。最后我总结一句，你妹是个很深奥的问题，我们现在的科学水平虽然已经可以上天入地了，却还只能理解这个问题的一个极其微小的层面呀，兄弟。</p>
+</div>
+
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/bootstrap/js/jquery.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-button.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap-typeahead.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#tooltip_example').html($('#tooltip_example').text().replace(/你妹/g, '<a href="#" rel="tooltip" title="你妹">你妹</a>'));
+	$('a[rel="tooltip"]').tooltip();
+});
+</script>
+</body>
+</html>

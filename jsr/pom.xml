@@ -20,5 +20,6 @@
 	<modules>
 		<module>servlet3</module>
 		<module>jaxrs</module>
+		<module>nio</module>
 	</modules>
 </project>
