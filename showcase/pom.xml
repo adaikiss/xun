@@ -10,5 +10,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>bootstrap</module>
+		<module>aop</module>
 	</modules>
 </project>

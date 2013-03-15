@@ -258,6 +258,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${aspectj.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjtools</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>cglib</groupId>
 				<artifactId>cglib-nodep</artifactId>
 				<version>${cglib.version}</version>
@@ -1516,6 +1521,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 						</webApp>
 						<!--<jettyXml>src/main/resources/jetty.xml</jettyXml>-->
 						<reload>manual</reload>
+						<useTestScope>true</useTestScope>
 					</configuration>
 					<executions>
 						<execution>
@@ -1618,6 +1624,29 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 						</execution>
 					</executions>
 				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>aspectj-maven-plugin</artifactId>
+					<version>1.4</version>
+					<configuration>
+						<complianceLevel>${jdk.version}</complianceLevel>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<!-- use this goal to weave all your main classes -->
+								<goal>compile</goal>
+								<!-- use this goal to weave all your test classes -->
+								<goal>test-compile</goal>
+							</goals>
+							<configuration>
+								<source>${jdk.version}</source>
+								<target>${jdk.version}</target>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -1697,7 +1726,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<!--asm.version>3.3.1</asm.version-->
 		<asm.version>4.1</asm.version>
 		<cglib.version>2.2.2</cglib.version>
-		<aspectj.version>1.7.1</aspectj.version>
+		<aspectj.version>1.7.2</aspectj.version>
 		<!-- android -->
 		<android.version>4.1.1.4</android.version>
 		<android-maven-plugin.version>3.0.0-alpha-13</android-maven-plugin.version>
