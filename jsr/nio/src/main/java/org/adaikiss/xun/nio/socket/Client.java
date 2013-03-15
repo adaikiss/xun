@@ -38,11 +38,12 @@ public class Client {
 				if(selectionKey.isConnectable()){
 					socketChannel.finishConnect();
 					socketChannel.register(selector, SelectionKey.OP_WRITE);
-					System.out.println("server connected!");
+					socketChannel.register(selector, SelectionKey.OP_READ);
+					System.out.println("Client:server connected!");
 					break;
 				}
 				if(selectionKey.isWritable()){
-					System.out.println("please input message:");
+					System.out.println("Client:please input message:");
 					String msg = scanner.nextLine();
 					ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes());
 					socketChannel.write(buffer);
@@ -50,7 +51,7 @@ public class Client {
 				if(selectionKey.isReadable()){
 					serverBuffer.clear();
 					socketChannel.read(serverBuffer);
-					System.out.println("server:" + new String(serverBuffer.array()));
+					System.out.println("Client:" + new String(serverBuffer.array()));
 				}
 			}
 		}

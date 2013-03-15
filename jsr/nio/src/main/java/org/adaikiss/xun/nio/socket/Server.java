@@ -11,9 +11,7 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author hlw
@@ -25,12 +23,10 @@ public class Server {
 
 	private ByteBuffer buffer = ByteBuffer.allocate(8);
 
-	private Map<SocketChannel, byte[]> clients = new ConcurrentHashMap<SocketChannel, byte[]>();
-
-	private void start() throws IOException{
+	private void start(String host, int port) throws IOException{
 		ServerSocketChannel ssc = ServerSocketChannel.open();
 		ssc.configureBlocking(false);
-		ssc.bind(new InetSocketAddress("localhost", 12345));
+		ssc.bind(new InetSocketAddress(host, port));
 		selector = Selector.open();
 		ssc.register(selector, SelectionKey.OP_ACCEPT);
 		while(!Thread.currentThread().isInterrupted()){
@@ -67,17 +63,10 @@ public class Server {
 			socketChannel.close();
 			return;
 		}
-		byte[] bytes = clients.get(socketChannel);
-		if(bytes == null){
-			bytes = new byte[0];
-		}
 		if(count > 0){
-			byte[] newBytes = new byte[bytes.length + count]; 
-			System.arraycopy(bytes, 0, newBytes, 0, bytes.length); 
-			System.arraycopy(buffer.array(), 0, newBytes, bytes.length, count);
-			clients.put(socketChannel, newBytes);
-			System.out.println("client:" + new String(newBytes));
-			socketChannel.write(ByteBuffer.wrap("ƒ„±Ì√√∑Ú!".getBytes()));
+			String msg = new String(buffer.array(), 0, count);
+			System.out.println("Server: received [" + msg + "]");
+			socketChannel.write(ByteBuffer.wrap(("server sent " + msg).getBytes()));
 		}
 	}
 
@@ -86,14 +75,15 @@ public class Server {
 		SocketChannel clientChannel = ssc.accept();
 		clientChannel.configureBlocking(false);
 		clientChannel.register(selector, SelectionKey.OP_READ);
-		System.out.println("a new client connected!");
+		clientChannel.register(selector, SelectionKey.OP_WRITE);
+		System.out.println("Server:a new client connected!");
 	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) throws IOException{
-		new Server().start();
+		new Server().start("localhost", 12345);
 	}
 
 }

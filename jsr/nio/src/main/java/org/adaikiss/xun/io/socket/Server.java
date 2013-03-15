@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /**
  * @author hlw
@@ -19,10 +21,11 @@ public class Server {
 	private void start(int port) throws IOException {
 		ServerSocket server = new ServerSocket(port, 100);
 		server.setReuseAddress(true);
+		Executor executor = Executors.newCachedThreadPool();
 		Socket socket;
 		while ((socket = server.accept()) != null) {
 			System.out.println("Server:a client connected!");
-			new Thread(new ServerHandler(socket)).start();
+			executor.execute(new ServerHandler(socket));
 		}
 	}
 
