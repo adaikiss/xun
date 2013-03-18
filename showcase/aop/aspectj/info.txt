@@ -1,1 +1,10 @@
+call ¨C The pointcut will find all methods that calls a method in the demo package.
+execution ¨C The pointcut will find all methods in the demo package.
+withincode ¨C All the statements inside the methods in the demo package.
+
+@args(args...)
+@target(target)
+@this(caller)
+@annotation(...)
+
 http://www.javaworld.com/javaworld/jw-01-2002/jw-0118-aspect.html?page=1
