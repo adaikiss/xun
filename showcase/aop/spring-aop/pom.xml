@@ -9,7 +9,7 @@
 	<artifactId>spring-aop</artifactId>
 	<packaging>jar</packaging>
 
-	<name>springmvc</name>
+	<name>spring-aop</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
