@@ -1653,7 +1653,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 
 
 	<properties>
-		<spring.version>3.2.1.RELEASE</spring.version>
+		<spring.version>3.2.2.RELEASE</spring.version>
 		<spring-test-mvc.version>1.0.0.M2</spring-test-mvc.version>
 		<spring.integration.version>2.1.0.RELEASE</spring.integration.version>
 		<!-- data -->

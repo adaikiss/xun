@@ -47,6 +47,9 @@
 				<entry key="authc">
 					<bean class="org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter" />
 				</entry>
+				<entry key="anyrole">
+					<bean class="org.adaikiss.xun.shiro.filter.authz.AnyRoleAuthorizationFilter" />
+				</entry>
 			</util:map>
 		</property>
 		<property name="filterChainDefinitions" value="#{filterChainDefinitionsLoader.loadDefinitions()}"/>
