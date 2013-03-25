@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.adaikiss.xun.mybatis.entity.NooMapper">
+	<insert id="add" parameterType="org.adaikiss.xun.mybatis.entity.Noo" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+		insert into xun_noo(name) values (#{name})
+		]]>
+	</insert>
+	<delete id="remove" parameterType="Long">
+		<![CDATA[
+		delete from xun_noo where id=#{id}
+		]]>
+	</delete>
+	<update id="update">
+		<![CDATA[
+		update xun_noo set name = #{name} where id = #{id}
+		]]>
+	</update>
+    <select id="get" parameterType="Long" resultType="org.adaikiss.xun.mybatis.entity.Noo">
+        <![CDATA[
+        select id, name
+        from xun_noo
+        where id=#{id}
+        ]]>
+    </select>
+</mapper>
