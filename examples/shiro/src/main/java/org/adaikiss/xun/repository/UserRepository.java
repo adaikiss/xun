@@ -28,11 +28,19 @@ public class UserRepository  {
 		user.setName(id.toString());
 		Role role1 = new Role("admin");
 		Role role2 = new Role("guest");
+		Role role3 = new Role("manager");
 		role1.addPermissions(new Permission("*"));
 		role2.addPermissions(new Permission("article:read"));
 		Set<Role> roles = Sets.newHashSet(role2);
 		if(loginName.equals("admin")){
 			roles.add(role1);
+		}
+		if(loginName.equals("manager")){
+			roles.add(role3);
+		}
+		if(loginName.equals("system")){
+			roles.add(role1);
+			roles.add(role3);
 		}
 		user.setRoles(roles);
 		user.setPassword(Realm.encodePassword("123456", loginName));

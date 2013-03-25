@@ -28,6 +28,7 @@ public class FilterChainDefinitionsLoader {
 		InputStream is = null;
 		StringBuilder sb = new StringBuilder();
 		logger.debug("===============>开始加载资源权限信息<===============");
+		long start = System.currentTimeMillis();
 		try {
 			is = resourceLoader.getResource(location).getInputStream();
 			BufferedReader in = new BufferedReader(new InputStreamReader(is));
@@ -36,7 +37,7 @@ public class FilterChainDefinitionsLoader {
 			while((n = in.read(buff)) != -1){
 				sb.append(new String(buff, 0, n));
 			}
-			logger.debug("===============>加载资源权限信息成功<===============");
+			logger.debug("===============>加载资源权限信息成功,耗时{}毫秒<===============", System.currentTimeMillis() - start);
 			logger.debug("\n=====================================\n" + sb.toString() + "\n=====================================");
 		} catch (IOException e) {
 			logger.error("加载资源权限信息时出现异常!", e);

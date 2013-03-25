@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<shiro:user>
-<jsp:forward page="index.jsp"/>
-</shiro:user>
+admin:can visit /admin.jsp, /anyrole.jsp
+manager:can visit /manager.jsp, /anyrole.jsp
+system:can visit /admin.jsp, /manager.jsp, /system.jsp, /anyrole.jsp
 <form action="/login.svl" method="post">
 	username:<input name="username">
 	password:<input name="password" type="password">
