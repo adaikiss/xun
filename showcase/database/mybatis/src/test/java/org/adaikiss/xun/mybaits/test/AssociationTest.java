@@ -21,11 +21,13 @@ import org.junit.Test;
 
 /**
  * one-to-one, one-to-many, many-to-many
+ * 
  * @author hlw
- *
+ * 
  */
 public class AssociationTest extends MyBatisTestCase {
-	private Foo insert(){
+
+	private Foo insert() {
 		sqlSessionFactory.getConfiguration().addMapper(AooMapper.class);
 		sqlSessionFactory.getConfiguration().addMapper(BooMapper.class);
 		sqlSessionFactory.getConfiguration().addMapper(CooMapper.class);
@@ -35,7 +37,8 @@ public class AssociationTest extends MyBatisTestCase {
 		AooMapper aooMapper = session.getMapper(AooMapper.class);
 		BooMapper booMapper = session.getMapper(BooMapper.class);
 		CooMapper cooMapper = session.getMapper(CooMapper.class);
-		MiddleTableMapper middleTableMapper = session.getMapper(MiddleTableMapper.class);
+		MiddleTableMapper middleTableMapper = session
+				.getMapper(MiddleTableMapper.class);
 		FooMapper fooMapper = session.getMapper(FooMapper.class);
 		Aoo aoo = new Aoo("aoo", new Date());
 		aooMapper.insert(aoo);
@@ -64,7 +67,7 @@ public class AssociationTest extends MyBatisTestCase {
 	}
 
 	@Test
-	public void testSelectById(){
+	public void testSelectById() {
 		Foo foo = insert();
 		SqlSession session = sqlSessionFactory.openSession();
 		FooMapper mapper = session.getMapper(FooMapper.class);
@@ -75,7 +78,7 @@ public class AssociationTest extends MyBatisTestCase {
 	}
 
 	@Test
-	public void testSelectByIdWithAoo(){
+	public void testSelectByIdWithAoo() {
 		Foo foo = insert();
 		SqlSession session = sqlSessionFactory.openSession();
 		FooMapper mapper = session.getMapper(FooMapper.class);
@@ -87,7 +90,7 @@ public class AssociationTest extends MyBatisTestCase {
 	}
 
 	@Test
-	public void testSelectByIdWithBoos(){
+	public void testSelectByIdWithBoos() {
 		Foo foo = insert();
 		SqlSession session = sqlSessionFactory.openSession();
 		FooMapper mapper = session.getMapper(FooMapper.class);
@@ -100,7 +103,7 @@ public class AssociationTest extends MyBatisTestCase {
 	}
 
 	@Test
-	public void testSelectByIdWithCoos(){
+	public void testSelectByIdWithCoos() {
 		Foo foo = insert();
 		SqlSession session = sqlSessionFactory.openSession();
 		FooMapper mapper = session.getMapper(FooMapper.class);
@@ -112,17 +115,28 @@ public class AssociationTest extends MyBatisTestCase {
 		Assert.assertEquals(2, entity.getCoos().size());
 	}
 
+	/**
+	 * set lazyLoadingEnabled with true/false
+	 */
 	@Test
-	public void testSelectByIdWithAllAssociations(){
+	public void testSelectByIdWithAllAssociations() {
 		Foo foo = insert();
 		SqlSession session = sqlSessionFactory.openSession();
 		FooMapper mapper = session.getMapper(FooMapper.class);
 		Foo entity = mapper.selectByIdWithAllAssociations(foo.getId());
 		Assert.assertNotNull(entity);
+		System.out.println("#########before read aoo############################");
 		Assert.assertNotNull("should be queried!", entity.getAoo());
+		System.out.println("#########after read aoo###########################");
+		System.out.println("#########before read boos############################");
 		Assert.assertNotNull("should be queried!", entity.getBoos());
+		System.out.println("#########after read boos############################");
 		Assert.assertEquals(2, entity.getBoos().size());
+		System.out.println("#########after read boos size############################");
+		System.out.println("#########before read coos############################");
 		Assert.assertNotNull("should be queried!", entity.getCoos());
+		System.out.println("#########after read coos############################");
 		Assert.assertEquals(2, entity.getCoos().size());
+		System.out.println("#########after read coos size############################");
 	}
 }
