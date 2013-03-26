@@ -5,18 +5,17 @@ package org.adaikiss.xun.mybatis.entity;
 
 /**
  * @author hlw
- *
+ * 
  */
-public class Boo {
+public class Coo {
 	private Long id;
 	private String name;
-	private Long fooId;
 
-	public Boo() {
+	public Coo() {
 		super();
 	}
 
-	public Boo(String name) {
+	public Coo(String name) {
 		super();
 		this.name = name;
 	}
@@ -37,11 +36,4 @@ public class Boo {
 		this.name = name;
 	}
 
-	public Long getFooId() {
-		return fooId;
-	}
-
-	public void setFooId(Long fooId) {
-		this.fooId = fooId;
-	}
 }

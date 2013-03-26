@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 /**
+ * insert/insert-selective, update/update-selective
  * @author hlw
  *
  */
