@@ -14,6 +14,8 @@ import java.sql.SQLException;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -21,6 +23,8 @@ import org.apache.ibatis.jdbc.ScriptRunner;
  *
  */
 public class SqlUtil {
+
+	private static final Logger logger = LoggerFactory.getLogger(SqlUtil.class);
 
 	/**
 	 * run a .sql file on classpath
@@ -35,6 +39,7 @@ public class SqlUtil {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void runScript(String url, String user, String password, String driverClassName, String sqlFile) throws SQLException, IOException, ClassNotFoundException{
+		logger.debug(new StringBuilder("Running script with [").append(url).append(", ").append(user).append(", ").append(password).append(", ").append(driverClassName).append(", ").append(sqlFile).toString());
 		Class<? extends java.sql.Driver> driver = (Class<Driver>)Class.forName(driverClassName);
 		Connection conn = getConnection(url, user, password, driver);
 		runScript(conn, sqlFile);

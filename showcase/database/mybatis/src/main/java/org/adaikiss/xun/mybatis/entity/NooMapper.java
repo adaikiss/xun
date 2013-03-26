@@ -8,11 +8,15 @@ package org.adaikiss.xun.mybatis.entity;
  * 
  */
 public interface NooMapper {
-	Long add(Noo entity);
+	Long insert(Noo entity);
 
-	Noo get(Long id);
+	Long insertSelective(Noo entity);
+
+	Noo selectById(Long id);
 
 	void update(Noo entity);
 
-	void remove(Long id);
+	void updateByIdSelective(Noo entity);
+
+	void delete(Long id);
 }

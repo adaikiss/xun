@@ -22,14 +22,14 @@ public class XmlIllustrationTest extends MyBatisTestCase {
 		NooMapper mapper = session.getMapper(NooMapper.class);
 		Noo entity = new Noo("noo");
 
-		mapper.add(entity);
+		mapper.insert(entity);
 		Assert.assertNotNull(entity.getId());
 		session.commit();
 		session.close();
 
 		session = sqlSessionFactory.openSession();
 		mapper = session.getMapper(NooMapper.class);
-		entity = mapper.get(entity.getId());
+		entity = mapper.selectById(entity.getId());
 		Assert.assertEquals("noo", entity.getName());
 		session.commit();
 		session.close();
@@ -42,19 +42,19 @@ public class XmlIllustrationTest extends MyBatisTestCase {
 		session.close();
 		session = sqlSessionFactory.openSession();
 		mapper = session.getMapper(NooMapper.class);
-		entity = mapper.get(entity.getId());
+		entity = mapper.selectById(entity.getId());
 		Assert.assertEquals("BigNoo", entity.getName());
 		session.commit();
 		session.close();
 
 		session = sqlSessionFactory.openSession();
 		mapper = session.getMapper(NooMapper.class);
-		mapper.remove(entity.getId());
+		mapper.delete(entity.getId());
 		session.commit();
 		session.close();
 		session = sqlSessionFactory.openSession();
 		mapper = session.getMapper(NooMapper.class);
-		Assert.assertNull(mapper.get(entity.getId()));
+		Assert.assertNull(mapper.selectById(entity.getId()));
 		session.commit();
 		session.close();
 	}

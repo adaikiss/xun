@@ -3,10 +3,12 @@
  */
 package org.adaikiss.xun.mybaits.test;
 
+import java.util.Date;
+
 import junit.framework.Assert;
 
-import org.adaikiss.xun.mybatis.entity.Noo;
-import org.adaikiss.xun.mybatis.entity.NooMapper;
+import org.adaikiss.xun.mybatis.entity.Aoo;
+import org.adaikiss.xun.mybatis.entity.AooMapper;
 import org.adaikiss.xun.mybatis.test.MyBatisTestCase;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -18,44 +20,44 @@ import org.junit.Test;
 public class AnnotationIllustrationTest extends MyBatisTestCase {
 	@Test
 	public void testBasicUsage(){
-		sqlSessionFactory.getConfiguration().addMapper(NooMapper.class);
+		sqlSessionFactory.getConfiguration().addMapper(AooMapper.class);
 		SqlSession session = sqlSessionFactory.openSession();
-		NooMapper mapper = session.getMapper(NooMapper.class);
-		Noo entity = new Noo("noo");
-		
-		mapper.add(entity);
+		AooMapper mapper = session.getMapper(AooMapper.class);
+		Aoo entity = new Aoo("aoo", new Date());
+
+		mapper.insert(entity);
 		Assert.assertNotNull(entity.getId());
 		session.commit();
 		session.close();
 
 		session = sqlSessionFactory.openSession();
-		mapper = session.getMapper(NooMapper.class);
-		entity = mapper.get(entity.getId());
-		Assert.assertEquals("noo", entity.getName());
+		mapper = session.getMapper(AooMapper.class);
+		entity = mapper.selectById(entity.getId());
+		Assert.assertEquals("aoo", entity.getName());
 		session.commit();
 		session.close();
 
 		session = sqlSessionFactory.openSession();
-		mapper = session.getMapper(NooMapper.class);
+		mapper = session.getMapper(AooMapper.class);
 		entity.setName("BigNoo");
 		mapper.update(entity);
 		session.commit();
 		session.close();
 		session = sqlSessionFactory.openSession();
-		mapper = session.getMapper(NooMapper.class);
-		entity = mapper.get(entity.getId());
+		mapper = session.getMapper(AooMapper.class);
+		entity = mapper.selectById(entity.getId());
 		Assert.assertEquals("BigNoo", entity.getName());
 		session.commit();
 		session.close();
 
 		session = sqlSessionFactory.openSession();
-		mapper = session.getMapper(NooMapper.class);
-		mapper.remove(entity.getId());
+		mapper = session.getMapper(AooMapper.class);
+		mapper.delete(entity.getId());
 		session.commit();
 		session.close();
 		session = sqlSessionFactory.openSession();
-		mapper = session.getMapper(NooMapper.class);
-		Assert.assertNull(mapper.get(entity.getId()));
+		mapper = session.getMapper(AooMapper.class);
+		Assert.assertNull(mapper.selectById(entity.getId()));
 		session.commit();
 		session.close();
 	}
