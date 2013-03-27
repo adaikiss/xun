@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>parent</artifactId>
+		<groupId>org.adaikiss.xun</groupId>
+		<version>1.0</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<groupId>org.adaikiss.kay</groupId>
+	<artifactId>jmemcached-starts</artifactId>
+	<name>JMemcached start Script</name>
+	<packaging>pom</packaging>
+
+	<properties>
+		<slf4j.version>1.5.3</slf4j.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.thimbleware.jmemcached</groupId>
+			<artifactId>jmemcached-core</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.thimbleware.jmemcached</groupId>
+			<artifactId>jmemcached-cli</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>com.thimbleware.jmemcached.Main</mainClass>
+					<arguments>
+						<argument>--listen=localhost</argument>
+						<argument>--port=11211</argument>
+						
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
