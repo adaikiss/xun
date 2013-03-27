@@ -25,7 +25,7 @@ import org.junit.Test;
  * @author hlw
  * 
  */
-public class AssociationTest extends MyBatisTestCase {
+public class AssociationIllustrationTest extends MyBatisTestCase {
 
 	private Foo insert() {
 		sqlSessionFactory.getConfiguration().addMapper(AooMapper.class);

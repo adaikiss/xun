@@ -21,6 +21,13 @@ CREATE TABLE `xun_coo` (
   PRIMARY KEY (`id`)
 );
 
+drop table if exists xun_eoo;
+CREATE TABLE `xun_eoo` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
 drop table if exists xun_foo;
 CREATE TABLE `xun_foo` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

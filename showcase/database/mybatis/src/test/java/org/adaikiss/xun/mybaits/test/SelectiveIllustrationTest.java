@@ -18,7 +18,7 @@ import org.junit.Test;
  * @author hlw
  *
  */
-public class SelectiveTest extends MyBatisTestCase {
+public class SelectiveIllustrationTest extends MyBatisTestCase {
 	@Test
 	public void testInsert(){
 		SqlSession session = sqlSessionFactory.openSession();

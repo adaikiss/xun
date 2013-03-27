@@ -19,6 +19,16 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.mybatis.caches</groupId>
+			<artifactId>mybatis-ehcache</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
 		</dependency>
