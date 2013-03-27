@@ -42,6 +42,13 @@ CREATE TABLE `xun_foo_coo` (
   `coo_id` bigint(20) NOT NULL
 );
 
+drop table if exists xun_moo;
+CREATE TABLE `xun_moo` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
 drop table if exists xun_noo;
 CREATE TABLE `xun_noo` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

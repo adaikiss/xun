@@ -7,12 +7,14 @@ import org.adaikiss.xun.mybatis.entity.Aoo;
 import org.adaikiss.xun.mybatis.entity.AooMapper;
 import org.adaikiss.xun.mybatis.entity.Eoo;
 import org.adaikiss.xun.mybatis.entity.EooMapper;
+import org.adaikiss.xun.mybatis.entity.Moo;
+import org.adaikiss.xun.mybatis.entity.MooMapper;
 import org.adaikiss.xun.mybatis.test.MyBatisTestCase;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 /**
- * mybatis no-cache/first-level-cache/second-level-cache showcase
+ * mybatis no-cache/first-level-cache/second-level-cache/custom-second-level-cache showcase
  * @author hlw
  *
  */
@@ -87,6 +89,32 @@ public class CacheIllustrationTest extends MyBatisTestCase {
 		session.close();
 		session = sqlSessionFactory.openSession();
 		mapper = session.getMapper(EooMapper.class);
+		System.out.println("##########before second select###################");
+		System.out.println("------no sql query will be sent------");
+		entity = mapper.selectById(entity.getId());
+		System.out.println("##########after second select###################");
+	}
+
+	/**
+	 * selects cross sessions use second-level-cache(memcachedcache here)
+	 */
+	@Test
+	public void testMemcachedSecondLevelCache(){
+		sqlSessionFactory.getConfiguration().addMapper(MooMapper.class);
+		SqlSession session = sqlSessionFactory.openSession();
+		MooMapper mapper = session.getMapper(MooMapper.class);
+		Moo entity = new Moo("moo");
+		System.out.println("##########before insert###################");
+		mapper.insert(entity);
+		System.out.println("##########after insert###################");
+		session.commit();
+		System.out.println("##########before first select###################");
+		System.out.println("------a sql query will be sent------");
+		entity = mapper.selectById(entity.getId());
+		System.out.println("##########after first select###################");
+		session.close();
+		session = sqlSessionFactory.openSession();
+		mapper = session.getMapper(MooMapper.class);
 		System.out.println("##########before second select###################");
 		System.out.println("------no sql query will be sent------");
 		entity = mapper.selectById(entity.getId());

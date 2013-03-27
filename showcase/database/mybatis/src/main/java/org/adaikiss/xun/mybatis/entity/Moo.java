@@ -9,20 +9,20 @@ import java.io.Serializable;
  * @author hlw
  * 
  */
-public class Eoo implements Serializable{
-
+public class Moo implements Serializable{
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3631735438008196669L;
+	private static final long serialVersionUID = -1164822600924625853L;
 	private Long id;
 	private String name;
 
-	public Eoo() {
+	public Moo() {
 		super();
 	}
 
-	public Eoo(String name) {
+	public Moo(String name) {
 		super();
 		this.name = name;
 	}
@@ -42,4 +42,5 @@ public class Eoo implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
 }

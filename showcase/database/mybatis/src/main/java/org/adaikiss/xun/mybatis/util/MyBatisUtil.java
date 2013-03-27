@@ -22,7 +22,6 @@ public class MyBatisUtil {
 			.getLogger(MyBatisUtil.class);
 	private static SqlSessionFactory sqlSessionFactory;
 	public static final String MYBATIS_CONFIG_FILE = "mybatis-config.xml";
-	public static final String APPLICATION_CONFIG_FILE = "application.properties";
 
 	private static boolean inited = false;
 

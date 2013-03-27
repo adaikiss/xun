@@ -5,9 +5,9 @@ package org.adaikiss.xun.mybatis.test;
 
 import java.util.Properties;
 
+import org.adaikiss.xun.mybatis.util.ApplicationUtil;
 import org.adaikiss.xun.mybatis.util.MyBatisUtil;
 import org.adaikiss.xun.mybatis.util.SqlUtil;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.After;
 import org.junit.Before;
@@ -24,8 +24,7 @@ public class MyBatisTestCase {
 
 	@Before
 	public void setUp() throws Exception {
-		Properties properties = new Properties();
-		properties.load(Resources.getResourceAsStream(MyBatisUtil.APPLICATION_CONFIG_FILE));
+		Properties properties = ApplicationUtil.getProperties();
 		SqlUtil.runScript(properties.getProperty("jdbc.url"),
 				properties.getProperty("jdbc.username"),
 				properties.getProperty("jdbc.password"), properties.getProperty("jdbc.driver"), sqlFile);
