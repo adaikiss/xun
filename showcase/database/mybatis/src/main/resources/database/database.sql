@@ -64,3 +64,10 @@ CREATE TABLE `xun_noo` (
   `create_time` timestamp DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
+drop table if exists xun_too;
+CREATE TABLE `xun_too` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
