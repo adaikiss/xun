@@ -430,6 +430,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<artifactId>mybatis-spring</artifactId>
 				<version>${mybatis-spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.mybatis.caches</groupId>
+				<artifactId>mybatis-ehcache</artifactId>
+				<version>${mybatis-ehcache.version}</version>
+			</dependency>
 
 			<!-- full text search -->
 			<dependency>
@@ -835,7 +840,13 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			<dependency>
 				<groupId>com.thimbleware.jmemcached</groupId>
 				<artifactId>jmemcached-core</artifactId>
-				<version>${jmemcached-core.version}</version>
+				<version>${jmemcached.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.thimbleware.jmemcached</groupId>
+				<artifactId>jmemcached-cli</artifactId>
+				<version>${jmemcached.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<!-- memcached end -->
@@ -1014,6 +1025,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<groupId>commons-fileupload</groupId>
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons-fileupload.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-configuration</groupId>
+				<artifactId>commons-configuration</artifactId>
+				<version>${commons-configuration.version}</version>
 			</dependency>
 
 			<!-- google java library -->
@@ -1652,6 +1668,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 						</execution>
 					</executions>
 				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.2.1</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -1667,11 +1689,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<spring-data-commons.version>1.3.0.RELEASE</spring-data-commons.version>
 		<hibernate.version>4.1.3.Final</hibernate.version>
 		<hibernate-jpa-2.0-api.version>1.0.1.Final</hibernate-jpa-2.0-api.version>
-		<mybatis.version>3.1.1</mybatis.version>
-		<mybatis-spring.version>1.1.1</mybatis-spring.version>
+		<mybatis.version>3.2.1</mybatis.version>
+		<mybatis-spring.version>1.2.0</mybatis-spring.version>
+		<mybatis-ehcache.version>1.0.1</mybatis-ehcache.version>
 		<commons-dbutils.version>1.4</commons-dbutils.version>
 		<!-- jdbc -->
-		<h2.version>1.3.166</h2.version>
+		<h2.version>1.3.171</h2.version>
 		<mysql.version>5.1.12</mysql.version>
 		<ojdbc.version>1.4</ojdbc.version>
 		<!-- fulltext search -->
@@ -1695,7 +1718,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<!-- cache-->
 		<xmemcached.version>1.3.3</xmemcached.version>
 		<spymemcached.version>2.8.4</spymemcached.version>
-		<jmemcached-core.version>1.0.0</jmemcached-core.version>
+		<jmemcached.version>1.0.0</jmemcached.version>
 		<ehcache.version>2.5.2</ehcache.version>
 		<oscache.version>2.4.1</oscache.version>
 		<!-- validation -->
@@ -1760,6 +1783,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<commons-io.version>2.3</commons-io.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
 		<commons-fileupload.version>1.2.2</commons-fileupload.version>
+		<commons-configuration.version>1.9</commons-configuration.version>
 		<icu4j.version>4.8.1.1</icu4j.version>
 		<dozer.version>5.3.2</dozer.version>
 		<poi.version>3.8</poi.version>
