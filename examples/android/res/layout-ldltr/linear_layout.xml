@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:orientation="vertical" >
+    <Button
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="#fedf00"
+	android:text="@string/btn01"/>
+    <Button
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="@string/btn02"/>
+    <Button
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="@string/btn03"/>
+    <Button
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="@string/btn04"/>
+	</LinearLayout>
+	 <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:orientation="horizontal" >
+    	<Button
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:text="@string/btn01"/>
+    <Button
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:text="@string/btn02"/>
+    <Button
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:text="@string/btn03"/>
+    <Button
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:text="@string/btn04"/>
+    </LinearLayout>
+</LinearLayout>

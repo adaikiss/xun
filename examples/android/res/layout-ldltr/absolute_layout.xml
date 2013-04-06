@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+	<TextView
+	    android:layout_width="281dp"
+	    android:layout_height="250dp"
+	    android:layout_x="87dp"
+	    android:layout_y="114dp"
+	    android:background="#fedf00"
+	    android:text="x:87dp, y:114dp\nwidth:281dp, height:250dp"
+	    android:textColor="#fe00df" />
+
+</AbsoluteLayout>

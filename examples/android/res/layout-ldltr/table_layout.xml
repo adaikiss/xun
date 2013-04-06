@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    
+    >
+    <TableRow>
+        <Button
+            android:text="@string/btn01"
+            />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_span="2"
+            android:text="@string/btn01"
+            />
+        <Button
+            android:text="@string/btn02"
+            />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:text="@string/btn01"
+            />
+        <Button
+            android:text="@string/btn02"
+            />
+        <Button
+            android:text="@string/btn03"
+            />
+    </TableRow>
+    <TableRow android:gravity="center">
+        <Button
+            android:text="@string/btn01"
+            />
+    </TableRow>
+    <TableRow android:gravity="center">
+        <Button
+            android:text="@string/btn01"
+            />
+        <Button
+            android:text="@string/btn02"
+            />
+    </TableRow>
+    <TableRow android:gravity="center">
+        <Button
+            android:text="@string/btn01"
+            />
+        <Button
+            android:text="@string/btn02"
+            />
+        <Button
+            android:text="@string/btn03"
+            />
+    </TableRow>
+
+</TableLayout>

@@ -3,4 +3,14 @@
     <string name="hello">Hello robot!</string>
     <string name="hellob">Hello robotb!</string>
     <string name="app_name">robot</string>
+    <string name="linearLayout">Linear Layout</string>
+    <string name="absoluteLayout">Absolute Layout</string>
+    <string name="relativeLayout">Relative Layout</string>
+    <string name="frameLayout">Frame Layout</string>
+    <string name="tableLayout">Table Layout</string>
+    <string name="btn01">btn01</string>
+    <string name="btn02">btn02</string>
+    <string name="btn03">btn03</string>
+    <string name="btn04">btn04</string>
+    <string name="btn05">btn05</string>
 </resources>
