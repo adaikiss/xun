@@ -4,6 +4,8 @@
 package org.adaikiss.xun.designpattern.gof.creational.prototype;
 
 import org.adaikiss.xun.designpattern.gof.creational.abstractfactory.AbstractFactory;
+import org.adaikiss.xun.designpattern.gof.structural.composite.Composite;
+import org.adaikiss.xun.designpattern.gof.structural.decorator.Decorator;
 
 /**
  * <b>Prototype</b>
@@ -33,7 +35,7 @@ public class Prototype {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception {
 		HeavyGun ak47 = new HeavyGun("AK47");
 		ak47.attack();
 		HeavyGun m16 = ak47.clone();

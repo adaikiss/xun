@@ -3,7 +3,12 @@
  */
 package org.adaikiss.xun.designpattern.gof.creational.factory;
 
+import org.adaikiss.xun.designpattern.gof.creational.abstractfactory.AbstractFactory;
 import org.adaikiss.xun.designpattern.gof.creational.factory.WeaponFactory.WeaponType;
+import org.adaikiss.xun.designpattern.gof.creational.prototype.Prototype;
+import org.adaikiss.xun.designpattern.gof.creational.singleton.Singleton;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 
 /**
  * <b>Factory Method</b>

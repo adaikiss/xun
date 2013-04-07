@@ -3,6 +3,12 @@
  */
 package org.adaikiss.xun.designpattern.gof.structural.decorator;
 
+import org.adaikiss.xun.designpattern.gof.behavioral.strategy.Strategy;
+import org.adaikiss.xun.designpattern.gof.structural.adapter.Adapter;
+import org.adaikiss.xun.designpattern.gof.structural.composite.Composite;
+import org.adaikiss.xun.designpattern.gof.structural.facade.Facade;
+import org.adaikiss.xun.designpattern.gof.structural.proxy.Proxy;
+
 /**
  * <b>Decorator</b>
  * 

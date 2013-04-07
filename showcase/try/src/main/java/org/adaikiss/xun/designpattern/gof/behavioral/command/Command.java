@@ -3,6 +3,9 @@
  */
 package org.adaikiss.xun.designpattern.gof.behavioral.command;
 
+import org.adaikiss.xun.designpattern.gof.behavioral.memento.Memento;
+import org.adaikiss.xun.designpattern.gof.structural.composite.Composite;
+
 /**
  * <b>Command</b>
  * 
@@ -17,8 +20,8 @@ package org.adaikiss.xun.designpattern.gof.behavioral.command;
  *   Decouple the object with its trigger
  *   Easily to be extensible by not touching the old structure.
  *   Related patterns include
- *     Composite, which aggregates an object. You may combine it into a composite command pattern. In general, a composite command is an instance of the composite.
- *     Memento, which keeps state of an object. Command supports undo and redo.
+ *     {@link Composite}, which aggregates an object. You may combine it into a composite command pattern. In general, a composite command is an instance of the composite.
+ *     {@link Memento}, which keeps state of an object. Command supports undo and redo.
  * </pre>
  * 
  * @author hlw

@@ -6,6 +6,8 @@ package org.adaikiss.xun.designpattern.gof.behavioral.chainofresponsibility;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.adaikiss.xun.designpattern.gof.structural.composite.Composite;
+
 /**
  * <b>Chain of Responsibility</b>
  * 
@@ -18,7 +20,7 @@ import java.util.Date;
  *   Reduce coupling.
  *   Flexible in handling a request.
  *   Related patterns include
- *     Composite, which a chain of responsibility pattern is often applied in conjunction with.
+ *     {@link Composite}, which a chain of responsibility pattern is often applied in conjunction with.
  * </pre>
  * 
  * @author hlw

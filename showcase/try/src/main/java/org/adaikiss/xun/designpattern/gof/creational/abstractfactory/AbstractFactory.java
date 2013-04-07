@@ -5,13 +5,18 @@ package org.adaikiss.xun.designpattern.gof.creational.abstractfactory;
 
 import org.adaikiss.xun.designpattern.gof.creational.abstractfactory.WeaponFactory.WeaponType;
 import org.adaikiss.xun.designpattern.gof.creational.factory.Factory;
+import org.adaikiss.xun.designpattern.gof.creational.prototype.Prototype;
+import org.adaikiss.xun.designpattern.gof.creational.singleton.Singleton;
+import org.adaikiss.xun.designpattern.gof.structural.facade.Facade;
 
 /**
  * <b>Abstract Factory</b>
+ * 
  * <pre>
  * Definition
  *   Provides one level of interface higher than the {@link Factory} pattern. 
  *   It is used to return one of several factories.
+ * 
  * Where to use & benefits
  *   Creates families of related or dependent objects like Kit.
  *   Provides a class library of products, exposing interface not implementation.

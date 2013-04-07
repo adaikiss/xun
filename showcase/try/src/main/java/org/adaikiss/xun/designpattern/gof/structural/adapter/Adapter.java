@@ -3,6 +3,8 @@
  */
 package org.adaikiss.xun.designpattern.gof.structural.adapter;
 
+import org.adaikiss.xun.designpattern.gof.structural.bridge.Bridge;
+import org.adaikiss.xun.designpattern.gof.structural.decorator.Decorator;
 import org.adaikiss.xun.designpattern.gof.structural.proxy.Proxy;
 
 /**
@@ -36,9 +38,10 @@ public class Adapter {
 	 */
 	public static void main(String[] args) {
 		ByteArrayReceiver byteArrayReceiver = new ByteArrayReceiver();
-		byte[] bytes = new byte[]{Byte.parseByte("1"), Byte.parseByte("2")};
+		byte[] bytes = new byte[] { Byte.parseByte("1"), Byte.parseByte("2") };
 		byteArrayReceiver.receive(bytes);
-		ByteArrayReceiverAdapter adapter = new ByteArrayReceiverAdapter(byteArrayReceiver);
+		ByteArrayReceiverAdapter adapter = new ByteArrayReceiverAdapter(
+				byteArrayReceiver);
 		adapter.receive("12");
 	}
 
