@@ -3,6 +3,11 @@
  */
 package org.adaikiss.xun.designpattern.gof.structural.composite;
 
+import org.adaikiss.xun.designpattern.gof.behavioral.iterator.Iterator;
+import org.adaikiss.xun.designpattern.gof.behavioral.visitor.Visitor;
+import org.adaikiss.xun.designpattern.gof.structural.decorator.Decorator;
+import org.adaikiss.xun.designpattern.gof.structural.flyweight.Flyweight;
+
 /**
  * <b>Composite</b>
  * 
@@ -28,7 +33,8 @@ public class Composite {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(new Company("XUN LTD.", new CustomerServiceDepartment(),
+		System.out.println(new Company("XUN LTD.",
+				new CustomerServiceDepartment(),
 				new TechnologySupportDepartment(), new MarketDepartment()));
 	}
 

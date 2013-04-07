@@ -3,6 +3,10 @@
  */
 package org.adaikiss.xun.designpattern.gof.structural.facade;
 
+import org.adaikiss.xun.designpattern.gof.behavioral.mediator.Mediator;
+import org.adaikiss.xun.designpattern.gof.creational.abstractfactory.AbstractFactory;
+import org.adaikiss.xun.designpattern.gof.creational.singleton.Singleton;
+
 /**
  * <b>Facade</b>
  * 

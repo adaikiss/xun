@@ -3,6 +3,11 @@
  */
 package org.adaikiss.xun.designpattern.gof.structural.flyweight;
 
+import org.adaikiss.xun.designpattern.gof.behavioral.state.State;
+import org.adaikiss.xun.designpattern.gof.behavioral.strategy.Strategy;
+import org.adaikiss.xun.designpattern.gof.creational.factory.Factory;
+import org.adaikiss.xun.designpattern.gof.structural.composite.Composite;
+
 /**
  * <b>Flyweight</b>
  * 
@@ -31,7 +36,7 @@ public class Flyweight {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		for(int i = 0;i<100;i++){
+		for (int i = 0; i < 100; i++) {
 			java.util.Random rand = new java.util.Random();
 			SnowFaller.fall(rand.nextInt(10));
 		}
