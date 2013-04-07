@@ -57,6 +57,11 @@
 			<name>Android ROME Feed Reader Repository</name>
 			<url>https://android-rome-feed-reader.googlecode.com/svn/maven2/releases</url>
 		</repository>
+		<repository>
+			<!-- activiti -->
+			<id>Alfresco Maven Repository</id>
+			<url>https://maven.alfresco.com/nexus/content/groups/public/</url>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -1594,6 +1599,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.2</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9</version>
 				</plugin>
 
 				<plugin>
