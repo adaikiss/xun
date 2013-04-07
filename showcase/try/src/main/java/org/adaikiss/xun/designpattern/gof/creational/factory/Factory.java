@@ -3,12 +3,11 @@
  */
 package org.adaikiss.xun.designpattern.gof.creational.factory;
 
+import org.adaikiss.xun.designpattern.gof.behavioral.templatemethod.TemplateMethod;
 import org.adaikiss.xun.designpattern.gof.creational.abstractfactory.AbstractFactory;
 import org.adaikiss.xun.designpattern.gof.creational.factory.WeaponFactory.WeaponType;
 import org.adaikiss.xun.designpattern.gof.creational.prototype.Prototype;
 import org.adaikiss.xun.designpattern.gof.creational.singleton.Singleton;
-
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 
 /**
  * <b>Factory Method</b>
@@ -31,7 +30,7 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
  *   Follow naming conventions to help other developers to recognize the code structure.
  *   Related patterns include
  *     {@link AbstractFactory} , which is a layer higher than a factory method.
- *     {@link Template} method, which defines a skeleton of an algorithm to defer some steps to subclasses or avoid subclasses
+ *     {@link TemplateMethod}, which defines a skeleton of an algorithm to defer some steps to subclasses or avoid subclasses
  *     {@link Prototype}, which creates a new object by copying an instance, so it reduces subclasses.
  *     {@link Singleton}, which makes a returned factory method unique.
  * </pre>

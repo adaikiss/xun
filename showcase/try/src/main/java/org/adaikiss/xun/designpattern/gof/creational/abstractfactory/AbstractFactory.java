@@ -29,7 +29,7 @@ import org.adaikiss.xun.designpattern.gof.structural.facade.Facade;
  *     {@link Factory} method, which is often implemented with an abstract factory.
  *     {@link Singleton}, which is often implemented with an abstract factory.
  *     {@link Prototype}, which is often implemented with an abstract factory.
- *     {@link Façade}, which is often used with an abstract factory by providing an interface for creating implementing class.
+ *     {@link Facade}, which is often used with an abstract factory by providing an interface for creating implementing class.
  * </pre>
  * 
  * @author hlw
