@@ -49,6 +49,12 @@ public class HelloAndroidActivity extends Activity {
 				case R.id.formBtn:
 					forward(FormActivity.class);
 					break;
+				case R.id.checkedTextViewBtn:
+					forward(CheckedTextViewActivity.class);
+					break;
+				case R.id.listViewBtn:
+					forward(ListViewActivity.class);
+					break;
 				}
 				//Toast.makeText(HelloAndroidActivity.this, "点击了按钮" + btn.getId() + btn.getImeActionId(), Toast.LENGTH_LONG).show();
 			}
@@ -60,6 +66,8 @@ public class HelloAndroidActivity extends Activity {
 		Button absoluteLayoutBtn = (Button)findViewById(R.id.absoluteLayoutBtn);
 		Button relativeLayoutBtn = (Button)findViewById(R.id.relativeLayoutBtn);
 		Button formBtn = (Button)findViewById(R.id.formBtn);
+		Button checkedTextViewBtn = (Button)findViewById(R.id.checkedTextViewBtn);
+		Button listViewBtn = (Button)findViewById(R.id.listViewBtn);
 		
 		linearLayoutBtn.setOnClickListener(btnClickListener);
 		frameLayoutBtn.setOnClickListener(btnClickListener);
@@ -67,6 +75,8 @@ public class HelloAndroidActivity extends Activity {
 		absoluteLayoutBtn.setOnClickListener(btnClickListener);
 		relativeLayoutBtn.setOnClickListener(btnClickListener);
 		formBtn.setOnClickListener(btnClickListener);
+		checkedTextViewBtn.setOnClickListener(btnClickListener);
+		listViewBtn.setOnClickListener(btnClickListener);
 	}
 
 	private void forward(Class<?> activity) {

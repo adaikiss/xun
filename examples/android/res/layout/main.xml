@@ -50,18 +50,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tableLayout" />
+
         <Button
             android:id="@+id/formBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="form" />
     </LinearLayout>
-    <!--
-     <TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-    -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/checkedTextViewBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CheckedTextView" />
+        <Button
+            android:id="@+id/listViewBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ListView" />
+    </LinearLayout>
 
 </LinearLayout>

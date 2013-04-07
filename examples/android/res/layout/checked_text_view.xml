@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="multipleChoice" /> -->
+
+        <CheckedTextView
+            android:id="@+id/checked_text_view_tiny"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:gravity="center_vertical"
+            android:text="Tiny" />
+
+        <CheckedTextView
+            android:id="@+id/checked_text_view_loin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:text="Loin" />
+
+        <CheckedTextView
+            android:id="@+id/checked_text_view_storm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:text="Storm" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/checked_text_view_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="submit" />
+    </LinearLayout>
+
+</LinearLayout>

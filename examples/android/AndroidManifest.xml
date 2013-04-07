@@ -18,6 +18,8 @@
     <activity android:name=".layout.AbsoluteLayoutActivity"/>
     <activity android:name=".layout.RelativeLayoutActivity"/>
     <activity android:name=".form.FormActivity"/>
+    <activity android:name=".CheckedTextViewActivity"/>
+    <activity android:name=".ListViewActivity"/>
   </application>
 
 </manifest>
