@@ -1,8 +1,10 @@
 package org.adaikiss.xun.mvc.config;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,15 +24,19 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
-@Import({AppConfig.class})
+@Import({ AppConfig.class, FreeMarkerConfig.class })
 @EnableScheduling
 @ComponentScan(basePackages = { "org.adaikiss.xun.controller",
 		"org.adaikiss.xun.directive" }, includeFilters = {
 		@ComponentScan.Filter(value = org.springframework.stereotype.Controller.class, type = FilterType.ANNOTATION),
 		@ComponentScan.Filter(value = org.springframework.stereotype.Component.class, type = FilterType.ANNOTATION) })
 public class WebMvcConfig extends WebMvcConfigurationSupport {
+
+	@Autowired
+	private FreeMarkerViewResolver freemarkerViewResolver;
 
 	@Bean
 	public ContentNegotiationManager mvcContentNegotiationManager() {
@@ -45,7 +51,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 		return contentNegotiationManager;
 	}
 
-	protected Map<String, MediaType> getDefaultMediaTypes(){
+	protected Map<String, MediaType> getDefaultMediaTypes() {
 		Map<String, MediaType> mediaTypes = super.getDefaultMediaTypes();
 		mediaTypes.put("html", MediaType.TEXT_HTML);
 		return mediaTypes;
@@ -85,6 +91,8 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	public ViewResolver viewResolver() {
 		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
 		resolver.setContentNegotiationManager(mvcContentNegotiationManager());
+		resolver.setViewResolvers(Arrays
+				.asList(new ViewResolver[] { freemarkerViewResolver }));
 		return resolver;
 	}
 }
