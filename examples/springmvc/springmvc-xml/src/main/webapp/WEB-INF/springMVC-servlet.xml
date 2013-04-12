@@ -40,9 +40,9 @@
 <!-- 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-
+ -->
 	<bean id="freemarkerViewResolver"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		class="org.adaikiss.xun.freemarker.RichFreeMarkerViewResolver">
 		<property name="contentType" value="text/html; charset=UTF-8" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<property name="requestContextAttribute" value="rc" />
@@ -51,29 +51,9 @@
 	</bean>
 	<bean id="freemarkerConfig"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-		<property name="freemarkerVariables">
-			<map>
-			</map>
-		</property>
-		<property name="templateLoaderPath" value="/WEB-INF/tpl/" />
-		<property name="freemarkerSettings">
-			<props>
-				<prop key="tag_syntax">auto_detect</prop>
-				<prop key="template_update_delay">0</prop>
-				<prop key="defaultEncoding">UTF-8</prop>
-				<prop key="url_escaping_charset">UTF-8</prop>
-				<prop key="locale">zh_CN</prop>
-				<prop key="boolean_format">true,false</prop>
-				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-				<prop key="date_format">yyyy-MM-dd</prop>
-				<prop key="time_format">HH:mm:ss</prop>
-				<prop key="number_format">0.######</prop>
-				<prop key="whitespace_stripping">true</prop>
-				<prop key="classic_compatible">true</prop>
-
-			</props>
-		</property>
-	</bean>-->
+		<property name="templateLoaderPath" value="classpath:tpl/" />
+		<property name="configLocation" value="classpath:freemarker.properties"/>
+	</bean>
 
 	<util:map id="mediaTypes">
 		<entry>
@@ -110,5 +90,10 @@
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1" />
 		<property name="contentNegotiationManager" ref="contentNegotiationManager" />
+		<property name="viewResolvers">
+			<list>
+				<ref bean="freemarkerViewResolver"/>
+			</list>
+		</property>
 	</bean>
 </beans>

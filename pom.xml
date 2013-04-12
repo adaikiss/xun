@@ -1470,6 +1470,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					<version>2.1.1</version>
 					<configuration>
 						<warName>kay-${project.artifactId}</warName>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 

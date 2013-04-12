@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 //@JsonAutoDetect(fieldVisibility = Visibility.NONE, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE, isGetterVisibility = Visibility.NONE)
 @JsonInclude(Include.NON_EMPTY)
 public class User extends IdEntity {
-	private String niceName;
+	private String nickName;
 	private String displayName;
 	private String loginName;
 	@JsonIgnore
@@ -30,12 +30,12 @@ public class User extends IdEntity {
 	private UserStatus status;
 	private Credit credit;
 
-	public String getNiceName() {
-		return niceName;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNiceName(String niceName) {
-		this.niceName = niceName;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getDisplayName() {

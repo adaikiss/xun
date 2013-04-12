@@ -27,7 +27,7 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
-@Import({ AppConfig.class, FreeMarkerConfig.class })
+@Import({ AppConfig.class, FreeMarkerViewConfig.class })
 @EnableScheduling
 @ComponentScan(basePackages = { "org.adaikiss.xun.controller",
 		"org.adaikiss.xun.directive" }, includeFilters = {
@@ -40,6 +40,11 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	@Bean
 	public ContentNegotiationManager mvcContentNegotiationManager() {
+		// ContentNegotiationStrategy[] strategies = new
+		// ContentNegotiationStrategy[] {
+		// new ParameterContentNegotiationStrategy(getDefaultMediaTypes()),
+		// new PathExtensionContentNegotiationStrategy(
+		// getDefaultMediaTypes()) };
 		ContentNegotiationManager contentNegotiationManager = super
 				.mvcContentNegotiationManager();
 		contentNegotiationManager

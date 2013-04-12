@@ -3,10 +3,10 @@
  */
 package org.adaikiss.xun.mvc.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.adaikiss.xun.freemarker.RichFreeMarkerViewResolver;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
@@ -14,13 +14,12 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
  * @author hlw
  *
  */
-public class FreeMarkerConfig {
-	@Autowired
-	private ResourceLoader resourceLoader;
+@Configuration
+public class FreeMarkerViewConfig {
 
 	@Bean
 	public FreeMarkerViewResolver freemarkerViewResolver(){
-		FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+		FreeMarkerViewResolver resolver = new RichFreeMarkerViewResolver();
 		resolver.setContentType("text/html; charset=UTF-8");
 		resolver.setExposeSpringMacroHelpers(true);
 		resolver.setRequestContextAttribute("rc");
@@ -32,7 +31,7 @@ public class FreeMarkerConfig {
 	@Bean
 	public FreeMarkerConfigurer freemarkerConfig(){
 		FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
-		configurer.setTemplateLoaderPath("/WEB-INF/tpl/");
+		configurer.setTemplateLoaderPath("classpath:tpl/");
 		configurer.setConfigLocation(new ClassPathResource("freemarker.properties"));
 		return configurer;
 	}

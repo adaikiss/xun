@@ -3,7 +3,7 @@
 <log4j:configuration>
 	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d [%t] %-5p %-40.40c -%m%n" />
+			<param name="ConversionPattern" value="%d [%t] %-5p %c -%m%n" />
 		</layout>
 	</appender>
 
@@ -11,7 +11,7 @@
 		<param name="File" value="target/logs/app.log" />
 		<param name="append" value="false"/>
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d [%t] %-5p %-40.40c -%m%n" />
+			<param name="ConversionPattern" value="%d [%t] %-5p %c -%m%n" />
 		</layout>
 	</appender>
 
