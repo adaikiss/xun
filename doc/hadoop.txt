@@ -1,0 +1,252 @@
+Hadoop 2.0 Install Tutorial (0.23.x)
+The recent version of Hadoop 2.0 has different directory structure as compared to old version.
+
+This post explains a simple method to install hadoop 2.0 in your computer. ( Hadoop 0.23 Installation )
+
+There are multiple ways to do this , and one of them is presented below.
+
+If you want to install old version of hadoop then please see other post.
+
+Purpose of post is to explain how to install hadoop in your computer. This post considers that you have Linux based system available for use. I am doing this on Ubuntu system
+
+Before you begin create a separate user named hadoop in the system and do all these operations in that.
+
+This document covers the Steps to
+1) Configure SSH
+2) Install JDK
+3) Install Hadoop
+
+Update your repository
+#sudo apt-get update
+
+You can directly copy the commands from there and run in your system
+
+Hadoop requires that various systems present in cluster can talk to each other freely. Hadoop use SSH to prove the identity for connection.
+
+Let's Download and configure SSH
+
+#sudo apt-get install openssh-server openssh-client
+#ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+#cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+
+#sudo chmod go-w $HOME $HOME/.ssh
+#sudo chmod 600 $HOME/.ssh/authorized_keys
+#sudo chown `whoami` $HOME/.ssh/authorized_keys
+
+Testing your SSH
+
+#ssh localhost
+Say yes
+
+It should open connection with SSH
+#exit
+This will close the SSH
+
+Java 1.6 is mandatory for running hadoop
+
+Lets Download and install JDK
+
+#sudo mkdir /usr/java
+#cd /usr/java
+#sudo wget http://download.oracle.com/otn-pub/java/jdk/6u31-b04/jdk-6u31-linux-i586.bin
+
+Wait till the jdk download completes
+Install java
+#sudo chmod o+w jdk-6u31-linux-i586.bin
+#sudo chmod +x jdk-6u31-linux-i586.bin
+#sudo ./jdk-6u31-linux-i586.bin
+
+Now comes the Hadoop :)
+
+Download the latest tar in your computer for Hadoop 2.0.x and unzip it to some directory lets say HADOOP_PREFIX
+
+Export the following environment variables in your computer
+
+export HADOOP_PREFIX="/home/hadoop/software/hadoop-2.0.0-alpha"
+export PATH=$PATH:$HADOOP_PREFIX/bin
+export PATH=$PATH:$HADOOP_PREFIX/sbin
+
+export HADOOP_MAPRED_HOME=${HADOOP_PREFIX}
+export HADOOP_COMMON_HOME=${HADOOP_PREFIX}
+export HADOOP_HDFS_HOME=${HADOOP_PREFIX}
+export YARN_HOME=${HADOOP_PREFIX}
+
+Restart your computer once so that env / path variables come into action
+
+In Hadoop 2.x version /etc/hadoop is the default conf directory
+
+We need to modify / create following property files in the /etc/hadoop directory
+
+Edit core-site.xml with following contents
+
+<configuration>
+
+<property>
+    <name>fs.default.name</name>
+    <value>hdfs://localhost:8020</value>
+    <description>The name of the default file system.  Either the
+      literal string "local" or a host:port for NDFS.
+    </description>
+    <final>true</final>
+  </property>
+</configuration>
+
+Edit hdfs-site.xml with following contents
+
+<configuration>
+<property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:/home/hadoop/workspace/hadoop_space/hadoop23/dfs/name</value>
+    <description>Determines where on the local filesystem the DFS name node
+      should store the name table.  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:/home/hadoop/workspace/hadoop_space/hadoop23/dfs/data</value>
+    <description>Determines where on the local filesystem an DFS data node
+       should store its blocks.  If this is a comma-delimited
+       list of directories, then data will be stored in all named
+       directories, typically on different devices.
+       Directories that do not exist are ignored.
+    </description>
+    <final>true</final>
+  </property>
+
+<property>
+    <name>dfs.replication</name>
+    <value>1</value>
+  </property>
+
+<property>
+<name>dfs.permissions</name>
+<value>false</value>
+</property>
+
+</configuration>
+
+The path
+
+file:/home/hadoop/workspace/hadoop_space/hadoop23/dfs/name AND
+
+file:/home/hadoop/workspace/hadoop_space/hadoop23/dfs/data
+
+are some folders in your computer which would give space to store data and name edit files
+
+Path should be specified as URI
+
+Create a file mapred-site.xml inside /etc/hadoop with following contents
+
+ 
+
+<configuration>
+<property>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
+</property>
+
+<property>
+    <name>mapred.system.dir</name>
+    <value>file:/home/hadoop/workspace/hadoop_space/hadoop23/mapred/system</value>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>mapred.local.dir</name>
+    <value>file:/home/hadoop/workspace/hadoop_space/hadoop23/mapred/local</value>
+    <final>true</final>
+  </property>
+
+</configuration>
+
+ 
+
+The path
+
+file:/home/hadoop/workspace/hadoop_space/hadoop23/mapred/system  AND
+
+file:/home/hadoop/workspace/hadoop_space/hadoop23/mapred/local
+
+are some folders in your computer which would give space to store data
+
+Path should be specified as URI
+
+ 
+
+Edit yarn-site.xml with following contents
+
+<configuration>
+<property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce.shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+
+</configuration>
+
+Inside /etc/hadoop directory
+
+Create one file hadoop-env.sh and add following to it
+
+export JAVA_HOME=/usr/java/jdk1.6.0_31
+
+Change the path above for your JAVA_HOME as per location where it is inside your PC
+
+Save it and now we are ready to format
+
+ 
+
+Format the namenode
+
+# hdfs namenode ¨Cformat
+
+Say Yes and let it complete the format
+
+ 
+
+Time to start the daemons
+
+# hadoop-daemon.sh start namenode
+
+# hadoop-daemon.sh start datanode
+
+You can also start both of them together by
+
+# start-dfs.sh
+
+Start Yarn Daemons
+
+# yarn-daemon.sh start resourcemanager
+
+# yarn-daemon.sh start nodemanager
+
+You can also start all yarn daemons together by
+
+# start-yarn.sh
+
+Time to check if Daemons have started
+
+Enter the command
+
+# jps
+
+
+2539 NameNode
+2744 NodeManager
+3075 Jps
+3030 DataNode
+2691 ResourceManager
+
+Time to launch UI
+
+Open the localhost:8088 to see the Resource Manager page
+
+Done :)
+
+Happy Hadooping :)
