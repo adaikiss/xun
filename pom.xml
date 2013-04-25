@@ -62,6 +62,11 @@
 			<id>Alfresco Maven Repository</id>
 			<url>https://maven.alfresco.com/nexus/content/groups/public/</url>
 		</repository>
+		<repository>
+			<!-- proxool -->
+			<id>Fusesource Maven Repository</id>
+			<url>http://repo.fusesource.com/nexus/content/groups/public</url>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -1836,5 +1841,6 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<module>javascript</module>
 		<module>jsr</module>
 		<module>showcase</module>
+		<module>static</module>
 	</modules>
 </project>
