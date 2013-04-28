@@ -1,11 +1,12 @@
 <html>
 <head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-<script src="//ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
-<link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
-<script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+<script src="http://localhost/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<script src="http://localhost/libs/prototype/1.7.1.0/prototype.js"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost/libs/prettify/prettify.css">
+<script src="http://localhost/libs/prettify/prettify.js"></script>
 <script type="text/javascript">
 jQuery(function($){
+//message converter
   var resultContainer = $('.messageconverter .result');
   $('.messageconverter .btn').click(function(){
     var span = $(this);
@@ -31,6 +32,7 @@ jQuery(function($){
       }
     });
   });
+//crud
   var crudResult = $('.crud .result');
   $('.crud .btn').click(function(){
     var _for = $(this).attr('data-for');
@@ -38,12 +40,26 @@ jQuery(function($){
       crudResult.load('${base}/user/add');
     }
     if(_for == 'load'){
-      crudResult.load('${base}/user', function(){
-        crudResult.find('.load').click(function(){
-          crudResult.load($(this).attr('data-url'));
-        });
-      });
+      crudResult.load('${base}/user');
     }
+  });
+  $('.crud').on('click', '.load', function(){
+    var el = $(this);
+    var type = el.attr('data-type')||'GET';
+    var data = {};
+    /**if(type == 'DELETE'){
+      type = 'POST';
+      data['_method'] = 'DELETE';
+    }; **/
+    $.ajax({
+      url : el.attr('data-url'),
+      type : type,
+      data : data,
+      dataType : 'html',
+      success : function(result){
+        crudResult.html(result);
+      }
+    });
   });
   $('.crud').on('click', 'input[type="button"]', function(){
     var form = $(this).closest('form');
@@ -68,6 +84,7 @@ a.Extension { display: inline-block; width: 5em; height:2.5em; border: 1px solid
 	cursor:pointer;
 }
 .load{cursor:pointer;}
+.error{color:red;}
 </style>
 </head>
 <body>
@@ -86,6 +103,5 @@ a.Extension { display: inline-block; width: 5em; height:2.5em; border: 1px solid
 <span class="btn" data-for="create">create</span>
 <span class="btn" data-for="load">load</span>
 </div>
-<h2>validation:</h2>
 </body>
 </html>

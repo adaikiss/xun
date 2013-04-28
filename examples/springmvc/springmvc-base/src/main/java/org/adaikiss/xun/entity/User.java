@@ -2,13 +2,19 @@ package org.adaikiss.xun.entity;
 
 import java.util.Date;
 
+import javax.validation.constraints.Null;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.adaikiss.xun.enumeration.UserStatus;
+import org.adaikiss.xun.validation.group.Create;
+import org.adaikiss.xun.validation.group.Update;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -20,13 +26,18 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class User extends IdEntity {
 	private String nickName;
 	private String displayName;
+	@NotBlank
 	private String loginName;
 	@JsonIgnore
 	@XmlTransient
 	private String password;
+	@Null(groups = {Create.class, Update.class})
 	private Date registered;
+	@Email
 	private String email;
+	@URL
 	private String url;
+	@Null(groups = {Create.class, Update.class})
 	private UserStatus status;
 	private Credit credit;
 
