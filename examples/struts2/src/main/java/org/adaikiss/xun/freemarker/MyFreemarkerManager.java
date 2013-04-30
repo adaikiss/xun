@@ -5,9 +5,7 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 
 import org.apache.struts2.views.freemarker.FreemarkerManager;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springside.modules.utils.spring.SpringContextHolder;
 
 import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;
@@ -18,8 +16,8 @@ import freemarker.template.TemplateException;
  * @author hlw
  * 
  */
-@Component("freemarkerManager")
-public class MyFreemarkerManager extends FreemarkerManager {
+//@Component("freemarkerManager")
+public class MyFreemarkerManager extends FreemarkerManager{
 
 	@Override
 	protected Configuration createConfiguration(ServletContext servletContext) throws TemplateException {
@@ -29,11 +27,11 @@ public class MyFreemarkerManager extends FreemarkerManager {
 		configuration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
 
 		// 取出上下文
-		ApplicationContext applicationContext = WebApplicationContextUtils
-				.getRequiredWebApplicationContext(servletContext);
+//		ApplicationContext applicationContext = WebApplicationContextUtils
+//				.getRequiredWebApplicationContext(servletContext);
 
 		// 获取实现TemplateDirectiveModel的bean
-		Map<String, TemplateDirectiveModel> beans = applicationContext.getBeansOfType(TemplateDirectiveModel.class);
+		Map<String, TemplateDirectiveModel> beans = SpringContextHolder.getApplicationContext().getBeansOfType(TemplateDirectiveModel.class);
 
 		for (String key : beans.keySet()) {
 			configuration.setSharedVariable(key, beans.get(key));

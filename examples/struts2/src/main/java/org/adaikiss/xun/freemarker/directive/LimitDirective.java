@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.adaikiss.xun.freemarker.FreemarkerUtil;
-import org.adaikiss.xun.utils.StringUtil;
+//import org.adaikiss.xun.utils.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +29,7 @@ public class LimitDirective implements TemplateDirectiveModel {
 		int limit = FreemarkerUtil.parseInteger("limit", params, 12);
 		String ellipsis = FreemarkerUtil.parseString("ellipsis", params, "...");
 		if (!StringUtils.isBlank(value)) {
-			value = StringUtil.limit(value, limit, ellipsis, 2);
+			//value = StringUtil.limit(value, limit, ellipsis, 2);
 		}
 		env.getOut().write(value);
 	}

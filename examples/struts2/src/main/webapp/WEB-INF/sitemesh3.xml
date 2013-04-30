@@ -5,4 +5,5 @@
   	<mapping path="/js" exclude="true"/>
   	<mapping path="/app.html" exclude="true"/>
   	<mapping path="/designer.html" exclude="true"/>
+  	<mapping path="/unittest/**" exclude="true"/>
 </sitemesh>

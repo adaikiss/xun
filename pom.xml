@@ -62,6 +62,12 @@
 			<id>Alfresco Maven Repository</id>
 			<url>https://maven.alfresco.com/nexus/content/groups/public/</url>
 		</repository>
+		<repository>
+			<!-- cloudera hadoop -->
+			<id>Cloudera Maven Repository</id>
+			<url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+		</repository>
+
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -308,6 +314,16 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			<dependency>
 				<groupId>org.apache.hadoop</groupId>
 				<artifactId>hadoop-core</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-hdfs</artifactId>
+				<version>${hadoop.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.hadoop</groupId>
+				<artifactId>hadoop-client</artifactId>
 				<version>${hadoop.version}</version>
 			</dependency>
 			<dependency>
@@ -1238,6 +1254,13 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			</dependency>
 
 			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts2-junit-plugin</artifactId>
+				<version>${struts2.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest-core</artifactId>
 				<version>${hamcrest.version}</version>
@@ -1756,7 +1779,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<mail.version>1.4.5</mail.version>
 		<activation.version>1.1.1</activation.version>
 		<!-- log -->
-		<slf4j.version>1.6.4</slf4j.version>
+		<slf4j.version>1.7.5</slf4j.version>
 		<!--<log4jdbc4.version>1.2.1</log4jdbc4.version>-->
 		<log4jdbc-remix>0.2.7</log4jdbc-remix>
 		<log4j.version>1.2.16</log4j.version>
@@ -1786,9 +1809,9 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<!-- test -->
 		<dbunit.version>2.4.8</dbunit.version>
 		<easymock.version>3.0</easymock.version>
-		<mockito.version>1.9.0</mockito.version>
-		<powermock.version>1.4.12</powermock.version>
-		<junit.version>4.10</junit.version>
+		<mockito.version>1.9.5</mockito.version>
+		<powermock.version>1.5</powermock.version>
+		<junit.version>4.11</junit.version>
 		<fitnesse.version>20080812</fitnesse.version>
 		<selenium.version>2.31.0</selenium.version>
 		<greenmail.version>1.3.1b</greenmail.version>
@@ -1818,7 +1841,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<activemq.version>5.5.1</activemq.version>
 		<activiti.version>5.9</activiti.version>
 		<netty.version>3.2.7.Final</netty.version>
-		<hadoop.version>1.1.2</hadoop.version>
+		<hadoop.version>2.0.0-mr1-cdh4.2.1</hadoop.version>
 		<spring-data-hadoop.version>1.0.0.RELEASE</spring-data-hadoop.version>
 		<mrunit.version>1.0.0</mrunit.version>
 		<codegen.version>0.4.5</codegen.version>

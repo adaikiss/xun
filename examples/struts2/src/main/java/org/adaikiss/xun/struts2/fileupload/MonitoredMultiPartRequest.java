@@ -13,7 +13,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.adaikiss.xun.cache.MemoryCache;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.RequestContext;
@@ -22,7 +21,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts2.StrutsConstants;
 import org.apache.struts2.dispatcher.multipart.MultiPartRequest;
-import org.springside.modules.utils.spring.SpringContextHolder;
 
 import com.opensymphony.xwork2.inject.Inject;
 import com.opensymphony.xwork2.util.logging.Logger;
@@ -95,9 +93,9 @@ public class MonitoredMultiPartRequest implements MultiPartRequest {
 				if (params.get("fileuploadkey") != null && params.get("fileuploadkey").size() > 0) {
 					fileuploadkey = params.get("fileuploadkey").get(0);
 				}
-				SpringContextHolder.getBean(MemoryCache.class).set(
-						ProgressMonitor.SESSION_PROGRESS_MONITOR + sessionId + fileuploadkey, progressMonitor,
-						sessionId);
+//				SpringContextHolder.getBean(MemoryCache.class).set(
+//						ProgressMonitor.SESSION_PROGRESS_MONITOR + sessionId + fileuploadkey, progressMonitor,
+//						sessionId);
 				progressMonitor = null;
 			}
 		}

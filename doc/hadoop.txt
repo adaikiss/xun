@@ -1,3 +1,25 @@
+Hadoop default port
+HDFS	Namenode	50070	dfs.http.address
+Datanodes	50075	dfs.datanode.http.address
+Secondarynamenode	50090	dfs.secondary.http.address
+Backup/Checkpoint node?	50105	dfs.backup.http.address
+MR	Jobracker	50030	mapred.job.tracker.http.address
+Tasktrackers	50060	mapred.task.tracker.http.address
+
+Daemon	Default Port	Configuration Parameter	Protocol	Used for
+Namenode	8020	fs.default.name?	IPC: ClientProtocol	Filesystem metadata operations.
+Datanode	50010	dfs.datanode.address	Custom Hadoop Xceiver: DataNode and DFSClient	DFS data transfer
+Datanode	50020	dfs.datanode.ipc.address	IPC: InterDatanodeProtocol, ClientDatanodeProtocol
+ClientProtocol	Block metadata operations and recovery
+Backupnode	50100	dfs.backup.address	Same as namenode	HDFS Metadata Operations
+Jobtracker	Ill-defined.?	mapred.job.tracker	IPC: JobSubmissionProtocol, InterTrackerProtocol	Job submission, task tracker heartbeats.
+Tasktracker	127.0.0.1:0ก่	mapred.task.tracker.report.address	IPC: TaskUmbilicalProtocol	Communicating with child jobs
+? This is the port part of hdfs://host:8020/.
+? Default is not well-defined. Common values are 8021, 9001, or 8012. See MAPREDUCE-566.
+ก่ Binds to an unused local port.
+
+
+
 Hadoop 2.0 Install Tutorial (0.23.x)
 The recent version of Hadoop 2.0 has different directory structure as compared to old version.
 

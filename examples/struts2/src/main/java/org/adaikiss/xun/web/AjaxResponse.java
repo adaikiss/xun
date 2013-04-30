@@ -103,8 +103,12 @@ public class AjaxResponse {
 		}
 		response.setCharacterEncoding(encoding);
 		json.put("success", success);
-		json.put("msg", msg);
-		json.put("data", data);
+		if(msg != null){
+			json.put("msg", msg);
+		}
+		if(data != null){
+			json.put("data", data);
+		}
 		try {
 			write(response.getWriter());
 		} catch (IOException e) {

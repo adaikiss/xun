@@ -25,32 +25,32 @@ public class WordCount {
 			System.err.println("Usage: wordcount  ");
 			System.exit(2);
 		}
-		/** ´´½¨Ò»¸öjob£¬Æğ¸öÃû×ÖÒÔ±ã¸ú×Ù²é¿´ÈÎÎñÖ´ĞĞÇé¿ö **/
+		/** åˆ›å»ºä¸€ä¸ªjobï¼Œèµ·ä¸ªåå­—ä»¥ä¾¿è·Ÿè¸ªæŸ¥çœ‹ä»»åŠ¡æ‰§è¡Œæƒ…å†µ **/
 		Job job = new Job(conf, "word count");
 		/**
-		 * µ±ÔÚhadoop¼¯ÈºÉÏÔËĞĞ×÷ÒµÊ±£¬ĞèÒª°Ñ´úÂë´ò°ü³ÉÒ»¸öjarÎÄ¼ş£¨hadoop»áÔÚ¼¯Èº·Ö·¢Õâ¸öÎÄ¼ş£©£¬
-		 * Í¨¹ıjobµÄsetJarByClassÉèÖÃÒ»¸öÀà£¬hadoop¸ù¾İÕâ¸öÀàÕÒµ½ËùÔÚµÄjarÎÄ¼ş
+		 * å½“åœ¨hadoopé›†ç¾¤ä¸Šè¿è¡Œä½œä¸šæ—¶ï¼Œéœ€è¦æŠŠä»£ç æ‰“åŒ…æˆä¸€ä¸ªjaræ–‡ä»¶ï¼ˆhadoopä¼šåœ¨é›†ç¾¤åˆ†å‘è¿™ä¸ªæ–‡ä»¶ï¼‰ï¼Œ
+		 * é€šè¿‡jobçš„setJarByClassè®¾ç½®ä¸€ä¸ªç±»ï¼Œhadoopæ ¹æ®è¿™ä¸ªç±»æ‰¾åˆ°æ‰€åœ¨çš„jaræ–‡ä»¶
 		 **/
 		job.setJarByClass(WordCount.class);
-		/** ÉèÖÃÒªÊ¹ÓÃµÄmap¡¢combiner¡¢reduceÀàĞÍ **/
+		/** è®¾ç½®è¦ä½¿ç”¨çš„mapã€combinerã€reduceç±»å‹ **/
 		job.setMapperClass(WordCountMapper.class);
 		job.setCombinerClass(WordCountReducer.class);
 		job.setReducerClass(WordCountReducer.class);
 		/**
-		 * ÉèÖÃmapºÍreduceº¯ÊıµÄÊäÈëÀàĞÍ£¬ÕâÀïÃ»ÓĞ´úÂëÊÇÒòÎªÎÒÃÇÊ¹ÓÃÄ¬ÈÏµÄTextInputFormat£¬Õë¶ÔÎÄ±¾ÎÄ¼ş£¬°´ĞĞ½«ÎÄ±¾ÎÄ¼şÇĞ¸î³É
-		 * InputSplits, ²¢ÓÃ LineRecordReader ½« InputSplit ½âÎö³É <key,value&gt:
-		 * ¶Ô£¬key ÊÇĞĞÔÚÎÄ¼şÖĞµÄÎ»ÖÃ£¬value ÊÇÎÄ¼şÖĞµÄÒ»ĞĞ
+		 * è®¾ç½®mapå’Œreduceå‡½æ•°çš„è¾“å…¥ç±»å‹ï¼Œè¿™é‡Œæ²¡æœ‰ä»£ç æ˜¯å› ä¸ºæˆ‘ä»¬ä½¿ç”¨é»˜è®¤çš„TextInputFormatï¼Œé’ˆå¯¹æ–‡æœ¬æ–‡ä»¶ï¼ŒæŒ‰è¡Œå°†æ–‡æœ¬æ–‡ä»¶åˆ‡å‰²æˆ
+		 * InputSplits, å¹¶ç”¨ LineRecordReader å°† InputSplit è§£ææˆ <key,value&gt:
+		 * å¯¹ï¼Œkey æ˜¯è¡Œåœ¨æ–‡ä»¶ä¸­çš„ä½ç½®ï¼Œvalue æ˜¯æ–‡ä»¶ä¸­çš„ä¸€è¡Œ
 		 **/
-		/** ÉèÖÃmapºÍreduceº¯ÊıµÄÊä³ö¼üºÍÊä³öÖµÀàĞÍ **/
+		/** è®¾ç½®mapå’Œreduceå‡½æ•°çš„è¾“å‡ºé”®å’Œè¾“å‡ºå€¼ç±»å‹ **/
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
-		/** ÉèÖÃÊäÈëºÍÊä³öÂ·¾¶ **/
+		/** è®¾ç½®è¾“å…¥å’Œè¾“å‡ºè·¯å¾„ **/
 
 		FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
 
 		FileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));
 
-		/** Ìá½»×÷Òµ²¢µÈ´ıËüÍê³É **/
+		/** æäº¤ä½œä¸šå¹¶ç­‰å¾…å®ƒå®Œæˆ **/
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
 }
