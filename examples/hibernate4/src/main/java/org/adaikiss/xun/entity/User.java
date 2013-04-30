@@ -17,6 +17,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -116,6 +117,8 @@ public class User extends IdEntity {
 
 	@OneToOne
 	@JoinColumn(name = "credit_id")
+	//use "none" to disable foreignKey @link{org.hibernate.mapping.SimpleValue#createForeignKeyOfEntity}
+	@ForeignKey(name = "none")
 	public Credit getCredit() {
 		return credit;
 	}

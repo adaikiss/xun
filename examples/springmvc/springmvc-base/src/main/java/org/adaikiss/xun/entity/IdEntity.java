@@ -3,6 +3,10 @@
  */
 package org.adaikiss.xun.entity;
 
+import javax.validation.constraints.NotNull;
+
+import org.adaikiss.xun.validation.group.Update;
+
 
 
 
@@ -12,6 +16,7 @@ package org.adaikiss.xun.entity;
  * 
  */
 public abstract class IdEntity {
+	@NotNull(groups = {Update.class})
 	protected Long id;
 
 	public Long getId() {

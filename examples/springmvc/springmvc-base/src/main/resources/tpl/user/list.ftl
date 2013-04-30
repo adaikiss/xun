@@ -20,7 +20,7 @@
     <td>${user.loginName}</td>
     <td>${user.email}</td>
     <td>${user.url}</td>
-    <td><span class="load" data-url="${base}/user/${user.id}/edit">edit</span></td>
+    <td><span class="load" data-url="${base}/user/${user.id}/edit">edit</span><span class="load" data-url="${base}/user/${user.id}" data-type="DELETE">delete</span></td>
   </tr>
   </#list>
 <#else>
