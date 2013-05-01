@@ -10,5 +10,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>selenium</module>
+		<module>unit</module>
 	</modules>
 </project>
