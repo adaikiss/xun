@@ -96,16 +96,29 @@ public class JUnitShowcaseTest {
 
 	@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 	public static class ShowFixedOrder{
-		private int flag = 0;
+		private static int flag = 0;
 
 		@Test
 		public void testB(){
+			System.out.println(2);
 			assertEquals("this test should run after testA!", 1, flag);
 		}
 
 		@Test
 		public void testA(){
+			System.out.println(1);
 			assertEquals("this test should run first!", 0, flag++);
+		}
+	}
+
+	public static class ShowTimeout{
+		@Test(timeout = 1000)
+		public void testGetValue() {
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

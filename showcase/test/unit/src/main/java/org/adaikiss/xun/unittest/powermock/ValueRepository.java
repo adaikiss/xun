@@ -19,4 +19,23 @@ public class ValueRepository {
 	public static int get(int index) {
 		return new Random().nextInt();
 	}
+
+	/**
+	 * this method is mocked, never actually be call
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("unused")
+	private int reset() {
+		return new Random().nextInt();
+	}
+
+	/**
+	 * this method is mocked, never actually be call
+	 * 
+	 */
+	@SuppressWarnings("unused")
+	private static void init() {
+
+	}
 }

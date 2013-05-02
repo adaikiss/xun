@@ -3,6 +3,7 @@
  */
 package org.adaikiss.xun.unittest.powermock;
 
+
 /**
  * @author hlw
  * 

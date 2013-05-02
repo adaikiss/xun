@@ -2,6 +2,7 @@ package org.adaikiss.xun.unittest.mockito;
 
 import static org.junit.Assert.*;
 
+import org.adaikiss.xun.unittest.ValueRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,10 +28,13 @@ public class MockitoShowcaseTest {
 	public void testGetValue() {
 		int param = 10;
 		int mockedValue = 25;
+		//mock void method
+		Mockito.doNothing().when(valueRepository).reset();
+		//mock method with returning value
 		Mockito.when(valueRepository.get(param)).thenReturn(mockedValue);
 		int result = showcase.getValue(param);
 		assertEquals(mockedValue + 10, result);
-		Mockito.verify(valueRepository.get(param));
+		Mockito.verify(valueRepository);
 	}
 
 }

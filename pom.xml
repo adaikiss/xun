@@ -1244,6 +1244,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					</exclusion>
 				</exclusions>
 			</dependency>
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-api-easymock</artifactId>
+				<version>${powermock.version}</version>
+				<scope>test</scope>
+			</dependency>
 
 			<dependency>
 				<groupId>org.springframework</groupId>

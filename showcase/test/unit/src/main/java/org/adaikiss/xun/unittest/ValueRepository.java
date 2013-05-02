@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.adaikiss.xun.unittest.mockito;
+package org.adaikiss.xun.unittest;
 
 import java.util.Random;
 
@@ -18,5 +18,12 @@ public class ValueRepository {
 	 */
 	public int get(int index) {
 		return new Random().nextInt();
+	}
+
+	/**
+	 * show void mock, never actually be call
+	 */
+	public void reset() {
+
 	}
 }
