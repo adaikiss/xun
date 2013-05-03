@@ -26,26 +26,24 @@ public class Server {
 	private void start(String host, int port) throws IOException{
 		ServerSocketChannel ssc = ServerSocketChannel.open();
 		ssc.configureBlocking(false);
-		ssc.bind(new InetSocketAddress(host, port));
+		ssc.socket().bind(new InetSocketAddress(host, port));
 		selector = Selector.open();
 		ssc.register(selector, SelectionKey.OP_ACCEPT);
-		while(!Thread.currentThread().isInterrupted()){
-			selector.select();
+		while(selector.select() > 0){
 			Set<SelectionKey> selectionKeys = selector.selectedKeys();
 			Iterator<SelectionKey> selectionKeysIterator = selectionKeys.iterator();
 			while(selectionKeysIterator.hasNext()){
 				SelectionKey selectionKey = selectionKeysIterator.next();
+				selectionKeysIterator.remove();
 				if(!selectionKey.isValid()){
 					continue;
 				}
 				if(selectionKey.isReadable()){
 					read(selectionKey);
-					selectionKeysIterator.remove();
 					continue;
 				}
 				if(selectionKey.isAcceptable()){
 					accept(selectionKey);
-					selectionKeysIterator.remove();
 					continue;
 				}
 			}
