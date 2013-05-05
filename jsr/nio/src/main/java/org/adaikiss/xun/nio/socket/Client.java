@@ -29,7 +29,6 @@ import org.slf4j.LoggerFactory;
  */
 public class Client {
 
-	private ByteBuffer serverBuffer = ByteBuffer.allocate(8);
 	private static final Logger logger = LoggerFactory.getLogger(Client.class);
 	private ByteBuffer buffer = ByteBuffer.allocate(8);
 	private SocketChannel socketChannel;
@@ -40,25 +39,16 @@ public class Client {
 	private SocketAddress addr;
 
 	private void start() throws IOException {
-		socketChannel = SocketChannel.open();
-		socketChannel.configureBlocking(false);
-		socketChannel.connect(new InetSocketAddress("localhost", 12345));
 		pipe = Pipe.open();
 		inChannel = pipe.source();
 		inChannel.configureBlocking(false);
 		selector = Selector.open();
-		socketChannel.register(selector, SelectionKey.OP_CONNECT);
-		scanner = new Scanner(System.in);
 		inChannel.register(selector, SelectionKey.OP_READ);
 		addr = new InetSocketAddress("localhost", 12345);
 		scanner = new Scanner(System.in, "UTF-8");
 		new Thread() {
 			@Override
 			public void run() {
-				while (true) {
-					try {
-						selector.select();
-						Set<SelectionKey> selectionKeys = selector.selectedKeys();
 				try {
 					connect();
 					while (selector.select() > 0) {
@@ -70,14 +60,6 @@ public class Client {
 							SelectionKey selectionKey = selectionKeysIterator
 									.next();
 							selectionKeysIterator.remove();
-							if (selectionKey.isConnectable()) {
-								socketChannel.finishConnect();
-								socketChannel.register(selector,
-										SelectionKey.OP_WRITE);
-								socketChannel.register(selector,
-										SelectionKey.OP_READ);
-								System.out.println("Client:server connected!");
-								break;
 							SelectableChannel activeChannel = selectionKey
 									.channel();
 							if (activeChannel.equals(inChannel)) { // ============================
@@ -126,29 +108,17 @@ public class Client {
 									throw new UnsupportedOperationException();
 								}
 							}
-							if (selectionKey.isReadable()) {
-								serverBuffer.clear();
-								socketChannel.read(serverBuffer);
-								System.out.println("Client:"
-										+ new String(serverBuffer.array()));
-							}
 						}
-					} catch (IOException e) {
-						e.printStackTrace();
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}.start();
-		while(true){
-			if (socketChannel.isConnected()) {
 		while (true) {
 			if (socketChannel != null && socketChannel.isConnected()) {
 				System.out.println("Client:please input message:");
 				String msg = scanner.nextLine();
-				ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes());
-				socketChannel.write(buffer);
 				System.out.println(msg);
 				sendMessage(msg);
 			}
