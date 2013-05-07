@@ -1,0 +1,189 @@
+
+<html>
+<head>
+<title>WebSocket Chat</title>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type='text/javascript'>
+	if (!window.WebSocket && window.MozWebSocket)
+		window.WebSocket = window.MozWebSocket;
+	if (!window.WebSocket)
+		alert("WebSocket not supported by this browser");
+
+	var room = {
+		join : function(name) {
+			this._username = name;
+			var location = document.location.toString().replace('http://',
+					'ws://').replace('https://', 'wss://').replace('html', 'svl');
+			this._ws = new WebSocket(location, "echo-broadcast-ping");
+			this._ws.onopen = this._onopen;
+			this._ws.onmessage = this._onmessage;
+			this._ws.onclose = this._onclose;
+		},
+
+		_onopen : function() {
+			$('#join').hide();
+			$('#joined').show();
+			$('#phrase').focus();
+			room._send(room._username, 'has joined!');
+		},
+
+		_send : function(user, message) {
+			user = user.replace(':', '_');
+			if (this._ws)
+				this._ws.send(user + ':' + message);
+		},
+
+		chat : function(text) {
+			if (text != null && text.length > 0)
+				room._send(room._username, text);
+		},
+
+		_onmessage : function(m) {
+			if (m.data) {
+				var split = m.data.split(':');
+				var from = split[0];
+				var content = split[1];
+				content = content.replace(/@([^\s]+)\s/g, function(i, j, k){
+					if(room._username == j){
+						return '<span class="self to">@' + j + ' </span>';
+					}
+					return '<span class="to">@' + j + ' </span>';
+				});
+				var chat = $('#chat');
+				var line = $('<p></p>');
+				var fromSpan = $('<span class="from"></span>').text(from);
+				if(from == room._username){
+					fromSpan.addClass('self');
+				}
+				line.append(fromSpan);
+				line.append('<span class="split">:</span>')
+				line.append($('<span class="text"></span>').html(content));
+				chat.append(line);
+				chat.scrollTop(chat[0].scrollHeight - chat[0].clientHeight);
+			}
+		},
+
+		_onclose : function(m) {
+			this._ws = null;
+			$('#join').className = '';
+			$('#joined').className = 'hidden';
+			$('#username').focus();
+			$('#chat').innerHTML = '';
+		}
+
+	};
+	function leave(){
+		room._send(room._username, 'leaved!');
+		room._ws.close();
+	};
+</script>
+<style type='text/css'>
+div {
+	border: 0px solid black;
+}
+
+div#chat {
+	clear: both;
+	width: 40em;
+	height: 20ex;
+	overflow: auto;
+	background-color: #f0f0f0;
+	padding: 4px;
+	border: 1px solid black;
+}
+
+div#input {
+	clear: both;
+	width: 40em;
+	padding: 4px;
+	background-color: #e0e0e0;
+	border: 1px solid black;
+	border-top: 0px
+}
+
+input#phrase {
+	width: 30em;
+	background-color: #e0f0f0;
+}
+
+input#username {
+	width: 14em;
+	background-color: #e0f0f0;
+}
+
+div.hidden {
+	display: none;
+}
+
+span.from, span.to {
+	cursor:pointer;
+	font-weight: bold;
+}
+
+span.self{
+	color:red;
+}
+
+span.split {
+	margin:0 2px;
+}
+
+span.alert {
+	font-style: italic;
+}
+</style>
+</head>
+<body onunload="leave()">
+	<div id='chat'></div>
+	<div id='input'>
+		<div id='join'>
+			Username:&nbsp;<input id='username' type='text' /><input id='joinB'
+				class='button' type='button' name='join' value='Join' />
+		</div>
+		<div id='joined' class='hidden'>
+			Chat:&nbsp;<input id='phrase' type='text' /> <input id='sendB'
+				class='button' type='button' name='join' value='Send' />
+		</div>
+	</div>
+	<script type='text/javascript'>
+		$('#username').attr('autocomplete', 'OFF');
+		$('#username').keyup(function(event) {
+			var keyc = event.keyCode;
+			if (keyc == 13 || keyc == 10) {
+				room.join($('#username').val());
+				$('#join').hide();
+				$('#joined').show();
+				return false;
+			}
+			return true;
+		});
+		$('#joinB').click(function(event) {
+			room.join($('#username').val());
+			$('#join').hide();
+			$('#joined').show();
+			return false;
+		});
+		$('#phrase').attr('autocomplete', 'OFF');
+		$('#phrase').keyup(function(event) {
+			var keyc = event.keyCode;
+			if (keyc == 13 || keyc == 10) {
+				room.chat($('#phrase').val());
+				$('#phrase').val('');
+				return false;
+			}
+			return true;
+		});
+		$('#sendB').click(function(event) {
+			room.chat($('#phrase').val());
+			$('#phrase').val('');
+			return false;
+		});
+		$('#chat').on('click', '.from, .to', function(){
+			$('#phrase').val($('#phrase').val() + '@' + $(this).text().replace('@', '') + ' ').focus();
+		});
+	</script>
+
+	<p>This is a demonstration of the Jetty websocket server.</p>
+</body>
+</html>

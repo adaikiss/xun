@@ -21,5 +21,6 @@
 		<module>servlet3</module>
 		<module>jaxrs</module>
 		<module>nio</module>
+		<module>websocket</module>
 	</modules>
 </project>
