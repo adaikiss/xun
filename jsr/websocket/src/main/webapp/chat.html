@@ -3,7 +3,7 @@
 <head>
 <title>WebSocket Chat</title>
 <meta charset="UTF-8">
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type='text/javascript'>
 	if (!window.WebSocket && window.MozWebSocket)
 		window.WebSocket = window.MozWebSocket;
@@ -15,7 +15,7 @@
 			this._username = name;
 			var location = document.location.toString().replace('http://',
 					'ws://').replace('https://', 'wss://').replace('html', 'svl');
-			this._ws = new WebSocket(location, "echo-broadcast-ping");
+			this._ws = new WebSocket(location);
 			this._ws.onopen = this._onopen;
 			this._ws.onmessage = this._onmessage;
 			this._ws.onclose = this._onclose;

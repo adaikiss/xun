@@ -156,8 +156,8 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			<!-- socket -->
 			<!-- netty -->
 			<dependency>
-				<groupId>org.jboss.netty</groupId>
-				<artifactId>netty</artifactId>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
 				<version>${netty.version}</version>
 			</dependency>
 
@@ -1371,6 +1371,27 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			</dependency>
 
 			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>websocket-common</artifactId>
+				<version>${jetty.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>websocket-server</artifactId>
+				<version>${jetty.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>websocket-api</artifactId>
+				<version>${jetty.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
 				<groupId>org.eclipse.jetty.orbit</groupId>
 				<artifactId>javax.servlet</artifactId>
 				<version>3.0.0.v201112011016</version>
@@ -1851,7 +1872,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<disruptor.version>2.7.1</disruptor.version>
 		<activemq.version>5.5.1</activemq.version>
 		<activiti.version>5.9</activiti.version>
-		<netty.version>3.2.7.Final</netty.version>
+		<netty.version>4.0.0.CR1</netty.version>
 		<hadoop.version>2.0.0-mr1-cdh4.2.1</hadoop.version>
 		<spring-data-hadoop.version>1.0.0.RELEASE</spring-data-hadoop.version>
 		<mrunit.version>1.0.0</mrunit.version>

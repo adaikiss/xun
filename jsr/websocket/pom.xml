@@ -40,6 +40,12 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 
+		<!-- netty -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+		</dependency>
+
 		<!-- jetty -->
 		<dependency>
 			<groupId>org.eclipse.jetty.websocket</groupId>
