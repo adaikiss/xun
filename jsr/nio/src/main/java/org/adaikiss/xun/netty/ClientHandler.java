@@ -22,7 +22,7 @@ public class ClientHandler extends ChannelInboundMessageHandlerAdapter<String> {
 	@Override
 	public void messageReceived(ChannelHandlerContext ctx, String msg)
 			throws Exception {
-		System.out.println("Client:received[" + msg + "]");
+		System.err.println(msg);
 	}
 
 	@Override
@@ -34,7 +34,6 @@ public class ClientHandler extends ChannelInboundMessageHandlerAdapter<String> {
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		ctx.channel().write("hello!");
 		ctx.flush();
 		logger.debug("connected!");
 	}

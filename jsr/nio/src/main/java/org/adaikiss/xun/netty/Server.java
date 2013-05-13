@@ -4,7 +4,6 @@
 package org.adaikiss.xun.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.buffer.BufType;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
@@ -17,6 +16,8 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
+import java.util.Scanner;
+
 /**
  * @author hlw
  * 
@@ -27,14 +28,14 @@ public class Server {
 	private static final StringDecoder DECODER = new StringDecoder(
 			CharsetUtil.UTF_8);
 	private static final StringEncoder ENCODER = new StringEncoder(
-			BufType.MESSAGE, CharsetUtil.UTF_8);
+			CharsetUtil.UTF_8);
 	private static final ServerHandler SERVERHANDLER = new ServerHandler();
 
 	private Server(int port) {
 		this.port = port;
 	}
 
-	public void start() throws Exception {
+	private void _start() throws Exception{
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {
@@ -65,8 +66,25 @@ public class Server {
 
 			b.bind(port).sync().channel().closeFuture().sync();
 		} finally {
-			bossGroup.shutdown();
-			workerGroup.shutdown();
+			bossGroup.shutdownGracefully();
+			workerGroup.shutdownGracefully();
+		}
+	}
+	public void start() throws Exception {
+		new Thread(){
+			@Override
+			public void run(){
+				try {
+					_start();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+		Scanner scanner = new Scanner(System.in);
+		while(true){
+			String s = scanner.nextLine();
+			ServerHandler.sendToAll(s);
 		}
 	}
 

@@ -58,6 +58,11 @@
 			<url>https://android-rome-feed-reader.googlecode.com/svn/maven2/releases</url>
 		</repository>
 		<repository>
+			<!-- netty -->
+			<id>Sonatype OSS Maven Repository</id>
+			<url>https://oss.sonatype.org/content/repositories/public/</url>
+		</repository>
+		<repository>
 			<!-- activiti -->
 			<id>Alfresco Maven Repository</id>
 			<url>https://maven.alfresco.com/nexus/content/groups/public/</url>
@@ -445,11 +450,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${hibernate-jpa-2.0-api.version}</version>
 			</dependency>
 
-			<!--<dependency>
-				<groupId>javassist</groupId>
+			<dependency>
+				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
-				<version>3.12.1.GA</version>
-			</dependency>-->
+				<version>3.17.1-GA</version>
+			</dependency>
 
 			<!-- mybatis -->
 			<dependency>
@@ -1872,7 +1877,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<disruptor.version>2.7.1</disruptor.version>
 		<activemq.version>5.5.1</activemq.version>
 		<activiti.version>5.9</activiti.version>
-		<netty.version>4.0.0.CR1</netty.version>
+		<netty.version>4.0.0.CR2</netty.version>
 		<hadoop.version>2.0.0-mr1-cdh4.2.1</hadoop.version>
 		<spring-data-hadoop.version>1.0.0.RELEASE</spring-data-hadoop.version>
 		<mrunit.version>1.0.0</mrunit.version>

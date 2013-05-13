@@ -4,7 +4,6 @@
 package org.adaikiss.xun.netty;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.BufType;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -20,11 +19,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
@@ -47,7 +42,7 @@ public class Client {
 	private static final StringDecoder DECODER = new StringDecoder(
 			CharsetUtil.UTF_8);
 	private static final StringEncoder ENCODER = new StringEncoder(
-			BufType.MESSAGE, CharsetUtil.UTF_8);
+			CharsetUtil.UTF_8);
 
 	private Client(String host, int port) {
 		this.host = host;
@@ -84,7 +79,7 @@ public class Client {
 		ChannelFuture f = null;
 		while (true) {
 			String input = scanner.nextLine();
-			f = channel.write(input);
+			f = channel.write(input + "\r\n");
 			if ("bye".equals(input)) {
 				channel.closeFuture().sync();
 				break;
@@ -93,7 +88,7 @@ public class Client {
 				f.sync();
 			}
 		}
-		group.shutdown();
+		group.shutdownGracefully();
 		// new Thread() {
 		// @Override
 		// public void run() {
@@ -127,17 +122,20 @@ public class Client {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-//		new Client("localhost", 12345).start();
-		Socket fromserver = new Socket("localhost", 12345);
-
-        PrintWriter out = new PrintWriter(fromserver.getOutputStream(), true);
-
-        out.println("hello!");
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(fromserver.getInputStream()));
-        System.out.println(in.readLine());
-        out.close();
-        fromserver.close();
+		new Client("localhost", 12345).start();
+//		Socket fromserver = new Socket("localhost", 12345);
+//
+//        PrintWriter out = new PrintWriter(fromserver.getOutputStream(), true);
+//
+//        out.println("hello!\r\n");
+//
+//        BufferedReader in = new BufferedReader(new InputStreamReader(fromserver.getInputStream()));
+//        String line = null;
+//        while((line = in.readLine()) != null ){
+//        	System.out.println(line);
+//        }
+//        out.close();
+//        fromserver.close();
 	}
 
 }
