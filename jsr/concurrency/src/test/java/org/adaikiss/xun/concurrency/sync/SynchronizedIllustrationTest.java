@@ -123,7 +123,7 @@ public class SynchronizedIllustrationTest {
 	}
 
 	/**
-	 * a synchronized block blocks any operation on the synchronized object
+	 * a synchronized block does not block normal methods in the synchronized object
 	 * @throws Exception
 	 */
 	@Test
@@ -151,7 +151,39 @@ public class SynchronizedIllustrationTest {
 		latch.await();
 		long cost = System.currentTimeMillis() - start;
 		System.out.println("testSynchronizedBlockAndNormal total cost:" + cost);
-		Assert.assertTrue("total cost should greater than " + least + "ms", cost < least);
+		Assert.assertTrue("total cost should less than " + most + "ms", cost < most);
+	}
+
+	/**
+	 * a synchronized block blocks all synchronized methods in the synchronized object
+	 * @throws Exception
+	 */
+	@Test
+	public void testSynchronizedBlockAndSynchronized() throws Exception{
+		final SynchronizedShowcase showcase = new SynchronizedShowcase();
+		final CountDownLatch latch = new CountDownLatch(2);
+		Thread a = new Thread(){
+			@Override
+			public void run(){
+				showcase.do8(time);
+				latch.countDown();
+			}
+		};
+		Thread b = new Thread(){
+			@Override
+			public void run(){
+				showcase.do1(time);
+				latch.countDown();
+			}
+		};
+		long start = System.currentTimeMillis();
+		executor.submit(a);
+		executor.submit(b);
+		executor.shutdown();
+		latch.await();
+		long cost = System.currentTimeMillis() - start;
+		System.out.println("testSynchronizedBlockAndNormal total cost:" + cost);
+		Assert.assertTrue("total cost should greater than " + least + "ms", cost > least);
 	}
 
 	/**
