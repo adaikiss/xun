@@ -7,17 +7,14 @@ package org.adaikiss.xun.designpattern.gof.creational.singleton;
  * @author hlw
  * 
  */
-public class Gun {
-	private static Gun instance;
+public class GunStatic {
+	private static GunStatic instance = new GunStatic();
 
-	private Gun() {
+	private GunStatic() {
 		System.out.println("you get a gun!");
 	}
 
-	public synchronized static Gun get() {
-		if (instance == null) {
-			instance = new Gun();
-		}
+	public static GunStatic get() {
 		return instance;
 	}
 
