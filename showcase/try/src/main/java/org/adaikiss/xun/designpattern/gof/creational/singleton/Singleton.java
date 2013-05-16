@@ -49,7 +49,7 @@ public class Singleton {
 
 		@Override
 		public void run() {
-			Gun.get().attack();
+			GunSynchronized.get().attack();
 		}
 	}
 }
