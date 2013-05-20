@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 /**
+ * Dijkstra counting semaphore
  * @author hlw
  *
  */
