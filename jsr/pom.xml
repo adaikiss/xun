@@ -23,5 +23,7 @@
 		<module>nio</module>
 		<module>concurrency</module>
 		<module>websocket</module>
+		<!--<module>datetime</module>-->
+		<!--<module>portlet</module>-->
 	</modules>
 </project>

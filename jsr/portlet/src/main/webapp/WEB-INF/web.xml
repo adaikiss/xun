@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.5">
+	<servlet>
+		<servlet-name>my-portlet</servlet-name>
+		<display-name>my-portlet Portlet</display-name>
+		<description>Generated Portlet Wrapper</description>
+		<servlet-class>org.apache.pluto.container.driver.PortletServlet</servlet-class>
+
+		<init-param>
+			<param-name>portlet-name</param-name>
+			<param-value>XunPortlet</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>my-portlet</servlet-name>
+		<url-pattern>/portal/*</url-pattern>
+	</servlet-mapping>
+
+	<taglib>
+		<taglib-uri>http://java.sun.com/portlet</taglib-uri>
+		<taglib-location>/WEB-INF/tld/portlet.tld</taglib-location>
+	</taglib>
+</web-app>
