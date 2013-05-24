@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+	default-lazy-init="true">
+	<beans profile="jpa">
+		<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+			<property name="dataSource" ref="dataSource" />
+			<property name="packagesToScan" value="org.adaikiss.xun.*.entity"/>
+			<property name="jpaVendorAdapter">
+				<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+					<property name="database" value="${hibernate.database}" />
+					<property name="showSql" value="${hibernate.showSql}" />
+				</bean>
+			</property>
+			<property name="jpaProperties">
+				<props>
+					<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+					<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+					<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+					<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+					<!-- Enable Hibernate's automatic session context management -->
+					<prop key="current_session_context_class">${current_session_context_class}</prop>
+					<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+					<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+					<prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+				</props>
+			</property>
+		</bean>
+		<jpa:repositories base-package="org.adaikiss.xun.core.repository" entity-manager-factory-ref="entityManagerFactory" />
+		<jpa:repositories base-package="org.adaikiss.xun.cms.repository" entity-manager-factory-ref="entityManagerFactory" />
+	</beans>
+</beans>

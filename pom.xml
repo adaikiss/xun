@@ -626,6 +626,14 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${standard.version}</version>
 			</dependency>
 
+			<!-- portlet -->
+			<!--<dependency>
+				<groupId>javax.portlet</groupId>
+				<artifactId>portlet-api</artifactId>
+				<version>${portlet.version}</version>
+				<scope>provided</scope>
+			</dependency>-->
+
 			<!-- url rewrite -->
 			<dependency>
 				<groupId>org.tuckey</groupId>
@@ -895,24 +903,29 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
+			<!-- log4j over slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			
+			<!-- common-logging over slf4j -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
 			</dependency>
-
-			<!-- slf4j-log4j -->
+			
+			<!-- java.util.logging over slf4j -->
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>${log4j.version}</version>
-			</dependency>
+        		<groupId>org.slf4j</groupId>
+        		<artifactId>jul-to-slf4j</artifactId>
+        		<version>${slf4j.version}</version>
+        		<scope>runtime</scope>
+      		</dependency>
 
 			<!--<dependency>
 				<groupId>net.sf.log4jdbc</groupId>
@@ -1827,6 +1840,8 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<jstl.version>1.2</jstl.version>
 		<standard.version>1.1.2</standard.version>
 		<sitemesh.version>3.0-alpha-2</sitemesh.version>
+		<!-- portlet -->
+		<!--<portlet.version>2.0</portlet.version>-->
 		<!-- template -->
 		<freemarker.version>2.3.19</freemarker.version>
 		<velocity.version>1.7</velocity.version>
