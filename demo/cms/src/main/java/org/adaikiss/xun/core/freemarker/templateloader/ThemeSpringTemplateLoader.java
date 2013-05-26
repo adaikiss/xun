@@ -21,8 +21,11 @@ public class ThemeSpringTemplateLoader extends SpringTemplateLoader {
 
 	@Override
 	public Object findTemplateSource(String name) throws IOException {
+		if(name.startsWith("WEB-INF") || name.startsWith("/WEB-INF")){
+			return super.findTemplateSource(name);
+		}
 		//通过theme查找模板文件
-		Object themed = super.findTemplateSource(PreferenceHelper.getPreference().getTheme() + name);
+		Object themed = super.findTemplateSource(PreferenceHelper.getPreference().getTheme() + "/" + name);
 		if(null != themed){
 			return themed;
 		}
@@ -31,6 +34,6 @@ public class ThemeSpringTemplateLoader extends SpringTemplateLoader {
 			return null;
 		}
 		//不存在则查默认theme文件
-		return super.findTemplateSource(Constant.DEFAULT_THEME + name);
+		return super.findTemplateSource(Constant.DEFAULT_THEME + "/" + name);
 	}
 }

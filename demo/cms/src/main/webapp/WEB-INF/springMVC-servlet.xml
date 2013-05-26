@@ -17,13 +17,13 @@
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<context:component-scan base-package="org.adaikiss.xun.*.directive"> 
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" 
-		/>
+	<context:component-scan base-package="org.adaikiss.xun.*.directive">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
 
 	<mvc:annotation-driven>
-		<mvc:async-support default-timeout="30000"/>
+		<mvc:async-support default-timeout="30000" />
 		<mvc:message-converters>
 			<bean
 				class="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter">
@@ -46,14 +46,20 @@
 		<property name="suffix" value=".ftl" />
 	</bean>
 	<bean id="freemarkerConfig"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-		<property name="preTemplateLoaders">
-			<array>
-				<bean class="org.adaikiss.xun.core.freemarker.templateloader.ThemeSpringTemplateLoader"/>
-			</array>
-		</property>
+		class="org.adaikiss.xun.core.freemarker.ThemeFreeMarkerConfigurer">
+		<property name="preferFileSystemAccess" value="false"></property>
 		<property name="templateLoaderPath" value="/WEB-INF/tpl" />
-		<property name="configLocation" value="classpath:freemarker.properties"/>
+		<property name="configLocation" value="classpath:freemarker.properties" />
+	</bean>
+
+	<bean id="internalViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/admin/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
 	</bean>
 
 	<util:map id="mediaTypes">
@@ -93,7 +99,8 @@
 		<property name="contentNegotiationManager" ref="contentNegotiationManager" />
 		<property name="viewResolvers">
 			<list>
-				<ref bean="freemarkerViewResolver"/>
+				<ref bean="freemarkerViewResolver" />
+				<ref bean="internalViewResolver" />
 			</list>
 		</property>
 	</bean>
