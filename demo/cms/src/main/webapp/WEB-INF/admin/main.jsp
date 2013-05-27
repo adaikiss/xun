@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="${base }/rs/reset.css">
+<link rel="stylesheet" href="${base }/admin/admin.css">
+<title>后台管理</title>
 </head>
 <body>
-console
+<div id="header">header</div>
+<div id="main">
+	<div id="top">top</div>
+	<div id="left">left</div>
+	<div id="content">content</div>
+	<div id="bottom">bottom</div>
+</div>
+<div id="footer">footer</div>
 </body>
 </html>
