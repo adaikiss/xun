@@ -897,10 +897,26 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			<!-- memcached end -->
 
 			<!-- logging begin-->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
 			<!-- slf4j -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
 			<!-- log4j over slf4j -->
@@ -910,7 +926,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${slf4j.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			
+
 			<!-- common-logging over slf4j -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -918,14 +934,14 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${slf4j.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			
+
 			<!-- java.util.logging over slf4j -->
 			<dependency>
-        		<groupId>org.slf4j</groupId>
-        		<artifactId>jul-to-slf4j</artifactId>
-        		<version>${slf4j.version}</version>
-        		<scope>runtime</scope>
-      		</dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
 
 			<!--<dependency>
 				<groupId>net.sf.log4jdbc</groupId>
