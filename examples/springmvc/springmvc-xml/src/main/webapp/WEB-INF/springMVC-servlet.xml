@@ -26,6 +26,9 @@
 	<context:property-placeholder location="classpath:/web.properties" />
 
 	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.data.web.PageableArgumentResolver"></bean>
+		</mvc:argument-resolvers>
 		<mvc:async-support default-timeout="30000"/>
 		<mvc:message-converters>
 			<bean

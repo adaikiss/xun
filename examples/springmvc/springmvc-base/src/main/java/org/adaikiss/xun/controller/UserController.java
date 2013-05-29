@@ -4,6 +4,7 @@
 package org.adaikiss.xun.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,8 @@ import org.adaikiss.xun.utils.MessageEchoHelper;
 import org.adaikiss.xun.validation.group.Create;
 import org.adaikiss.xun.validation.group.Update;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -25,6 +28,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.View;
@@ -117,5 +121,29 @@ public class UserController {
 		RedirectView view = new RedirectView("/user", true);
 		view.setStatusCode(HttpStatus.SEE_OTHER);
 		return view;
+	}
+
+//	@RequestMapping(value = "/batch", method = RequestMethod.GET, produces = {
+//			MediaType.APPLICATION_JSON_VALUE})
+//	public @ResponseBody
+//	ListDTO<User> batch(@RequestParam("users") ArrayList<User> users) {
+//		List<User> list = users;
+//		return new ListDTO<User>(list);
+//	}
+
+	//http://static.springsource.org/spring-data/data-jpa/docs/current/reference/html/repositories.html#web-pagination
+	@RequestMapping(value = "/page", method = RequestMethod.GET, produces = {
+			MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody
+	Pageable page(@PageableDefaults(value = 20)Pageable page) {
+		return page;
+	}
+
+	@RequestMapping(value = "/batch1", method = RequestMethod.GET, produces = {
+			MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody
+	ListDTO<String> batch1(@RequestParam("users") ArrayList<String> users) {
+		List<String> list = users;
+		return new ListDTO<String>(list);
 	}
 }
