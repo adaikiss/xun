@@ -1,0 +1,61 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "Channel",
+            "Article"
+        ],
+        "stores": [
+            "Channel"
+        ],
+        "views": [
+            "EmployeeManagePanel",
+            "OperationManagePanel",
+            "ArticleManagePanel",
+            "TemplateManagePanel",
+            "ResourceManagePanel",
+            "SystemManagePanel"
+        ],
+        "appFolder": "admin",
+        "autoCreateViewport": true,
+        "name": "CMS",
+        "controllers": [
+            "Login",
+            "Main",
+            "Common"
+        ]
+    },
+    "id": "ExtBox1-ext-gen1758",
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "launch",
+                "fn": "launch",
+                "implHandler": [
+                    "Ext.QuickTips.init();\r",
+                    "Ext.getBody().on(\"contextmenu\", Ext.emptyFn, null, {preventDefault: true}); \r",
+                    "Ext.MessageBox.msgButtons.ok.text = Ext.MessageBox.buttonText.ok = '确定';\r",
+                    "Ext.MessageBox.msgButtons.cancel.text = Ext.MessageBox.buttonText.cancel = '取消';\r",
+                    "Ext.MessageBox.msgButtons.yes.text = Ext.MessageBox.buttonText.yes = '是';\r",
+                    "Ext.MessageBox.msgButtons.no.text = Ext.MessageBox.buttonText.no = '否';\r",
+                    "\r",
+                    "//this.getController('CMS.controller.Login').showLogin();\r",
+                    "this.getController('CMS.controller.Main').showMainView();"
+                ]
+            },
+            "designerId": "a0414589-6179-42d4-a5ca-8d418095274c"
+        }
+    ]
+}

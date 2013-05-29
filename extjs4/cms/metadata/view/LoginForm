@@ -1,0 +1,128 @@
+{
+    "type": "form",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LoginForm",
+        "designer|userAlias": "loginForm",
+        "floating": true,
+        "height": 165,
+        "width": 280,
+        "layout": "auto",
+        "bodyPadding": 10,
+        "closable": false,
+        "title": "登录",
+        "method": "post",
+        "url": "admin/login.do"
+    },
+    "id": "ExtBox1-ext-gen3703",
+    "designerId": "8e01f67c-ed60-43d0-b7cc-dd0bd29e71e2",
+    "cn": [
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "formBind": false,
+                "designer|userClassName": "MyTextField",
+                "designer|displayName": null,
+                "width": 200,
+                "fieldStyle": "margin-bottom:10px;",
+                "name": "username",
+                "tabIndex": 1,
+                "fieldLabel": "账号",
+                "labelWidth": 40,
+                "allowBlank": false,
+                "blankText": "账号不能为空!",
+                "emptyText": "请输入账号"
+            },
+            "designerId": "5c0e42fc-27fc-499f-b873-ac1e8fa52347"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "formBind": false,
+                "designer|userClassName": "MyTextField1",
+                "width": 200,
+                "fieldStyle": "margin-bottom:10px;",
+                "inputType": "password",
+                "name": "password",
+                "tabIndex": 2,
+                "fieldLabel": "密码",
+                "labelWidth": 40,
+                "allowBlank": false,
+                "blankText": "密码不能为空!",
+                "emptyText": "请输入密码"
+            },
+            "designerId": "534d5905-77bd-4dcb-83c2-314977b0a79a"
+        },
+        {
+            "type": "checkboxfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "formBind": false,
+                "designer|userClassName": "MyCheckbox",
+                "maxWidth": 100,
+                "name": "rememberMe",
+                "tabIndex": 3,
+                "fieldLabel": null,
+                "boxLabel": "记住登录状态",
+                "inputValue": "true"
+            },
+            "designerId": "f8e47811-bdf3-4f0c-a307-cd09568d262f"
+        },
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "container|pack": "end",
+                "designer|userClassName": "MyToolbar",
+                "ui": [
+                    "footer"
+                ]
+            },
+            "designerId": "3d0a0d30-88b4-46d2-ad19-00f433acd0be",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "formBind": false,
+                        "designer|userClassName": "MyButton",
+                        "id": "loginBtn",
+                        "shrinkWrap": 0,
+                        "width": 50,
+                        "tabIndex": 4,
+                        "text": "登录"
+                    },
+                    "designerId": "b16d940d-8b8f-44cf-95ae-9d6cdf455b64"
+                }
+            ]
+        }
+    ]
+}

@@ -164,6 +164,7 @@ public class Article extends IdEntity {
 	}
 
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "publisher_id")
 	public Employee getPublisher() {
 		return publisher;
 	}
@@ -190,7 +191,8 @@ public class Article extends IdEntity {
 		this.modified = modified;
 	}
 
-	@ManyToOne(optional = false)
+	@ManyToOne
+	@JoinColumn(name = "modifier_id")
 	public Employee getModifier() {
 		return modifier;
 	}
@@ -225,6 +227,7 @@ public class Article extends IdEntity {
 		this.status = status;
 	}
 
+	@Column(nullable = false, columnDefinition = "boolean default false")
 	public boolean isVerified() {
 		return verified;
 	}

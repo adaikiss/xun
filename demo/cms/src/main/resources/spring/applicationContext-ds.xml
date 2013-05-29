@@ -44,6 +44,7 @@
 	</beans>
 
 	<beans profile="h2">
+
 		<bean id="dataSource"
 			class="org.springframework.jdbc.datasource.DriverManagerDataSource" depends-on="org.h2.tools.Server">
 			<property name="driverClassName" value="${jdbc.driver}" />
@@ -60,6 +61,17 @@
 		<bean id="org.h2.tools.WebServer" class="org.h2.tools.Server"
 			factory-method="createWebServer" init-method="start" destroy-method="stop" lazy-init="false">
 			<constructor-arg value="-web,-tcpAllowOthers" />
+		</bean>
+
+	</beans>
+
+	<beans profile="bootstrap,h2">
+		<bean id="bootstrapDataSource"
+			class="org.springframework.jdbc.datasource.DriverManagerDataSource" depends-on="org.h2.tools.Server">
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}${jdbc.url.noconstraint}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
 		</bean>
 	</beans>
 

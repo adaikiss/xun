@@ -5,3 +5,9 @@ target
 *.log
 bin
 /examples/android/gen
+
+/demo/cms/src/main/webapp/app
+/demo/cms/src/main/webapp/app.html
+/demo/cms/src/main/webapp/app.js
+
+/demo/cms/src/main/webapp/admin

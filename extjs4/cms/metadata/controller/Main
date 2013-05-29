@@ -1,0 +1,58 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Main",
+        "views": [
+            "MainTabPanel"
+        ]
+    },
+    "id": "ExtBox1-ext-gen37129",
+    "designerId": "d7415008-5cf4-428f-9a2d-e7b8e0120669",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "showMainView",
+                "fn": "showMainView",
+                "implHandler": [
+                    "//var viewport = Ext.create('CMS.view.CmsViewport');\r",
+                    "mainTabPanel = Ext.create('CMS.view.MainTabPanel', {flex: 1,region : 'center'});\r",
+                    "this.getViewport().add(mainTabPanel);\r",
+                    "mainTabPanel.addOrShowTab('commonPanel', 'CMS.view.CommonPanel', {});\r",
+                    "mainTabPanel.addOrShowTab('operationManagePanel', 'CMS.view.OperationManagePanel', {});\r",
+                    "mainTabPanel.addOrShowTab('articleManagePanel', 'CMS.view.ArticleManagePanel', {});\r",
+                    "mainTabPanel.addOrShowTab('templateManagePanel', 'CMS.view.TemplateManagePanel', {});\r",
+                    "mainTabPanel.addOrShowTab('resourceManagePanel', 'CMS.view.ResourceManagePanel', {});\r",
+                    "mainTabPanel.addOrShowTab('employeeManagePanel', 'CMS.view.EmployeeManagePanel', {});\r",
+                    "mainTabPanel.addOrShowTab('systemManagePanel', 'CMS.view.SystemManagePanel', {});\r",
+                    "mainTabPanel.setActiveTab(0);"
+                ]
+            },
+            "designerId": "a4f2e546-23c9-4cf2-9aac-3de7b7b9e11c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "viewport",
+                "ref": "viewport",
+                "selector": "viewport"
+            },
+            "designerId": "016e5dd2-d0f3-4f23-bf7a-0427df7b8f3a"
+        }
+    ]
+}

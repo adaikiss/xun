@@ -1,0 +1,17 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ResourceManagePanel",
+        "designer|userAlias": "resourceManagePanel",
+        "height": null,
+        "width": null,
+        "title": "资源管理"
+    },
+    "id": "ExtBox1-ext-gen49742",
+    "designerId": "7a9f21b4-e5e0-4c61-8aa3-3a1380183359"
+}

@@ -52,10 +52,14 @@ public class SystemInitializer {
 	private EmployeeRepository employeeRepo;
 
 	public SystemInitializer(){
-		System.out.println("__________________________________________________________________________");
 	}
+
 	@PostConstruct
-	public void initUser() {
+	public void initAll(){
+		initUser();
+	}
+
+	private void initUser() {
 		Preference p = PreferenceHelper.getPreference();
 		if(p.isInitialized()){
 			//已经初始化

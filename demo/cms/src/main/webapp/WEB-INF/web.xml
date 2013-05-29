@@ -16,7 +16,7 @@
 	</context-param>
 	<context-param>
 		<param-name>spring.profiles.active</param-name>
-		<param-value>h2, jpa</param-value>
+		<param-value>h2, jpa, bootstrap</param-value>
 	</context-param>
 
 	<filter>
@@ -54,6 +54,10 @@
 	<filter-mapping>
 		<filter-name>openSessionInViewFilter</filter-name>
 		<servlet-name>springServlet</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<url-pattern>/app.html</url-pattern>
 	</filter-mapping>
 
 	<filter>

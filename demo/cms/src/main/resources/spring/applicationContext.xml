@@ -25,7 +25,19 @@
 		<property name="locations">
 			<list>
 				<value>classpath:application.properties</value>
+				<value>classpath:db.h2.properties</value>
 			</list>
 		</property>
 	</bean>
+	<beans profile="bootstrap">
+		<bean class="org.adaikiss.xun.core.bootstrap.DataPopulator" lazy-init="false" init-method="populate">
+			<constructor-arg name="dataSource" ref="bootstrapDataSource"></constructor-arg>
+			<constructor-arg name="xmlFilePaths">
+				<array>
+					<value>classpath:bootstrap/data/music/channels.xml</value>
+					<value>classpath:bootstrap/data/music/articles-pop.xml</value>
+				</array>
+			</constructor-arg>
+		</bean>
+	</beans>
 </beans>

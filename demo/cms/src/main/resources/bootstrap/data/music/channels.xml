@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<table name="xun_channel">
+		<column>id</column>
+		<column>name</column>
+		<column>alias</column>
+		<column>order_no</column>
+		<column>parent_id</column>
+		<column>icon</column>
+		<column>description</column>
+		<column>status</column>
+		<column>channel_tpl</column>
+		<column>article_tpl</column>
+		<column>creator_id</column>
+		<!-- 一级栏目 -->
+		<row>
+			<value name="id">1</value>
+			<value name="name"><![CDATA[流行歌曲]]></value>
+			<value name="alias"><![CDATA[pop]]></value>
+			<value name="order_no">1</value>
+			<value name="status">Normal</value>
+			<value name="channel_tpl">pop_list</value>
+			<value name="article_tpl">music</value>
+			<value name="creator_id">1</value>
+		</row>
+		<row>
+			<value name="id">2</value>
+			<value name="name"><![CDATA[经典老歌]]></value>
+			<value name="alias"><![CDATA[classic]]></value>
+			<value name="order_no">2</value>
+			<value name="status">Normal</value>
+			<value name="top_tpl"><![CDATA[case_summary]]></value>
+			<value name="channel_tpl">classic_list</value>
+			<value name="article_tpl">music</value>
+			<value name="creator_id">1</value>
+		</row>
+		<row>
+			<value name="id">3</value>
+			<value name="name"><![CDATA[纯音乐]]></value>
+			<value name="alias"><![CDATA[pure]]></value>
+			<value name="order_no">3</value>
+			<value name="status">Normal</value>
+			<value name="channel_tpl">pure_list</value>
+			<value name="article_tpl">music</value>
+			<value name="creator_id">1</value>
+		</row>
+	</table>
+</dataset>

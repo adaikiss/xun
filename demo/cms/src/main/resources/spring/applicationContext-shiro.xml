@@ -40,9 +40,9 @@
 
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/login.html" />
-		<property name="successUrl" value="/console/" />
-		<property name="unauthorizedUrl" value="/login.html" />
+		<property name="loginUrl" value="/admin/login.html" />
+		<property name="successUrl" value="/app.html" />
+		<property name="unauthorizedUrl" value="/admin/login.html" />
 		<!-- The 'filters' property is usually not necessary unless performing an override, which we want to do here (make authc 
 			point to a PassthruAuthenticationFilter instead of the default FormAuthenticationFilter: -->
 		<property name="filters">
@@ -54,13 +54,13 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
-				/console/**.js = anon
-				/console/**.css = anon
-				/console/**.png = anon
-				/console/**.gif = anon
-				/console/**.jpg = anon
-				/console/**.jpeg = anon
+				/**.css = anon
+				/admin/login.do = anon
+				/admin/login.html = anon
+				/admin/** = roles[admin]
+				/app.html = roles[admin]
 				/init.html = anon
+				/ = anon
 			</value>
 		</property>
 	</bean>

@@ -1,0 +1,143 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Login",
+        "views": [
+            "LoginForm"
+        ]
+    },
+    "id": "ExtBox1-ext-gen2174",
+    "designerId": "1c008a03-d464-40d1-bfc5-081103b37e65",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyFunction2",
+                "fn": "login",
+                "implHandler": [
+                    "var loginForm = this.getLoginForm();\r",
+                    "var form = loginForm.getForm();\r",
+                    "var main = this.getController('CMS.controller.Main');\r",
+                    "if (form.isValid()) {\r",
+                    "    form.submit({\r",
+                    "        success: function(form, action) {\r",
+                    "            Ext.Msg.alert('成功', '登录成功!');\r",
+                    "            loginForm.hide();\r",
+                    "            main.showMainView();\r",
+                    "        },\r",
+                    "        failure: function(form, action) {\r",
+                    "            Ext.Msg.alert('失败', action.result.msg);\r",
+                    "        }\r",
+                    "    });\r",
+                    "}"
+                ]
+            },
+            "designerId": "07bbe8a0-0221-49ff-949d-ddcd0ebe8dd9"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "init",
+                "fn": "init",
+                "designer|params": [
+                    "application"
+                ],
+                "implHandler": [
+                    "Ext.create('CMS.view.LoginForm', {});"
+                ]
+            },
+            "designerId": "557c5a6b-a55d-444f-8e39-1e8e177231e0"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onLoginClick",
+                "fn": "onLoginClick",
+                "implHandler": [
+                    "this.login();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "button[id=loginBtn]"
+            },
+            "designerId": "c843a0e6-aabf-4eff-ab76-f63370729f3f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onSpecialkey",
+                "fn": "onSpecialkey",
+                "designer|params": [
+                    "field",
+                    "e"
+                ],
+                "implHandler": [
+                    "if(e.getKey() == e.ENTER) { \r",
+                    "    this.login();\r",
+                    "}"
+                ],
+                "name": "specialkey",
+                "scope": "me",
+                "designer|targetType": "Ext.form.Panel",
+                "designer|controlQuery": "textfield"
+            },
+            "designerId": "dde89b04-26d0-4c08-981b-c6fd670b2edf"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "loginForm",
+                "ref": "loginForm",
+                "selector": "loginForm"
+            },
+            "designerId": "4e204991-be01-40cc-aa18-55511cdd9f25"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "showLogin",
+                "fn": "showLogin",
+                "implHandler": [
+                    "this.getLoginForm().show();"
+                ]
+            },
+            "designerId": "ccca869b-aaf4-47fb-9cb5-1cdf03af7ef3"
+        }
+    ]
+}

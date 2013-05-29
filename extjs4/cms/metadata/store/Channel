@@ -1,0 +1,44 @@
+{
+    "type": "treestore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Channel",
+        "designer|userAlias": null,
+        "storeId": "channelStore",
+        "model": "Channel"
+    },
+    "id": "ExtBox1-ext-gen62084",
+    "designerId": "063a3c54-db1b-4e16-9fc5-5c1b60a844d9",
+    "cn": [
+        {
+            "type": "ajaxproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyAjaxProxy"
+            },
+            "designerId": "927d4d50-bee7-40d4-a240-e09a95dc7514",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader"
+                    },
+                    "designerId": "b07b3b56-7ab8-4fa4-8e56-966b6faa1ed2"
+                }
+            ]
+        }
+    ]
+}

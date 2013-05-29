@@ -1,4 +1,4 @@
-package org.adaikiss.xun.cms;
+package org.adaikiss.xun;
 
 
 import org.eclipse.jetty.server.Server;

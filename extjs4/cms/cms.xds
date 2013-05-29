@@ -1,0 +1,193 @@
+{
+    "name": "cms",
+    "settings": {
+        "urlPrefix": "http://localhost/",
+        "spacesToIndent": 4,
+        "exportPath": "F:/GitHub/xun/demo/cms/src/main/webapp/",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "78a74e5a-069b-43f4-9ddf-5a711e975cdb": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "8e01f67c-ed60-43d0-b7cc-dd0bd29e71e2": {
+            "paths": [
+                "metadata/view/LoginForm",
+                "admin/view/override/LoginForm.js",
+                "admin/view/LoginForm.js"
+            ],
+            "className": "LoginForm"
+        },
+        "1c008a03-d464-40d1-bfc5-081103b37e65": {
+            "paths": [
+                "metadata/controller/Login",
+                "admin/controller/override/Login.js",
+                "admin/controller/Login.js"
+            ],
+            "className": "Login"
+        },
+        "9980f763-9736-47c3-9d14-132165066a65": {
+            "paths": [
+                "metadata/view/CmsViewport",
+                "admin/view/override/CmsViewport.js",
+                "admin/view/CmsViewport.js",
+                "admin/view/Viewport.js"
+            ],
+            "className": "CmsViewport"
+        },
+        "961e34de-aaa4-4777-982d-a5b679e5cfcd": {
+            "paths": [
+                "metadata/view/MainTabPanel",
+                "admin/view/override/MainTabPanel.js",
+                "admin/view/MainTabPanel.js"
+            ],
+            "className": "MainTabPanel"
+        },
+        "d7415008-5cf4-428f-9a2d-e7b8e0120669": {
+            "paths": [
+                "metadata/controller/Main",
+                "admin/controller/override/Main.js",
+                "admin/controller/Main.js"
+            ],
+            "className": "Main"
+        },
+        "7ecc7e6e-e14c-42eb-9937-b837cc1e8d0a": {
+            "paths": [
+                "metadata/resource/css"
+            ],
+            "className": "css"
+        },
+        "ef74b25b-1cd7-4cf6-8e36-c3f2e6b0d585": {
+            "paths": [
+                "metadata/view/CommonPanel",
+                "admin/view/override/CommonPanel.js",
+                "admin/view/CommonPanel.js"
+            ],
+            "className": "CommonPanel"
+        },
+        "42b8f105-0448-4c40-9462-3c76e397a0e9": {
+            "paths": [
+                "metadata/controller/Common",
+                "admin/controller/override/Common.js",
+                "admin/controller/Common.js"
+            ],
+            "className": "Common"
+        },
+        "21872334-3d47-4b86-ae05-8252e853abe7": {
+            "paths": [
+                "metadata/view/EmployeeManagePanel",
+                "admin/view/override/EmployeeManagePanel.js",
+                "admin/view/EmployeeManagePanel.js"
+            ],
+            "className": "EmployeeManagePanel"
+        },
+        "be6cccc1-1220-4419-9977-f2437dd2f9f5": {
+            "paths": [
+                "metadata/view/OperationManagePanel",
+                "admin/view/override/OperationManagePanel.js",
+                "admin/view/OperationManagePanel.js"
+            ],
+            "className": "OperationManagePanel"
+        },
+        "f6bbd3c6-a3ef-4386-8f20-24c06360071d": {
+            "paths": [
+                "metadata/view/ArticleManagePanel",
+                "admin/view/override/ArticleManagePanel.js",
+                "admin/view/ArticleManagePanel.js"
+            ],
+            "className": "ArticleManagePanel"
+        },
+        "c5764289-d7b6-47b1-a4e2-2b1efef19ec4": {
+            "paths": [
+                "metadata/view/TemplateManagePanel",
+                "admin/view/override/TemplateManagePanel.js",
+                "admin/view/TemplateManagePanel.js"
+            ],
+            "className": "TemplateManagePanel"
+        },
+        "7a9f21b4-e5e0-4c61-8aa3-3a1380183359": {
+            "paths": [
+                "metadata/view/ResourceManagePanel",
+                "admin/view/override/ResourceManagePanel.js",
+                "admin/view/ResourceManagePanel.js"
+            ],
+            "className": "ResourceManagePanel"
+        },
+        "78e3a88b-b4f5-4b03-bdee-e06b57d0f822": {
+            "paths": [
+                "metadata/view/SystemManagePanel",
+                "admin/view/override/SystemManagePanel.js",
+                "admin/view/SystemManagePanel.js"
+            ],
+            "className": "SystemManagePanel"
+        },
+        "322b4e62-f59a-4181-a69c-d237a1b9bc80": {
+            "paths": [
+                "metadata/model/Channel",
+                "admin/model/override/Channel.js",
+                "admin/model/Channel.js"
+            ],
+            "className": "Channel"
+        },
+        "8bd36060-182d-40c7-aef2-23173a001e32": {
+            "paths": [
+                "metadata/model/Article",
+                "admin/model/override/Article.js",
+                "admin/model/Article.js"
+            ],
+            "className": "Article"
+        },
+        "063a3c54-db1b-4e16-9fc5-5c1b60a844d9": {
+            "paths": [
+                "metadata/store/Channel",
+                "admin/store/override/Channel.js",
+                "admin/store/Channel.js"
+            ],
+            "className": "Channel"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "8e01f67c-ed60-43d0-b7cc-dd0bd29e71e2",
+            "9980f763-9736-47c3-9d14-132165066a65",
+            "961e34de-aaa4-4777-982d-a5b679e5cfcd",
+            "ef74b25b-1cd7-4cf6-8e36-c3f2e6b0d585",
+            "21872334-3d47-4b86-ae05-8252e853abe7",
+            "be6cccc1-1220-4419-9977-f2437dd2f9f5",
+            "f6bbd3c6-a3ef-4386-8f20-24c06360071d",
+            "c5764289-d7b6-47b1-a4e2-2b1efef19ec4",
+            "7a9f21b4-e5e0-4c61-8aa3-3a1380183359",
+            "78e3a88b-b4f5-4b03-bdee-e06b57d0f822"
+        ],
+        "store": [
+            "063a3c54-db1b-4e16-9fc5-5c1b60a844d9"
+        ],
+        "controller": [
+            "1c008a03-d464-40d1-bfc5-081103b37e65",
+            "d7415008-5cf4-428f-9a2d-e7b8e0120669",
+            "42b8f105-0448-4c40-9462-3c76e397a0e9"
+        ],
+        "model": [
+            "322b4e62-f59a-4181-a69c-d237a1b9bc80",
+            "8bd36060-182d-40c7-aef2-23173a001e32"
+        ],
+        "resource": [
+            "78a74e5a-069b-43f4-9ddf-5a711e975cdb",
+            "7ecc7e6e-e14c-42eb-9937-b837cc1e8d0a"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

@@ -10,7 +10,7 @@ package org.adaikiss.xun.cms.enumeration;
  * 
  */
 public enum PostStatus {
-	Published("发布"), Closed("关闭");
+	Normal("正常"), Closed("关闭");
 	private String description;
 
 	PostStatus(String description) {

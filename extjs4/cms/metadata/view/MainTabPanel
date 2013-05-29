@@ -1,0 +1,84 @@
+{
+    "type": "tabpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MainTabPanel",
+        "designer|userAlias": "mainTabPanel",
+        "cls": "mainTabPanel",
+        "height": 250,
+        "width": null,
+        "activeTab": 0,
+        "plain": true
+    },
+    "id": "ExtBox1-ext-gen32382",
+    "designerId": "961e34de-aaa4-4777-982d-a5b679e5cfcd",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel",
+                "designer|displayName": "welcomePanel",
+                "html": [
+                    "<h3>Welcome!</h3>"
+                ],
+                "title": "欢迎"
+            },
+            "designerId": "3ec837e5-f9b4-4c7b-a740-b97c069dbcb0",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig",
+                        "cls": "right-tab",
+                        "contentEl": null
+                    },
+                    "designerId": "f9be484e-f0a7-4f13-bd47-837a48752309"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "addOrShowTab",
+                "fn": "addOrShowTab",
+                "designer|params": [
+                    "id",
+                    "panelClass",
+                    "panelClassParams"
+                ],
+                "implHandler": [
+                    "panelClassParams = panelClassParams || {closable : true};\r",
+                    "var tab = this.getComponent(id);\r",
+                    "if (!tab){\r",
+                    "    tab = Ext.create(panelClass, Ext.apply({id : id},\r",
+                    "    panelClassParams)\r",
+                    "    );\r",
+                    "    this.add(tab);\r",
+                    "}\r",
+                    "this.setActiveTab(tab);\r",
+                    "return tab;"
+                ]
+            },
+            "designerId": "1b7afbe3-c68a-4081-8e32-aaa866f3a64b"
+        }
+    ]
+}

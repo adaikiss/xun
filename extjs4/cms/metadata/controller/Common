@@ -1,0 +1,69 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Common",
+        "views": [
+            "CommonPanel"
+        ]
+    },
+    "id": "ExtBox1-ext-gen26023",
+    "designerId": "42b8f105-0448-4c40-9462-3c76e397a0e9",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onButtonClick",
+                "fn": "onButtonClick",
+                "implHandler": [
+                    "var params = {closable : true};\r",
+                    "switch(button.itemId){\r",
+                    "    case 'runStatusBtn' : \r",
+                    "        params.title = '网站运行状态';\r",
+                    "        break;\r",
+                    "    case 'bulletinManageBtn' : \r",
+                    "        params.title = '网站公告管理';\r",
+                    "        break;\r",
+                    "    case 'advertisementManageBtn' : \r",
+                    "        params.title = '网站广告管理';\r",
+                    "        break;\r",
+                    "    case 'linkManageBtn' : \r",
+                    "        params.title = '友情链接管理';\r",
+                    "        break;\r",
+                    "    default : return;\r",
+                    "}\r",
+                    "this.getCommonPanel().getComponent('commonTabPanel').addOrShowTab(button.itemId, 'Ext.panel.Panel', params);"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#commonLeft button"
+            },
+            "designerId": "19bbaa06-dcf2-41c6-9a8c-9ab8481aaf8b"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "commonPanel",
+                "ref": "commonPanel",
+                "selector": "commonPanel",
+                "xtype": "panel"
+            },
+            "designerId": "396662ff-06b9-4328-b556-6214dc181780"
+        }
+    ]
+}

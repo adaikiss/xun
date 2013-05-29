@@ -1,0 +1,17 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TemplateManagePanel",
+        "designer|userAlias": "templateManagePanel",
+        "height": null,
+        "width": null,
+        "title": "模板管理"
+    },
+    "id": "ExtBox1-ext-gen49468",
+    "designerId": "c5764289-d7b6-47b1-a4e2-2b1efef19ec4"
+}

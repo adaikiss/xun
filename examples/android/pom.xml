@@ -14,7 +14,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<android.sdk.path>E:\devtools\Android\android-sdk</android.sdk.path>
+		<android.sdk.path>D:\Program Files\android-sdk-windows</android.sdk.path>
 		<android-platform>8</android-platform>
 		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

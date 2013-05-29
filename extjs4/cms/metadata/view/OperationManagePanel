@@ -1,0 +1,17 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "OperationManagePanel",
+        "designer|userAlias": "operationManagePanel",
+        "height": null,
+        "width": null,
+        "title": "运营管理"
+    },
+    "id": "ExtBox1-ext-gen48206",
+    "designerId": "be6cccc1-1220-4419-9977-f2437dd2f9f5"
+}

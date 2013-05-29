@@ -1,0 +1,197 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "CommonPanel",
+        "designer|userAlias": "commonPanel",
+        "height": null,
+        "width": null,
+        "layout": "border",
+        "title": "常规管理"
+    },
+    "id": "ExtBox1-ext-gen7731",
+    "designerId": "ef74b25b-1cd7-4cf6-8e36-c3f2e6b0d585",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|collapseMode": "header",
+                "layout|region": "west",
+                "designer|userClassName": "MyPanel2",
+                "designer|displayName": "left",
+                "border": 1,
+                "frame": true,
+                "id": "commonLeft",
+                "padding": 2,
+                "width": 120,
+                "resizable": false,
+                "layout": "anchor",
+                "collapseDirection": "left",
+                "collapsed": false,
+                "collapsible": true,
+                "minButtonWidth": null,
+                "title": "常规管理",
+                "titleCollapse": true
+            },
+            "configAlternates": {
+                "resizable": "boolean"
+            },
+            "designerId": "0b44c61d-13c3-42a8-b3a7-75c9cf43e30f",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "1",
+                        "designer|userClassName": "MyButton1",
+                        "frame": false,
+                        "height": null,
+                        "itemId": "runStatusBtn",
+                        "margin": "2 0",
+                        "width": null,
+                        "text": "网站运行状态"
+                    },
+                    "designerId": "676ad10d-cbea-4437-a048-aac5458ff1fc"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "1",
+                        "designer|userClassName": "MyButton2",
+                        "itemId": "bulletinManageBtn",
+                        "margin": "2 0",
+                        "text": "网站公告设置"
+                    },
+                    "designerId": "f8c60d67-f76d-42af-beb4-9093bffce5fe"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "1",
+                        "designer|userClassName": "MyButton2",
+                        "itemId": "advertisementManageBtn",
+                        "margin": "2 0",
+                        "text": "网站广告管理"
+                    },
+                    "designerId": "f847e26b-2084-4d6f-bd76-1f1e7faa37a8"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "1",
+                        "designer|userClassName": "MyButton2",
+                        "itemId": "linkManageBtn",
+                        "margin": "2 0",
+                        "text": "友情链接管理"
+                    },
+                    "designerId": "61c93be8-1b71-49dd-b44b-f81632483e1d"
+                },
+                {
+                    "type": "container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyContainer4",
+                        "designer|displayName": "技术支持",
+                        "html": [
+                            "<div>技术支持</div>\r",
+                            "<ul>\r",
+                            "<li>\r",
+                            "   Tel:xxx-xxxxxxxx\r",
+                            "       xxx-xxxxxxxx\r",
+                            "</li>\r",
+                            "<li>\r",
+                            "    QQ:xxxxxxxx\r",
+                            "       xxxxxxxx\r",
+                            "</li>\r",
+                            "<li>\r",
+                            "E-Mail:xx@xx.com\r",
+                            "       xx@xx.com\r",
+                            "</li>\r",
+                            "</ul>\r",
+                            ""
+                        ]
+                    },
+                    "designerId": "7029403e-2563-429b-bb4c-ba3405f3258d"
+                }
+            ]
+        },
+        {
+            "type": "tabpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "center",
+                "designer|userClassName": "MyTabPanel1",
+                "itemId": "commonTabPanel"
+            },
+            "designerId": "f2662c0f-6569-4f9b-91a0-8be8721567f1",
+            "cn": [
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "addOrShowTab",
+                        "fn": "addOrShowTab",
+                        "designer|params": [
+                            "id",
+                            "panelClass",
+                            "panelClassParams"
+                        ],
+                        "implHandler": [
+                            "panelClassParams = panelClassParams || {closable : true};\r",
+                            "var tab = this.getComponent(id);\r",
+                            "if (!tab){\r",
+                            "    tab = Ext.create(panelClass, Ext.apply({id : id},\r",
+                            "    panelClassParams)\r",
+                            "    );\r",
+                            "    this.add(tab);\r",
+                            "}\r",
+                            "this.setActiveTab(tab);\r",
+                            "return tab;"
+                        ]
+                    },
+                    "designerId": "3a4aabeb-8f8e-4b09-81e4-e0f3b4946e53"
+                }
+            ]
+        }
+    ]
+}

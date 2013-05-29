@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.adaikiss.xun.cms.enumeration.PostStatus;
+import org.adaikiss.xun.core.entity.Employee;
 import org.adaikiss.xun.core.entity.IdEntity;
 import org.adaikiss.xun.core.util.Constant;
 import org.adaikiss.xun.core.util.PreferenceHelper;
@@ -95,6 +96,11 @@ public class Channel extends IdEntity {
 	 * 栏目状态
 	 */
 	private PostStatus status;
+
+	/**
+	 * 创建者
+	 */
+	private Employee creator;
 
 	public String getName() {
 		return name;
@@ -192,6 +198,15 @@ public class Channel extends IdEntity {
 		this.status = status;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "creator_id")
+	public Employee getCreator() {
+		return creator;
+	}
+
+	public void setCreator(Employee creator) {
+		this.creator = creator;
+	}
 
 	/**
 	 * 根据ID获取子栏目

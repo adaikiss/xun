@@ -1,0 +1,54 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ArticleManagePanel",
+        "designer|userAlias": "articleManagePanel",
+        "height": null,
+        "width": null,
+        "layout": "border",
+        "title": "文章管理"
+    },
+    "id": "ExtBox1-ext-gen49098",
+    "designerId": "f6bbd3c6-a3ef-4386-8f20-24c06360071d",
+    "cn": [
+        {
+            "type": "treepanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "west",
+                "designer|userClassName": "MyTreePanel",
+                "frame": false,
+                "itemId": "articleTreePanel",
+                "width": 150,
+                "closable": false,
+                "collapsed": false,
+                "collapsible": true,
+                "title": "栏目列表"
+            },
+            "designerId": "6e537618-8c58-434c-88f8-8f2304adf31a",
+            "cn": [
+                {
+                    "type": "treeview",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTreeView"
+                    },
+                    "designerId": "c46eb87d-abb1-46b3-b30c-a76af9ba3251"
+                }
+            ]
+        }
+    ]
+}

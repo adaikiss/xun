@@ -1,0 +1,57 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|padding": 5,
+        "designer|userClassName": "CmsViewport",
+        "designer|initialView": true,
+        "layout": "border"
+    },
+    "id": "ExtBox1-ext-gen26709",
+    "designerId": "9980f763-9736-47c3-9d14-132165066a65",
+    "cn": [
+        {
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|margins": "5 5 5 5",
+                "layout|region": "north",
+                "designer|userClassName": "MyContainer",
+                "designer|displayName": "northContainer",
+                "border": 1,
+                "frame": true,
+                "height": 69,
+                "html": [
+                    "<div><a href=\"admin/logout.html\">退出</a></div>"
+                ]
+            },
+            "designerId": "5242c76d-fe70-4e8d-88d7-5d33d2e8d5a6"
+        },
+        {
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|margins": "5 5 5 5",
+                "layout|region": "south",
+                "designer|userClassName": "MyContainer",
+                "designer|displayName": "southContainer",
+                "border": 1,
+                "frame": true,
+                "height": 20
+            },
+            "designerId": "c0bcb293-60f5-4c27-b096-d19bd0d574e2"
+        }
+    ]
+}
