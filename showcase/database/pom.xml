@@ -10,6 +10,5 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>mybatis</module>
-		<module>hibernate</module>
 	</modules>
 </project>

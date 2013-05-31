@@ -1,0 +1,12 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Channel"
+    },
+    "designerId": "90674e31-57d6-49db-8fa5-0a5e326b972b"
+}

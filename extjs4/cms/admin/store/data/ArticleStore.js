@@ -1,0 +1,32 @@
+Ext.define('CMS.data.Store', {
+        extend: 'Ext.data.Store',
+
+        constructor: function(cfg) {
+        var me = this;
+        cfg = cfg || {};
+        me.callParent([Ext.apply({
+            autoLoad: false,
+            model: 'CMS.model.Article',
+            storeId: 'articleStore',
+            proxy: {
+                type: 'ajax',
+                directionParam: 'page.sort.dir',
+                limitParam: 'page.size',
+                simpleSortMode: true,
+                sortParam: 'page.sort',
+                url: 'article/page.json',
+                reader: {
+                    type: 'json',
+                    root: 'content',
+                    totalProperty: 'totalElements'
+                }
+            },
+            sorters: [
+                {
+                    direction: 'DESC',
+                    property: 'date'
+                }
+            ]
+        }, cfg)]);
+    }
+    });

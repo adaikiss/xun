@@ -14,6 +14,8 @@
 	<!-- Enable annotation configuration -->
 	<context:annotation-config />
 	<context:component-scan base-package="org.adaikiss.xun.core.service"/>
+	<context:component-scan base-package="org.adaikiss.xun.cms.service"/>
+	<context:component-scan base-package="org.adaikiss.xun.admin.service"/>
 	<context:component-scan base-package="org.adaikiss.xun.core.util"/>
 
 	<bean class="org.springside.modules.test.spring.SpringContextHolder" lazy-init="false"></bean>

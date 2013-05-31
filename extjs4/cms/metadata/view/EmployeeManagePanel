@@ -1,17 +1,16 @@
 {
-    "type": "panel",
+    "type": "Ext.panel.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "EmployeeManagePanel",
-        "designer|userAlias": "employeeManagePanel",
         "height": null,
         "width": null,
+        "designer|userClassName": "EmployeeManagePanel",
+        "designer|userAlias": "employeeManagePanel",
         "title": "职员管理"
     },
-    "id": "ExtBox1-ext-gen47564",
     "designerId": "21872334-3d47-4b86-ae05-8252e853abe7"
 }

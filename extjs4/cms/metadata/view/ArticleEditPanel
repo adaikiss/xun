@@ -1,0 +1,240 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "border": false,
+        "frame": true,
+        "height": null,
+        "width": null,
+        "designer|userClassName": "ArticleEditPanel",
+        "designer|userAlias": "articleEditPanel",
+        "bodyPadding": 5,
+        "closable": true,
+        "fieldDefaults": [
+            "{\r",
+            "\tlabelAlign: 'right',\r",
+            "\tlabelWidth: 65\r",
+            "}"
+        ],
+        "waitMsgTarget": [
+            "true"
+        ]
+    },
+    "designerId": "0c3cf223-6710-4e3e-83c0-7e627be8b401",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaults": [
+                    "{\r",
+                    "    columnWidth : 1,\r",
+                    "    padding : 2\r",
+                    "}"
+                ],
+                "layout": "column",
+                "title": "文章信息"
+            },
+            "designerId": "7700ec6f-f218-4f95-ae61-63f82fde8c16",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "编号",
+                        "name": "id",
+                        "value": null
+                    },
+                    "designerId": "907894c3-b93b-42b3-aa54-eff4ace750b5"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "所属栏目",
+                        "name": "channelName",
+                        "value": null
+                    },
+                    "designerId": "2694d613-ef96-4403-b50f-94f4fd8a3ba3"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "文章标题",
+                        "name": "title",
+                        "allowBlank": false,
+                        "maxLength": 100
+                    },
+                    "designerId": "338865b4-d932-447e-bce8-246b0e382381"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "文章模板",
+                        "name": "tpl",
+                        "maxLength": 50
+                    },
+                    "designerId": "343143bc-fc21-44de-bf5d-76e09b4b6ac9"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "上一篇",
+                        "name": "prev",
+                        "value": null
+                    },
+                    "designerId": "556d8d37-2303-44cb-97df-084d67ea4c65"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "下一篇",
+                        "name": "next",
+                        "value": null
+                    },
+                    "designerId": "08886b8f-21f5-4b50-a81e-685962180032"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "权重",
+                        "name": "weight"
+                    },
+                    "designerId": "0faafffe-2c25-4fd7-832a-dfbce266d855"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "点击量",
+                        "name": "visits"
+                    },
+                    "designerId": "713a4a37-c7b0-4340-ab52-5e94c4068831"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "创建时间",
+                        "name": "date",
+                        "value": null
+                    },
+                    "designerId": "128f11be-f8f0-4fb5-96ef-ee8c727b423f"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "fieldLabel": "关键字",
+                        "name": "keywords"
+                    },
+                    "designerId": "3fef25c5-0987-43de-a156-ee301ba0f5dd"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "摘要",
+                        "name": "excerpt",
+                        "maxLength": 250
+                    },
+                    "designerId": "e3f7ffc8-aa02-472f-95d8-f37cb66d22b9"
+                },
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|columnWidth": 0.5,
+                        "width": null,
+                        "text": "内容"
+                    },
+                    "designerId": "e9018bd2-80ae-4178-affa-ce590a10e0d1"
+                },
+                {
+                    "type": "Ext.form.field.HtmlEditor",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 150,
+                        "fieldLabel": null,
+                        "hideLabel": true,
+                        "name": "content"
+                    },
+                    "designerId": "de6d3416-4223-4a09-bb80-f26e61006e9f"
+                }
+            ]
+        }
+    ]
+}

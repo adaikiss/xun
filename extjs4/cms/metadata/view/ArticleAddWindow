@@ -1,0 +1,189 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 100,
+        "width": 300,
+        "designer|userClassName": "ArticleAddWindow",
+        "designer|userAlias": "articleAddWindow",
+        "layout": "fit",
+        "closeAction": "hide",
+        "title": "新增文章",
+        "modal": true
+    },
+    "designerId": "b2c408c7-55cf-419d-ab62-82be85ac301d",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": 0,
+                "frame": true,
+                "itemId": "articleAddForm",
+                "width": 150,
+                "bodyPadding": 5,
+                "frameHeader": false,
+                "header": false,
+                "title": "My Form",
+                "fieldDefaults": [
+                    "{labelAlign: 'left',\r",
+                    "labelWidth: 65,\r",
+                    " labelStyle: 'font-weight:bold'}"
+                ]
+            },
+            "designerId": "18b6826e-16b9-4b09-81ce-751bddcb6098",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onArticleAddFormAfterRender",
+                        "implHandler": [
+                            "this.keyNav = Ext.create('Ext.util.KeyNav', this.el, {                    \r",
+                            "    enter: function(){\r",
+                            "        component.submit_();\r",
+                            "    },\r",
+                            "    scope: this\r",
+                            "});"
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "designerId": "316e855c-01fb-498f-8e78-c127a43dd84c"
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "submit_",
+                        "implHandler": [
+                            "var form = this.getForm();\r",
+                            "var win = this.up('window');\r",
+                            "if (form.isValid()) {\r",
+                            "    form.submit({\r",
+                            "        url: 'article/add',\r",
+                            "        method: 'POST',\r",
+                            "        params: {\r",
+                            "            channelId: win.__gridPanel.channelId\r",
+                            "        },\r",
+                            "        success: function (fm, action) {\r",
+                            "            win.__gridPanel.getStore().add(action.result.data);\r",
+                            "            win.__gridPanel.getStore().sort('date', 'DESC');\r",
+                            "            win.__gridPanel.getView().refresh();\r",
+                            "            Ext.MessageBox.alert('提示', '操作成功!');\r",
+                            "            form.reset();\r",
+                            "            win.hide();\r",
+                            "        },\r",
+                            "        failure: function (fm, action) {\r",
+                            "            Ext.MessageBox.alert('提示', getErrorMsg(action));\r",
+                            "        }\r",
+                            "    });\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "1a38be4a-9dcd-421d-8f5d-2483a70b4f02"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "文章标题",
+                        "name": "title",
+                        "allowBlank": false,
+                        "maxLength": 100
+                    },
+                    "designerId": "a91568d4-5248-484d-a2ea-eb7a4cfdb6b6"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "text": "确定"
+                    },
+                    "designerId": "f32ff39a-c5c8-45c0-bc52-2814900e0881",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "handler",
+                                "designer|params": [
+                                    "button",
+                                    "event"
+                                ],
+                                "implHandler": [
+                                    "var formPanel = this.up('form');\r",
+                                    "formPanel.submit_();"
+                                ]
+                            },
+                            "designerId": "b67cfb67-6b2f-4ba6-a51d-f397d9e32421"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "text": "取消"
+                    },
+                    "designerId": "dc21c2da-fbf6-41f8-9caa-78f5087dd1a5",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "handler",
+                                "designer|params": [
+                                    "button",
+                                    "event"
+                                ],
+                                "implHandler": [
+                                    "this.up('form').getForm().reset();\r",
+                                    "this.up('window').hide();"
+                                ]
+                            },
+                            "designerId": "27ef1a39-6ada-4f6d-845f-233a33527443"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

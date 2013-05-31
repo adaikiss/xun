@@ -1,17 +1,16 @@
 {
-    "type": "controller",
+    "type": "Ext.app.Controller",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "Login",
         "views": [
             "LoginForm"
-        ]
+        ],
+        "designer|userClassName": "Login"
     },
-    "id": "ExtBox1-ext-gen2174",
     "designerId": "1c008a03-d464-40d1-bfc5-081103b37e65",
     "cn": [
         {
@@ -22,7 +21,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyFunction2",
                 "fn": "login",
                 "implHandler": [
                     "var loginForm = this.getLoginForm();\r",
@@ -52,7 +50,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "init",
                 "fn": "init",
                 "designer|params": [
                     "application"
@@ -71,7 +68,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "onLoginClick",
                 "fn": "onLoginClick",
                 "implHandler": [
                     "this.login();"
@@ -91,7 +87,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "onSpecialkey",
                 "fn": "onSpecialkey",
                 "designer|params": [
                     "field",
@@ -117,7 +112,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "loginForm",
                 "ref": "loginForm",
                 "selector": "loginForm"
             },
@@ -131,7 +125,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "showLogin",
                 "fn": "showLogin",
                 "implHandler": [
                     "this.getLoginForm().show();"

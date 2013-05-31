@@ -49,15 +49,18 @@ public class Channel extends IdEntity {
 	/**
 	 * 栏目名称
 	 */
+	@JsonProperty
 	private String name;
 	/**
 	 * 栏目别名，用于url显示
 	 */
+	@JsonProperty
 	private String alias;
 
 	/**
 	 * 显示顺序
 	 */
+	@JsonProperty
 	private int order;
 
 	/**
@@ -67,6 +70,7 @@ public class Channel extends IdEntity {
 	/**
 	 * 子栏目
 	 */
+	@JsonProperty
 	private List<Channel> children = Lists.newArrayList();
 
 	/**
@@ -101,6 +105,14 @@ public class Channel extends IdEntity {
 	 * 创建者
 	 */
 	private Employee creator;
+
+	public Channel(){
+		
+	}
+
+	public Channel(Long id){
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -148,7 +160,7 @@ public class Channel extends IdEntity {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "channel")
-	@OrderBy("order")
+	@OrderBy("weight DESC, modified DESC")
 	public List<Article> getArticles() {
 		return articles;
 	}

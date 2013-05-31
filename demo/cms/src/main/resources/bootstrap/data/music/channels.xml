@@ -44,5 +44,14 @@
 			<value name="article_tpl">music</value>
 			<value name="creator_id">1</value>
 		</row>
+		<row>
+			<value name="id">4</value>
+			<value name="name"><![CDATA[钢琴曲]]></value>
+			<value name="alias"><![CDATA[piano]]></value>
+			<value name="order_no">1</value>
+			<value name="status">Normal</value>
+			<value name="parent_id">3</value>
+			<value name="creator_id">1</value>
+		</row>
 	</table>
 </dataset>

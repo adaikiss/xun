@@ -1,23 +1,22 @@
 {
-    "type": "panel",
+    "type": "Ext.panel.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "CommonPanel",
-        "designer|userAlias": "commonPanel",
         "height": null,
         "width": null,
+        "designer|userClassName": "CommonPanel",
+        "designer|userAlias": "commonPanel",
         "layout": "border",
         "title": "常规管理"
     },
-    "id": "ExtBox1-ext-gen7731",
     "designerId": "ef74b25b-1cd7-4cf6-8e36-c3f2e6b0d585",
     "cn": [
         {
-            "type": "panel",
+            "type": "Ext.panel.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -26,19 +25,16 @@
             "userConfig": {
                 "layout|collapseMode": "header",
                 "layout|region": "west",
-                "designer|userClassName": "MyPanel2",
-                "designer|displayName": "left",
                 "border": 1,
-                "frame": true,
                 "id": "commonLeft",
                 "padding": 2,
                 "width": 120,
+                "designer|displayName": "left",
                 "resizable": false,
                 "layout": "anchor",
                 "collapseDirection": "left",
                 "collapsed": false,
                 "collapsible": true,
-                "minButtonWidth": null,
                 "title": "常规管理",
                 "titleCollapse": true
             },
@@ -48,7 +44,7 @@
             "designerId": "0b44c61d-13c3-42a8-b3a7-75c9cf43e30f",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -56,7 +52,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "1",
-                        "designer|userClassName": "MyButton1",
                         "frame": false,
                         "height": null,
                         "itemId": "runStatusBtn",
@@ -67,7 +62,7 @@
                     "designerId": "676ad10d-cbea-4437-a048-aac5458ff1fc"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -75,7 +70,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "1",
-                        "designer|userClassName": "MyButton2",
                         "itemId": "bulletinManageBtn",
                         "margin": "2 0",
                         "text": "网站公告设置"
@@ -83,7 +77,7 @@
                     "designerId": "f8c60d67-f76d-42af-beb4-9093bffce5fe"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -91,7 +85,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "1",
-                        "designer|userClassName": "MyButton2",
                         "itemId": "advertisementManageBtn",
                         "margin": "2 0",
                         "text": "网站广告管理"
@@ -99,7 +92,7 @@
                     "designerId": "f847e26b-2084-4d6f-bd76-1f1e7faa37a8"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -107,7 +100,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "1",
-                        "designer|userClassName": "MyButton2",
                         "itemId": "linkManageBtn",
                         "margin": "2 0",
                         "text": "友情链接管理"
@@ -115,15 +107,13 @@
                     "designerId": "61c93be8-1b71-49dd-b44b-f81632483e1d"
                 },
                 {
-                    "type": "container",
+                    "type": "Ext.container.Container",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyContainer4",
-                        "designer|displayName": "技术支持",
                         "html": [
                             "<div>技术支持</div>\r",
                             "<ul>\r",
@@ -141,14 +131,15 @@
                             "</li>\r",
                             "</ul>\r",
                             ""
-                        ]
+                        ],
+                        "designer|displayName": "技术支持"
                     },
                     "designerId": "7029403e-2563-429b-bb4c-ba3405f3258d"
                 }
             ]
         },
         {
-            "type": "tabpanel",
+            "type": "Ext.tab.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -156,7 +147,6 @@
             "codeClass": null,
             "userConfig": {
                 "layout|region": "center",
-                "designer|userClassName": "MyTabPanel1",
                 "itemId": "commonTabPanel"
             },
             "designerId": "f2662c0f-6569-4f9b-91a0-8be8721567f1",
@@ -169,7 +159,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "addOrShowTab",
                         "fn": "addOrShowTab",
                         "designer|params": [
                             "id",

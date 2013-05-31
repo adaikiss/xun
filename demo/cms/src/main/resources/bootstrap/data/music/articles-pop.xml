@@ -16,10 +16,9 @@
 		<column>prev_id</column>
 		<column>next_id</column>
 		<column>visits</column>
-		<column>order_no</column>
+		<column>weight</column>
 		<column>keywords</column>
 		<column>status</column>
-		<column>verified</column>
 		<row>
 			<value name="id">1</value>
 			<value name="title"><![CDATA[致我们终将逝去的青春]]></value>
@@ -62,12 +61,11 @@
 			</value>
 			<value name="date">2011-11-03</value>
 			<value name="visits">61</value>
-			<value name="order_no">1</value>
 			<value name="channel_id">1</value>
 			<value name="publisher_id">1</value>
 			<value name="next_id">2</value>
 			<value name="status">Normal</value>
-			<value name="verified">true</value>
+			<value name="weight">10</value>
 		</row>
 
 		<row>
@@ -121,12 +119,11 @@
 			</value>
 			<value name="date">2011-11-03</value>
 			<value name="visits">61</value>
-			<value name="order_no">2</value>
 			<value name="channel_id">1</value>
 			<value name="publisher_id">1</value>
 			<value name="prev_id">1</value>
 			<value name="status">Normal</value>
-			<value name="verified">true</value>
+			<value name="weight">10</value>
 		</row>
 	</table>
 </dataset>

@@ -1,5 +1,5 @@
 {
-    "type": "application",
+    "type": "Ext.app.Application",
     "reference": {
         "name": "items",
         "type": "array"
@@ -19,18 +19,22 @@
             "ArticleManagePanel",
             "TemplateManagePanel",
             "ResourceManagePanel",
-            "SystemManagePanel"
+            "SystemManagePanel",
+            "ArticleListPanel",
+            "ArticleAddWindow",
+            "ArticleEditPanel"
         ],
         "appFolder": "admin",
         "autoCreateViewport": true,
-        "name": "CMS",
         "controllers": [
             "Login",
             "Main",
-            "Common"
-        ]
+            "Common",
+            "Channel",
+            "Article"
+        ],
+        "name": "CMS"
     },
-    "id": "ExtBox1-ext-gen1758",
     "designerId": "application",
     "cn": [
         {
@@ -41,7 +45,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "launch",
                 "fn": "launch",
                 "implHandler": [
                     "Ext.QuickTips.init();\r",

@@ -20,8 +20,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import org.adaikiss.xun.cms.enumeration.PostStatus;
-import org.adaikiss.xun.core.entity.Employee;
 import org.adaikiss.xun.core.entity.IdEntity;
+import org.adaikiss.xun.core.entity.Member;
 import org.adaikiss.xun.core.util.Constant;
 import org.adaikiss.xun.core.util.PreferenceHelper;
 import org.apache.commons.lang3.StringUtils;
@@ -64,7 +64,7 @@ public class Article extends IdEntity {
 	/**
 	 * 发布者
 	 */
-	private Employee publisher;
+	private Member publisher;
 
 	/**
 	 * 发布时间
@@ -83,7 +83,7 @@ public class Article extends IdEntity {
 	/**
 	 * 最近修改者
 	 */
-	private Employee modifier;
+	private Member modifier;
 
 	/**
 	 * 内容
@@ -127,9 +127,9 @@ public class Article extends IdEntity {
 	private long visits;
 
 	/**
-	 * 排序
+	 * 文章权重，权重高的排前面
 	 */
-	private int order;
+	private int weight = 10;
 
 	/**
 	 * 关键字
@@ -139,11 +139,7 @@ public class Article extends IdEntity {
 	/**
 	 * 文章状态
 	 */
-	private PostStatus status;
-	/**
-	 * 审核状态
-	 */
-	private boolean verified;
+	private PostStatus status = PostStatus.UnderVerify;
 
 	public String getTitle() {
 		return title;
@@ -165,11 +161,11 @@ public class Article extends IdEntity {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "publisher_id")
-	public Employee getPublisher() {
+	public Member getPublisher() {
 		return publisher;
 	}
 
-	public void setPublisher(Employee publisher) {
+	public void setPublisher(Member publisher) {
 		this.publisher = publisher;
 	}
 
@@ -193,11 +189,11 @@ public class Article extends IdEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "modifier_id")
-	public Employee getModifier() {
+	public Member getModifier() {
 		return modifier;
 	}
 
-	public void setModifier(Employee modifier) {
+	public void setModifier(Member modifier) {
 		this.modifier = modifier;
 	}
 
@@ -225,15 +221,6 @@ public class Article extends IdEntity {
 
 	public void setStatus(PostStatus status) {
 		this.status = status;
-	}
-
-	@Column(nullable = false, columnDefinition = "boolean default false")
-	public boolean isVerified() {
-		return verified;
-	}
-
-	public void setVerified(boolean verified) {
-		this.verified = verified;
 	}
 
 	public String getAuthor() {
@@ -288,13 +275,13 @@ public class Article extends IdEntity {
 		this.visits = visits;
 	}
 
-	@Column(name = "order_no")
-	public int getOrder() {
-		return order;
+	@Column(nullable = false, columnDefinition = "int default 10")
+	public int getWeight() {
+		return weight;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 
 	public String getKeywords() {

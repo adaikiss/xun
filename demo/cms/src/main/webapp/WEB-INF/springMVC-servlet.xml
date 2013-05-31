@@ -22,7 +22,7 @@
 			expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
 
-	<mvc:annotation-driven>
+	<mvc:annotation-driven conversion-service="conversionService">
 		<mvc:async-support default-timeout="30000" />
 		<mvc:argument-resolvers>
 			<bean class="org.springframework.data.web.PageableArgumentResolver"></bean>
@@ -33,6 +33,12 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"></bean>
+	<bean
+		class="org.springframework.data.repository.support.DomainClassConverter" depends-on="conversionService">
+		<constructor-arg ref="conversionService" />
+	</bean>
 
 	<mvc:view-controller path="/" view-name="forward:/index.html" />
 

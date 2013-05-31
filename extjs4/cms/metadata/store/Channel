@@ -1,44 +1,132 @@
 {
-    "type": "treestore",
+    "type": "Ext.data.TreeStore",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
+        "model": "Channel",
+        "storeId": "channelStore",
         "designer|userClassName": "Channel",
         "designer|userAlias": null,
-        "storeId": "channelStore",
-        "model": "Channel"
+        "folderSort": true,
+        "nodeParam": "parentId",
+        "root": [
+            "{name : '根栏目'}"
+        ]
     },
-    "id": "ExtBox1-ext-gen62084",
     "designerId": "063a3c54-db1b-4e16-9fc5-5c1b60a844d9",
     "cn": [
         {
-            "type": "ajaxproxy",
+            "type": "Ext.data.proxy.Ajax",
             "reference": {
                 "name": "proxy",
                 "type": "object"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyAjaxProxy"
+                "designer|displayName": null,
+                "url": "channel/tree.json"
             },
             "designerId": "927d4d50-bee7-40d4-a240-e09a95dc7514",
             "cn": [
                 {
-                    "type": "jsonreader",
+                    "type": "processcfgfunction",
                     "reference": {
-                        "name": "reader",
-                        "type": "object"
+                        "name": "items",
+                        "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyJsonReader"
+                        "fn": "processMyAjaxProxy",
+                        "designer|params": [
+                            "config"
+                        ],
+                        "implHandler": [
+                            "config.reader = {type:'channelTreeJsonReader'};\r",
+                            "return config;"
+                        ]
                     },
-                    "designerId": "b07b3b56-7ab8-4fa4-8e56-966b6faa1ed2"
+                    "designerId": "947d7c59-c3db-40ab-8283-04d4eafc3d32"
                 }
             ]
+        },
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "property": "order"
+            },
+            "designerId": "187cc63b-14b8-4868-975c-50e655649edb"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "6b4be698-0f3e-43fc-8a7b-bd5990098ace"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "children",
+                "type": null
+            },
+            "designerId": "7ade5cbf-326d-4d19-b111-24d546c708d7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "hasArticles"
+            },
+            "designerId": "1aab749a-2ca5-4262-8c1e-c49275e77618"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "order",
+                "type": "int"
+            },
+            "designerId": "3ceda029-03da-42bb-8bf1-67450cd25226"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id",
+                "type": "int"
+            },
+            "designerId": "b43374db-0a6b-4f23-901a-510860b23d8d"
         }
     ]
 }

@@ -1,0 +1,107 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Article"
+    },
+    "designerId": "77b069ee-1929-4dda-ad3e-509736b8609e",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onRefreshChannelTreeClick",
+                "implHandler": [
+                    "//重新加载栏目树\r",
+                    "this.getArticleManagePanel().getComponent('channelTreePanel').store.load();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Tool",
+                "designer|controlQuery": "tool[itemId=refreshChannelTree]"
+            },
+            "designerId": "6fc864bd-eef4-4425-b9d8-e18584210bce"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "articleManagePanel",
+                "selector": "articleManagePanel",
+                "xtype": "panel"
+            },
+            "designerId": "01c36701-b0dd-48e6-9b56-d3c2c2d7ac13"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "articleAddWindow",
+                "selector": "articleAddWindow",
+                "xtype": "Ext.window.Window"
+            },
+            "designerId": "f73a1c84-3f5c-4d60-9512-d6596ea45f32"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "addArticle",
+                "designer|params": [
+                    "panel"
+                ],
+                "implHandler": [
+                    "var _window = this.getArticleAddWindow();\r",
+                    "if(null == _window){\r",
+                    "    _window = Ext.create('CMS.view.ArticleAddWindow');\r",
+                    "}\r",
+                    "var _form = _window.getComponent('articleAddForm').getForm();\r",
+                    "_form.reset();\r",
+                    "_window.__gridPanel = panel;\r",
+                    "_window.show();\r",
+                    "_form.findField('title').focus(false, true);"
+                ]
+            },
+            "designerId": "d008fe69-9f61-4b9c-a178-f2cbec6884d8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "editArticle",
+                "designer|params": [
+                    "id",
+                    "title"
+                ],
+                "implHandler": [
+                    "this.getArticleManagePanel().getComponent('rticleTabPanel').addOrShowTab('edit', id, title);"
+                ]
+            },
+            "designerId": "fd73556a-8a85-4d9b-a232-df850f1aa035"
+        }
+    ]
+}

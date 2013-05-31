@@ -1,17 +1,16 @@
 {
-    "type": "panel",
+    "type": "Ext.panel.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "SystemManagePanel",
-        "designer|userAlias": "systemManagePanel",
         "height": null,
         "width": null,
+        "designer|userClassName": "SystemManagePanel",
+        "designer|userAlias": "systemManagePanel",
         "title": "系统管理"
     },
-    "id": "ExtBox1-ext-gen50012",
     "designerId": "78e3a88b-b4f5-4b03-bdee-e06b57d0f822"
 }

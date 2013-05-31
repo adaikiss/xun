@@ -1,23 +1,22 @@
 {
-    "type": "panel",
+    "type": "Ext.panel.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "ArticleManagePanel",
-        "designer|userAlias": "articleManagePanel",
         "height": null,
         "width": null,
+        "designer|userClassName": "ArticleManagePanel",
+        "designer|userAlias": "articleManagePanel",
         "layout": "border",
         "title": "文章管理"
     },
-    "id": "ExtBox1-ext-gen49098",
     "designerId": "f6bbd3c6-a3ef-4386-8f20-24c06360071d",
     "cn": [
         {
-            "type": "treepanel",
+            "type": "Ext.tree.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -25,28 +24,178 @@
             "codeClass": null,
             "userConfig": {
                 "layout|region": "west",
-                "designer|userClassName": "MyTreePanel",
-                "frame": false,
-                "itemId": "articleTreePanel",
+                "itemId": "channelTreePanel",
                 "width": 150,
-                "closable": false,
                 "collapsed": false,
                 "collapsible": true,
-                "title": "栏目列表"
+                "title": "栏目列表",
+                "store": "Channel",
+                "displayField": "name",
+                "folderSort": true,
+                "root": [
+                    "{name:'根栏目'}"
+                ]
             },
             "designerId": "6e537618-8c58-434c-88f8-8f2304adf31a",
             "cn": [
                 {
-                    "type": "treeview",
+                    "type": "Ext.tree.View",
                     "reference": {
                         "name": "viewConfig",
                         "type": "object"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyTreeView"
+                        "emptyText": "[没有名称]"
                     },
-                    "designerId": "c46eb87d-abb1-46b3-b30c-a76af9ba3251"
+                    "designerId": "c46eb87d-abb1-46b3-b30c-a76af9ba3251",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onViewItemClick",
+                                "implHandler": [
+                                    "if (!record.hasChildNodes()) {\r",
+                                    "    CMS.app.getController('Article').getArticleManagePanel().getComponent('articleTabPanel').addOrShowTab('channel', record.data.id, record.data.name);\r",
+                                    "}"
+                                ],
+                                "name": "itemclick",
+                                "scope": "me"
+                            },
+                            "designerId": "564b2de3-ad65-4d5e-abda-c1d28681f98d"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Tool",
+                    "reference": {
+                        "name": "tools",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "refreshChannelTree",
+                        "designer|displayName": "refresh",
+                        "tooltip": "刷新",
+                        "type": "refresh"
+                    },
+                    "designerId": "5b3f226a-5c12-4161-82fc-3e5ef75ec182"
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "list": [
+                    "[]"
+                ],
+                "layout|region": "center",
+                "itemId": "articleTabPanel"
+            },
+            "configAlternates": {
+                "list": "array"
+            },
+            "designerId": "786858b6-fe0d-4a06-afa9-a4c60399b9a5",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "list",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "addOrShowTab",
+                        "designer|params": [
+                            "type",
+                            "id",
+                            "name"
+                        ],
+                        "implHandler": [
+                            "var _id = 'article_' + type + id;\r",
+                            "var tab = this.getComponent(_id);\r",
+                            "if (!tab) {\r",
+                            "    switch(type){\r",
+                            "        case 'channel' :\r",
+                            "        tab = Ext.create('CMS.view.ArticleListPanel', {\r",
+                            "            id : _id,\r",
+                            "            channelId : id,\r",
+                            "            title : name\r",
+                            "        });\r",
+                            "        break;\r",
+                            "        case 'edit' : \r",
+                            "        tab = Ext.create('CMS.view.ArticleEditorPanel', {\r",
+                            "            id: _id,\r",
+                            "            articleId : id,\r",
+                            "            title : name\r",
+                            "        });\r",
+                            "        break;\r",
+                            "    }\r",
+                            "    this.list.push(_id);\r",
+                            "    this.add(tab);\r",
+                            "}\r",
+                            "this.setActiveTab(tab);\r",
+                            "return tab;"
+                        ]
+                    },
+                    "designerId": "0b49adaf-8684-4b81-a77e-ca2126534e2d"
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "closeTab",
+                        "designer|params": [
+                            "type",
+                            "id"
+                        ],
+                        "implHandler": [
+                            "var tab = this.getComponent('article_' + type + id);\r",
+                            "if(tab){\r",
+                            "\ttab.close();\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "dac57147-4b65-4c0c-a065-110d8ac7fe44"
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "closeAllItems",
+                        "implHandler": [
+                            "var list = this.list.slice(0);\r",
+                            "for (var i = 0; i < list.length; i++) {\r",
+                            "    this.getComponent(list[i]).close();\r",
+                            "}"
+                        ]
+                    },
+                    "designerId": "052c268c-5ea8-4f23-af34-91b0071a6d6e"
                 }
             ]
         }

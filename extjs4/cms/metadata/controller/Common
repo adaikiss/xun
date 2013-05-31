@@ -1,17 +1,16 @@
 {
-    "type": "controller",
+    "type": "Ext.app.Controller",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "Common",
         "views": [
             "CommonPanel"
-        ]
+        ],
+        "designer|userClassName": "Common"
     },
-    "id": "ExtBox1-ext-gen26023",
     "designerId": "42b8f105-0448-4c40-9462-3c76e397a0e9",
     "cn": [
         {
@@ -22,23 +21,22 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "onButtonClick",
                 "fn": "onButtonClick",
                 "implHandler": [
                     "var params = {closable : true};\r",
                     "switch(button.itemId){\r",
                     "    case 'runStatusBtn' : \r",
-                    "        params.title = '网站运行状态';\r",
-                    "        break;\r",
+                    "    params.title = '网站运行状态';\r",
+                    "    break;\r",
                     "    case 'bulletinManageBtn' : \r",
-                    "        params.title = '网站公告管理';\r",
-                    "        break;\r",
+                    "    params.title = '网站公告管理';\r",
+                    "    break;\r",
                     "    case 'advertisementManageBtn' : \r",
-                    "        params.title = '网站广告管理';\r",
-                    "        break;\r",
+                    "    params.title = '网站广告管理';\r",
+                    "    break;\r",
                     "    case 'linkManageBtn' : \r",
-                    "        params.title = '友情链接管理';\r",
-                    "        break;\r",
+                    "    params.title = '友情链接管理';\r",
+                    "    break;\r",
                     "    default : return;\r",
                     "}\r",
                     "this.getCommonPanel().getComponent('commonTabPanel').addOrShowTab(button.itemId, 'Ext.panel.Panel', params);"
@@ -58,7 +56,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "commonPanel",
                 "ref": "commonPanel",
                 "selector": "commonPanel",
                 "xtype": "panel"

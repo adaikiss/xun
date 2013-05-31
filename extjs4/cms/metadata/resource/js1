@@ -1,0 +1,14 @@
+{
+    "type": "jsoverrideresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js1",
+        "url": "admin/store/data/ArticleStore.js",
+        "id": "ArticleStore"
+    },
+    "designerId": "6a3b1370-89b5-424d-9f37-f67329142060"
+}

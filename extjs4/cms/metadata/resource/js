@@ -1,0 +1,14 @@
+{
+    "type": "jsoverrideresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js",
+        "url": "admin/data/reader/channelTreeJsonReader.js",
+        "id": "ChannelTreeJsonReader"
+    },
+    "designerId": "812c0e61-2cee-412e-aae6-c552146471fa"
+}

@@ -1,17 +1,16 @@
 {
-    "type": "controller",
+    "type": "Ext.app.Controller",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "Main",
         "views": [
             "MainTabPanel"
-        ]
+        ],
+        "designer|userClassName": "Main"
     },
-    "id": "ExtBox1-ext-gen37129",
     "designerId": "d7415008-5cf4-428f-9a2d-e7b8e0120669",
     "cn": [
         {
@@ -22,7 +21,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "showMainView",
                 "fn": "showMainView",
                 "implHandler": [
                     "//var viewport = Ext.create('CMS.view.CmsViewport');\r",
@@ -48,7 +46,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "viewport",
                 "ref": "viewport",
                 "selector": "viewport"
             },

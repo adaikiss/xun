@@ -1,0 +1,301 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": null,
+        "width": null,
+        "designer|userClassName": "ArticleListPanel",
+        "designer|userAlias": "articleListPanel",
+        "closable": true,
+        "title": "My Grid Panel",
+        "store": null
+    },
+    "designerId": "b6007764-4839-4545-ad6f-4d8def53352a",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 40,
+                "align": "right",
+                "dataIndex": "id",
+                "text": "编号",
+                "format": "0,000"
+            },
+            "designerId": "bae02992-4465-458f-a576-532efe7e1ab2"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "title",
+                "text": "标题",
+                "flex": 1
+            },
+            "designerId": "278532af-4a43-40ba-868c-cdd20e46c69b"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 50,
+                "align": "right",
+                "dataIndex": "visits",
+                "text": "访问量",
+                "flex": 1,
+                "format": "0,000"
+            },
+            "designerId": "82d24e39-ec11-439c-bb08-b0dd4fbc90a5"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 40,
+                "align": "right",
+                "dataIndex": "weight",
+                "text": "权重",
+                "flex": 1,
+                "format": "0,000"
+            },
+            "designerId": "06562c24-7537-4707-b4cf-6ac55f6b3f06"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 150,
+                "align": "right",
+                "dataIndex": "date",
+                "text": "创建时间",
+                "flex": 1,
+                "format": "Y-m-d H:i:s"
+            },
+            "designerId": "3b1dcec6-4fce-4178-86ad-a1bcb25943f6"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 150,
+                "align": "right",
+                "dataIndex": "tpl",
+                "text": "模板",
+                "flex": 1
+            },
+            "designerId": "de9231a0-b040-4c72-aceb-1bc8132f86b7"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "status",
+                "text": "状态"
+            },
+            "designerId": "82ec6bcb-afe4-4ba2-8e02-61ce2b86f084"
+        },
+        {
+            "type": "Ext.selection.RowModel",
+            "reference": {
+                "name": "selModel",
+                "type": "object"
+            },
+            "codeClass": "Ext.selection.RowModel",
+            "userConfig": {
+                "mode": "SINGLE"
+            },
+            "designerId": "eadfe999-7ae8-496b-9f71-c2b3efc102bb"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onGridpanelAfterRender",
+                "implHandler": [
+                    "this.store.load({id : this.channelId});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "designerId": "409078e9-b629-470e-ac7c-96ba537bed85"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "processArticleListPanel",
+                "designer|params": [
+                    "config"
+                ],
+                "implHandler": [
+                    "config.store = Ext.create('CMS.data.Store');\r",
+                    "return config;"
+                ]
+            },
+            "designerId": "ce9535ea-fbd0-40d2-8125-5edeb7e36cf0"
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "width": null,
+                "displayInfo": true,
+                "displayMsg": "{0} - {1} 页, 共 {2} 页",
+                "emptyMsg": "暂无数据"
+            },
+            "designerId": "62439f8c-2c6c-4343-be8f-0d5c621481e5",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "designerId": "8777f6d7-f877-476b-91d9-43c03dc26a07"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "新增",
+                        "tooltip": "新增文章"
+                    },
+                    "configAlternates": {
+                        "tooltip": "string"
+                    },
+                    "designerId": "dd8b0be5-6d52-4963-a35b-1f43320e3f40",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "handler",
+                                "designer|params": [
+                                    "button",
+                                    "event"
+                                ],
+                                "implHandler": [
+                                    "CMS.app.getController('Article').addArticle(me);"
+                                ]
+                            },
+                            "designerId": "dc9a4054-ec88-4a7a-a3a8-5b1a9a6c0455"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "designerId": "01f33619-e583-4e7c-a146-aa1f32d3c2b6"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "修改",
+                        "tooltip": "修改文章"
+                    },
+                    "configAlternates": {
+                        "tooltip": "string"
+                    },
+                    "designerId": "62f22fe9-6d78-4bc7-bdc7-311e2db59fdc",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "handler",
+                                "designer|params": [
+                                    "button",
+                                    "event"
+                                ],
+                                "implHandler": [
+                                    "var selected = me.getSelectionModel().getLastSelected();\r",
+                                    "if(!selected){\r",
+                                    "\tExt.MessageBox.alert('提示', '请先选择一条记录!');\r",
+                                    "\treturn;\r",
+                                    "}\r",
+                                    "CMS.app.getController('Article').editArticle(selected.data.id, selected.data.title);"
+                                ]
+                            },
+                            "designerId": "8d597fa2-bf6c-46d0-a851-f96ec1b55423"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
