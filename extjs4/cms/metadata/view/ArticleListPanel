@@ -168,7 +168,7 @@
                     "config"
                 ],
                 "implHandler": [
-                    "config.store = Ext.create('CMS.data.Store');\r",
+                    "config.store = Ext.create('CMS.data.ArticleList');\r",
                     "return config;"
                 ]
             },

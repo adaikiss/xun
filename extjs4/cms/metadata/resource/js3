@@ -1,0 +1,14 @@
+{
+    "type": "jsoverrideresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js3",
+        "url": "admin/data/Article.js",
+        "id": "Article"
+    },
+    "designerId": "1f3ceefd-9c47-497b-82eb-43e7f8e4a7db"
+}

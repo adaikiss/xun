@@ -8,11 +8,11 @@ package org.adaikiss.xun.core.validation.group;
  * 
  */
 public interface ValidationGroup {
-	public interface Save {
+	interface Save {
 
 	}
 
-	public interface Update {
+	interface Update {
 
 	}
 }

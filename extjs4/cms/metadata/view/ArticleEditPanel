@@ -9,6 +9,13 @@
         "border": false,
         "frame": true,
         "height": null,
+        "loader": [
+            "{\r",
+            "    type: 'json',\r",
+            "\troot: 'data',\r",
+            "    successProperty: 'success'\r",
+            "}"
+        ],
         "width": null,
         "designer|userClassName": "ArticleEditPanel",
         "designer|userAlias": "articleEditPanel",
@@ -18,6 +25,12 @@
             "{\r",
             "\tlabelAlign: 'right',\r",
             "\tlabelWidth: 65\r",
+            "}"
+        ],
+        "api": [
+            "{\r",
+            "    update : 'admin/update',\r",
+            "    load : 'admin/edit'\r",
             "}"
         ],
         "waitMsgTarget": [
@@ -172,7 +185,7 @@
                     "userConfig": {
                         "layout|columnWidth": 0.5,
                         "fieldLabel": "创建时间",
-                        "name": "date",
+                        "name": "dateString",
                         "value": null
                     },
                     "designerId": "128f11be-f8f0-4fb5-96ef-ee8c727b423f"
@@ -235,6 +248,170 @@
                     "designerId": "de6d3416-4223-4a09-bb80-f26e61006e9f"
                 }
             ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadForm",
+                "implHandler": [
+                    "this.store.load({\r",
+                    "    params: {\r",
+                    "        id: this.articleId\r",
+                    "    },\r",
+                    "    waitMsg: '加载中...',\r",
+                    "    failure: function (fm, action) {\r",
+                    "        Ext.MessageBox.alert('提示', getErrorMsg(action));\r",
+                    "    }\r",
+                    "});\r",
+                    "return;\r",
+                    "this.getForm().load({\r",
+                    "    url:this.api.load\r",
+                    "});"
+                ]
+            },
+            "designerId": "8f6211b1-1088-4984-ae6a-d1adeac8a0b7"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "container|pack": "center",
+                "ui": "footer"
+            },
+            "designerId": "119c97c6-490b-4e98-8891-60cfe516142b",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "保存"
+                    },
+                    "designerId": "0753098a-9a16-42e9-ac07-9975137ddd51",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "handler",
+                                "designer|params": [
+                                    "button",
+                                    "event"
+                                ],
+                                "implHandler": [
+                                    "var formPanel = this.up('form');\r",
+                                    "var form = formPanel.getForm();\r",
+                                    "if (form.isValid()) {\r",
+                                    "    form.submit({\r",
+                                    "        url: formPanel.api.update,\r",
+                                    "        params: {\r",
+                                    "            id: formPanel.articleId\r",
+                                    "        },\r",
+                                    "        method: 'POST',\r",
+                                    "        success: function (fm, action) {\r",
+                                    "            Ext.MessageBox.alert('提示', '操作成功!');\r",
+                                    "        },\r",
+                                    "        failure: function (fm, action) {\r",
+                                    "            Ext.MessageBox.alert('提示', getErrorMsg(action));\r",
+                                    "        }\r",
+                                    "    });\r",
+                                    "}"
+                                ]
+                            },
+                            "designerId": "1ffe9f77-ad86-46ba-a27e-a385684eaf75"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "重新加载"
+                    },
+                    "designerId": "ddca51ab-5554-40c6-b039-4e73eda81d0c",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "handler",
+                                "designer|params": [
+                                    "button",
+                                    "event"
+                                ],
+                                "implHandler": [
+                                    "this.up('form').loadForm();"
+                                ]
+                            },
+                            "designerId": "008d9fd6-031f-478c-a875-9971264d381e"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onFormAfterRender",
+                "implHandler": [
+                    "this.loadForm();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "designerId": "858afb69-b910-49fd-bb50-e717f1d53388"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "processArticleEditPanel",
+                "designer|params": [
+                    "config"
+                ],
+                "implHandler": [
+                    "config.store = Ext.create('CMS.data.Article');\r",
+                    "config.store.container = this;\r",
+                    "return config;"
+                ]
+            },
+            "designerId": "92cb15d6-2b58-4d4b-a6bd-b7ebbd3b56d8"
         }
     ]
 }

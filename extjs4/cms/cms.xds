@@ -3,11 +3,12 @@
     "settings": {
         "urlPrefix": "http://localhost/",
         "spacesToIndent": 4,
-        "exportPath": "F:/GitHub/xun/demo/cms/src/main/webapp/",
+        "exportPath": "c:/xun/demo/cms/src/main/webapp/",
         "sdkPath": "",
         "lineEnding": "CRLF",
         "genTimestamps": false,
-        "cacheBust": false
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": true
     },
     "xdsVersion": "2.2.2",
     "xdsBuild": 991,
@@ -213,6 +214,12 @@
                 "admin/view/ArticleEditPanel.js"
             ],
             "className": "ArticleEditPanel"
+        },
+        "1f3ceefd-9c47-497b-82eb-43e7f8e4a7db": {
+            "paths": [
+                "metadata/resource/js3"
+            ],
+            "className": "js3"
         }
     },
     "viewOrderMap": {
@@ -250,7 +257,8 @@
             "7ecc7e6e-e14c-42eb-9937-b837cc1e8d0a",
             "812c0e61-2cee-412e-aae6-c552146471fa",
             "6a3b1370-89b5-424d-9f37-f67329142060",
-            "575731b0-74e1-40fd-b9cb-184721722ea8"
+            "575731b0-74e1-40fd-b9cb-184721722ea8",
+            "1f3ceefd-9c47-497b-82eb-43e7f8e4a7db"
         ],
         "app": [
             "application"

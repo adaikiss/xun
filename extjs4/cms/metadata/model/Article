@@ -207,6 +207,48 @@
                 "type": "string"
             },
             "designerId": "fbd3070f-07e1-4f13-97ed-71114d6aedb3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dateFormat": "0",
+                "name": "channelId",
+                "type": "int"
+            },
+            "designerId": "9b9a05ce-d423-432c-a775-c6c0ae57c6b6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "channelName",
+                "type": "string"
+            },
+            "designerId": "27bdeaec-ef00-4124-b1ea-dfe32b9a5e19"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dateFormat": null,
+                "mapping": "date",
+                "name": "dateString",
+                "type": "string"
+            },
+            "designerId": "0894327d-0045-4170-91fb-1105e1a96e61"
         }
     ]
 }

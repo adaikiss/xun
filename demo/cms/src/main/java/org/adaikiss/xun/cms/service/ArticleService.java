@@ -11,4 +11,6 @@ import org.adaikiss.xun.cms.entity.Article;
  */
 public interface ArticleService {
 	public Article add(String title, Long channelId);
+
+	public Article update(Article article);
 }

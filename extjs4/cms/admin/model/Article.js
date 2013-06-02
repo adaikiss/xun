@@ -79,6 +79,20 @@ Ext.define('CMS.model.Article', {
         {
             name: 'modifierName',
             type: 'string'
+        },
+        {
+            dateFormat: '0',
+            name: 'channelId',
+            type: 'int'
+        },
+        {
+            name: 'channelName',
+            type: 'string'
+        },
+        {
+            mapping: 'date',
+            name: 'dateString',
+            type: 'string'
         }
     ]
 });

@@ -141,7 +141,7 @@
                             "        });\r",
                             "        break;\r",
                             "        case 'edit' : \r",
-                            "        tab = Ext.create('CMS.view.ArticleEditorPanel', {\r",
+                            "        tab = Ext.create('CMS.view.ArticleEditPanel', {\r",
                             "            id: _id,\r",
                             "            articleId : id,\r",
                             "            title : name\r",

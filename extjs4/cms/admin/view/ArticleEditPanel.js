@@ -27,14 +27,27 @@ Ext.define('CMS.view.ArticleEditPanel', {
         var me = this;
 
         me.initialConfig = Ext.apply({
+            api: {
+    update : 'admin/update',
+    load : 'admin/edit'
+},
             waitMsgTarget: true
         }, me.initialConfig);
 
         Ext.applyIf(me, {
+            loader: {
+                type: 'json',
+                root: 'data',
+                successProperty: 'success'
+            },
             fieldDefaults: {
                 labelAlign: 'right',
                 labelWidth: 65
             },
+            api: {
+    update : 'admin/update',
+    load : 'admin/edit'
+},
             items: [
                 {
                     xtype: 'fieldset',
@@ -100,7 +113,7 @@ Ext.define('CMS.view.ArticleEditPanel', {
                             xtype: 'displayfield',
                             columnWidth: 0.5,
                             fieldLabel: '创建时间',
-                            name: 'date'
+                            name: 'dateString'
                         },
                         {
                             xtype: 'textfield',
@@ -127,10 +140,86 @@ Ext.define('CMS.view.ArticleEditPanel', {
                         }
                     ]
                 }
-            ]
+            ],
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    layout: {
+                        pack: 'center',
+                        type: 'hbox'
+                    },
+                    items: [
+                        {
+                            xtype: 'button',
+                            handler: function(button, event) {
+                                var formPanel = this.up('form');
+                                var form = formPanel.getForm();
+                                if (form.isValid()) {
+                                    form.submit({
+                                        url: formPanel.api.update,
+                                        params: {
+                                            id: formPanel.articleId
+                                        },
+                                        method: 'POST',
+                                        success: function (fm, action) {
+                                            Ext.MessageBox.alert('提示', '操作成功!');
+                                        },
+                                        failure: function (fm, action) {
+                                            Ext.MessageBox.alert('提示', getErrorMsg(action));
+                                        }
+                                    });
+                                }
+                            },
+                            text: '保存'
+                        },
+                        {
+                            xtype: 'button',
+                            handler: function(button, event) {
+                                this.up('form').loadForm();
+                            },
+                            text: '重新加载'
+                        }
+                    ]
+                }
+            ],
+            listeners: {
+                afterrender: {
+                    fn: me.onFormAfterRender,
+                    scope: me
+                }
+            }
         });
 
+        me.processArticleEditPanel(me);
         me.callParent(arguments);
+    },
+
+    processArticleEditPanel: function(config) {
+        config.store = Ext.create('CMS.data.Article');
+        config.store.container = this;
+        return config;
+    },
+
+    onFormAfterRender: function(component, eOpts) {
+        this.loadForm();
+    },
+
+    loadForm: function() {
+        this.store.load({
+            params: {
+                id: this.articleId
+            },
+            waitMsg: '加载中...',
+            failure: function (fm, action) {
+                Ext.MessageBox.alert('提示', getErrorMsg(action));
+            }
+        });
+        return;
+        this.getForm().load({
+            url:this.api.load
+        });
     }
 
 });

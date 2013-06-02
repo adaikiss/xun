@@ -314,4 +314,34 @@ public class Article extends IdEntity {
 		}
 		return this.getChannel().getRealArticleTpl();
 	}
+
+	@JsonProperty("prev")
+	@Transient
+	public String getPrevTitle(){
+		if(prev != null){
+			return prev.getTitle();
+		}
+		return null;
+	}
+
+	@JsonProperty("next")
+	@Transient
+	public String getNextTitle(){
+		if(next != null){
+			return next.getTitle();
+		}
+		return null;
+	}
+
+	@JsonProperty("channelName")
+	@Transient
+	public String getChannelName(){
+		return channel.getName();
+	}
+
+	@JsonProperty("channelId")
+	@Transient
+	public Long getChannelId(){
+		return channel.getId();
+	}
 }

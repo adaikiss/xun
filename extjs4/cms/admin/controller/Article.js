@@ -47,7 +47,7 @@ Ext.define('CMS.controller.Article', {
     },
 
     editArticle: function(id, title) {
-        this.getArticleManagePanel().getComponent('rticleTabPanel').addOrShowTab('edit', id, title);
+        this.getArticleManagePanel().getComponent('articleTabPanel').addOrShowTab('edit', id, title);
     },
 
     init: function(application) {

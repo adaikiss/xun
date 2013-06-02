@@ -134,7 +134,7 @@ Ext.define('CMS.view.ArticleListPanel', {
     },
 
     processArticleListPanel: function(config) {
-        config.store = Ext.create('CMS.data.Store');
+        config.store = Ext.create('CMS.data.ArticleList');
         return config;
     },
 

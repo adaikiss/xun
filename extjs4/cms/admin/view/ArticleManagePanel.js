@@ -74,7 +74,7 @@ Ext.define('CMS.view.ArticleManagePanel', {
                                 });
                                 break;
                                 case 'edit' : 
-                                tab = Ext.create('CMS.view.ArticleEditorPanel', {
+                                tab = Ext.create('CMS.view.ArticleEditPanel', {
                                     id: _id,
                                     articleId : id,
                                     title : name

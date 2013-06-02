@@ -98,7 +98,7 @@
                     "title"
                 ],
                 "implHandler": [
-                    "this.getArticleManagePanel().getComponent('rticleTabPanel').addOrShowTab('edit', id, title);"
+                    "this.getArticleManagePanel().getComponent('articleTabPanel').addOrShowTab('edit', id, title);"
                 ]
             },
             "designerId": "fd73556a-8a85-4d9b-a232-df850f1aa035"
