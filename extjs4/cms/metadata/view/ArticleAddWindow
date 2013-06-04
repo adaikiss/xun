@@ -77,7 +77,7 @@
                             "var win = this.up('window');\r",
                             "if (form.isValid()) {\r",
                             "    form.submit({\r",
-                            "        url: 'article/add',\r",
+                            "        url: 'admin/article/create',\r",
                             "        method: 'POST',\r",
                             "        params: {\r",
                             "            channelId: win.__gridPanel.channelId\r",

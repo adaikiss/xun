@@ -59,6 +59,10 @@
 		<filter-name>openSessionInViewFilter</filter-name>
 		<url-pattern>/app.html</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<url-pattern>/admin/**</url-pattern>
+	</filter-mapping>
 
 	<filter>
 		<filter-name>shiroFilter</filter-name>

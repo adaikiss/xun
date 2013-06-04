@@ -36,7 +36,8 @@ Ext.application({
         'Article'
     ],
     stores: [
-        'Channel'
+        'Channel',
+        'Article'
     ],
     views: [
         'EmployeeManagePanel',

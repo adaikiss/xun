@@ -21,6 +21,7 @@ Ext.define('CMS.view.ArticleEditPanel', {
     frame: true,
     bodyPadding: 5,
     closable: true,
+    url: 'admin/article/update',
     waitMsgTarget: true,
 
     initComponent: function() {
@@ -28,9 +29,10 @@ Ext.define('CMS.view.ArticleEditPanel', {
 
         me.initialConfig = Ext.apply({
             api: {
-    update : 'admin/update',
-    load : 'admin/edit'
+    update : 'admin/article/update',
+    load : 'admin/article/read'
 },
+            url: 'admin/article/update',
             waitMsgTarget: true
         }, me.initialConfig);
 
@@ -45,8 +47,8 @@ Ext.define('CMS.view.ArticleEditPanel', {
                 labelWidth: 65
             },
             api: {
-    update : 'admin/update',
-    load : 'admin/edit'
+    update : 'admin/article/update',
+    load : 'admin/article/read'
 },
             items: [
                 {
@@ -113,7 +115,7 @@ Ext.define('CMS.view.ArticleEditPanel', {
                             xtype: 'displayfield',
                             columnWidth: 0.5,
                             fieldLabel: '创建时间',
-                            name: 'dateString'
+                            name: 'date'
                         },
                         {
                             xtype: 'textfield',
@@ -158,7 +160,6 @@ Ext.define('CMS.view.ArticleEditPanel', {
                                 var form = formPanel.getForm();
                                 if (form.isValid()) {
                                     form.submit({
-                                        url: formPanel.api.update,
                                         params: {
                                             id: formPanel.articleId
                                         },
@@ -197,8 +198,8 @@ Ext.define('CMS.view.ArticleEditPanel', {
     },
 
     processArticleEditPanel: function(config) {
-        config.store = Ext.create('CMS.data.Article');
-        config.store.container = this;
+        //config.store = Ext.create('CMS.data.Article');
+        //config.store.container = this;
         return config;
     },
 
@@ -207,18 +208,26 @@ Ext.define('CMS.view.ArticleEditPanel', {
     },
 
     loadForm: function() {
-        this.store.load({
+        var me = this;
+        Ext.Ajax.request({
+            url:this.api.load,
             params: {
                 id: this.articleId
             },
-            waitMsg: '加载中...',
+            loadMask: {msg: '加载中...'},
+            success : function(response, options){
+                console.debug(response, options);
+                var result = Ext.JSON.decode(response.responseText);
+                if(result.success){
+                    me.getForm().reset();
+                    me.getForm().setValues(result.data);
+                    return;
+                }
+                Ext.MessageBox.alert('提示', result.msg);
+            },
             failure: function (fm, action) {
                 Ext.MessageBox.alert('提示', getErrorMsg(action));
             }
-        });
-        return;
-        this.getForm().load({
-            url:this.api.load
         });
     }
 

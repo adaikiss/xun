@@ -38,7 +38,7 @@ Ext.define('CMS.view.ArticleAddWindow', {
                         var win = this.up('window');
                         if (form.isValid()) {
                             form.submit({
-                                url: 'article/add',
+                                url: 'admin/article/create',
                                 method: 'POST',
                                 params: {
                                     channelId: win.__gridPanel.channelId

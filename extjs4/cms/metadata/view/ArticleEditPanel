@@ -29,10 +29,11 @@
         ],
         "api": [
             "{\r",
-            "    update : 'admin/update',\r",
-            "    load : 'admin/edit'\r",
+            "    update : 'admin/article/update',\r",
+            "    load : 'admin/article/read'\r",
             "}"
         ],
+        "url": "admin/article/update",
         "waitMsgTarget": [
             "true"
         ]
@@ -185,7 +186,7 @@
                     "userConfig": {
                         "layout|columnWidth": 0.5,
                         "fieldLabel": "创建时间",
-                        "name": "dateString",
+                        "name": "date",
                         "value": null
                     },
                     "designerId": "128f11be-f8f0-4fb5-96ef-ee8c727b423f"
@@ -259,18 +260,26 @@
             "userConfig": {
                 "fn": "loadForm",
                 "implHandler": [
-                    "this.store.load({\r",
+                    "var me = this;\r",
+                    "Ext.Ajax.request({\r",
+                    "\turl:this.api.load,\r",
                     "    params: {\r",
                     "        id: this.articleId\r",
                     "    },\r",
-                    "    waitMsg: '加载中...',\r",
+                    "    loadMask: {msg: '加载中...'},\r",
+                    "    success : function(response, options){\r",
+                    "        console.debug(response, options);\r",
+                    "        var result = Ext.JSON.decode(response.responseText);\r",
+                    "        if(result.success){\r",
+                    "            me.getForm().reset();\r",
+                    "\t\t\tme.getForm().setValues(result.data);\r",
+                    "            return;\r",
+                    "        }\r",
+                    "\t\tExt.MessageBox.alert('提示', result.msg);\r",
+                    "    },\r",
                     "    failure: function (fm, action) {\r",
                     "        Ext.MessageBox.alert('提示', getErrorMsg(action));\r",
-                    "    }\r",
-                    "});\r",
-                    "return;\r",
-                    "this.getForm().load({\r",
-                    "    url:this.api.load\r",
+                    "\t}\r",
                     "});"
                 ]
             },
@@ -321,7 +330,6 @@
                                     "var form = formPanel.getForm();\r",
                                     "if (form.isValid()) {\r",
                                     "    form.submit({\r",
-                                    "        url: formPanel.api.update,\r",
                                     "        params: {\r",
                                     "            id: formPanel.articleId\r",
                                     "        },\r",
@@ -406,8 +414,8 @@
                     "config"
                 ],
                 "implHandler": [
-                    "config.store = Ext.create('CMS.data.Article');\r",
-                    "config.store.container = this;\r",
+                    "//config.store = Ext.create('CMS.data.Article');\r",
+                    "//config.store.container = this;\r",
                     "return config;"
                 ]
             },

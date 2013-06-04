@@ -1,0 +1,62 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "model": "Article",
+        "storeId": "article",
+        "designer|userClassName": "Article"
+    },
+    "designerId": "36a14ed5-bee0-4da9-b434-a5f0880d0760",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "load",
+                "implHandler": [
+                    "this.loadOne(this.articleId);"
+                ]
+            },
+            "designerId": "6b525e8f-bf69-46be-8713-72d329954023"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadOne",
+                "designer|params": [
+                    "id"
+                ],
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "3267b728-6e1e-4b60-858d-eb0c65d061e0"
+        },
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": null,
+                "url": "admin/article"
+            },
+            "designerId": "af554024-09cc-4045-8c7e-3a7d96e6a720"
+        }
+    ]
+}

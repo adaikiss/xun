@@ -27,7 +27,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|displayName": null,
-                "url": "channel/tree.json"
+                "url": "admin/channel/tree.json"
             },
             "designerId": "927d4d50-bee7-40d4-a240-e09a95dc7514",
             "cn": [

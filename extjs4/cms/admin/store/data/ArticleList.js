@@ -13,7 +13,7 @@ Ext.define('CMS.data.ArticleList', {
                 limitParam: 'page.size',
                 simpleSortMode: true,
                 sortParam: 'page.sort',
-                url: 'article/page.json',
+                url: 'admin/article/page.json',
                 reader: {
                     type: 'json',
                     root: 'content',

@@ -3,7 +3,7 @@
     "settings": {
         "urlPrefix": "http://localhost/",
         "spacesToIndent": 4,
-        "exportPath": "c:/xun/demo/cms/src/main/webapp/",
+        "exportPath": "F:/GitHub/xun/demo/cms/src/main/webapp",
         "sdkPath": "",
         "lineEnding": "CRLF",
         "genTimestamps": false,
@@ -220,6 +220,14 @@
                 "metadata/resource/js3"
             ],
             "className": "js3"
+        },
+        "36a14ed5-bee0-4da9-b434-a5f0880d0760": {
+            "paths": [
+                "metadata/store/Article",
+                "admin/store/override/Article.js",
+                "admin/store/Article.js"
+            ],
+            "className": "Article"
         }
     },
     "viewOrderMap": {
@@ -239,7 +247,8 @@
             "0c3cf223-6710-4e3e-83c0-7e627be8b401"
         ],
         "store": [
-            "063a3c54-db1b-4e16-9fc5-5c1b60a844d9"
+            "063a3c54-db1b-4e16-9fc5-5c1b60a844d9",
+            "36a14ed5-bee0-4da9-b434-a5f0880d0760"
         ],
         "controller": [
             "1c008a03-d464-40d1-bfc5-081103b37e65",

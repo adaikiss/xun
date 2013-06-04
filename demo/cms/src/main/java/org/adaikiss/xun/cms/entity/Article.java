@@ -5,6 +5,7 @@ package org.adaikiss.xun.cms.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -88,26 +89,31 @@ public class Article extends IdEntity {
 	/**
 	 * 内容
 	 */
+	@JsonProperty
 	private String content;
 
 	/**
 	 * 摘要
 	 */
+	@JsonProperty
 	private String excerpt;
 
 	/**
 	 * 文章作者
 	 */
+	@JsonProperty
 	private String author;
 
 	/**
 	 * 文章来源
 	 */
+	@JsonProperty
 	private String origin;
 
 	/**
 	 * 文章模板
 	 */
+	@JsonProperty
 	private String tpl;
 
 	/**
@@ -129,16 +135,19 @@ public class Article extends IdEntity {
 	/**
 	 * 文章权重，权重高的排前面
 	 */
+	@JsonProperty
 	private int weight = 10;
 
 	/**
 	 * 关键字
 	 */
+	@JsonProperty
 	private String keywords;
 
 	/**
 	 * 文章状态
 	 */
+	@JsonProperty
 	private PostStatus status = PostStatus.UnderVerify;
 
 	public String getTitle() {
@@ -247,7 +256,7 @@ public class Article extends IdEntity {
 		this.tpl = tpl;
 	}
 
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	@JoinColumn(name = "prev_id")
 	public Article getPrev() {
 		return prev;
@@ -257,7 +266,7 @@ public class Article extends IdEntity {
 		this.prev = prev;
 	}
 
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	@JoinColumn(name = "next_id")
 	public Article getNext() {
 		return next;

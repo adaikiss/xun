@@ -33,7 +33,7 @@ Ext.define('CMS.store.Channel', {
             },
             proxy: me.processMyAjaxProxy({
                 type: 'ajax',
-                url: 'channel/tree.json'
+                url: 'admin/channel/tree.json'
             }),
             sorters: {
                 property: 'order'

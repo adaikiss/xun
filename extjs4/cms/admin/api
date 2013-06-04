@@ -1,0 +1,14 @@
+APIManager = {
+    Article : {
+        create : function(callback){
+			
+        },
+        read : function(callback){
+		
+        },
+        update : function(callback){
+			
+        }
+        
+    }
+};

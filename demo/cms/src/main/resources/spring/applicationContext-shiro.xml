@@ -54,6 +54,7 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
+				/admin/api = anon
 				/**.css = anon
 				/admin/login.do = anon
 				/admin/login.html = anon
