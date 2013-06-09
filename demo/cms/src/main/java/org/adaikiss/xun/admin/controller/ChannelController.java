@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author hlw
  *
  */
-@Controller
+@Controller("adminChannelController")
 @RequestMapping("/admin/channel")
 public class ChannelController {
 	@Autowired

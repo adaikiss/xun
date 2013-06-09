@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.adaikiss.xun.core.entity;
+package org.adaikiss.xun.core.model;
 
 import java.util.Date;
 
@@ -28,7 +28,11 @@ public class Preference{
 	/**
 	 * 页面url后缀
 	 */
-	private String pageSuffix = ".jhtml";
+	private String pageSuffix = ".html";
+	/**
+	 * 栏目URL后缀
+	 */
+	private String channelSuffix = "/";
 	/**
 	 * 各种首页url名称
 	 */
@@ -71,6 +75,14 @@ public class Preference{
 
 	public void setPageSuffix(String pageSuffix) {
 		this.pageSuffix = pageSuffix;
+	}
+
+	public String getChannelSuffix() {
+		return channelSuffix;
+	}
+
+	public void setChannelSuffix(String channelSuffix) {
+		this.channelSuffix = channelSuffix;
 	}
 
 	public String getIndex() {

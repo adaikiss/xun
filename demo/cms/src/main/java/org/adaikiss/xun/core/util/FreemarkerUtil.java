@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -43,6 +44,45 @@ public class FreemarkerUtil {
 					.toString();
 		throw new TemplateModelException("The \"" + key
 				+ "\" parameter must be a string.");
+	}
+	/**
+	 * 将模板文件中的参数对应值转换为String类型
+	 * 
+	 * @param key
+	 *            参数名称
+	 * @param map
+	 *            参数名称和值
+	 * @return
+	 * @throws TemplateModelException
+	 */
+	public static String parseString(TemplateModel templateModel)
+			throws TemplateModelException {
+		if (templateModel == null)
+			return null;
+		if (templateModel instanceof TemplateScalarModel)
+			return ((TemplateScalarModel) templateModel).getAsString();
+		if (templateModel instanceof TemplateNumberModel)
+			return ((TemplateNumberModel) templateModel).getAsNumber()
+					.toString();
+		throw new TemplateModelException("The templateModel must be a string.");
+	}
+
+	/**
+	 * 将模板文件中的参数对应值转换为String类型
+	 * 
+	 * @param key
+	 *            参数名称
+	 * @param map
+	 *            参数名称和值
+	 * @return
+	 * @throws TemplateModelException
+	 */
+	public static String parseString(String key, Map<String, TemplateModel> map, String defaultValue)
+			throws TemplateModelException {
+		TemplateModel templateModel = map.get(key);
+		if (templateModel == null)
+			return defaultValue;
+		return parseString(key, map);
 	}
 
 	/**
@@ -161,6 +201,24 @@ public class FreemarkerUtil {
 	}
 
 	/**
+	 * 将模板文件中的参数对应值转换为Boolean类型
+	 * 
+	 * @param key
+	 *            参数名称
+	 * @param map
+	 *            参数名称和值
+	 * @return
+	 * @throws TemplateModelException
+	 */
+	public static Boolean parseBoolean(String key,
+			Map<String, TemplateModel> map, Boolean defaultValue) throws TemplateModelException {
+		TemplateModel templateModel = (TemplateModel) map.get(key);
+		if (templateModel == null)
+			return defaultValue;
+		return parseBoolean(key, map);
+	}
+
+	/**
 	 * 将模板文件中的参数对应值转换为java.util.Date类型
 	 * 
 	 * @param key
@@ -220,4 +278,14 @@ public class FreemarkerUtil {
 				+ "\" parameter must be a object.");
 	}
 
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static void convertToStringMap(Map map, String keyPrefix) throws TemplateModelException{
+		for(Map.Entry entry : (Set<Map.Entry>)map.entrySet()){
+			String key = (String)entry.getKey();
+			if(!key.startsWith(keyPrefix)){
+				continue;
+			}
+			map.put(key, parseString((TemplateModel)entry.getValue()));
+		}
+	}
 }

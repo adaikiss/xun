@@ -10,7 +10,18 @@ package org.adaikiss.xun.cms.enumeration;
  * 
  */
 public enum PostStatus {
-	Normal("正常"), Closed("关闭"), UnderVerify("待审核");
+	/**
+	 * 正常
+	 */
+	Normal("正常"),
+	/**
+	 * 关闭
+	 */
+	Closed("关闭"),
+	/**
+	 * 待审核
+	 */
+	UnderVerify("待审核");
 	private String description;
 
 	PostStatus(String description) {

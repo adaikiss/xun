@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Properties;
 
-import org.adaikiss.xun.core.entity.Preference;
+import org.adaikiss.xun.core.model.Preference;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
 import org.slf4j.Logger;
@@ -23,7 +23,7 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
 public class PreferenceHelper {
 	private static final Logger logger = LoggerFactory.getLogger(PreferenceHelper.class);
 
-	private static final String PREFERENCE_FILE_LOCATION = "classpath:/preference.properties";
+	private static final String PREFERENCE_FILE_LOCATION = "preference.properties";
 
 	private static volatile Preference preference;
 

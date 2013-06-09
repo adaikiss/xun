@@ -103,7 +103,7 @@ public class PropertyFilter {
 		for(Map.Entry<String, Object> entry : map.entrySet()){
 			String key = entry.getKey();
 			if(key.startsWith(FILTER_PREFIX)){
-				list.add(new PropertyFilter(key.substring(key.indexOf(FILTER_PREFIX)), entry.getValue()));
+				list.add(new PropertyFilter(key.substring(key.indexOf(FILTER_PREFIX) + 7), entry.getValue()));
 			}
 		}
 		return list;

@@ -29,6 +29,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,7 +38,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author hlw
  *
  */
-@Controller
+@Controller("adminArticleController")
 @RequestMapping("/admin/article")
 public class ArticleController {
 	private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
@@ -73,8 +74,8 @@ public class ArticleController {
 		}
 	}
 
-	@RequestMapping("/update")
-	public @ResponseBody Object update(@Validated(ValidationGroup.Update.class)@RequestParam Article article, BindingResult result){
+	@RequestMapping(value = "/update", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody Object update(@Validated(ValidationGroup.Update.class)@ModelAttribute("article") Article article, BindingResult result){
 		AjaxResponse res = new AjaxResponse();
 		if(result.hasErrors()){
 			res.setMsg(MessageEchoHelper.echo(result.getAllErrors()));
@@ -103,7 +104,7 @@ public class ArticleController {
 		return res;
 	}
 
-	@RequestMapping(value = "/destroy")
+	@RequestMapping(value = "/destroy", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody Object destroy(@RequestParam Long id){
 		AjaxResponse res = new AjaxResponse();
 		Article article = articleRepository.findOne(id);
@@ -112,7 +113,7 @@ public class ArticleController {
 			return res;
 		}
 		try {
-			articleRepository.delete(id);
+			articleService.delete(article);
 			res.setSuccess(true);
 			return res;
 		} catch (Exception e) {

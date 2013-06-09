@@ -17,10 +17,13 @@
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<context:component-scan base-package="org.adaikiss.xun.*.directive">
+	<context:component-scan base-package="org.adaikiss.xun.**.directive">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
+
+	<!-- add directive -->
+	<bean class="org.adaikiss.xun.core.freemarker.FreeMarkerManager" lazy-init="false"/>
 
 	<mvc:annotation-driven conversion-service="conversionService">
 		<mvc:async-support default-timeout="30000" />
@@ -59,6 +62,12 @@
 		<property name="preferFileSystemAccess" value="false"></property>
 		<property name="templateLoaderPath" value="/WEB-INF/tpl" />
 		<property name="configLocation" value="classpath:freemarker.properties" />
+		<property name="excludes" >
+			<array>
+				<value>macro</value>
+				<value>decorators</value>
+			</array>
+		</property>
 	</bean>
 
 	<bean id="internalViewResolver"

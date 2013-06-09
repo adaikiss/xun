@@ -112,7 +112,7 @@ Ext.define('CMS.view.ArticleManagePanel', {
     },
 
     onViewItemClick: function(dataview, record, item, index, e, eOpts) {
-        if (!record.hasChildNodes()) {
+        if (!record.isRoot() && !record.hasChildNodes()) {
             CMS.app.getController('Article').getArticleManagePanel().getComponent('articleTabPanel').addOrShowTab('channel', record.data.id, record.data.name);
         }
     }

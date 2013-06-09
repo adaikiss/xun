@@ -102,6 +102,41 @@
                 ]
             },
             "designerId": "fd73556a-8a85-4d9b-a232-df850f1aa035"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "removeArticle",
+                "designer|params": [
+                    "id",
+                    "grid"
+                ],
+                "implHandler": [
+                    "Ext.Ajax.request({\r",
+                    "    url : 'admin/article/destroy',\r",
+                    "    params : {id : id},\r",
+                    "    loadMask : {msg : '请稍候...'},\r",
+                    "\tsuccess : function(response, opt){\r",
+                    "\t\tvar result = JSON.parse(response.responseText);\r",
+                    "\t\tif(result.success){\r",
+                    "\t\t\tExt.MessageBox.alert('提示', '操作成功!');\r",
+                    "\t\t\tgrid.loadData();\r",
+                    "\t\t}else{\r",
+                    "\t\t\tExt.MessageBox.alert('提示', '操作失败, 原因:' + result.message);\r",
+                    "\t\t}\r",
+                    "\t},\r",
+                    "\tfailure : function(response, opt){\r",
+                    "\t\tExt.MessageBox.alert('提示', '操作失败, 原因:' + response.responseText);\r",
+                    "\t}\r",
+                    "});"
+                ]
+            },
+            "designerId": "1ae1c814-66a9-4fc9-9eb5-a443bf321e3f"
         }
     ]
 }

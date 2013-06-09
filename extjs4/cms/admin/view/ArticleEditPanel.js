@@ -19,6 +19,7 @@ Ext.define('CMS.view.ArticleEditPanel', {
 
     border: false,
     frame: true,
+    autoScroll: true,
     bodyPadding: 5,
     closable: true,
     url: 'admin/article/update',
@@ -28,10 +29,6 @@ Ext.define('CMS.view.ArticleEditPanel', {
         var me = this;
 
         me.initialConfig = Ext.apply({
-            api: {
-    update : 'admin/article/update',
-    load : 'admin/article/read'
-},
             url: 'admin/article/update',
             waitMsgTarget: true
         }, me.initialConfig);
@@ -46,10 +43,6 @@ Ext.define('CMS.view.ArticleEditPanel', {
                 labelAlign: 'right',
                 labelWidth: 65
             },
-            api: {
-    update : 'admin/article/update',
-    load : 'admin/article/read'
-},
             items: [
                 {
                     xtype: 'fieldset',
@@ -209,6 +202,17 @@ Ext.define('CMS.view.ArticleEditPanel', {
 
     loadForm: function() {
         var me = this;
+        this.getForm().load({
+            url:'admin/article/read',
+            params: {
+                id: this.articleId
+            },
+            waitMsg : '加载中...',
+            failure: function (fm, action) {
+                Ext.MessageBox.alert('提示', getErrorMsg(action));
+            }
+        });
+        return;
         Ext.Ajax.request({
             url:this.api.load,
             params: {

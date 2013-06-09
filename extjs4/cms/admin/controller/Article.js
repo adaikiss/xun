@@ -50,6 +50,26 @@ Ext.define('CMS.controller.Article', {
         this.getArticleManagePanel().getComponent('articleTabPanel').addOrShowTab('edit', id, title);
     },
 
+    removeArticle: function(id, grid) {
+        Ext.Ajax.request({
+            url : 'admin/article/destroy',
+            params : {id : id},
+            loadMask : {msg : '请稍候...'},
+            success : function(response, opt){
+                var result = JSON.parse(response.responseText);
+                if(result.success){
+                    Ext.MessageBox.alert('提示', '操作成功!');
+                    grid.loadData();
+                }else{
+                    Ext.MessageBox.alert('提示', '操作失败, 原因:' + result.message);
+                }
+            },
+            failure : function(response, opt){
+                Ext.MessageBox.alert('提示', '操作失败, 原因:' + response.responseText);
+            }
+        });
+    },
+
     init: function(application) {
         this.control({
             "tool[itemId=refreshChannelTree]": {

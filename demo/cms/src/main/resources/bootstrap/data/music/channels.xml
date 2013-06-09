@@ -17,6 +17,7 @@
 			<value name="id">1</value>
 			<value name="name"><![CDATA[流行歌曲]]></value>
 			<value name="alias"><![CDATA[pop]]></value>
+			<value name="description"><![CDATA[流行的歌曲]]></value>
 			<value name="order_no">1</value>
 			<value name="status">Normal</value>
 			<value name="channel_tpl">pop_list</value>
@@ -27,6 +28,7 @@
 			<value name="id">2</value>
 			<value name="name"><![CDATA[经典老歌]]></value>
 			<value name="alias"><![CDATA[classic]]></value>
+			<value name="description"><![CDATA[经典的歌曲]]></value>
 			<value name="order_no">2</value>
 			<value name="status">Normal</value>
 			<value name="top_tpl"><![CDATA[case_summary]]></value>
@@ -38,6 +40,7 @@
 			<value name="id">3</value>
 			<value name="name"><![CDATA[纯音乐]]></value>
 			<value name="alias"><![CDATA[pure]]></value>
+			<value name="description"><![CDATA[纯音乐 自然之音]]></value>
 			<value name="order_no">3</value>
 			<value name="status">Normal</value>
 			<value name="channel_tpl">pure_list</value>
@@ -48,6 +51,7 @@
 			<value name="id">4</value>
 			<value name="name"><![CDATA[钢琴曲]]></value>
 			<value name="alias"><![CDATA[piano]]></value>
+			<value name="description"><![CDATA[钢琴演奏曲]]></value>
 			<value name="order_no">1</value>
 			<value name="status">Normal</value>
 			<value name="parent_id">3</value>

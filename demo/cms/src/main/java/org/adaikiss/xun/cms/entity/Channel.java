@@ -26,6 +26,7 @@ import org.adaikiss.xun.core.util.PreferenceHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -55,6 +56,7 @@ public class Channel extends IdEntity {
 	 * 栏目别名，用于url显示
 	 */
 	@JsonProperty
+	@NotEmpty
 	private String alias;
 
 	/**
@@ -349,6 +351,6 @@ public class Channel extends IdEntity {
 	 */
 	@Transient
 	public String getUrl() {
-		return this.alias + PreferenceHelper.getPreference().getPageSuffix();
+		return this.alias + PreferenceHelper.getPreference().getChannelSuffix();
 	}
 }

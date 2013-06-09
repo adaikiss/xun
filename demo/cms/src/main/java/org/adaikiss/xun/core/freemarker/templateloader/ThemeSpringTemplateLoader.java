@@ -15,13 +15,15 @@ import org.springframework.ui.freemarker.SpringTemplateLoader;
  *
  */
 public class ThemeSpringTemplateLoader extends SpringTemplateLoader {
-	public ThemeSpringTemplateLoader(ResourceLoader resourceLoader, String templateLoaderPath){
+	private final String[] excludes;
+	public ThemeSpringTemplateLoader(ResourceLoader resourceLoader, String templateLoaderPath, String...excludes){
 		super(resourceLoader, templateLoaderPath);
+		this.excludes = excludes;
 	}
 
 	@Override
 	public Object findTemplateSource(String name) throws IOException {
-		if(name.startsWith("WEB-INF") || name.startsWith("/WEB-INF")){
+		if(exclude(name)){
 			return super.findTemplateSource(name);
 		}
 		//通过theme查找模板文件
@@ -35,5 +37,17 @@ public class ThemeSpringTemplateLoader extends SpringTemplateLoader {
 		}
 		//不存在则查默认theme文件
 		return super.findTemplateSource(Constant.DEFAULT_THEME + "/" + name);
+	}
+
+	private boolean exclude(String name){
+		if(excludes.length == 0){
+			return false;
+		}
+		for(String exclude : excludes){
+			if(name.startsWith(exclude)){
+				return true;
+			}
+		}
+		return false;
 	}
 }

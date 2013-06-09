@@ -75,6 +75,21 @@
 		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
 
+	<filter>
+		<filter-name>sitemeshFilter</filter-name>
+		<filter-class>org.adaikiss.xun.core.web.sitemesh3.RequestParamSiteMeshFilter</filter-class>
+		<init-param>
+			<param-name>excludedParamNames</param-name>
+			<param-value>ajax,nodecorate</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>sitemeshFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

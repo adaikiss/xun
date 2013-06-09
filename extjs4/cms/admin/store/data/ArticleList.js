@@ -12,6 +12,7 @@ Ext.define('CMS.data.ArticleList', {
                 directionParam: 'page.sort.dir',
                 limitParam: 'page.size',
                 simpleSortMode: true,
+                extraParams : {id : cfg.channelId},
                 sortParam: 'page.sort',
                 url: 'admin/article/page.json',
                 reader: {

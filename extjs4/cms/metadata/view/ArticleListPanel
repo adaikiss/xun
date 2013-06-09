@@ -148,7 +148,7 @@
             "userConfig": {
                 "fn": "onGridpanelAfterRender",
                 "implHandler": [
-                    "this.store.load({id : this.channelId});"
+                    "this.loadData();"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -168,7 +168,6 @@
                     "config"
                 ],
                 "implHandler": [
-                    "config.store = Ext.create('CMS.data.ArticleList');\r",
                     "return config;"
                 ]
             },
@@ -183,10 +182,19 @@
             "codeClass": null,
             "userConfig": {
                 "dock": "bottom",
+                "ui": null,
                 "width": null,
+                "afterPageText": "共 {0}页",
+                "beforePageText": "当前",
                 "displayInfo": true,
-                "displayMsg": "{0} - {1} 页, 共 {2} 页",
-                "emptyMsg": "暂无数据"
+                "displayMsg": "{0} - {1} 条, 共 {2} 条",
+                "emptyMsg": "暂无数据",
+                "firstText": "首页",
+                "lastText": "尾页",
+                "nextText": "下一页",
+                "prevText": "上一页",
+                "refreshText": "刷新",
+                "store": null
             },
             "designerId": "62439f8c-2c6c-4343-be8f-0d5c621481e5",
             "cn": [
@@ -285,8 +293,8 @@
                                 "implHandler": [
                                     "var selected = me.getSelectionModel().getLastSelected();\r",
                                     "if(!selected){\r",
-                                    "\tExt.MessageBox.alert('提示', '请先选择一条记录!');\r",
-                                    "\treturn;\r",
+                                    "    Ext.MessageBox.alert('提示', '请先选择一条记录!');\r",
+                                    "    return;\r",
                                     "}\r",
                                     "CMS.app.getController('Article').editArticle(selected.data.id, selected.data.title);"
                                 ]
@@ -294,8 +302,103 @@
                             "designerId": "8d597fa2-bf6c-46d0-a851-f96ec1b55423"
                         }
                     ]
+                },
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "designerId": "259e3c93-da44-4020-817a-6611edac399c"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "删除",
+                        "tooltip": "删除文章"
+                    },
+                    "configAlternates": {
+                        "tooltip": "string"
+                    },
+                    "designerId": "d6605e9c-5bbd-4cba-a58f-b7db3c58434f",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "handler",
+                                "designer|params": [
+                                    "button",
+                                    "event"
+                                ],
+                                "implHandler": [
+                                    "var selected = me.getSelectionModel().getLastSelected();\r",
+                                    "if(!selected){\r",
+                                    "    Ext.MessageBox.alert('提示', '请先选择一条记录!');\r",
+                                    "    return;\r",
+                                    "}\r",
+                                    "Ext.MessageBox.confirm('提示', '确定要删除[' + selected.data.title + ']?(<font color=\"red\">无法恢复</font>)', function(btn){\r",
+                                    "    if(btn == 'yes'){\r",
+                                    "\t\tCMS.app.getController('Article').removeArticle(selected.data.id, me);\r",
+                                    "    }\r",
+                                    "});"
+                                ]
+                            },
+                            "designerId": "317f73f9-7394-4a71-b058-dbe44d9c620d"
+                        }
+                    ]
+                },
+                {
+                    "type": "processcfgfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "processMyPagingToolbar",
+                        "designer|params": [
+                            "config"
+                        ],
+                        "implHandler": [
+                            "this.store = config.store = Ext.create('CMS.data.ArticleList', {channelId : this.channelId});\r",
+                            "return config;"
+                        ]
+                    },
+                    "designerId": "c33f203d-b260-403e-a216-e50f472deed1"
                 }
             ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadData",
+                "implHandler": [
+                    "this.store.load({\r",
+                    "    params : {id : this.channelId}\r",
+                    "});"
+                ]
+            },
+            "designerId": "daacc251-5c62-4638-b565-e288ea94b0ec"
         }
     ]
 }

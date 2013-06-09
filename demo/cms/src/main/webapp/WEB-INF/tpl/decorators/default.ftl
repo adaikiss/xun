@@ -8,12 +8,15 @@
 <title><sitemesh:write property='title'/></title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="${base}/rs/skins/default/css.css" rel="stylesheet" type="text/css" />
+<link href="${base}/rs/reset.css" rel="stylesheet" type="text/css" />
+<link href="${base}/rs/core.css" rel="stylesheet" type="text/css" />
 <sitemesh:write property='head'/>
 <script type="text/javascript" src="${base }/rs/jquery-1.9.1.min.js"></script>
 
 </head>
 <body>
-
+<#include "/header.ftl">
+<sitemesh:write property='body'/>
+<#include "/footer.ftl">
 </body>
 </html>

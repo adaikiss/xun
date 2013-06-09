@@ -12,4 +12,6 @@ import org.adaikiss.xun.cms.entity.Channel;
  *
  */
 public interface ChannelService {
+	List<Channel> findByParentId(Long parentId);
+	List<Channel> findByParentIdEager(Long parentId);
 }

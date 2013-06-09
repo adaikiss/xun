@@ -60,7 +60,7 @@
                             "userConfig": {
                                 "fn": "onViewItemClick",
                                 "implHandler": [
-                                    "if (!record.hasChildNodes()) {\r",
+                                    "if (!record.isRoot() && !record.hasChildNodes()) {\r",
                                     "    CMS.app.getController('Article').getArticleManagePanel().getComponent('articleTabPanel').addOrShowTab('channel', record.data.id, record.data.name);\r",
                                     "}"
                                 ],

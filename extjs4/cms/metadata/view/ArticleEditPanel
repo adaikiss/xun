@@ -19,6 +19,7 @@
         "width": null,
         "designer|userClassName": "ArticleEditPanel",
         "designer|userAlias": "articleEditPanel",
+        "autoScroll": true,
         "bodyPadding": 5,
         "closable": true,
         "fieldDefaults": [
@@ -27,12 +28,7 @@
             "\tlabelWidth: 65\r",
             "}"
         ],
-        "api": [
-            "{\r",
-            "    update : 'admin/article/update',\r",
-            "    load : 'admin/article/read'\r",
-            "}"
-        ],
+        "api": null,
         "url": "admin/article/update",
         "waitMsgTarget": [
             "true"
@@ -261,8 +257,19 @@
                 "fn": "loadForm",
                 "implHandler": [
                     "var me = this;\r",
+                    "this.getForm().load({\r",
+                    "    url:'admin/article/read',\r",
+                    "    params: {\r",
+                    "        id: this.articleId\r",
+                    "    },\r",
+                    "    waitMsg : '加载中...',\r",
+                    "    failure: function (fm, action) {\r",
+                    "        Ext.MessageBox.alert('提示', getErrorMsg(action));\r",
+                    "    }\r",
+                    "});\r",
+                    "return;\r",
                     "Ext.Ajax.request({\r",
-                    "\turl:this.api.load,\r",
+                    "    url:this.api.load,\r",
                     "    params: {\r",
                     "        id: this.articleId\r",
                     "    },\r",
@@ -272,14 +279,14 @@
                     "        var result = Ext.JSON.decode(response.responseText);\r",
                     "        if(result.success){\r",
                     "            me.getForm().reset();\r",
-                    "\t\t\tme.getForm().setValues(result.data);\r",
+                    "            me.getForm().setValues(result.data);\r",
                     "            return;\r",
                     "        }\r",
-                    "\t\tExt.MessageBox.alert('提示', result.msg);\r",
+                    "        Ext.MessageBox.alert('提示', result.msg);\r",
                     "    },\r",
                     "    failure: function (fm, action) {\r",
                     "        Ext.MessageBox.alert('提示', getErrorMsg(action));\r",
-                    "\t}\r",
+                    "    }\r",
                     "});"
                 ]
             },

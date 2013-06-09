@@ -90,12 +90,19 @@ Ext.define('CMS.view.ArticleListPanel', {
                 }
             },
             dockedItems: [
-                {
+                me.processMyPagingToolbar({
                     xtype: 'pagingtoolbar',
                     dock: 'bottom',
+                    afterPageText: '共 {0}页',
+                    beforePageText: '当前',
                     displayInfo: true,
-                    displayMsg: '{0} - {1} 页, 共 {2} 页',
+                    displayMsg: '{0} - {1} 条, 共 {2} 条',
                     emptyMsg: '暂无数据',
+                    firstText: '首页',
+                    lastText: '尾页',
+                    nextText: '下一页',
+                    prevText: '上一页',
+                    refreshText: '刷新',
                     items: [
                         {
                             xtype: 'tbseparator'
@@ -123,9 +130,29 @@ Ext.define('CMS.view.ArticleListPanel', {
                             },
                             text: '修改',
                             tooltip: '修改文章'
+                        },
+                        {
+                            xtype: 'tbseparator'
+                        },
+                        {
+                            xtype: 'button',
+                            handler: function(button, event) {
+                                var selected = me.getSelectionModel().getLastSelected();
+                                if(!selected){
+                                    Ext.MessageBox.alert('提示', '请先选择一条记录!');
+                                    return;
+                                }
+                                Ext.MessageBox.confirm('提示', '确定要删除[' + selected.data.title + ']?(<font color="red">无法恢复</font>)', function(btn){
+                                    if(btn == 'yes'){
+                                        CMS.app.getController('Article').removeArticle(selected.data.id, me);
+                                    }
+                                });
+                            },
+                            text: '删除',
+                            tooltip: '删除文章'
                         }
                     ]
-                }
+                })
             ]
         });
 
@@ -134,12 +161,22 @@ Ext.define('CMS.view.ArticleListPanel', {
     },
 
     processArticleListPanel: function(config) {
-        config.store = Ext.create('CMS.data.ArticleList');
+        return config;
+    },
+
+    processMyPagingToolbar: function(config) {
+        this.store = config.store = Ext.create('CMS.data.ArticleList', {channelId : this.channelId});
         return config;
     },
 
     onGridpanelAfterRender: function(component, eOpts) {
-        this.store.load({id : this.channelId});
+        this.loadData();
+    },
+
+    loadData: function() {
+        this.store.load({
+            params : {id : this.channelId}
+        });
     }
 
 });

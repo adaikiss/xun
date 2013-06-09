@@ -58,7 +58,7 @@
 				/**.css = anon
 				/admin/login.do = anon
 				/admin/login.html = anon
-				/admin/** = roles[admin]
+				/admin/** = anon
 				/app.html = roles[admin]
 				/init.html = anon
 				/ = anon

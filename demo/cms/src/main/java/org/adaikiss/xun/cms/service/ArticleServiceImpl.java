@@ -10,15 +10,18 @@ import org.adaikiss.xun.cms.entity.Article;
 import org.adaikiss.xun.cms.entity.Channel;
 import org.adaikiss.xun.cms.repository.ArticleRepository;
 import org.adaikiss.xun.cms.repository.ChannelRepository;
-import org.adaikiss.xun.core.editable.ArticleAdminEditable;
 import org.adaikiss.xun.core.entity.Member;
+import org.adaikiss.xun.core.jpa.specification.BaseSpecifications;
 import org.adaikiss.xun.core.security.SecurityUtil;
+import org.adaikiss.xun.core.util.BeanUtil;
 import org.apache.shiro.SecurityUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springside.modules.orm.PropertyFilter;
 
 /**
  * @author hlw
@@ -58,11 +61,30 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public Article update(Article article) {
 		Article old = articleRepository.findOne(article.getId());
-		BeanUtils.copyProperties(article, old, ArticleAdminEditable.class);
+		BeanUtil.copyProperties(article, old, new String[]{"title", "content", "excerpt", "author", "origin", "tpl", "visits", "weight", "keywords", "status"});
 		old.setModified(new Date());
 		old.setModifier(SecurityUtil.getMember());
 		articleRepository.save(old);
 		return old;
 	}
 
+	@Override
+	public void delete(Article article) {
+		Article prev = article.getPrev();
+		Article next = article.getNext();
+		if(prev != null){
+			prev.setNext(next);
+		}
+		if(next != null){
+			next.setPrev(prev);
+		}
+		articleRepository.delete(article);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<Article> findPage(List<PropertyFilter> filters, PageRequest pageRequest){
+		Specification<Article> s = BaseSpecifications.propertyFilter(filters);
+		return articleRepository.findAll(s, pageRequest);
+	}
 }
