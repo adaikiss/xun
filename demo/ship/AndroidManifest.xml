@@ -7,7 +7,7 @@
     <application android:allowBackup="true"
         android:icon="@drawable/ic_launcher_home" android:label="@string/home_title">
         <activity android:configChanges="keyboardHidden|orientation"
-            android:name="Ship" android:screenOrientation="nosensor" android:theme="@android:style/Theme.NoTitleBar">
+            android:name="Main" android:screenOrientation="nosensor" android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
