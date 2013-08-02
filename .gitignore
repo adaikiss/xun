@@ -11,3 +11,6 @@ bin
 /demo/cms/src/main/webapp/app.js
 
 /demo/cms/src/main/webapp/admin
+
+/demo/ship/gen
+/demo/android/catapult/gen
