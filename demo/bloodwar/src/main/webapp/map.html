@@ -24,9 +24,21 @@
 		<map name="map" id="mapLayer"></map>
 		<div id="nav" style="position:absolute;right:0px;bottom:0px;width:144px;height:143px;background:url('images/map_controller.png') no-repeat scroll transparent;">
 			<img src="images/map_up.png" style="top:3px;left:52px;position:absolute;">
+			<img src="images/map_upleft_up.png" style="top:4px;left:25px;position:absolute;">
+			<img src="images/map_left_up.png" style="top:31px;left:26px;position:absolute;">
+			<img src="images/map_downleft_up.png" style="top:60px;left:25px;position:absolute;">
+			<img src="images/map_down_up.png" style="top:74px;left:53px;position:absolute;">
+			<img src="images/map_downright_up.png" style="top:60px;left:80px;position:absolute;">
 			<img src="rs/images/empty.png" usemap="#nav_map" style="width:144px;height:143px;background: none;position:absolute;">
 			<map name="nav_map" id="nav_map">
-				<area shape="poly" coords="49,0,96,0,79,30,64,30" onclick="javascript:console.debug('aa')"/>
+				<area shape="poly" coords="49,0,96,0,79,30,64,30" onclick="javascript:console.debug('n')"/>
+				<area shape="poly" coords="25,29,49,0,64,30,52,43" onclick="javascript:console.debug('nw')"/>
+				<area shape="poly" coords="27,71,25,29,52,43,52,59" onclick="javascript:console.debug('w')"/>
+				<area shape="poly" coords="52,98,27,71,52,59,66,72" onclick="javascript:console.debug('sw')"/>
+				<area shape="poly" coords="93,97,52,98,66,72,80,72" onclick="javascript:console.debug('s')"/>
+				<area shape="poly" coords="120,73,93,97,80,72,93,60" onclick="javascript:console.debug('se')"/>
+				<area shape="poly" coords="121,31,120,73,93,60,94,44" onclick="javascript:console.debug('e')"/>
+				<area shape="poly" coords="96,0,121,31,94,44,79,30" onclick="javascript:console.debug('ne')"/>
 			</map>
 		</div>
 	</div>
