@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<table name="xun_article">
+		<column>id</column>
+		<column>title</column>
+		<column>channel_id</column>
+		<column>publisher_id</column>
+		<column>date</column>
+		<column>modified</column>
+		<column>modifier_id</column>
+		<column>content</column>
+		<column>excerpt</column>
+		<column>author</column>
+		<column>origin</column>
+		<column>tpl</column>
+		<column>prev_id</column>
+		<column>next_id</column>
+		<column>visits</column>
+		<column>weight</column>
+		<column>keywords</column>
+		<column>status</column>
+		<row>
+			<value name="id">1</value>
+			<value name="title"><![CDATA[致我们终将逝去的青春]]></value>
+			<value name="content">
+				<![CDATA[
+[00:00.00]致我们终将逝去的青春<br>
+[00:00.50]词曲：赵英俊<br>
+[00:02.00]演唱：赵英俊<br>
+[00:03.00]<br>
+[00:04.05]荼蘼还没凋零 提醒我 紧紧抱着你<br>
+[00:14.61]世界还在下雨 嘲笑着 晴天的远行<br>
+[00:25.92]你说我逃不过的死亡就是被人遗忘<br>
+[00:37.29]我说你是我人生路上最明媚的忧伤<br>
+[00:47.26]接一个刻骨铭心的吻<br>
+[00:52.66]献给我注定孤独的余生<br>
+[00:58.72]纹一个触目惊心的身<br>
+[01:03.99]致我们终将逝去的青春<br>
+[01:10.12]记住曾经鲜艳的伤痕<br>
+[01:15.48]记住初吻那天的风筝<br>
+[01:21.49]记住如何深爱一个人<br>
+[01:26.85]记住无怨无悔的牺牲<br>
+[01:33.07]<br>
+[01:57.45]你说我逃不过的死亡就是被人遗忘<br>
+[02:08.60]我说你是我人生路上最明媚的忧伤<br>
+[02:18.96]接一个刻骨铭心的吻<br>
+[02:23.91]献给我注定孤独的余生<br>
+[02:30.02]纹一个触目惊心的身<br>
+[02:35.22]致我们终将逝去的青春<br>
+[02:41.48]记住曾经鲜艳的伤痕<br>
+[02:47.09]记住初吻那天的风筝<br>
+[02:52.94]记住如何深爱一个人<br>
+[02:58.55]记住无怨无悔的牺牲<br>
+[03:05.85]<br>
+[03:15.86]接一个刻骨铭心的吻<br>
+[03:21.11]献给我注定孤独的余生<br>
+[03:27.29]纹一个触目惊心的身<br>
+[03:32.44]致我们终将逝去的青春<br>
+[03:38.64]<br>
+				]]>
+			</value>
+			<value name="date">2011-11-03</value>
+			<value name="visits">61</value>
+			<value name="channel_id">1</value>
+			<value name="publisher_id">1</value>
+			<value name="next_id">2</value>
+			<value name="status">Normal</value>
+			<value name="weight">10</value>
+		</row>
+
+		<row>
+			<value name="id">2</value>
+			<value name="title"><![CDATA[给自己]]></value>
+			<value name="content">
+				<![CDATA[
+[00:00.01]给自己<br>
+[00:00.10]演唱：光良<br>
+[00:00.20]<br>
+[00:01.10]有时候 心里不知觉地感到寂寞<br>
+[00:05.25]而其实 时间对每个人都下了咒<br>
+[00:09.46]那些路 自己走<br>
+[00:13.62]那些路 身边有朋友<br>
+[00:17.93]弄不清那究竟是场什么样的梦<br>
+[00:22.06]美丽的让人没有相信来的冲动<br>
+[00:26.43]故事怎么诉说 回忆又怎么歌颂<br>
+[00:34.94]啦啦啦青春少年许多天真懵懂<br>
+[00:39.06]长大后才知道自己多怀念小时候<br>
+[00:45.44]给自己一封信 那青春别忘记<br>
+[00:53.81]开心淋雨 失恋也淋雨<br>
+[00:58.06]那雨中有多少伤痛被袭击<br>
+[01:03.43]要自己那些故事别忘记<br>
+[01:10.85]用欢笑与哭泣写下的页页花絮<br>
+[01:15.76]夜空疲倦写下的曾经绚烂多迷<br>
+[01:23.65]有时候 心里不知觉地感到寂寞<br>
+[01:27.76]而其实 时间对每个人都下了咒<br>
+[01:31.98]那些路 自己走<br>
+[01:36.30]那些路 身边有朋友<br>
+[01:40.51]弄不清那究竟是场什么样的梦<br>
+[01:44.71]美丽的让人没有相信来的冲动<br>
+[01:48.93]故事怎么诉说 回忆又怎么歌颂<br>
+[01:57.47]啦啦啦青春少年许多天真懵懂<br>
+[02:01.69]长大后才知道自己多怀念小时候<br>
+[02:08.01]给自己一封信 青春不可能忘记<br>
+[02:16.48]开心有你 悲伤也有你<br>
+[02:20.67]多少路都在有你的陪伴里<br>
+[02:25.97]要自己那些过去别忘记<br>
+[02:33.36]用血泪和生命唱出的完美歌曲<br>
+[02:38.39]就算播放N次都动听<br>
+[02:41.79]啦啦啦青春少年许多天真懵懂<br>
+[02:46.11]长大后才知道自己多怀念小时候<br>
+[02:54.70]给自己一封信 那青春别忘记<br>
+[03:03.09]开心淋雨 失恋也淋雨<br>
+[03:07.19]那雨中有多少伤痛被袭击<br>
+[03:13.31]要自己那些故事别忘记<br>
+[03:21.00]用血泪和生命唱出的完美歌曲<br>
+[03:26.02]就算播放了千次万次都很动听<br>
+[03:36.83]<br>
+				]]>
+			</value>
+			<value name="date">2011-11-03</value>
+			<value name="visits">61</value>
+			<value name="channel_id">1</value>
+			<value name="publisher_id">1</value>
+			<value name="prev_id">1</value>
+			<value name="status">Normal</value>
+			<value name="weight">10</value>
+		</row>
+	</table>
+</dataset>

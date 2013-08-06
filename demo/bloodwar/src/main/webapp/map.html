@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BloodWar</title>
+<link rel="stylesheet" href="rs/map.css" type="text/css">
+<script src="rs/jquery-1.9.1.min.js"></script>
+<script src="rs/core/translate.js"></script>
+<script src="rs/core/util.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<form name="myform">
+		<input type="text" name="stage" size="20" />
+	</form>
+	<div id="map"
+		style="width: 0px; height: 0px; position: relative; overflow: hidden; border: 1px solid red;">
+		<div id="imageLayer"
+			style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: #000000;">
+		</div>
+		<img src="rs/images/empty.png" usemap="#map"
+			style="background: none; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;" />
+		<map name="map" id="mapLayer"></map>
+		<div id="nav" style="position:absolute;right:0px;bottom:0px;width:144px;height:143px;background:url('images/map_controller.png') no-repeat scroll transparent;">
+			<img src="images/map_up.png" style="top:3px;left:52px;position:absolute;">
+			<img src="rs/images/empty.png" usemap="#nav_map" style="width:144px;height:143px;background: none;position:absolute;">
+			<map name="nav_map" id="nav_map">
+				<area shape="poly" coords="49,0,96,0,79,30,64,30" onclick="javascript:console.debug('aa')"/>
+			</map>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+$(function() {
+	w = 900, h = 600, aw = 107, ah = 75, ahm = 55, ahr = 20;
+	cl = w / 2;
+	ct = h / 2;
+	
+		$('#map').width(w).height(h);
+		imgLayer = $('#imageLayer');
+		mapLayer = $('#mapLayer');
+		loadMap(5, 5);
+	});
+</script>
+</html>

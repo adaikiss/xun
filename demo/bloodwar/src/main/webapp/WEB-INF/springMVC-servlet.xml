@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<!-- make shiro aop work for controllers -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="org.adaikiss.xun.*.controller">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<context:component-scan base-package="org.adaikiss.xun.**.directive">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
+
+	<!-- add directive -->
+	<bean class="org.adaikiss.xun.core.freemarker.FreeMarkerManager" lazy-init="false"/>
+
+	<mvc:annotation-driven conversion-service="conversionService">
+		<mvc:async-support default-timeout="30000" />
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.data.web.PageableArgumentResolver"></bean>
+		</mvc:argument-resolvers>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter">
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"></bean>
+	<bean
+		class="org.springframework.data.repository.support.DomainClassConverter" depends-on="conversionService">
+		<constructor-arg ref="conversionService" />
+	</bean>
+
+	<mvc:view-controller path="/" view-name="forward:/index.html" />
+
+	<mvc:resources mapping="/rs/**" location="/rs/" />
+
+	<mvc:default-servlet-handler />
+
+	<bean id="freemarkerViewResolver"
+		class="org.adaikiss.xun.core.freemarker.RichFreeMarkerViewResolver">
+		<property name="contentType" value="text/html; charset=UTF-8" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="requestContextAttribute" value="rc" />
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".ftl" />
+	</bean>
+	<bean id="freemarkerConfig"
+		class="org.adaikiss.xun.core.freemarker.ThemeFreeMarkerConfigurer">
+		<property name="preferFileSystemAccess" value="false"></property>
+		<property name="templateLoaderPath" value="/WEB-INF/tpl" />
+		<property name="configLocation" value="classpath:freemarker.properties" />
+		<property name="excludes" >
+			<array>
+				<value>macro</value>
+				<value>decorators</value>
+			</array>
+		</property>
+	</bean>
+
+	<bean id="internalViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<util:map id="mediaTypes">
+		<entry>
+			<key>
+				<value>json</value>
+			</key>
+			<value>application/json</value>
+		</entry>
+		<entry>
+			<key>
+				<value>xml</value>
+			</key>
+			<value>application/xml</value>
+		</entry>
+		<entry key="html" value="text/html" />
+	</util:map>
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManager">
+		<constructor-arg name="strategies">
+			<array>
+				<bean
+					class="org.springframework.web.accept.ParameterContentNegotiationStrategy">
+					<constructor-arg ref="mediaTypes" />
+				</bean>
+				<bean
+					class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+					<constructor-arg ref="mediaTypes" />
+				</bean>
+			</array>
+		</constructor-arg>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="contentNegotiationManager" ref="contentNegotiationManager" />
+		<property name="viewResolvers">
+			<list>
+				<ref bean="freemarkerViewResolver" />
+				<ref bean="internalViewResolver" />
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BloodWar</title>
+<link rel="stylesheet" href="rs/ol/ol.css" type="text/css">
+<script src="rs/ol/ol.js"></script>
+<style type="text/css">
+.map {
+	width: 600px;
+	height: 600px;
+	border: 1px solid #ccc;
+}
+</style>
+</head>
+<body>
+	<div id="map" class="map"></div>
+</body>
+<script type="text/javascript">
+var map = new ol.Map({
+	  layers: [
+	    new ol.layer.TileLayer({
+	      source: new ol.source.OSM({"url":"rs/ol/blank.jpeg"})
+	    }),
+	    new ol.layer.TileLayer({
+	      source: new ol.source.DebugTileSource({
+	        projection: 'EPSG:3857',
+	        tileGrid: new ol.tilegrid.XYZ({
+	          maxZoom: 1
+	        })
+	      })
+	    })
+	  ],
+	  renderers: ol.RendererHints.createFromQueryData(),
+	  target: 'map',
+	  view: new ol.View2D({
+	    center: [0, 0],
+	    zoom: 1
+	  })
+	});
+</script>
+</html>

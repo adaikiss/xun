@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 用户自动赋予角色, 角色自动授予超级权限 -->
+	<user displayName="管理员" loginName="admin" password="admin"/>
+	<role name="admin" description="超级管理员"/>
+
+	<!-- * = *:*:*, user = user:*:*, user:create = user:create:* -->
+	<perm description="超级权限"><![CDATA[*]]></perm>
+	<perm description="用户管理权限"><![CDATA[user]]></perm>
+	<perm description="用户创建权限"><![CDATA[user:create]]></perm>
+	<perm description="用户浏览权限"><![CDATA[user:read]]></perm>
+	<perm description="用户修改权限"><![CDATA[user:update]]></perm>
+	<perm description="用户删除权限"><![CDATA[user:delete]]></perm>
+	<perm description="用户授权权限"><![CDATA[user:authorize]]></perm>
+
+	<perm description="角色管理权限"><![CDATA[role]]></perm>
+	<perm description="角色创建权限"><![CDATA[role:create]]></perm>
+	<perm description="角色浏览权限"><![CDATA[role:read]]></perm>
+	<perm description="角色修改授权"><![CDATA[role:update]]></perm>
+	<perm description="角色删除权限"><![CDATA[role:delete]]></perm>
+
+	<perm description="权限管理权限"><![CDATA[perm]]></perm>
+	<perm description="权限创建权限"><![CDATA[perm:create]]></perm>
+	<perm description="权限浏览权限"><![CDATA[perm:read]]></perm>
+	<perm description="权限修改权限"><![CDATA[perm:update]]></perm>
+	<perm description="权限删除权限"><![CDATA[perm:delete]]></perm>
+
+	<perm description="栏目管理权限"><![CDATA[channel]]></perm>
+	<perm description="栏目创建权限"><![CDATA[channel:create]]></perm>
+	<perm description="栏目浏览权限"><![CDATA[channel:read]]></perm>
+	<perm description="栏目修改权限"><![CDATA[channel:update]]></perm>
+	<perm description="栏目删除权限"><![CDATA[channel:delete]]></perm>
+
+	<perm description="文章管理权限"><![CDATA[article]]></perm>
+	<perm description="文章创建权限"><![CDATA[article:create]]></perm>
+	<perm description="文章浏览权限"><![CDATA[article:read]]></perm>
+	<perm description="文章修改权限"><![CDATA[article:update]]></perm>
+	<perm description="文章删除权限"><![CDATA[article:delete]]></perm>
+
+	<perm description="资源管理权限"><![CDATA[resource]]></perm>
+	<perm description="资源创建权限"><![CDATA[resource:create]]></perm>
+	<perm description="资源浏览权限"><![CDATA[resource:read]]></perm>
+	<perm description="资源修改权限"><![CDATA[resource:update]]></perm>
+	<perm description="资源删除权限"><![CDATA[resource:delete]]></perm>
+
+	<perm description="模板管理权限"><![CDATA[template]]></perm>
+	<perm description="模板创建权限"><![CDATA[template:create]]></perm>
+	<perm description="模板浏览权限"><![CDATA[template:read]]></perm>
+	<perm description="模板修改权限"><![CDATA[template:update]]></perm>
+	<perm description="模板删除权限"><![CDATA[template:delete]]></perm>
+
+	<perm description="日志管理权限"><![CDATA[log]]></perm>
+	<perm description="日志删除权限"><![CDATA[log:delete]]></perm>
+</root>
