@@ -274,6 +274,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
 				<version>${aspectj.version}</version>
@@ -1917,7 +1922,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 
 		<nexus.host>http://localhost:8081</nexus.host>
 		<android-platform>9</android-platform>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
