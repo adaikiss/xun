@@ -27,7 +27,7 @@ public class ConditionShowcase<E> {
 				notFull.await();
 			}
 			queue.add(e);
-			notFull.signal();
+			notEmpty.signal();
 		} finally{
 			lock.unlock();
 		}
@@ -40,7 +40,7 @@ public class ConditionShowcase<E> {
 				notEmpty.await();
 			}
 			E e = queue.remove(queue.size() - 1);
-			notEmpty.signal();
+			notFull.signal();
 			return e;
 		} finally{
 			lock.unlock();
