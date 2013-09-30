@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 public class Client {
 
 	private static final Logger logger = LoggerFactory.getLogger(Client.class);
-	private ByteBuffer buffer = ByteBuffer.allocate(8);
+	private ByteBuffer buffer = ByteBuffer.allocate(1024);
 	private SocketChannel socketChannel;
 	private SelectableChannel inChannel;
 	private Selector selector;

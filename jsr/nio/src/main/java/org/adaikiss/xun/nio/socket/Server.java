@@ -112,6 +112,7 @@ public class Server {
 		for (SocketChannel channel : clients) {
 			try {
 				channel.write(buffer);
+				buffer.flip();
 			} catch (IOException e) {
 				logger.error("Error writing to channel!", e);
 			}
@@ -142,7 +143,7 @@ public class Server {
 		clients.add(clientChannel);
 		clientChannel.configureBlocking(false);
 		clientChannel.register(selector, SelectionKey.OP_READ);
-		ByteBuffer buffer = EncodeUtil.StringToByteBuffer("12345");
+		ByteBuffer buffer = EncodeUtil.StringToByteBuffer("welcome!");
 		clientChannel.write(buffer);
 		buffer.clear();
 		System.out.println("Server:a new client connected!");
