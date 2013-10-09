@@ -26,4 +26,7 @@ JpaSpecificationExecutor<User>{
 
 	public Page<User> findByNiceNameLikeOrDisplayNameLike(String keyword1,
 			String keyword2, Pageable pageRequest);
+
+	@Transactional(readOnly = true)
+	public List<User> findByRoles_Name(String roleName);
 }

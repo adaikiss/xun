@@ -53,7 +53,18 @@ public class SubqueryInTest extends
 	}
 
 	@Test
-	public void testFindUserByRole_Name() {
+	public void testFindByRoles_Name(){
+		final String roleName = "hero";
+		List<User> users = userRepository.findByRoles_Name(roleName);
+        for(User user : users){
+        	System.out.println(user.getDisplayName());
+        }
+        Assert.assertThat(users.size(), is(3));
+        Assert.assertThat(Arrays.asList(new String[]{"赵云", "阿尔萨斯", "小小"}), hasItems(users.get(0).getNiceName(), users.get(1).getNiceName(), users.get(2).getNiceName()));
+	}
+
+	@Test
+	public void testFindByRoles_Name_Specification() {
 		final String roleName = "hero";
 		Specification<User> spec = new Specification<User>() {
 
