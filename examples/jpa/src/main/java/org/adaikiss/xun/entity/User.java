@@ -1,12 +1,16 @@
 package org.adaikiss.xun.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,6 +19,8 @@ import org.adaikiss.xun.enumeration.UserStatus;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+
+import com.google.common.collect.Sets;
 
 @Entity
 public class User extends IdEntity {
@@ -27,6 +33,7 @@ public class User extends IdEntity {
 	private String url;
 	private UserStatus status;
 	private Credit credit;
+	private Set<Role> roles = Sets.newHashSet();
 
 	@Column(name = "nice_name")
 	public String getNiceName() {
@@ -105,6 +112,16 @@ public class User extends IdEntity {
 
 	public void setCredit(Credit credit) {
 		this.credit = credit;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override
