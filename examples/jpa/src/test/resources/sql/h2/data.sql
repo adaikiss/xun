@@ -1,6 +1,17 @@
 --user
 insert into user(id, nice_name, display_name, login_name, password, status)values(1, '赵云', '常山赵子龙', 'zhaoyun', '123456', 'normal');
 insert into user(id, nice_name, display_name, login_name, password, status)values(2, '阿尔萨斯', '夜之哀伤', 'asas', '123456', 'normal');
+insert into user(id, nice_name, display_name, login_name, password, status)values(3, '小小', '山岭巨人', 'tiny', '123456', 'normal');
+insert into user(id, nice_name, display_name, login_name, password, status)values(4, '格雷克', '咕噜兵', 'grab', '123456', 'normal');
+--role
+insert into role(id, name)values(1, 'hero');
+insert into role(id, name)values(2, 'normal');
+--user_role
+insert into user_role(user_id, role_id)values(1, 1);
+insert into user_role(user_id, role_id)values(2, 1);
+insert into user_role(user_id, role_id)values(3, 1);
+insert into user_role(user_id, role_id)values(4, 2);
+
 --post
 insert into post(id, title, author_id, content, post_status, comment_status, password)values(1, 'first post', 1, 'Hello, world! This is my first post!', 'publish', 'open', null);
 insert into post(id, title, author_id, content, post_status, comment_status, password)values(2, 'second post', 1, 'Hello, world! This is my second post!', 'publish', 'open', null);
