@@ -3,12 +3,15 @@
  */
 package org.adaikiss.xun.client;
 
-import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
 
-import org.jboss.netty.bootstrap.ClientBootstrap;
-import org.jboss.netty.channel.ChannelFuture;
-import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
+import java.net.InetSocketAddress;
 
 /**
  * @author hlw
@@ -17,24 +20,27 @@ import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
 public class Client {
 	private static final String HOST = "localhost";
 	private static final int PORT = 8080;
+
 	public static void main(String[] args) throws Exception {
 
-		// Configure the client.
-		ClientBootstrap bootstrap = new ClientBootstrap(
-				new NioClientSocketChannelFactory(
-						Executors.newCachedThreadPool(),
-						Executors.newCachedThreadPool()));
-
-		ClientHandler handler =  new ClientHandler("Hello, world!");
-		bootstrap.getPipeline().addLast("handler", handler);
-		// Start the connection attempt.
-		ChannelFuture future = bootstrap.connect(new InetSocketAddress(HOST,
-				PORT));
-
-		// Wait until the connection is closed or the connection attempt fails.
-		future.getChannel().getCloseFuture().awaitUninterruptibly();
-
-		// Shut down thread pools to exit.
-		bootstrap.releaseExternalResources();
+		EventLoopGroup group = new NioEventLoopGroup();
+		try {
+			Bootstrap bootstrap = new Bootstrap();
+			bootstrap.group(group);
+			bootstrap.handler(new ChannelInitializer<Channel>() {
+				public void initChannel(Channel channel) {
+					channel.pipeline().addLast(new ClientHandler());
+				}
+			});
+			bootstrap.option(ChannelOption.TCP_NODELAY, true).option(
+					ChannelOption.SO_KEEPALIVE, true);
+			ChannelFuture f = bootstrap.connect(
+					new InetSocketAddress(HOST, PORT)).sync();
+			// Wait until the connection is closed.
+			f.channel().closeFuture().sync();
+		} finally {
+			// Shut down the event loop to terminate all threads.
+			group.shutdownGracefully();
+		}
 	}
 }

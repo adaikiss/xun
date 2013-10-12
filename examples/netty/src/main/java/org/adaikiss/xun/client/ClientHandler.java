@@ -3,15 +3,9 @@
  */
 package org.adaikiss.xun.client;
 
-import java.nio.charset.Charset;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-import org.jboss.netty.buffer.ChannelBuffer;
-import org.jboss.netty.buffer.ChannelBuffers;
-import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.ChannelStateEvent;
-import org.jboss.netty.channel.ExceptionEvent;
-import org.jboss.netty.channel.MessageEvent;
-import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,35 +13,24 @@ import org.slf4j.LoggerFactory;
  * @author hlw
  * 
  */
-public class ClientHandler extends SimpleChannelUpstreamHandler {
+public class ClientHandler extends ChannelInboundHandlerAdapter {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ClientHandler.class.getName());
 
-	private ChannelBuffer message;
 
-	public ClientHandler(String message) {
-		if (null == message || message.length() == -1) {
-			throw new IllegalArgumentException("message: blank!");
-		}
+	public ClientHandler() {
 		
-		this.message = ChannelBuffers.wrappedBuffer(message.getBytes());
 	}
 
 	@Override
-	public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) {
-		e.getChannel().write(message);
+	public void channelRead(ChannelHandlerContext ctx, Object msg)
+			throws Exception {
+		ctx.write(msg);
 	}
 
 	@Override
-	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
-//		e.getChannel().write(e.getMessage());
-		logger.debug(((ChannelBuffer)e.getMessage()).toString(Charset.forName("UTF-8")));
+	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+		ctx.flush();
 	}
 
-	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) {
-		// Close the connection when an exception is raised.
-		logger.warn("Unexpected exception from downstream.", e.getCause());
-		e.getChannel().close();
-	}
 }

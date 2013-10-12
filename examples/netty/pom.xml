@@ -14,6 +14,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+      <netty.version>4.0.10.Final</netty.version>
   </properties>
 
   <dependencies>
