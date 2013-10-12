@@ -17,7 +17,6 @@ import java.nio.channels.WritableByteChannel;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 import org.adaikiss.xun.utils.EncodeUtil;
@@ -36,23 +35,36 @@ public class Server {
 
 	private ByteBuffer buffer = ByteBuffer.allocate(1024);
 
+	private ServerSocketChannel ssc;
 	private Pipe pipe;
-	private Scanner scanner;
+//	private Scanner scanner;
 	private SelectableChannel inChannel;
 	private List<SocketChannel> clients;
 
-	private void start(String host, int port) throws IOException {
-		ServerSocketChannel ssc = ServerSocketChannel.open();
-		ssc.configureBlocking(false);
-		ssc.socket().bind(new InetSocketAddress(host, port));
-		selector = Selector.open();
-		ssc.register(selector, SelectionKey.OP_ACCEPT);
-		pipe = Pipe.open();
-		inChannel = pipe.source();
-		inChannel.configureBlocking(false);
-		inChannel.register(selector, SelectionKey.OP_READ);
-		scanner = new Scanner(System.in, "UTF-8");
+	private ServerWindow win;
+
+	public Server(ServerWindow win){
+		this.win = win;
 		clients = new LinkedList<SocketChannel>();
+	}
+
+	public void start(String host, int port) {
+		try {
+			selector = Selector.open();
+			pipe = Pipe.open();
+			inChannel = pipe.source();
+			inChannel.configureBlocking(false);
+			inChannel.register(selector, SelectionKey.OP_READ);
+			ssc = ServerSocketChannel.open();
+			ssc.configureBlocking(false);
+			ssc.socket().bind(new InetSocketAddress(host, port));
+			ssc.register(selector, SelectionKey.OP_ACCEPT);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+//		scanner = new Scanner(System.in, "UTF-8");
+		
 		new Thread() {
 			@Override
 			public void run() {
@@ -79,10 +91,18 @@ public class Server {
 				}
 			}
 		}.start();
-		while (true) {
-			String msg = scanner.nextLine();
-			WritableByteChannel channel = pipe.sink();
+//		while (true) {
+//			String msg = scanner.nextLine();
+//			writeToClients(msg);
+//		}
+	}
+
+	public void writeToClients(String msg){
+		WritableByteChannel channel = pipe.sink();
+		try {
 			channel.write(EncodeUtil.StringToByteBuffer(msg));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -134,6 +154,7 @@ public class Server {
 		if (count > 0) {
 			String msg = EncodeUtil.ByteBufferToString(buffer);
 			System.out.println("Server:received [" + msg + "]");
+			win.write(msg);
 		}
 	}
 
@@ -147,13 +168,28 @@ public class Server {
 		clientChannel.write(buffer);
 		buffer.clear();
 		System.out.println("Server:a new client connected!");
+		win.write("a new client connected!");
+	}
+
+	public void stop(){
+		try {
+			selector.close();
+			selector = null;
+			ssc.close();
+			ssc = null;
+			inChannel.close();
+			inChannel = null;
+			clients.clear();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) throws IOException {
-		new Server().start("localhost", 12345);
+//		new Server().start("localhost", 12345);
 	}
 
 }
