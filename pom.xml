@@ -901,6 +901,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			</dependency>
 			<!-- memcached end -->
 
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+
 			<!-- logging begin-->
 			<dependency>
 				<groupId>log4j</groupId>
@@ -1839,6 +1845,8 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<jmemcached.version>1.0.0</jmemcached.version>
 		<ehcache.version>2.5.2</ehcache.version>
 		<oscache.version>2.4.1</oscache.version>
+		<!-- nosql -->
+		<jedis.version>2.0.0</jedis.version>
 		<!-- validation -->
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 		<geronimo-validation_1.0_spec.version>1.1</geronimo-validation_1.0_spec.version>

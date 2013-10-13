@@ -1,26 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.adaikiss.xun</groupId>
 		<artifactId>examples</artifactId>
 		<version>1.0</version>
 	</parent>
-  <groupId>org.adaikiss.xun</groupId>
-  <artifactId>netty</artifactId>
-  <packaging>jar</packaging>
+	<groupId>org.adaikiss.xun</groupId>
+	<artifactId>netty</artifactId>
+	<packaging>jar</packaging>
 
-  <name>netty</name>
-  <url>http://maven.apache.org</url>
+	<name>netty</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-      <netty.version>4.0.10.Final</netty.version>
-  </properties>
+	<properties>
+		<netty.version>4.0.10.Final</netty.version>
+	</properties>
 
-  <dependencies>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>protoc-plugin</id>
+			<url>http://sergei-ivanov.github.com/maven-protoc-plugin/repo/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>2.5.0</version>
 		</dependency>
 
 		<dependency>
@@ -40,9 +53,29 @@
 			<artifactId>log4j</artifactId>
 		</dependency>
 
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.google.protobuf.tools</groupId>
+				<artifactId>maven-protoc-plugin</artifactId>
+				<version>0.3.1</version>
+				<configuration>
+					<protocExecutable>${project.basedir}/../../tools/protobuf/protoc</protocExecutable>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
