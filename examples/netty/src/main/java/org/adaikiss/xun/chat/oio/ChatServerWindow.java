@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.adaikiss.xun.chat;
+package org.adaikiss.xun.chat.oio;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

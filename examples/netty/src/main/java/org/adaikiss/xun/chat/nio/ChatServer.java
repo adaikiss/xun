@@ -1,16 +1,17 @@
 /**
  * 
  */
-package org.adaikiss.xun.chat;
+package org.adaikiss.xun.chat.nio;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.logging.LogLevel;
@@ -29,8 +30,8 @@ import org.adaikiss.xun.netty.chat.proto.MessageProto.Message.User;
  */
 public class ChatServer {
 	ChannelFuture f;
-	NioEventLoopGroup bossGroup;
-	NioEventLoopGroup workerGroup;
+	EventLoopGroup bossGroup;
+	EventLoopGroup workerGroup;
 	Channel channel;
 	private ChatServerHandler handler;
 	ChatServerWindow window;
@@ -46,10 +47,10 @@ public class ChatServer {
 			b.channel(NioServerSocketChannel.class);
 			handler = new ChatServerHandler(this);
 			b.handler(new LoggingHandler(LogLevel.INFO)).childHandler(
-					new ChannelInitializer<NioSocketChannel>() {
+					new ChannelInitializer<SocketChannel>() {
 
 						@Override
-						protected void initChannel(NioSocketChannel ch)
+						protected void initChannel(SocketChannel ch)
 								throws Exception {
 							ch.pipeline().addLast(new ProtobufDecoder(Message.getDefaultInstance()), new ProtobufEncoder(), handler);
 						}

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.adaikiss.xun.chat;
+package org.adaikiss.xun.chat.oio;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler.Sharable;
@@ -26,9 +26,26 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Message> {
 
 	protected ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 	private ChatServer server;
+//	private BlockingQueue<MessageTuple> msgQueue;
 
 	public ChatServerHandler(ChatServer server){
 		this.server = server;
+//		msgQueue = new LinkedBlockingQueue<MessageTuple>();
+//		new Thread(){
+//
+//			@Override
+//			public void run() {
+//				try {
+//					while(true){
+//						MessageTuple t = msgQueue.take();
+//						writeToAll(t.msg, t.c);
+//					}
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//			
+//		}.start();
 	}
 
 	@Override
@@ -38,13 +55,17 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Message> {
 
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-		
 	}
 
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, Message msg)
 			throws Exception {
+		System.out.println(msg.getContent());
+//		if("jetty".equals(msg.getUser().getName()) && count++%2 == 0){
+//			Thread.sleep(6000);
+//		}
 		writeToAll(msg, ctx.channel());
+//		msgQueue.put(new MessageTuple(msg, ctx.channel()));
 	}
 
 	@Override
@@ -90,10 +111,20 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Message> {
 	private void writeTo(Message normalMsg, Channel particularChannel, Message particularMsg){
 		for(Channel c : channels){
 			if(c.equals(particularChannel)){
-				c.writeAndFlush(particularMsg);
+				if(null != particularMsg){
+					c.writeAndFlush(particularMsg);
+				}
 				continue;
 			}
 			c.writeAndFlush(normalMsg);
+		}
+	}
+	class MessageTuple{
+		public Message msg;
+		public Channel c;
+		public MessageTuple(Message msg, Channel c){
+			this.msg = msg;
+			this.c = c;
 		}
 	}
 }

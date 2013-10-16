@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.adaikiss.xun.chat;
+package org.adaikiss.xun.chat.oio;
 
 import java.util.Date;
 
@@ -31,8 +31,8 @@ public class ChatClientHandler extends SimpleChannelInboundHandler<Message>{
 
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-		Message m = Message.newBuilder().setType(MessageType.Logout).setTime(new Date().getTime()).setUser(User.newBuilder().setName(client.window.getName()).setSystem(false)).build();
-		ctx.writeAndFlush(m);
+//		Message m = Message.newBuilder().setType(MessageType.Logout).setTime(new Date().getTime()).setUser(User.newBuilder().setName(client.window.getName()).setSystem(false)).build();
+//		ctx.writeAndFlush(m);
 	}
 
 	@Override
