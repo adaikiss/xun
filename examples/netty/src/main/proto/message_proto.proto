@@ -11,14 +11,14 @@ message Message{
 		Login = 0;
 		Logout = 1;
 		Chat = 2;
+		Notice = 4;
 	}
 	required MessageType type = 3;
 
 	message User{
 		required string name = 1;
-		required string ip = 2;
-		required bool system = 3;
-		optional string password = 4;
+		required bool system = 2;
+		optional string password = 3;
 	}
 
 	required User user = 4;
