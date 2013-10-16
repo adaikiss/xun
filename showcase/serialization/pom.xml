@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.adaikiss.xun</groupId>
+		<artifactId>showcase</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>serialization</artifactId>
+	<packaging>jar</packaging>
+	<name>xun::serialization</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<msgpack.version>0.6.8</msgpack.version>
+		<protobuf.version>2.5.0</protobuf.version>
+	</properties>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>protoc-plugin</id>
+			<url>http://sergei-ivanov.github.com/maven-protoc-plugin/repo/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<dependencies>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>${protobuf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.msgpack</groupId>
+			<artifactId>msgpack</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.google.protobuf.tools</groupId>
+				<artifactId>maven-protoc-plugin</artifactId>
+				<version>0.3.1</version>
+				<configuration>
+					<protocExecutable>${project.basedir}/../../tools/protobuf/protoc</protocExecutable>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

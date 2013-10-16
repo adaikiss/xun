@@ -15,5 +15,6 @@
 		<module>database</module>
 		<module>try</module>
 		<module>nosql</module>
+		<module>serialization</module>
 	</modules>
 </project>
