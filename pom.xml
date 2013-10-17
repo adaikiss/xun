@@ -1916,7 +1916,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<dozer.version>5.3.2</dozer.version>
 		<poi.version>3.8</poi.version>
 		<jetty.version>9.0.0.M5</jetty.version>
-		<mina.version>2.0.4</mina.version>
+		<mina.version>3.0.0-M2</mina.version>
 		<httpclient.version>4.2-beta1</httpclient.version>
 		<disruptor.version>2.7.1</disruptor.version>
 		<activemq.version>5.5.1</activemq.version>

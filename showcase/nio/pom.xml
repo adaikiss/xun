@@ -3,19 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.adaikiss.xun</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>showcase</artifactId>
 		<version>1.0</version>
 	</parent>
-	<artifactId>showcase</artifactId>
+	<artifactId>nio</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>bootstrap</module>
-		<module>aop</module>
-		<module>test</module>
-		<module>database</module>
-		<module>try</module>
-		<module>nosql</module>
-		<module>serialization</module>
-		<module>nio</module>
+		<module>mina2</module>
 	</modules>
 </project>
