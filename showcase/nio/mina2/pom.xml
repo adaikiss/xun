@@ -64,7 +64,7 @@
 				<artifactId>maven-protoc-plugin</artifactId>
 				<version>0.3.1</version>
 				<configuration>
-					<protocExecutable>${project.basedir}/../../tools/protobuf/protoc</protocExecutable>
+					<protocExecutable>${project.basedir}/../../../tools/protobuf/protoc</protocExecutable>
 				</configuration>
 				<executions>
 					<execution>
