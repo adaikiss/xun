@@ -1,3 +1,3 @@
-why thread are a bad idea http://www.stanford.edu/~ouster/cgi-bin/papers/threads.pdf
+why threads are a bad idea http://www.stanford.edu/~ouster/cgi-bin/papers/threads.pdf
 the reactive manifesto http://www.reactivemanifesto.org/
 go reactive http://www.jdon.com/45811
