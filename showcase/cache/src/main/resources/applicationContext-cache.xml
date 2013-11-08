@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+	default-lazy-init="true">
+	<beans profile="proxy">
+		<cache:annotation-driven/>
+	</beans>
+	<beans profile="aspectj">
+		<context:load-time-weaver/>
+		<cache:annotation-driven mode="aspectj"/>
+	</beans>
+	<!-- Ehcache -->
+	<beans profile="ehcache">
+		<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+			<property name="cacheManager" ref="ehcache" />
+		</bean>
+		<bean id="ehcache"
+			class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+			<property name="configLocation" value="classpath:ehcache.xml" />
+		</bean>
+	</beans>
+	<beans profile="memory">
+		<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+			<property name="caches">
+				<set>
+					<bean
+						class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+						p:name="default" />
+					<bean
+						class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+						p:name="book" />
+					<bean
+						class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
+						p:name="books" />
+				</set>
+			</property>
+		</bean>
+	</beans>
+</beans>

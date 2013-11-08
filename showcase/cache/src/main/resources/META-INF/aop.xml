@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!--
+ AspectJ load-time weaving config file to install common Spring aspects.
+-->
+
+<aspectj>
+
+<!-- Only weave the classes in willy.package -->
+    <weaver options="-verbose -showWeaveInfo">
+        <include within="org.adaikiss.xun.cache.spring.repository.aspectj.*" />
+    </weaver>
+
+    <!-- Below are the annotations used by spring-aspects -->
+    <aspects>
+        <aspect name="org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect" />
+        <aspect name="org.springframework.scheduling.aspectj.AnnotationAsyncExecutionAspect" />
+        <aspect name="org.springframework.transaction.aspectj.AnnotationTransactionAspect" />
+        <aspect name="org.springframework.cache.aspectj.AnnotationCacheAspect" />
+    </aspects>
+</aspectj>

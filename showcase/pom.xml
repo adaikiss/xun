@@ -17,5 +17,6 @@
 		<module>nosql</module>
 		<module>serialization</module>
 		<module>nio</module>
+		<module>cache</module>
 	</modules>
 </project>
