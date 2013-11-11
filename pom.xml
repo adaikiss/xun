@@ -261,6 +261,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<artifactId>spring-oxm</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-instrument</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 
 			<!-- spring tx -->
 			<dependency>
@@ -900,6 +905,12 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<scope>test</scope>
 			</dependency>
 			<!-- memcached end -->
+
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>${spring-data-redis.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>redis.clients</groupId>
@@ -1846,7 +1857,8 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<ehcache.version>2.5.2</ehcache.version>
 		<oscache.version>2.4.1</oscache.version>
 		<!-- nosql -->
-		<jedis.version>2.0.0</jedis.version>
+		<spring-data-redis.version>1.1.0.RELEASE</spring-data-redis.version>
+		<jedis.version>2.1.0</jedis.version>
 		<!-- validation -->
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 		<geronimo-validation_1.0_spec.version>1.1</geronimo-validation_1.0_spec.version>
