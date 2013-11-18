@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cache="http://www.springframework.org/schema/cache"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="
@@ -9,12 +10,15 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
 	default-lazy-init="true">
+
+	<context:property-placeholder location="classpath:application.properties" />
+
 	<beans profile="proxy">
-		<cache:annotation-driven/>
+		<cache:annotation-driven />
 	</beans>
 	<beans profile="aspectj">
-		<context:load-time-weaver/>
-		<cache:annotation-driven mode="aspectj"/>
+		<context:load-time-weaver />
+		<cache:annotation-driven mode="aspectj" />
 	</beans>
 	<!-- Ehcache -->
 	<beans profile="ehcache">
@@ -25,6 +29,18 @@
 			class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
 			<property name="configLocation" value="classpath:ehcache.xml" />
 		</bean>
+	</beans>
+	<beans profile="redis">
+		<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager"
+			c:template-ref="redisTemplate" p:usePrefix="true">
+		</bean>
+		<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+			p:connection-factory-ref="redisConnFactory" />
+		<beans profile="jedis">
+			<bean id="redisConnFactory"
+				class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+				p:use-pool="true" p:hostName="${redis.server.host}" p:port="${redis.server.port}" />
+		</beans>
 	</beans>
 	<beans profile="memory">
 		<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
@@ -42,5 +58,22 @@
 				</set>
 			</property>
 		</bean>
+	</beans>
+	<beans profile="memcached">
+		<bean id="cacheManager" class="org.adaikiss.xun.cache.manager.MemcachedCacheManager">
+			<property name="caches">
+				<set>
+					<bean class="org.adaikiss.xun.cache.manager.MemcachedCache">
+						<constructor-arg name="name" value="default" />
+						<constructor-arg name="client" ref="memcachedClient" />
+					</bean>
+				</set>
+			</property>
+		</bean>
+		<beans profile="xmemcached">
+			<bean id="memcachedClient" class="net.rubyeye.xmemcached.XMemcachedClient"
+				c:server="${memcached.server}" c:port="${memcached.port}">
+			</bean>
+		</beans>
 	</beans>
 </beans>

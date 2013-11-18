@@ -22,12 +22,12 @@ public class CacheTestCase extends AbstractJUnit4SpringContextTests {
 	BookRepository repo;
 
 	@Before
-	public void setUp() throws Exception {
+	public void _setUp() throws Exception {
 		Store.init();
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void _tearDown() throws Exception {
 	}
 
 	@Test
