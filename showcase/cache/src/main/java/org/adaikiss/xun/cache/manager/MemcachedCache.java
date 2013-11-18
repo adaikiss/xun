@@ -14,6 +14,10 @@ import org.springframework.cache.support.SimpleValueWrapper;
 import org.springframework.util.Assert;
 
 /**
+ * run /xun/tools/jmemcached/memcached-server.bat or change the memcached
+ * server/port to your own in application.properties before running this
+ * testcase.
+ * 
  * @author HuLingwei
  * 
  */
@@ -24,8 +28,8 @@ public class MemcachedCache implements Cache {
 	private static final Logger logger = LoggerFactory
 			.getLogger(MemcachedCache.class);
 
-	public MemcachedCache(final String name,
-			final MemcachedClient client) throws URISyntaxException {
+	public MemcachedCache(final String name, final MemcachedClient client)
+			throws URISyntaxException {
 		this.name = name;
 		this.cache = client;
 	}
@@ -56,7 +60,7 @@ public class MemcachedCache implements Cache {
 
 	@Override
 	public void put(final Object key, final Object value) {
-		if(null == value){
+		if (null == value) {
 			return;
 		}
 		try {
