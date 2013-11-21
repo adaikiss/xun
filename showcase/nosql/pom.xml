@@ -10,5 +10,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>redis</module>
+		<module>mongodb</module>
 	</modules>
 </project>
