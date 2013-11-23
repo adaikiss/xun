@@ -151,13 +151,6 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<version>${project.version}</version>
 			</dependency>
 
-			<!-- concurrent -->
-			<dependency>
-				<groupId>com.googlecode.disruptor</groupId>
-				<artifactId>disruptor</artifactId>
-				<version>${disruptor.version}</version>
-			</dependency>
-
 			<!-- socket -->
 			<!-- netty -->
 			<dependency>
@@ -826,7 +819,19 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 			<!-- shiro end -->
 			<!-- security end -->
 
-			<!-- JMS begin -->
+			<!-- message system -->
+			<dependency>
+				<groupId>com.sksamuel.kafka</groupId>
+				<artifactId>kafka_${kafka.scala.version}</artifactId>
+				<version>${kafka.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.disruptor</groupId>
+				<artifactId>disruptor</artifactId>
+				<version>${disruptor.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-jms</artifactId>
@@ -852,7 +857,6 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- JMS end -->
 
 			<dependency>
 				<groupId>org.springframework.integration</groupId>
@@ -869,7 +873,7 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 				<artifactId>spring-integration-stream</artifactId>
 				<version>${spring.integration.version}</version>
 			</dependency>
-			<!-- jms end -->
+			<!-- message system end -->
 
 
 			<!-- quartz -->
@@ -1873,6 +1877,11 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<jedis.version>2.1.0</jedis.version>
 		<mongodb.version>2.11.3</mongodb.version>
 		<spring-data-mongodb.version>1.3.2.RELEASE</spring-data-mongodb.version>
+		<!-- message system -->
+		<disruptor.version>2.7.1</disruptor.version>
+		<activemq.version>5.5.1</activemq.version>
+		<kafka.scala.version>2.10</kafka.scala.version>
+		<kafka.version>0.8.0-beta1</kafka.version>
 		<!-- validation -->
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 		<geronimo-validation_1.0_spec.version>1.1</geronimo-validation_1.0_spec.version>
@@ -1944,8 +1953,6 @@ http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
 		<jetty.version>9.0.0.M5</jetty.version>
 		<mina.version>3.0.0-M2</mina.version>
 		<httpclient.version>4.2-beta1</httpclient.version>
-		<disruptor.version>2.7.1</disruptor.version>
-		<activemq.version>5.5.1</activemq.version>
 		<activiti.version>5.9</activiti.version>
 		<netty.version>4.0.0.CR2</netty.version>
 		<hadoop.version>2.0.0-mr1-cdh4.2.1</hadoop.version>
