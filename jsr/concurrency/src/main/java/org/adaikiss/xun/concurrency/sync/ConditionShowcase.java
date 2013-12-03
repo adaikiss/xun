@@ -51,7 +51,7 @@ public class ConditionShowcase<E> {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception{
-		final ConditionShowcase<Integer> queue = new ConditionShowcase<>();
+		final ConditionShowcase<Integer> queue = new ConditionShowcase<Integer>();
 		final int times = 10;
 		new Thread(){
 			@Override
