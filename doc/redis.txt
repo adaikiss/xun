@@ -1,0 +1,4 @@
+--delete keys matching a pattern
+redis-cli KEYS "user_*" | xargs redis-cli DEL
+--size
+redis-cli KEYS "*" | wc -l

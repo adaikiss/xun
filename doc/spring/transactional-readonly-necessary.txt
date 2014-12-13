@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/13539213/why-do-i-need-transaction-in-hibernate-for-read-only-operation
+
+https://community.jboss.org/wiki/Non-transactionalDataAccessAndTheAuto-commitMode?_sscc=t

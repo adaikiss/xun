@@ -1,0 +1,6 @@
+prints out the number of connections to server on port 80 per each ip address:
+netstat -plan|grep :80|awk {'print $5'}|cut -d: -f 1|sort|uniq -c|sort -nk 1
+
+连接状态
+netstat -an|awk '/tcp/ {print $6}'|sort|uniq -c
+netstat -an|grep '42.121.137.170:80'|awk '{print $6}'|sort|uniq -c

@@ -1,0 +1,113 @@
+http://stackoverflow.com/questions/20112355/apache-2-4-x-manual-install-on-rhel-6-4-no-apache-modules-will-load-on-start#answer-20244098
+
+1. Download Apache
+
+cd /usr/src
+wget http://www.apache.org/dist/httpd/httpd-2.4.7.tar.gz
+tar xvf httpd-2.4.7.tar.gz
+2. Download APR and APR-Util
+
+cd /usr/src
+wget https://centos.googlecode.com/files/apr-1.4.6.tar.gz
+wget http://mirror.cogentco.com/pub/apache/apr/apr-util-1.5.3.tar.gz
+tar xvf apr-1.4.6.tar.gz
+tar xvf apr-util-1.5.3.tar.gz
+Now put the apr and apr-util you downloaded into your apache source files.
+
+mv apr-1.4.6 /usr/src/httpd-2.4.7/srclib/apr
+mv apr-util-1.5.3 /usr/src/httpd-2.4.7/srclib/apr-util
+3.Compile
+
+cd /usr/src/httpd-2.4.4
+./configure --enable-so --enable-ssl --with-mpm=prefork --with-included-apr
+make
+make install
+4. Enable SSL in httpd.conf
+
+Apache configuration file httpd.conf is located under /usr/local/apache2/conf.
+
+nano /usr/local/apache2/conf/httpd.conf
+Uncomment the httpd-ssl.conf Include line and the LoadModule ssl_module line in the /usr/local/apache2/conf/httpd.conf file :
+
+# LoadModule ssl_module modules/mod_ssl.so
+# Include conf/extra/httpd-ssl.conf
+View the httpd-ssl.conf to review all the default SSL configurations. For most cases, you don¡¯t need to modify anything in this file.
+
+nano /usr/local/apache2/conf/extra/httpd-ssl.conf
+The SSL certificate and key are required before we start the Apache. The server.crt and server.key file mentioned in the httpd-ssl.conf needs to be created before we move forward.
+
+cd /usr/local/apache2/conf/extra
+egrep 'server.crt|server.key' httpd-ssl.conf
+
+SSLCertificateFile "/usr/local/apache2/conf/server.crt"
+SSLCertificateKeyFile "/usr/local/apache2/conf/server.key"
+5. Generate server.crt and server.key file
+
+First, Generate the server.key using openssl.
+
+cd /usr/src
+openssl genrsa -des3 -out server.key 1024
+The above command will ask for the password. Make sure to remember this password. You need this while starting your Apache later.
+
+Next, generate a certificate request file (server.csr) using the above server.key file.
+
+openssl req -new -key server.key -out server.csr
+Finally, generate a self signed ssl certificate (server.crt) using the above server.key and server.csr file.
+
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+Copy the server.key and server.crt file to appropriate Apache configuration directory location.
+
+cp server.key /usr/local/apache2/conf/
+cp server.crt /usr/local/apache2/conf/
+6. Start Apache
+
+/usr/local/apache2/bin/apachectl start
+If you are getting the below error message :
+
+AH00526: Syntax error on line 51 of /usr/local/apache2/conf/extra/httpd-ssl.conf:
+Invalid command 'SSLCipherSuite', perhaps misspelled or defined by a module not included in the server configuration
+make sure to uncomment the line shown below in httpd.conf :
+
+vi /usr/local/apache2/conf/httpd.conf
+
+# LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+Finally, this will prompt you to enter the password for your private key before starting up the apache. Verify that the Apache httpd process is running in the background.
+
+ps -ef | grep http
+You should see something like that :
+
+root 29529 1 0 13:08 ? 00:00:00 /usr/local/apache2/bin/httpd -k start
+charly 29530 29529 0 13:08 ? 00:00:00 /usr/local/apache2/bin/httpd -k start
+charly 29531 29529 0 13:08 ? 00:00:00 /usr/local/apache2/bin/httpd -k start
+charly 29532 29529 0 13:08 ? 00:00:00 /usr/local/apache2/bin/httpd -k start
+root 29616 18260 0 13:09 pts/0 00:00:00 grep http
+By default Apache SSL runs on 443 port. Open a web browser and verify that you can access your Apache using https://{your-ip-address}
+
+I hope this help, else I advise you to go see : http://jasonpowell42.wordpress.com/2013/04/05/install-apache-2-4-4-on-centos-6-4/
+
+
+--ssl
+LoadModule ssl_module modules/mod_ssl.so
+
+Listen 443
+<VirtualHost _default_:443>
+    ServerName www.ibookstar.com
+    SSLEngine on
+    SSLCertificateFile /opt/www/ssl/server.crt
+    SSLCertificateKeyFile /opt/www/ssl/server.key
+    SSLVerifyClient none
+</VirtualHost>
+
+X#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
+
+--server
+openssl genrsa -out server.key 1024
+openssl req -new -out server.csr -key server.key
+--ca
+openssl genrsa  -out ca.key 1024
+openssl req  -new -x509 -days 365 -key ca.key -out ca.crt
+--sign
+#touch /etc/pki/CA/index.txt
+#echo '1000' > /etc/pki/CA/serial
+openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key
+

@@ -1,0 +1,26 @@
+ajp or http
+
+<IfModule proxy_module>
+ProxyPass / balancer://mycluster stickysession=JSESSIONID
+<Proxy balancer://mycluster>
+BalancerMember ajp://localhost:8009/ route=tomcat1 loadfactor=40
+BalancerMember ajp://10.171.58.86:8009/ route=tomcat1 loadfactor=60
+</Proxy>
+
+<Location /balancer-manager>
+SetHandler balancer-manager
+</Location>
+</IfModule>
+
+
+<IfModule proxy_module>
+ProxyPassMatch ^/(.*)$ balancer://mycluster/$1 lbmethod=byrequests stickysession=JSESSIONID|jsessionid
+<Proxy balancer://mycluster>
+BalancerMember ajp://localhost:8009/ route=tomcat1 loadfactor=40
+BalancerMember ajp://10.171.58.86:8009/ route=tomcat1 loadfactor=60
+</Proxy>
+
+<Location /balancer-manager>
+SetHandler balancer-manager
+</Location>
+</IfModule>
