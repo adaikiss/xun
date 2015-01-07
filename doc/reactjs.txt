@@ -1,0 +1,6 @@
+render children:this.props.children
+change state to unbind event listener:
+	render:function(){
+		var onEvent = this.state.eventable?this.handleEvent:null;
+		<foo onEvent={onEvent}>
+	}

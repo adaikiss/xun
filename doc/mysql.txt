@@ -1,0 +1,17 @@
+--转为csv格式
+|sed "s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g">/
+
+
+--关闭指定数据库
+mysqladmin -uroot -phsjkk1222 -S /opt/mysql2/mysql.sock shutdown
+--访问指定端口
+mysql -h127.0.0.1 -P3307 -uroot -phsjkk1222
+
+--应用下载任务
+mysql -uroot -phsjkk1222 --database=publish --execute='select * from publish.calendar c left join  (select date(create_time) `date`,  sum(case when quest_id = 54 then 1 else 0 end) `360手机助手`, sum(case when quest_id = 38 then 1 else 0 end) `360手游大厅`, sum(case when quest_id = 45 then 1 else 0 end) `手机百度`, sum(case when quest_id = 46 then 1 else 0 end) `乐视视频`, sum(case when quest_id = 52 then 1 else 0 end) `热恋`, sum(case when quest_id = 53 then 1 else 0 end) `91助手`  from  publish.quest_log where state = 1 group by date(create_time) )q on c.date = q.date where c.date between date("2014-09-17") and  date(now())' |sed "s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g">/opt/sql/appquests.csv
+
+--书评列表
+elect id, name, originId, origin, book_name, num from publish.book bk inner join (select book_id, book_name, count(0) num from ebooks.book_comment_topic bct group by book_id having count(0) > 0) t on bk.id = t.book_id
+--group by concat
+select bid, group_concat((select name from ebooks.custom_book_category where id = category_id) separator ',') from sub_category_ranking group by bid;
+select `id` ,`name` `书籍名称`,`description` `书籍描述`,`author` `作者`,`tags` `标签`,`wordCount` `字数`,`status` `审核状态`,`state` `连载状态`,`subTitle` `短推广语`,`origin` `书籍来源`,`originId` `源ID`,`originCategory` `源分类`,`long_sub_title` `长推广词`, cates  `二级分类` from publish.book bk inner join (select bid, group_concat((select name from ebooks.custom_book_category where id = category_id) separator ",") cates from ebooks.sub_category_ranking group by bid) cate on bk.originId = cate.bid and bk.origin = 30

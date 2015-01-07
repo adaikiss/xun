@@ -1,0 +1,5 @@
+mysql复制数据时出现The total number of locks exceeds the lock table size错误
+给my.cnf加innodb_buffer_pool_size = 2G后出现Unknown table engine 'InnoDB'错误
+删除了ib_logfile[01]错误依旧，看日志发现是内存不够分配，改成512M就可以了。
+http://stackoverflow.com/questions/7303133/unknown-table-engine-innodb
+http://stackoverflow.com/questions/7782870/error-unknown-table-engine-innodb-on-query-after-restarting-mysql
