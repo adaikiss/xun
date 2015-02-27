@@ -10,8 +10,36 @@ mysql -h127.0.0.1 -P3307 -uroot -phsjkk1222
 --应用下载任务
 mysql -uroot -phsjkk1222 --database=publish --execute='select * from publish.calendar c left join  (select date(create_time) `date`,  sum(case when quest_id = 54 then 1 else 0 end) `360手机助手`, sum(case when quest_id = 38 then 1 else 0 end) `360手游大厅`, sum(case when quest_id = 45 then 1 else 0 end) `手机百度`, sum(case when quest_id = 46 then 1 else 0 end) `乐视视频`, sum(case when quest_id = 52 then 1 else 0 end) `热恋`, sum(case when quest_id = 53 then 1 else 0 end) `91助手`  from  publish.quest_log where state = 1 group by date(create_time) )q on c.date = q.date where c.date between date("2014-09-17") and  date(now())' |sed "s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g">/opt/sql/appquests.csv
 
+--CP
+case bk.origin when 1 then "得书" when 2 then "陌上香坊" when 3 then "书海" when 4 then "馨香" when 5 then "阅路" when 6 then "华夏天空" when 7 then "京东" when 8 then "幻文" when 9 then "一千零一页" when 10 then "精品中文" when 11 then "恒言" when 12 then "纵横" when 13 then "倾城" when 14 then "黑岩" when 15 then "创别" when 16 then "梦溪" when 17 then "新华阅读" when 18 then "3G书城" when 19 then "安之" when 20 then "澄文" when 21 then "兰语" when 22 then "阅明" when 23 then "红薯" when 24 then "世纪书城" when 25 then "风起中文网" when 26 then "卡美星达" when 27 then "潮流原创" when 28 then "双火文化" when 29 then "怡悦" when 30 then "移动" when 31 then "原文" when 32 then "阅看" end `来源`
+--book status
+case bk.status when 10 then "上线" when 31 then "无封面" when 32 then "内容错误" when 38 then "待爬取" else "下线" end `书籍状态` 
 --书评列表
-elect id, name, originId, origin, book_name, num from publish.book bk inner join (select book_id, book_name, count(0) num from ebooks.book_comment_topic bct group by book_id having count(0) > 0) t on bk.id = t.book_id
+select id, name, originId, origin, book_name, num from publish.book bk inner join (select book_id, book_name, count(0) num from ebooks.book_comment_topic bct group by book_id having count(0) > 0) t on bk.id = t.book_id
+--有书单的书籍
+select bk.id, bk.name `书名`, bk.author `作者`, cate.name `分类`, bk.originId `原始ID`, bk.origin `来源`, babm.num `书单数` from (select book_id, count(0) num from book_album group by book_id order by count(0) ) babm left join book bk on babm.book_id = bk.id left join custom_book_category cate on bk.categoryId = cate.id
+--没有分类的书籍
+select bk.id, bk.name, bk.author, bk.origin, bk.originCategory from publish.book where categoryId = 0 or categoryId is null
+--书库
+select bk.id, bk.name `书名`, bk.author `作者`, cate.name `分类`, bk.wordCount `字数`, bk.click_count `点击数`, bk.tags `关键字`, bk.subTitle `短推荐语`, bk.long_sub_title `长推荐语`, bk.description `描述`, case bk.state when 1 then "完本" else "连载" end `连载状态`,bk.originId `原始ID`, (select count(0) from publish.book_album where book_id = bk.id group by book_id) `书单数`, (select count(0) from ebooks.book_comment_topic where book_id = bk.id and creator is not null) `书评数`, case bk.origin when 1 then "得书" when 2 then "陌上香坊" when 3 then "书海" when 4 then "馨香" when 5 then "阅路" when 6 then "华夏天空" when 7 then "京东" when 8 then "幻文" when 9 then "一千零一页" when 10 then "精品中文" when 11 then "恒言" when 12 then "纵横" when 13 then "倾城" when 14 then "黑岩" when 15 then "创别" when 16 then "梦溪" when 17 then "新华阅读" when 18 then "3G书城" when 19 then "安之" when 20 then "澄文" when 21 then "兰语" when 22 then "阅明" when 23 then "红薯" when 24 then "世纪书城" when 25 then "风起中文网" when 26 then "卡美星达" when 27 then "潮流原创" when 28 then "双火文化" when 29 then "怡悦" when 30 then "移动" when 31 then "原文" when 32 then "阅看" end `来源` from publish.book bk left join publish.custom_book_category cate on bk.categoryId = cate.id where bk.status = 10;
+--开放书城收入
+SELECT bk.id, bk. NAME `书名`, bk.author `作者`, cate. NAME `分类`, bk.wordCount `字数`, bk.click_count `点击数`, bk.own_click_count `点击数2`, case bk.origin when 1 then "得书" when 2 then "陌上香坊" when 3 then "书海" when 4 then "馨香" when 5 then "阅路" when 6 then "华夏天空" when 7 then "京东" when 8 then "幻文" when 9 then "一千零一页" when 10 then "精品中文" when 11 then "恒言" when 12 then "纵横" when 13 then "倾城" when 14 then "黑岩" when 15 then "创别" when 16 then "梦溪" when 17 then "新华阅读" when 18 then "3G书城" when 19 then "安之" when 20 then "澄文" when 21 then "兰语" when 22 then "阅明" when 23 then "红薯" when 24 then "世纪书城" when 25 then "风起中文网" when 26 then "卡美星达" when 27 then "潮流原创" when 28 then "双火文化" when 29 then "怡悦" when 30 then "移动" when 31 then "原文" when 32 then "阅看" end `来源`, case when bo.price is null then 0 else bo.price end  `充值消费`, case when bo.grants is null then 0 else bo.grants end `赠金消费` FROM publish.book bk LEFT JOIN publish.custom_book_category cate ON bk.categoryId = cate.id LEFT JOIN ( SELECT book_id, sum(price) price, sum(`grants`) `grants` FROM publish.book_order GROUP BY book_id) bo ON bk.id = bo.book_id where bk.origin != 30 order by bo.price desc, bo.`grants` desc
 --group by concat
 select bid, group_concat((select name from ebooks.custom_book_category where id = category_id) separator ',') from sub_category_ranking group by bid;
 select `id` ,`name` `书籍名称`,`description` `书籍描述`,`author` `作者`,`tags` `标签`,`wordCount` `字数`,`status` `审核状态`,`state` `连载状态`,`subTitle` `短推广语`,`origin` `书籍来源`,`originId` `源ID`,`originCategory` `源分类`,`long_sub_title` `长推广词`, cates  `二级分类` from publish.book bk inner join (select bid, group_concat((select name from ebooks.custom_book_category where id = category_id) separator ",") cates from ebooks.sub_category_ranking group by bid) cate on bk.originId = cate.bid and bk.origin = 30
+--渠道特权
+select channel, date(create_time) date, count(0) from channel_grants_log where channel ='hiapk' and date(create_time) >= date('2015-01-15') and date(create_time) <= date('2015-01-20') group by date(create_time);
+--兑换码
+select r.*, u.uname `百度昵称`, u.create_time `用户创建时间` from redeem_code_log r left join openapi.user u on r.user_id = u.id where r.type = 'weizhuanjfsc20150112';
+
+使用最大序号+1
+(select case when tmp.`order` is null then 1 else tmp.`order` + 1 end from (select max(`order`) `order` from ${db.dynamic_publish}.category_item where category_id = #{categoryId}) tmp)
+
+select bk.id, bk.originId `源ID`, case bk.origin when 1 then "得书" when 2 then "陌上香坊" when 3 then "书海" when 4 then "馨香" when 5 then "阅路" when 6 then "华夏天空" when 7 then "京东" when 8 then "幻文" when 9 then "一千零一页" when 10 then "精品中文" when 11 then "恒言" when 12 then "纵横" when 13 then "倾城" when 14 then "黑岩" when 15 then "创别" when 16 then "梦溪" when 17 then "新华阅读" when 18 then "3G书城" when 19 then "安之" when 20 then "澄文" when 21 then "兰语" when 22 then "阅明" when 23 then "红薯" when 24 then "世纪书城" when 25 then "风起中文网" when 26 then "卡美星达" when 27 then "潮流原创" when 28 then "双火文化" when 29 then "怡悦" when 30 then "移动" when 31 then "原文" when 32 then "阅看" end `来源`, bk.name `名称`, cate.name `分类`, originCategory `原始分类`, state `连载状态`, case bk.status when 10 then "上线" when 31 then "无封面" when 32 then "内容错误" when 38 then "待爬取" else "下线" end `书籍状态`, bk.price `价格`, bk.priceType `收费类型`, bk.chapterCount `章节数`, bk.wordCount `字数`, bk.click_count `点击数`, bk.author `作者`, bk.tags `关键字`, bk.description `简介`, bk.subTitle `短推广词`, bk.long_sub_title `长推广词` from publish.book bk left join publish.custom_book_category cate on bk.categoryId = cate.id
+
+from_unixtime()
+
+--optimize innodb table
+ALTER TABLE tablename ENGINE='InnoDB';
+
+mysqldump -uroot -phsjkk1222 --quick --force --routines --add-drop-database --add-drop-table ibook_log>mysqldump.sql
